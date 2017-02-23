@@ -11,11 +11,15 @@ using System.Threading.Tasks;
 
 namespace App.WinForm.Application.BAL
 {
+    /// <summary>
+    /// Configuration After Update or first installation
+    /// </summary>
     public class InstallApplication
     {
-       
-
-       
+        /// <summary>
+        /// ModelContext type,
+        /// it used to create EF DBContext instance
+        /// </summary>
         private Type TypeModelContext { get;  set; }
 
         public InstallApplication(Type type_model_context)
@@ -25,8 +29,6 @@ namespace App.WinForm.Application.BAL
 
         }
 
-
-
         /// <summary>
         /// Must be executed befor the first use of the application
         /// </summary>
@@ -35,7 +37,9 @@ namespace App.WinForm.Application.BAL
 
         }
         /// <summary>
-        /// Must be executed after the modification of the application
+        /// Must be executed after DataBase the modification 
+        /// of the application
+        /// - It Add Items into TabnleMenu
         /// </summary>
         public void Update()
         {

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GenericWinForm.Demo.Properties {
+namespace App.WinForm.Entities.Application.Resources.ApplicationName {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace GenericWinForm.Demo.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    internal class ApplicationName {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        internal ApplicationName() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace GenericWinForm.Demo.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("GenericWinForm.Demo.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("App.WinForm.Entities.Application.Resources.ApplicationName.ApplicationName", typeof(ApplicationName).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,6 +57,24 @@ namespace GenericWinForm.Demo.Properties {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Applications names.
+        /// </summary>
+        internal static string PluralName {
+            get {
+                return ResourceManager.GetString("PluralName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Application name.
+        /// </summary>
+        internal static string SingularName {
+            get {
+                return ResourceManager.GetString("SingularName", resourceCulture);
             }
         }
     }

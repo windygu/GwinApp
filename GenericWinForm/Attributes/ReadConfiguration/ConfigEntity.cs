@@ -67,9 +67,6 @@ namespace App.WinForm.Attributes
             return SingletonPerTypeValues[type_of_entity];
         }
 
-
-      
-
         /// <summary>
         /// Read configuration of entity
         /// </summary>
@@ -207,9 +204,9 @@ namespace App.WinForm.Attributes
             return msg;
         }
 
-        public void Dispose()
+        public bool Dispose()
         {
-            ConfigEntity.SingletonPerTypeValues.Remove(this.GetType());
+           return ConfigEntity.SingletonPerTypeValues.Remove(this.GetType());
         }
     }
 }

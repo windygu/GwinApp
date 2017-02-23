@@ -75,6 +75,11 @@
     <Compile Include="Attributes\ReadConfiguration\ConfigProperty.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="Entities\Application\MenuItemApplication.cs" />
+    <Compile Include="Entities\Application\Resources\ApplicationName\ApplicationName.Designer.cs">
+      <DependentUpon>ApplicationName.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Entities\Application\Resources\MenuItemApplication\MenuItemApplication.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -300,12 +305,6 @@
     <Compile Include="Components\EntryForms\BaseEntryForm.Designer.cs">
       <DependentUpon>BaseEntryForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Components\EntryForms\EntryForm.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Components\EntryForms\EntryForm.Designer.cs">
-      <DependentUpon>EntryForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Shared\Exceptions\FieldNotExistInFormException.cs" />
     <Compile Include="Components\EntryForms\Generate.BaseEntryForm.cs">
       <SubType>UserControl</SubType>
@@ -420,6 +419,12 @@
     <EmbeddedResource Include="Components\Authentication\LoginControl.resx">
       <DependentUpon>LoginControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Entities\Application\Resources\ApplicationName\ApplicationName.ar.resx" />
+    <EmbeddedResource Include="Entities\Application\Resources\ApplicationName\ApplicationName.fr.resx" />
+    <EmbeddedResource Include="Entities\Application\Resources\ApplicationName\ApplicationName.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ApplicationName.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Entities\Application\Resources\MenuItemApplication\MenuItemApplication.ar.resx" />
     <EmbeddedResource Include="Entities\Application\Resources\MenuItemApplication\MenuItemApplication.fr.resx" />
     <EmbeddedResource Include="Entities\Application\Resources\MenuItemApplication\MenuItemApplication.resx">
@@ -532,9 +537,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Components\EntryForms\BaseEntryForm.resx">
       <DependentUpon>BaseEntryForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Components\EntryForms\EntryForm.resx">
-      <DependentUpon>EntryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\Filter\BaseFilterControl.resx">
       <DependentUpon>BaseFilterControl.cs</DependentUpon>

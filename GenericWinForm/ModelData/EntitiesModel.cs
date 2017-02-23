@@ -19,6 +19,24 @@ namespace App.WinForm.ModelData
                    ).Cast<Assembly>().ToList<Assembly>();
         }
 
+        /// <summary>
+        /// Get All Entities in Project 
+        /// </summary>
+        /// <returns></returns>
+        public List<Type> GetAll_Entities_Type()
+        {
+
+            List<Type> Liste_All_Entities_types = (from assembly in this.GetAll_Assembly_Contains_Entities()
+                                         from type in assembly.GetTypes()
+                                         let attributes = type.GetCustomAttributes(typeof(DisplayEntityAttribute), false)
+                                         where attributes != null && attributes.Length > 0
+                                         select  type
+           ).ToList();
+
+            
+            return Liste_All_Entities_types;
+        }
+
         public Dictionary<Type, MenuAttribute> Get_All_Type_And_MenuAttributes()
         {
             Dictionary<Type, MenuAttribute> Dictionary_Type_MenyAttribute = new Dictionary<Type, MenuAttribute>();

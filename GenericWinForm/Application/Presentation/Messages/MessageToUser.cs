@@ -7,11 +7,13 @@ using System.Windows.Forms;
 
 namespace App.WinForm.Application.Presentation.Messages
 {
-
+    /// <summary>
+    /// Show message in Presentation Layer
+    /// </summary>
     public class MessageToUser
     {
         /// <summary>
-        /// Catégoies des messages
+        /// Messages categories
         /// </summary>
         public enum Category {
             MultiLanguageResourceFile,

@@ -8,8 +8,6 @@ namespace App.WinForm.Entities.Security
 {
     public class Action : BaseEntity
     {
-
-       
         public string Name { set; get; }
 
         public string Description { set; get; }

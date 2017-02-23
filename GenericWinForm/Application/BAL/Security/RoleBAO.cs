@@ -9,6 +9,7 @@ using System.Windows.Forms;
 
 namespace App.WinForm.Application.BAL.Security
 {
+
     public class RoleBAO : BaseEntityBAO<Role>
     {
         public override void ApplyBusinessRolesAfterValuesChanged(object sender, BaseEntity entity)
