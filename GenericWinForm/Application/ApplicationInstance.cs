@@ -14,8 +14,8 @@ using System.Windows.Forms;
 namespace App.WinForm.Security
 {
     public class  ApplicationInstance
-    {
-        private static Session _Session;
+    { 
+         private static Session _Session;
         public static Session Session {
             set { _Session = value; }
             get {
