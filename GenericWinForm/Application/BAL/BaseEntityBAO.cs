@@ -272,6 +272,7 @@ namespace App.WinForm.Application.BAL
                 foreach (DbValidationError subItem in item.ValidationErrors)
                 {
                     // [fr]
+                    // [3-Layer-Violation]
                     string message = string.Format("Erreur : '{0}' \n trouvé dans l'objet : {1}  \n sur la propriété {2}",
                              subItem.ErrorMessage, entityTypeName, subItem.PropertyName);
                     MessageToUser.AddMessage(MessageToUser.Category.EntityValidation, message);

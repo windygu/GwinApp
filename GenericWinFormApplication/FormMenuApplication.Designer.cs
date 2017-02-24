@@ -1,6 +1,6 @@
-﻿namespace GenericWinFormApplication
+﻿namespace GenericWinForm.Demo
 {
-    partial class Form1
+    partial class FormMenuApplication
     {
         /// <summary>
         /// Variable nécessaire au concepteur.
@@ -30,18 +30,17 @@
         {
             this.SuspendLayout();
             // 
-            // Form1
+            // FormMenuApplication
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(388, 293);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(572, 320);
+            this.Name = "FormMenuApplication";
+            this.Load += new System.EventHandler(this.FormMenuApplication_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
     }
 }
-

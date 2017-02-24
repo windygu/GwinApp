@@ -2,6 +2,7 @@
 using App.WinForm.Entities.Application;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,17 +13,18 @@ namespace App.WinForm.Entities.Security
     /// This Eity is Used by Test Project to Teste : 
     /// BaseBAO
     /// </summary>
-    [DisplayEntity(DisplayMember = "Name")]
-    [Menu(Group = "configurationToolStripMenuItem")]
+    [DisplayEntity(DisplayMember = "Name",Localizable =true)]
+    [Menu(Group = "The Configuration")]
     public class Role : BaseEntity
     {
-        [DisplayProperty(Titre ="Name")]
+        [DisplayProperty(Titre ="Name",isInGlossary =true)]
         [EntryForm(Ordre = 1)]
         [Filter]
         [DataGrid]
+        [Required]
         public string Name { set; get; }
 
-        [DisplayProperty(Titre = "Description")]
+        [DisplayProperty(Titre = "Description",isInGlossary =true)]
         [EntryForm(Ordre = 2,MultiLine = true)]
         [Filter]
         [DataGrid]

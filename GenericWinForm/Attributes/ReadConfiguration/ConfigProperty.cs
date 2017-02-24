@@ -1,9 +1,9 @@
 ﻿using App.WinForm;
+using App.WinForm.Application;
 using App.WinForm.Application.Presentation.Messages;
 using App.WinForm.Attributes;
 using App.WinForm.Entities;
 using App.WinForm.Entities.Resources.Glossary;
-using App.WinForm.Security;
 using App.WinForm.Shared.Resources;
 using System;
 using System.Collections.Generic;
@@ -54,7 +54,7 @@ namespace App.Shared.AttributesManager
 
 
             // Culture Info
-            this.CultureInfo = ApplicationInstance.Session.CultureInfo;
+            this.CultureInfo = GWinApp.Session.CultureInfo;
 
             // Localizable
             this.TypeOfEntity = propertyInfo.ReflectedType;

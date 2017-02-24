@@ -59,8 +59,10 @@ namespace App.WinForm.Entities
         /// <returns></returns>
         public override string ToString()
         {
+            string Titre = "";
             DisplayEntityAttribute AffichageClasse = (DisplayEntityAttribute)this.GetType().GetCustomAttributes(typeof(DisplayEntityAttribute), true)[0];
-            string Titre = this.GetType().GetProperty(AffichageClasse.DisplayMember).GetValue(this).ToString();
+            object value = this.GetType().GetProperty(AffichageClasse.DisplayMember).GetValue(this);
+            if (value != null)  Titre = value.ToString();
             if (Titre == string.Empty) return AffichageClasse.SingularName;
             else return Titre;
         }

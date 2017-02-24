@@ -2,10 +2,13 @@
 
 namespace App.WinForm.Forms.FormMenu
 {
+    /// <summary>
+    /// Application menu interface
+    /// </summary>
     public interface IApplicationMenu : IBaseForm
     {
         /// <summary>
-        /// Obtient le l'objet menu d'application
+        /// Get the menu application instance
         /// </summary>
         /// <returns></returns>
         MenuStrip getMenuStrip();

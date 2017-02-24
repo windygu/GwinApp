@@ -1,8 +1,8 @@
-﻿using App.WinForm.Attributes;
+﻿using App.WinForm.Application;
+using App.WinForm.Attributes;
 using App.WinForm.Entities;
 using App.WinForm.Entities.Application;
 using App.WinForm.ModelData;
-using App.WinForm.Security;
 using App.WinFrom.Menu;
 using System;
 using System.Collections.Generic;
@@ -46,31 +46,29 @@ namespace App.WinForm.Forms.FormMenu
                 ToolStripMenuItem toolStripMenuItem = new ToolStripMenuItem();
                 toolStripMenuItem.Name = "toolStripMenuItem" + menuItemApplication.Name;
                 toolStripMenuItem.Size = new System.Drawing.Size(82, 20);
-                toolStripMenuItem.Text = menuItemApplication.TitrleCulture(ApplicationInstance.Session.CultureInfo);
+                toolStripMenuItem.Text = menuItemApplication.TitrleCulture(GWinApp.Session.CultureInfo);
                 this.menuStrip.Items.Add(toolStripMenuItem);
             }
 
 
-
-            Dictionary<Type, MenuAttribute> MenuAttributes_And_Types = new EntitiesModel().Get_All_Type_And_MenuAttributes();
-
- 
+            // Create MenuItems from ModelCondiguration Entities
+            Dictionary<Type, MenuAttribute> MenuAttributes_And_Types = new ModelConfiguration().Get_All_Type_And_MenuAttributes();
             foreach (var menuAttributes_And_Types in MenuAttributes_And_Types)
             {
 
-                ConfigEntity attributesOfEntity = ConfigEntity.CreateConfigEntity(menuAttributes_And_Types.Key);
+                ConfigEntity configEntity = ConfigEntity.CreateConfigEntity(menuAttributes_And_Types.Key);
 
                 // ToolStripMenu
                 ToolStripMenuItem toolStripMenuItem = new ToolStripMenuItem();
-                toolStripMenuItem.Name = "toolStripMenuItem" + attributesOfEntity.Menu.Title;
+                toolStripMenuItem.Name = "toolStripMenuItem" + configEntity.Menu.Title;
                 toolStripMenuItem.Size = new System.Drawing.Size(82, 20);
-                toolStripMenuItem.Text = attributesOfEntity.Menu.Title;
+                toolStripMenuItem.Text = configEntity.Menu.Title;
                 toolStripMenuItem.Click += ToolStripMenuItem_Click;
                 MenuItems.Add(toolStripMenuItem.Name, menuAttributes_And_Types.Key);
 
                 // Find groupe
-                if (attributesOfEntity.Menu.Group != null) {
-                    ToolStripItem GroupeToolStripItem = this.menuStrip.Items.Find("toolStripMenuItem" + attributesOfEntity.Menu.Group, true).SingleOrDefault();
+                if (configEntity.Menu.Group != null) {
+                    ToolStripItem GroupeToolStripItem = this.menuStrip.Items.Find("toolStripMenuItem" + configEntity.Menu.Group, true).SingleOrDefault();
                     ToolStripMenuItem GroupeToolStripMenuItem = GroupeToolStripItem as ToolStripMenuItem;
                     if(GroupeToolStripMenuItem != null)
                       GroupeToolStripMenuItem.DropDownItems.Add(toolStripMenuItem);

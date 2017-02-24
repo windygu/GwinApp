@@ -61,7 +61,7 @@ namespace App.WinForm.Entities.Security.Resources.Role {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à .
+        ///   Recherche une chaîne localisée semblable à Roles.
         /// </summary>
         internal static string PluralName {
             get {
@@ -70,7 +70,7 @@ namespace App.WinForm.Entities.Security.Resources.Role {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à .
+        ///   Recherche une chaîne localisée semblable à Role.
         /// </summary>
         internal static string SingularName {
             get {

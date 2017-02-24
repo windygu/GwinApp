@@ -14,9 +14,5 @@ namespace App.WinForm.Forms
         /// Reload the form
         /// </summary>
        public virtual void Reload() { } 
-        
-
-      
-        
     }
 }

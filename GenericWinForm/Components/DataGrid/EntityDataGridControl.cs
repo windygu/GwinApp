@@ -183,25 +183,34 @@ namespace App.WinForm
                             colonne.DataPropertyName = propertyInfo.Name;
                         }
                         break;
-                    case "List`1":
-                        {
-                            DataGridViewButtonColumn c = new DataGridViewButtonColumn();
-                            c.UseColumnTextForButtonValue = true;
-                            c.Text = propertyInfo.Name;
-                            colonne = c;
-                            colonne.ReadOnly = true;
-                        }
-                        break;
                     default:
                         {
-                            colonne.DataPropertyName = propertyInfo.Name;
+                            if (
+                                attributesOfProperty.Relationship?.Relation == RelationshipAttribute.Relations.ManyToMany_Creation)
+                            {
+                                DataGridViewButtonColumn c = new DataGridViewButtonColumn();
+                                c.UseColumnTextForButtonValue = true;
+                                c.Text = propertyInfo.Name;
+                                colonne = c;
+                                colonne.ReadOnly = true;
+                            }
+                            else
+                            {
+                                if(propertyInfo.PropertyType.Name != "List`1")
+                                colonne.DataPropertyName = propertyInfo.Name;
+                            }
+
+                            
                         }
                         break;
                 }
 
+                // Not show Collection if not have relationship : ManyToMany_Creation
+                if (propertyInfo.PropertyType.Name == "List`1" &&
+                    attributesOfProperty.Relationship?.Relation != RelationshipAttribute.Relations.ManyToMany_Creation)
+                    continue;
 
                 colonne.HeaderText = attributesOfProperty.DisplayProperty.Titre;
-
                 colonne.Name = propertyInfo.Name;
                 colonne.ReadOnly = true;
                 if (attributesOfProperty.DataGrid?.WidthColonne != 0) colonne.Width = attributesOfProperty.DataGrid.WidthColonne;
@@ -229,8 +238,13 @@ namespace App.WinForm
                 onEditClick(this, null);
             }
 
+            
+
             foreach (var item in this.ListeProprieteDataGrid.Where(p => p.PropertyType.Name == "List`1"))
             {
+                ConfigProperty attributesOfProperty = new ConfigProperty(item, this.ConfigEntity);
+                if (attributesOfProperty.Relationship.Relation != RelationshipAttribute.Relations.ManyToMany_Creation)
+                    continue;
                 if (e.ColumnIndex == dataGridView.Columns[item.Name].Index && e.RowIndex >= 0)
                 {
                     this.SelectedProperty = item;

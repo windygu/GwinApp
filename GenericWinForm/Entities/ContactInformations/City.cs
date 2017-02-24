@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace App.WinForm.Entities.ContactInformations
 {
     [DisplayEntity(Localizable =true, isMaleName = false,DisplayMember = "Name")]
-    [Menu(Group = "configurationToolStripMenuItem")]
+    [Menu(Group = "The Configuration")]
     [SelectionCriteria(typeof(Country))]
     public class City : BaseEntity
     {

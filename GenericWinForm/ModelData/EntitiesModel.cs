@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace App.WinForm.ModelData
 {
-    public class EntitiesModel
+    public class ModelConfiguration
     {
 
         public List<Assembly> GetAll_Assembly_Contains_Entities()

@@ -204,7 +204,7 @@ namespace App.WinForm
                             #endregion
 
                             #region Champs ManyToMany
-                            if (configProperty.Relationship?.Relation == RelationshipAttribute.Relations.ManyToMany)
+                            if (configProperty.Relationship?.Relation == RelationshipAttribute.Relations.ManyToMany_Selection)
                             {
 
                                 if (configProperty.EntryForm?.TabPage == true)

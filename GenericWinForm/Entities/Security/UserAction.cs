@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace App.WinForm.Entities.Security
 {
-    public class Action : BaseEntity
+    
+    public class UserAction : BaseEntity
     {
         public string Name { set; get; }
 

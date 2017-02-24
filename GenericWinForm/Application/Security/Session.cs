@@ -1,4 +1,5 @@
-﻿using App.WinForm.Entities;
+﻿using App.WinForm.Application.Presentation;
+using App.WinForm.Entities;
 using App.WinForm.Entities.Authentication;
 using App.WinForm.Forms;
 using System;
@@ -12,11 +13,14 @@ using System.Windows.Forms;
 
 namespace App.WinForm.Application.Security
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class Session
     {
         #region Params
         /// <summary>
-        /// Application Menu
+        /// MenuForm of Application
         /// </summary>
         public BaseForm ApplicationMenu { set; get; }
         /// <summary>
@@ -28,9 +32,9 @@ namespace App.WinForm.Application.Security
         #region Properties
         private CultureInfo cultureInfo;
         /// <summary>
-        /// The language of the user
+        /// User culture info
         /// </summary>
-        public  CultureInfo CultureInfo {
+        public CultureInfo CultureInfo {
             set
             {
                 if(cultureInfo != value)
@@ -53,8 +57,6 @@ namespace App.WinForm.Application.Security
             this.ApplicationMenu = ApplicationMenu;
             this.user = user;
             this.CultureInfo = CultureInfo;
-
-          
         }
 
         #endregion
@@ -63,24 +65,18 @@ namespace App.WinForm.Application.Security
         /// Change the cultue of Application
         /// </summary>
         /// <param name="cultureInfo"></param>
-        public void Change_Culture(CultureInfo cultureInfo)
+        public void ChangeLanguage(CultureInfo cultureInfo, FormApplication formApplication)
         {
             Thread.CurrentThread.CurrentCulture = cultureInfo;
             Thread.CurrentThread.CurrentUICulture = cultureInfo;
             this.cultureInfo = cultureInfo;
-
             this.ApplicationMenu.Reload();
-
-            //List<Form> OpenForm = Application.OpenForms.Cast<Form>().ToList<Form>();
-            //foreach (Form item in OpenForm)
-            //{
-            //    BaseForm baseForm = item as BaseForm;
-            //    if(baseForm != null)
-            //    {
-            //        baseForm.Reload();
-            //    }
-            //}
-
+            if(this.cultureInfo.ThreeLetterISOLanguageName == "fr" || this.cultureInfo.ThreeLetterISOLanguageName == "en")
+            {
+                formApplication.RightToLeftLayout = false;
+                formApplication.RightToLeft = RightToLeft.No;
+            }
+           
         }
  
     }

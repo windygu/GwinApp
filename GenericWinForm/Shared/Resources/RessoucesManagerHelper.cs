@@ -27,7 +27,7 @@ namespace App.WinForm.Shared.Resources
 
                 Assembly.GetExecutingAssembly();
 
-                foreach (Assembly item in new ModelData.EntitiesModel().GetAll_Assembly_Contains_Entities())
+                foreach (Assembly item in new ModelData.ModelConfiguration().GetAll_Assembly_Contains_Entities())
                 {
                     resourceNames.AddRange(item.GetManifestResourceNames());
                 }

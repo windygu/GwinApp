@@ -132,7 +132,7 @@ namespace App.WinForm
                                 comboBox.SelectedValue = valeur.Id;
                             }
                         }
-                        if (attributesOfProperty.Relationship?.Relation == RelationshipAttribute.Relations.ManyToMany)
+                        if (attributesOfProperty.Relationship?.Relation == RelationshipAttribute.Relations.ManyToMany_Selection)
                         {
                             IList v_ls_object = typeEntity.GetProperty(NomPropriete).GetValue(entity) as IList;
                             if (v_ls_object == null) continue;

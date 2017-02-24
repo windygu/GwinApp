@@ -62,6 +62,13 @@
     <Compile Include="Application\BAL\BaseEntityBAO.cs" />
     <Compile Include="Application\BAL\InstallApplication.cs" />
     <Compile Include="Application\BAL\Security\RoleBAO.cs" />
+    <Compile Include="Application\Class1.cs" />
+    <Compile Include="Application\Presentation\FormApplication.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Application\Presentation\FormApplication.Designer.cs">
+      <DependentUpon>FormApplication.cs</DependentUpon>
+    </Compile>
     <Compile Include="Application\Presentation\Messages\MessageToUser_Resource.fr-FR.Designer.cs">
       <DependentUpon>MessageToUser_Resource.fr-FR.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -125,7 +132,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Entities\Security\Action.cs" />
+    <Compile Include="Entities\Security\UserAction.cs" />
     <Compile Include="Entities\Security\Authorization.cs" />
     <Compile Include="Entities\Security\Role.cs" />
     <Compile Include="Fields\Controls\SelectionFilter.cs" />
@@ -407,6 +414,9 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Application\Presentation\FormApplication.resx">
+      <DependentUpon>FormApplication.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Application\Presentation\Messages\MessageToUser_Resource.ar.resx" />
     <EmbeddedResource Include="Application\Presentation\Messages\MessageToUser_Resource.fr-FR.resx">
       <Generator>ResXFileCodeGenerator</Generator>

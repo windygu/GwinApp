@@ -16,7 +16,7 @@ namespace App.WinForm.Attributes.Tests
         [TestMethod()]
         public void ConfigEntityConstructorTest()
         {
-            List<Type> ls = new EntitiesModel().GetAll_Entities_Type();
+            List<Type> ls = new ModelConfiguration().GetAll_Entities_Type();
             foreach (Type item in ls)
             {
                 ConfigEntity configEntity = new ConfigEntity(item);
@@ -28,7 +28,7 @@ namespace App.WinForm.Attributes.Tests
         [TestMethod()]
         public void CreateConfigEntityTest()
         {
-            List<Type> ls = new EntitiesModel().GetAll_Entities_Type();
+            List<Type> ls = new ModelConfiguration().GetAll_Entities_Type();
             foreach (Type item in ls)
             {
                 ConfigEntity configEntity = ConfigEntity.CreateConfigEntity(item);

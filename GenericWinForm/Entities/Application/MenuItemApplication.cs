@@ -51,7 +51,7 @@ namespace App.WinForm.Entities.Application
         [EntryForm(Ordre = 2, GroupeBox = "Authorisation")]
         [Filter]
         [DataGrid]
-        [Relationship(Relation = RelationshipAttribute.Relations.ManyToMany,EditMode= RelationshipAttribute.EditingModes.Selection_With_Check_Box)]
+        [Relationship(Relation = RelationshipAttribute.Relations.ManyToMany_Selection,EditMode= RelationshipAttribute.EditingModes.Selection_With_Check_Box)]
         public virtual List<Role> Roles { set; get; }
 
 

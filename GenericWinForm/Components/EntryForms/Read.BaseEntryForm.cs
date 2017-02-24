@@ -109,7 +109,7 @@ namespace App.WinForm
                 #endregion
 
                 #region  Read : ManyToMany
-                if (attributesOfProperty.Relationship?.Relation == RelationshipAttribute.Relations.ManyToMany)
+                if (attributesOfProperty.Relationship?.Relation == RelationshipAttribute.Relations.ManyToMany_Selection)
                 {
                     List<BaseEntity> ls = null;
                     if (this.AutoGenerateField)

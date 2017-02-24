@@ -16,7 +16,8 @@ namespace App.WinForm.Attributes
             Empty,
             ManyToOne,
             OneToMany,
-            ManyToMany,
+            ManyToMany_Creation,
+            ManyToMany_Selection,
             OneToOne
         }
         /// <summary>

@@ -12,7 +12,7 @@ namespace App.WinForm.Entities.Security
 
         public string Description { set; get; }
 
-        public virtual Action Action { set; get; }
+        public virtual UserAction Action { set; get; }
 
         public string Entity { set; get; }
 

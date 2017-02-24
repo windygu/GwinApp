@@ -48,7 +48,7 @@ namespace App.WinForm.Application.BAL
             IBaseBAO service = new BaseEntityBAO<MenuItemApplication>((DbContext)ModelContext);
 
             DbSet<MenuItemApplication> MenuItemApplicationSet =(DbSet < MenuItemApplication >) this.TypeModelContext.GetProperty("MenuItemApplications").GetValue(ModelContext);
-            EntitiesModel entitiesModel = new EntitiesModel();
+            ModelConfiguration entitiesModel = new ModelConfiguration();
             Dictionary<Type, MenuAttribute> Dictionary_Type_MenyAttribute = entitiesModel.Get_All_Type_And_MenuAttributes();
             foreach (var item in Dictionary_Type_MenyAttribute.Values)
             {

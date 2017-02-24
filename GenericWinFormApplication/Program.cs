@@ -1,5 +1,6 @@
 ﻿using App;
 using App.WinForm.Forms;
+using GenericWinForm.Demo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace GenericWinFormApplication
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormMenu());
+            Application.Run(new FormMenuApplication());
         }
     }
 }

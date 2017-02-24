@@ -1,4 +1,5 @@
-﻿using App.WinForm.Application.Security;
+﻿using App.WinForm.Application.BAL;
+using App.WinForm.Application.Security;
 using App.WinForm.Entities;
 using App.WinForm.Entities.Authentication;
 using App.WinForm.Forms;
@@ -11,21 +12,31 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace App.WinForm.Security
+namespace App.WinForm.Application
 {
-    public class  ApplicationInstance
+    /// <summary>
+    /// GenericWinFrom Application instance
+    /// </summary>
+    public class  GWinApp
     { 
-         private static Session _Session;
+
+        private static Session session;
         public static Session Session {
-            set { _Session = value; }
+            set { session = value; }
             get {
                 // si la session est null, on initialise l'application
-                if (_Session == null) initApplication();
-                return _Session;
+                if (session == null) initApplication();
+                return session;
             }
         }
 
-        static ApplicationInstance()
+        public static void Start(Session session)
+        {
+            Session = session;
+
+        }
+
+        static GWinApp()
         {
      
 
@@ -33,7 +44,7 @@ namespace App.WinForm.Security
         }
 
         /// <summary>
-        /// Exécuter pour faire appelle au Constructeur 
+        /// Run default Session application
         /// </summary>
         public static void initApplication()
         {
@@ -44,7 +55,7 @@ namespace App.WinForm.Security
             BaseForm MdiForm = new BaseForm();
             MdiForm.IsMdiContainer = true;
 
-            ApplicationInstance.Session = new Session(MdiForm, user, Thread.CurrentThread.CurrentCulture);
+            GWinApp.Session = new Session(MdiForm, user, Thread.CurrentThread.CurrentCulture);
         }
     }
 }
