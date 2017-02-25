@@ -1,4 +1,4 @@
-﻿namespace App.WinForm.Forms
+﻿namespace App.WinForm.Application.Presentation.Authentication
 {
     partial class LoginForm
     {

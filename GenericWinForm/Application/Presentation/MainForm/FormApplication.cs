@@ -1,30 +1,22 @@
-﻿using App.WinForm.Application.BAL;
-using App.WinForm.Application.Security;
-using App.WinForm.Entities.Authentication;
-using App.WinForm.Forms;
-using App.WinForm.Forms.FormMenu;
-using App.WinFrom.Menu;
+﻿using App.WinForm.Application.BAL.GwinApplication;
+using App.WinForm.Application.Presentation.EntityManagement;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace App.WinForm.Application.Presentation
+namespace App.WinForm.Application.Presentation.MainForm
 {
     public partial class FormApplication : BaseForm, IApplicationMenu
     { 
     
-        protected ShowEntityManagementForm showManagementForm { set; get; }
+        protected EntityManagementCreator showManagementForm { set; get; }
 
         protected void InitializeForm()
         {
             InitializeComponent();
+            showManagementForm = new EntityManagementCreator(Gwin.Instance.TypeDBContext, this);
+            new ConfigMenuApplication(this);
+
         }
         public FormApplication()
         {
@@ -42,17 +34,17 @@ namespace App.WinForm.Application.Presentation
 
         private void frenchToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            GWinApp.Session.ChangeLanguage(CultureInfo.CreateSpecificCulture("fr"),this);
+            Gwin.ChangeLanguage(CultureInfo.CreateSpecificCulture("fr"));
         }
 
         private void englishToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            GWinApp.Session.ChangeLanguage(CultureInfo.CreateSpecificCulture("en"), this);
+            Gwin.ChangeLanguage(CultureInfo.CreateSpecificCulture("en"));
         }
 
         private void arabToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           GWinApp.Session.ChangeLanguage(new CultureInfo("ar"), this);
+            Gwin.ChangeLanguage(new CultureInfo("ar"));
         }
 
        

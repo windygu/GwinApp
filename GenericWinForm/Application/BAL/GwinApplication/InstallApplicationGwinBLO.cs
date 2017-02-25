@@ -14,7 +14,7 @@ namespace App.WinForm.Application.BAL
     /// <summary>
     /// Configuration After Update or first installation
     /// </summary>
-    public class InstallApplication
+    public class InstallApplicationGwinBLO
     {
         /// <summary>
         /// ModelContext type,
@@ -22,7 +22,7 @@ namespace App.WinForm.Application.BAL
         /// </summary>
         private Type TypeModelContext { get;  set; }
 
-        public InstallApplication(Type type_model_context)
+        public InstallApplicationGwinBLO(Type type_model_context)
         {
             this.TypeModelContext = type_model_context;
            
@@ -45,7 +45,7 @@ namespace App.WinForm.Application.BAL
         {
             //Update Table Menu form Entities
             var ModelContext = Activator.CreateInstance(TypeModelContext);
-            IBaseBAO service = new BaseEntityBAO<MenuItemApplication>((DbContext)ModelContext);
+            IBaseBLO service = new BaseEntityBLO<MenuItemApplication>((DbContext)ModelContext);
 
             DbSet<MenuItemApplication> MenuItemApplicationSet =(DbSet < MenuItemApplication >) this.TypeModelContext.GetProperty("MenuItemApplications").GetValue(ModelContext);
             ModelConfiguration entitiesModel = new ModelConfiguration();

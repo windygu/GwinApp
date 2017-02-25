@@ -154,8 +154,8 @@ namespace App.WinForm.Fields
             // Init la de la vlaeur de comboBox Actuel
             ListeValeursInitiaux[ListeValeursInitiaux.Last().Key] = Value;
 
-            IBaseBAO curentService = this.Service
-                  .CreateEntityInstanceByType(LsiteTypeObjetCritere[ListeValeursInitiaux.Last().Key]);
+            IBaseBLO curentService = this.Service
+                  .CreateServiceBLOInstanceByTypeEntity(LsiteTypeObjetCritere[ListeValeursInitiaux.Last().Key]);
             BaseEntity curentEntity = curentService.GetBaseEntityByID(Value);
 
             BaseEntity previousEntity = null;
@@ -204,8 +204,8 @@ namespace App.WinForm.Fields
             comboBoxChanged.CreateControl();
             int indexComboBoxChanged = ListeComboBox.Values.ToList<ManyToOneField>().IndexOf(comboBoxChanged);
             string keyComboBoxCanged = ListeComboBox.Keys.ElementAt(indexComboBoxChanged);
-            IBaseBAO serviceComboBoxActuel = this.Service
-                .CreateEntityInstanceByType(LsiteTypeObjetCritere[keyComboBoxCanged]);
+            IBaseBLO serviceComboBoxActuel = this.Service
+                .CreateServiceBLOInstanceByTypeEntity(LsiteTypeObjetCritere[keyComboBoxCanged]);
             BaseEntity EntiteActuel = serviceComboBoxActuel.GetBaseEntityByID(Convert.ToInt64(comboBoxChanged.SelectedValue));
 
             /// Actualisation de ComboBox suivant s'il existe
@@ -278,8 +278,8 @@ namespace App.WinForm.Fields
             if (ListeComboBox.Values.Count() <= 0) return;
             ManyToOneField comboBox = ListeComboBox.Values.ElementAt(0);
             string key = ListeComboBox.Keys.ElementAt(0);
-            IBaseBAO service = this.Service
-                .CreateEntityInstanceByType(LsiteTypeObjetCritere[key]);
+            IBaseBLO service = this.Service
+                .CreateServiceBLOInstanceByTypeEntity(LsiteTypeObjetCritere[key]);
             
 
             // Initalisation avec la valeur par défaux s'il existe

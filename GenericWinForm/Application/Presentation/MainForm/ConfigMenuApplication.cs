@@ -1,15 +1,16 @@
-﻿using App.WinForm.Application;
+﻿using App.WinForm.Application.BAL;
+using App.WinForm.Application.BAL.GwinApplication;
+using App.WinForm.Application.Presentation.EntityManagement;
 using App.WinForm.Attributes;
 using App.WinForm.Entities;
 using App.WinForm.Entities.Application;
 using App.WinForm.ModelData;
-using App.WinFrom.Menu;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace App.WinForm.Forms.FormMenu
+namespace App.WinForm.Application.Presentation.MainForm
 {
     /// <summary>
     /// Configuration de Menu d'application
@@ -18,21 +19,22 @@ namespace App.WinForm.Forms.FormMenu
     {
         #region Params
         private IApplicationMenu formMenu;
-        private ShowEntityManagementForm ShowManagementForm { set; get; }
+        private EntityManagementCreator ShowManagementForm { set; get; }
         #endregion
         #region Variables
         private MenuStrip menuStrip;
         private Dictionary<string, Type> MenuItems { set; get; }
-        private IBaseBAO Service { get;  set; }
+        private IBaseBLO Service { get;  set; }
         #endregion
 
-        public ConfigMenuApplication(IBaseBAO Service, IApplicationMenu formMenu)
+        public ConfigMenuApplication(IApplicationMenu formMenu)
         {
             this.formMenu = formMenu;
             this.menuStrip = formMenu.getMenuStrip();
-            this.Service = Service;
             MenuItems = new Dictionary<string, Type>();
-            this.ShowManagementForm = new ShowEntityManagementForm(Service, formMenu);
+            this.ShowManagementForm = new EntityManagementCreator(Gwin.Instance.TypeDBContext,formMenu);
+            this.Service = BaseEntityBLO<BaseEntity>
+                .CreateBLOInstanceByTypeEntity(typeof(MenuItemApplication),Gwin.Instance.TypeBaseBLO, this.ShowManagementForm.CreateContext());
             this.CreateMenu();
         }
 
@@ -46,7 +48,7 @@ namespace App.WinForm.Forms.FormMenu
                 ToolStripMenuItem toolStripMenuItem = new ToolStripMenuItem();
                 toolStripMenuItem.Name = "toolStripMenuItem" + menuItemApplication.Name;
                 toolStripMenuItem.Size = new System.Drawing.Size(82, 20);
-                toolStripMenuItem.Text = menuItemApplication.TitrleCulture(GWinApp.Session.CultureInfo);
+                toolStripMenuItem.Text = menuItemApplication.TitrleCulture(Gwin.Instance.CultureInfo);
                 this.menuStrip.Items.Add(toolStripMenuItem);
             }
 
@@ -82,7 +84,7 @@ namespace App.WinForm.Forms.FormMenu
         private void ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem item = sender as ToolStripMenuItem;
-            this.ShowManagementForm.AfficherUneGestion(MenuItems[item.Name]);
+            this.ShowManagementForm.ShowManagementForm(MenuItems[item.Name]);
         }
     }
 }

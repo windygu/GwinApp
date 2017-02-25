@@ -1,4 +1,6 @@
-﻿using App.WinForm.Attributes;
+﻿using App.WinForm.Application;
+using App.WinForm.Application.BAL.GwinApplication;
+using App.WinForm.Attributes;
 using App.WinForm.Entities.Persons;
 using App.WinForm.Entities.Security;
 using System;
@@ -20,11 +22,7 @@ namespace App.WinForm.Entities.Authentication
         {
 
         }
-
-        public override string ToString() => base.ToString();
-        public static string ROLE_STAGIAIRE = "STAGIAIRE";
-        public static string ROLE_ADMIN = "ADMIN";
-
+ 
         // Authentification
         // La création d'un index dans la classe Utilisateur
         // créer un index pour chaque classe fille comme 
@@ -47,6 +45,8 @@ namespace App.WinForm.Entities.Authentication
 
         public List<Role> Roles { set; get; }
 
-        
+        public Gwin.Languages Language { set; get; }
+
+
     }
 }

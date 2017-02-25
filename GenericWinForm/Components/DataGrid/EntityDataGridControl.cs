@@ -38,7 +38,7 @@ namespace App.WinForm
         /// <summary>
         /// Le service de l'entité en gestion  
         /// </summary>
-        protected IBaseBAO Service { set; get; }
+        protected IBaseBLO Service { set; get; }
 
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace App.WinForm
 
         #region Constructeurs
 
-        public EntityDataGridControl(IBaseBAO Service, Dictionary<string, object> critereRechercheFiltre = null) 
+        public EntityDataGridControl(IBaseBLO Service, Dictionary<string, object> critereRechercheFiltre = null) 
         {
             InitializeComponent(); if (this.DesignMode) return;
             this.Service = Service;

@@ -128,7 +128,7 @@ namespace App.WinForm.Fields
 
         #region Variables
 
-        private IBaseBAO Service { set; get; }
+        private IBaseBLO Service { set; get; }
         /// <summary>
         /// Indique si le programme en état de changement de la vlaeurs pardéfaut du champs
         /// dans cette étape il aura l'éxécution seulement des événement d'initialisation
@@ -169,7 +169,7 @@ namespace App.WinForm.Fields
 
         #region Constructeurs
 
-        public ManyToOneField(IBaseBAO Service,
+        public ManyToOneField(IBaseBLO Service,
             Type TypeObjet,
             PropertyInfo propertyInfo, 
             Control MainContainner, 
@@ -209,7 +209,7 @@ namespace App.WinForm.Fields
         }
 
       
-        public ManyToOneField(IBaseBAO Service, 
+        public ManyToOneField(IBaseBLO Service, 
             PropertyInfo propertyInfo, 
             Control MainContainner, 
             Orientation OrientationFiled, 
@@ -226,7 +226,7 @@ namespace App.WinForm.Fields
 
         }
 
-        private ManyToOneField(IBaseBAO Service, Type TypeObjet, ConfigEntity ConfigEntity) : this(Service,TypeObjet, null,null, Orientation.Horizontal, new Size(50, 20), new Size(50, 20),0, ConfigEntity)
+        private ManyToOneField(IBaseBLO Service, Type TypeObjet, ConfigEntity ConfigEntity) : this(Service,TypeObjet, null,null, Orientation.Horizontal, new Size(50, 20), new Size(50, 20),0, ConfigEntity)
         {
             
         }

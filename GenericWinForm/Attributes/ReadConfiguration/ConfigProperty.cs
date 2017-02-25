@@ -1,5 +1,6 @@
 ﻿using App.WinForm;
 using App.WinForm.Application;
+using App.WinForm.Application.BAL.GwinApplication;
 using App.WinForm.Application.Presentation.Messages;
 using App.WinForm.Attributes;
 using App.WinForm.Entities;
@@ -54,7 +55,7 @@ namespace App.Shared.AttributesManager
 
 
             // Culture Info
-            this.CultureInfo = GWinApp.Session.CultureInfo;
+            this.CultureInfo = Gwin.Instance.CultureInfo;
 
             // Localizable
             this.TypeOfEntity = propertyInfo.ReflectedType;

@@ -66,7 +66,7 @@ namespace App.WinForm
 
             // Obient le Service de l'objet de Collection<Objet>
             Type type_objet_of_collection = item.PropertyType.GetGenericArguments()[0];
-            IBaseBAO service_objet_of_collection = this.Service.CreateEntityInstanceByType(type_objet_of_collection);
+            IBaseBLO service_objet_of_collection = this.Service.CreateServiceBLOInstanceByTypeEntity(type_objet_of_collection);
             // Valeur Initial du Filtre
             Dictionary<string, object> ValeursFiltre = new Dictionary<string, object>();
             ValeursFiltre[item.DeclaringType.Name] = obj.Id;

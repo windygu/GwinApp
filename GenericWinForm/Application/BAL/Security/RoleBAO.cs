@@ -9,9 +9,12 @@ using System.Windows.Forms;
 
 namespace App.WinForm.Application.BAL.Security
 {
-
-    public class RoleBAO : BaseEntityBAO<Role>
+    /// <summary>
+    /// [Bug] this class use TestModelContext and Noye ModelContext of Application
+    /// </summary>
+    public class RoleBAO : BaseEntityBLO<Role>
     {
+
         public override void ApplyBusinessRolesAfterValuesChanged(object sender, BaseEntity entity)
         {
 

@@ -14,20 +14,20 @@ namespace App.WinForm.Application.BAL.Tests
         [TestMethod()]
         public void InstallApplicationConstructorTest()
         {
-            InstallApplication InstallApplication = new InstallApplication(typeof(TestModelContext));
+            InstallApplicationGwinBLO InstallApplication = new InstallApplicationGwinBLO(typeof(TestModelContext));
         }
 
         [TestMethod()]
         public void InstallTest()
         {
-            InstallApplication InstallApplication = new InstallApplication(typeof(TestModelContext));
+            InstallApplicationGwinBLO InstallApplication = new InstallApplicationGwinBLO(typeof(TestModelContext));
             InstallApplication.Install();
         }
 
         [TestMethod()]
         public void UpdateTest()
         {
-            InstallApplication InstallApplication = new InstallApplication(typeof(TestModelContext));
+            InstallApplicationGwinBLO InstallApplication = new InstallApplicationGwinBLO(typeof(TestModelContext));
             InstallApplication.Update();
         }
     }

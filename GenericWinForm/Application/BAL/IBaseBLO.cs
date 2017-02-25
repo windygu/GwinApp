@@ -9,7 +9,7 @@ namespace App
     /// <summary>
     ///  BaseBAO Interface
     /// </summary>
-    public interface IBaseBAO 
+    public interface IBaseBLO 
     {
         #region Properties
         /// <summary>
@@ -89,12 +89,11 @@ namespace App
         object CreateEntityInstance();
 
         /// <summary>
-        /// Creating an instance of Entity by Type 
+        /// Creating an instance of the Service object from the entity type
         /// </summary>
-        /// <param name="TypeEntity">Type of Entity to be instantiated</param>
-        /// <returns></returns>
-        IBaseBAO CreateEntityInstanceByType(Type TypeEntity);
-        IBaseBAO CreateEntityInstanceByTypeAndContext(Type TypeEntity,DbContext context);
+        /// <param name="TypeEntity">the entity type</param>
+        IBaseBLO CreateServiceBLOInstanceByTypeEntity(Type TypeEntity);
+        IBaseBLO CreateEntityInstanceByTypeAndContext(Type TypeEntity,DbContext context);
         #endregion
 
     }

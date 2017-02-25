@@ -1,17 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using App.WinForm.Attributes;
 using System.Reflection;
-using App.WinFrom.Menu;
 using App.WinForm.Entities;
-using App.WinForm.Forms;
+using App.WinForm.Application.Presentation.EntityManagement;
+using App.WinForm.Application.Presentation;
 
 namespace App.WinForm.EntityManagement
 {
@@ -22,7 +18,7 @@ namespace App.WinForm.EntityManagement
         /// <summary>
         /// Le Service de gestion  
         /// </summary>
-        protected IBaseBAO Service { set; get; }
+        protected IBaseBLO Service { set; get; }
 
         /// <summary>
         /// Instance de filtre controle
@@ -73,7 +69,7 @@ namespace App.WinForm.EntityManagement
             InitializeComponent();
             
         }
-        public BaseEntityTabControl(IBaseBAO Service,BaseFilterControl BaseFilterControl,Form MdiParent, BaseEntryForm Formulaire)
+        public BaseEntityTabControl(IBaseBLO Service,BaseFilterControl BaseFilterControl,Form MdiParent, BaseEntryForm Formulaire)
         {
             InitializeComponent();
             this.Service = Service;
@@ -114,7 +110,7 @@ namespace App.WinForm.EntityManagement
         {
             // Obient le Service de l'objet de Collection<Objet>
             Type type_objet_of_collection = item.PropertyType.GetGenericArguments()[0];
-            IBaseBAO service_objet_of_collection = this.Service.CreateEntityInstanceByType(type_objet_of_collection);
+            IBaseBLO service_objet_of_collection = this.Service.CreateServiceBLOInstanceByTypeEntity(type_objet_of_collection);
 
             // Valeur Initial du Filtre
             Dictionary<string, object> ValeursFiltre = new Dictionary<string, object>();
@@ -122,8 +118,8 @@ namespace App.WinForm.EntityManagement
             EntityManagementForm form = new EntityManagementForm(service_objet_of_collection,null, ValeursFiltre, this.MdiParent);
 
             // Affichage de Fomulaire de gestion de la collection ManytoOne
-            ShowEntityManagementForm Menu = new ShowEntityManagementForm(this.Service, (IBaseForm) this.MdiParent);
-            Menu.Afficher(form);
+            EntityManagementCreator Menu = new EntityManagementCreator(this.Service.Context.GetType(), (IBaseForm) this.MdiParent);
+            Menu.ShwoForm(form);
         }
         #endregion
  

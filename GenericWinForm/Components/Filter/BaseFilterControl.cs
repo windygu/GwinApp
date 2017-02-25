@@ -42,7 +42,7 @@ namespace App.WinForm.EntityManagement
         /// <summary>
         /// BAO Object   
         /// </summary>
-        protected IBaseBAO BAO { set; get; }
+        protected IBaseBLO BAO { set; get; }
 
 
 
@@ -75,7 +75,7 @@ namespace App.WinForm.EntityManagement
         /// </summary>
         /// <param name="BAO">Entity Business Object</param>
         /// <param name="ValeursFiltre"></param>
-        public BaseFilterControl(IBaseBAO BAO, Dictionary<string, object> ValeursFiltre)
+        public BaseFilterControl(IBaseBLO BAO, Dictionary<string, object> ValeursFiltre)
         {
             InitializeComponent();
             this.FilterContainer = this.flowLayoutPanel1;
@@ -85,7 +85,7 @@ namespace App.WinForm.EntityManagement
             initFiltre();
         }
 
-        public BaseFilterControl(IBaseBAO Service) : this(Service, null)
+        public BaseFilterControl(IBaseBLO Service) : this(Service, null)
         {
         }
 

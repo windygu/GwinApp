@@ -40,7 +40,7 @@ namespace App.WinForm.Attributes
 
         ResourceManager baseEntityResourceManager = null;
 
-        private static Dictionary<Type,ConfigEntity> SingletonPerTypeValues { get; set; }
+        private static Dictionary<Type,ConfigEntity> ConfigurationOfEntities { get; set; }
         #endregion
 
 
@@ -58,13 +58,13 @@ namespace App.WinForm.Attributes
         /// <returns></returns>
         public static ConfigEntity CreateConfigEntity(Type type_of_entity)
         {
-            if (SingletonPerTypeValues == null)
-                SingletonPerTypeValues = new Dictionary<Type, ConfigEntity>();
+            if (ConfigurationOfEntities == null)
+                ConfigurationOfEntities = new Dictionary<Type, ConfigEntity>();
 
-            if (!SingletonPerTypeValues.Keys.Contains(type_of_entity))
-                SingletonPerTypeValues[type_of_entity] = new ConfigEntity(type_of_entity);
+            if (!ConfigurationOfEntities.Keys.Contains(type_of_entity))
+                ConfigurationOfEntities[type_of_entity] = new ConfigEntity(type_of_entity);
          
-            return SingletonPerTypeValues[type_of_entity];
+            return ConfigurationOfEntities[type_of_entity];
         }
 
         /// <summary>
@@ -177,6 +177,8 @@ namespace App.WinForm.Attributes
             #endregion
         }
 
+       
+
         /// <summary>
         /// Get translated string from resource file
         /// if the string not exist is retrun string source with prefix language 
@@ -206,7 +208,14 @@ namespace App.WinForm.Attributes
 
         public bool Dispose()
         {
-           return ConfigEntity.SingletonPerTypeValues.Remove(this.GetType());
+           return ConfigEntity.ConfigurationOfEntities.Remove(this.GetType());
+        }
+        /// <summary>
+        /// Delete all ConfigEntity object
+        /// </summary>
+        internal static void Despose()
+        {
+            ConfigurationOfEntities.Clear();
         }
     }
 }

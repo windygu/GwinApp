@@ -1,15 +1,8 @@
-﻿using App.WinForm.Forms;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace App.WinForm
+namespace App.WinForm.Application.Presentation.EntityManagement
 {
     /// <summary>
     /// Interface de mise à jour d'une entity
@@ -31,7 +24,7 @@ namespace App.WinForm
         /// </param>
         /// <param name="ValeursFiltre">Les valeurs de filtre</param>
         public EntityManagementForm(
-            IBaseBAO Service,
+            IBaseBLO Service,
             BaseEntryForm formulaire,
             Dictionary<string, object> ValeursFiltre,
             Form FormApplicationMdi)
@@ -55,7 +48,7 @@ namespace App.WinForm
         /// </summary>
         /// <param name="Service">Le service de gestion</param>
         /// <param name="ValeursFiltre">Les valeurs de filtre</param>
-        public EntityManagementForm(IBaseBAO Service,
+        public EntityManagementForm(IBaseBLO Service,
             Dictionary<string, object> ValeursFiltre, Form FormApplicationMdi)
             :this(Service, null, ValeursFiltre, FormApplicationMdi)
         {
@@ -67,7 +60,7 @@ namespace App.WinForm
         /// et la formulaire généique et sans valeurs de filtre
         /// </summary>
         /// <param name="Service">Le service de gestion</param>
-        public EntityManagementForm(IBaseBAO Service, Form FormApplicationMdi) :this(Service, null,null, FormApplicationMdi)
+        public EntityManagementForm(IBaseBLO Service, Form FormApplicationMdi) :this(Service, null,null, FormApplicationMdi)
         {
         }
 
@@ -78,7 +71,7 @@ namespace App.WinForm
         /// <param name="Formulaire">Une instance de formulaire de saisie, il est utilisr 
         /// pour la creation des autres instance en cas d'édition des objet
         /// </param>
-        public EntityManagementForm(IBaseBAO Service,
+        public EntityManagementForm(IBaseBLO Service,
             BaseEntryForm Formulaire, Form FormApplicationMdi) :this(Service, Formulaire, null, FormApplicationMdi)
         {
         }

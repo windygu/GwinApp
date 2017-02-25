@@ -15,12 +15,12 @@ namespace App.WinForm.Application.BAL.Tests
     public class BaseEntityBAOTests
     {
         TestModelContext context = null;
-        IBaseBAO roleBAO = null;
+        IBaseBLO roleBAO = null;
         [TestInitialize]
         public void initBaseEntityBAOTests()
         {
             context = new TestModelContext();
-            roleBAO = new BaseEntityBAO<Role>();
+            roleBAO = new BaseEntityBLO<Role>();
         }
 
         /// <summary>
@@ -29,8 +29,8 @@ namespace App.WinForm.Application.BAL.Tests
         [TestMethod()]
         public void BaseEntityBAOTest()
         {
-            IBaseBAO bao_without_parameters = new BaseEntityBAO<Role>();
-            IBaseBAO bao_withe_context_parameter = new BaseEntityBAO<Role>(context);
+            IBaseBLO bao_without_parameters = new BaseEntityBLO<Role>();
+            IBaseBLO bao_withe_context_parameter = new BaseEntityBLO<Role>(context);
         }
 
         [TestMethod()]
@@ -39,7 +39,7 @@ namespace App.WinForm.Application.BAL.Tests
             int Expected = 1;
             Role role = new Role();
             role.Name = "Role1";
-            IBaseBAO service = new BaseEntityBAO<Role>();
+            IBaseBLO service = new BaseEntityBLO<Role>();
             int Actuel = service.Save(role);
             Assert.AreEqual(Expected, Actuel);
         }
@@ -51,7 +51,7 @@ namespace App.WinForm.Application.BAL.Tests
 
             Role role = new Role();
             role.Name = "Role1";
-            BaseEntityBAO<Role> roleBAO = new RoleBAO();
+            BaseEntityBLO<Role> roleBAO = new RoleBAO();
             // Polymorphism not working for a call from a generic class in C#
             this.roleBAO.ApplyBusinessRolesAfterValuesChanged(nameof(role.Name), role);
 
@@ -65,7 +65,7 @@ namespace App.WinForm.Application.BAL.Tests
             int Expected = 1;
             Role role = new Role();
             role.Name = "Role1";
-            IBaseBAO service = new BaseEntityBAO<Role>();
+            IBaseBLO service = new BaseEntityBLO<Role>();
             int Actuel = service.Save(role);
             Assert.AreEqual(Expected, Actuel);
         }
@@ -76,7 +76,7 @@ namespace App.WinForm.Application.BAL.Tests
             int Expected = 1;
             Role role = new Role();
             role.Name = "Role1";
-            IBaseBAO service = new BaseEntityBAO<Role>();
+            IBaseBLO service = new BaseEntityBLO<Role>();
             service.Save(role);
             int Actuel = service.Delete(role);
             Assert.AreEqual(Expected, Actuel);
@@ -96,7 +96,7 @@ namespace App.WinForm.Application.BAL.Tests
         {
             Role role = new Role();
             role.Name = "Role1";
-            BaseEntityBAO<Role> service = new BaseEntityBAO<Role>();
+            BaseEntityBLO<Role> service = new BaseEntityBLO<Role>();
             service.Save(role);
             Role Actuel = service.GetByID(role.Id)  ;
             Role Expected = role;
@@ -108,7 +108,7 @@ namespace App.WinForm.Application.BAL.Tests
         {
             Role role = new Role();
             role.Name = "Role1";
-            IBaseBAO service = new BaseEntityBAO<Role>();
+            IBaseBLO service = new BaseEntityBLO<Role>();
             service.Save(role);
             Role Actuel = service.GetBaseEntityByID(role.Id) as Role;
             Role Expected = role;

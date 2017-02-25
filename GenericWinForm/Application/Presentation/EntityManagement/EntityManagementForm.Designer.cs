@@ -1,4 +1,4 @@
-﻿namespace App.WinForm
+﻿namespace App.WinForm.Application.Presentation.EntityManagement
 {
     partial class EntityManagementForm
     {

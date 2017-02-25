@@ -1,4 +1,4 @@
-﻿namespace App.WinForm.Application.Presentation
+﻿namespace App.WinForm.Application.Presentation.MainForm
 {
     partial class FormApplication
     {
@@ -59,21 +59,21 @@
             // frenchToolStripMenuItem1
             // 
             this.frenchToolStripMenuItem1.Name = "frenchToolStripMenuItem1";
-            this.frenchToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.frenchToolStripMenuItem1.Size = new System.Drawing.Size(112, 22);
             this.frenchToolStripMenuItem1.Text = "French";
             this.frenchToolStripMenuItem1.Click += new System.EventHandler(this.frenchToolStripMenuItem1_Click);
             // 
             // englishToolStripMenuItem
             // 
             this.englishToolStripMenuItem.Name = "englishToolStripMenuItem";
-            this.englishToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.englishToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.englishToolStripMenuItem.Text = "English";
             this.englishToolStripMenuItem.Click += new System.EventHandler(this.englishToolStripMenuItem_Click);
             // 
             // arabToolStripMenuItem
             // 
             this.arabToolStripMenuItem.Name = "arabToolStripMenuItem";
-            this.arabToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.arabToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.arabToolStripMenuItem.Text = "Arab";
             this.arabToolStripMenuItem.Click += new System.EventHandler(this.arabToolStripMenuItem_Click);
             // 
@@ -83,6 +83,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(572, 320);
             this.Controls.Add(this.menuStrip1);
+            this.IsMdiContainer = true;
             this.Name = "FormApplication";
             this.Text = "FormApplication";
             this.Load += new System.EventHandler(this.FormApplication_Load);

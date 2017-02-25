@@ -12,7 +12,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
- 
+
 
 namespace App.WinForm.Application.BAL
 {
@@ -22,7 +22,7 @@ namespace App.WinForm.Application.BAL
     /// it is inherited by EntityBAO
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class BaseEntityBAO<T> : IBaseBAO where T : BaseEntity
+    public class BaseEntityBLO<T> : IBaseBLO where T : BaseEntity
     {
         #region public Properties
         /// <summary>
@@ -45,16 +45,32 @@ namespace App.WinForm.Application.BAL
         #endregion
 
         #region Construcreur
-        public BaseEntityBAO(DbContext context)
+        public BaseEntityBLO(DbContext context, Type TypeDBContext)
         {
+            // Params
             this.Context = context;
-            if (this.Context == null) this.Context = new TestModelContext();
-
-            this.DbSet = this.Context.Set<T>();
+            
             this.TypeEntity = typeof(T);
             this.ConfigEntity = ConfigEntity.CreateConfigEntity(this.TypeEntity);
+
+            // Create Context instance
+            if (this.Context == null)
+            {
+                if (TypeDBContext == null)
+                {
+                    this.Context = new TestModelContext();
+                   
+                }
+                else
+                {
+                    this.Context = Activator.CreateInstance(TypeDBContext) as DbContext;
+                }
+            }
+            this.DbSet = this.Context.Set<T>();
         }
-        public BaseEntityBAO() : this(null) { }
+        public BaseEntityBLO() : this(null, null) { }
+        public BaseEntityBLO(Type TypeDBContext) : this(null, TypeDBContext) { }
+        public BaseEntityBLO(DbContext context) : this(context, null) { }
         #endregion
 
         #region Business rols
@@ -123,7 +139,7 @@ namespace App.WinForm.Application.BAL
             item.DateModification = DateTime.Now;
             this.DbSet.Add(item);
             string state = this.Context.Entry(item).State.ToString();
-             
+
             return this.Context.SaveChanges();
         }
         protected virtual int Update(T item)
@@ -345,11 +361,11 @@ namespace App.WinForm.Application.BAL
         /// </summary>
         /// <param name="TypeEntity">the entity type</param>
         /// <returns></returns>
-        public virtual IBaseBAO CreateEntityInstanceByType(Type TypeEntity)
+        public virtual IBaseBLO CreateServiceBLOInstanceByTypeEntity(Type TypeEntity)
         {
 
-            Type TypeEntityService = typeof(BaseEntityBAO<>).MakeGenericType(TypeEntity);
-            IBaseBAO EntityService = (IBaseBAO)Activator.CreateInstance(TypeEntityService, this.Context);
+            Type TypeEntityService = typeof(BaseEntityBLO<>).MakeGenericType(TypeEntity);
+            IBaseBLO EntityService = (IBaseBLO)Activator.CreateInstance(TypeEntityService, this.Context);
             return EntityService;
         }
         /// <summary>
@@ -358,11 +374,11 @@ namespace App.WinForm.Application.BAL
         /// <param name="TypeEntity">the entity type</param>
         /// <param name="context">the context</param>
         /// <returns></returns>
-        public virtual IBaseBAO CreateEntityInstanceByTypeAndContext(Type TypeEntity, DbContext context)
+        public virtual IBaseBLO CreateEntityInstanceByTypeAndContext(Type TypeEntity, DbContext context)
         {
 
-            Type TypeEntityService = typeof(BaseEntityBAO<>).MakeGenericType(TypeEntity);
-            IBaseBAO EntityService = (IBaseBAO)Activator.CreateInstance(TypeEntityService, context);
+            Type TypeEntityService = typeof(BaseEntityBLO<>).MakeGenericType(TypeEntity);
+            IBaseBLO EntityService = (IBaseBLO)Activator.CreateInstance(TypeEntityService, context);
             return EntityService;
         }
         #endregion
@@ -376,5 +392,19 @@ namespace App.WinForm.Application.BAL
             if (this.ConfigEntity != null)
                 this.ConfigEntity.Dispose();
         }
+
+        #region Static Method
+        /// <summary>
+        /// Creating an instance of the Service object from the entity type
+        /// </summary>
+        /// <param name="TypeEntity">the entity type</param>
+        /// <returns></returns>
+        public static IBaseBLO CreateBLOInstanceByTypeEntity(Type TypeEntity, Type TypeBaseBAO, DbContext context)
+        {
+            Type TypeEntityService = TypeBaseBAO.MakeGenericType(TypeEntity);
+            IBaseBLO EntityService = (IBaseBLO)Activator.CreateInstance(TypeEntityService, context);
+            return EntityService;
+        }
+        #endregion
     }
 }

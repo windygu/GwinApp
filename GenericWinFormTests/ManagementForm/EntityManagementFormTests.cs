@@ -31,7 +31,7 @@ namespace App.WinForm.Tests
             {
                 foreach (var item in db.GetTypesSets())
                 {
-                    IBaseBAO service = new BaseEntityBAO<BaseEntity>().CreateEntityInstanceByType(item);
+                    IBaseBLO service = new BaseEntityBLO<BaseEntity>().CreateServiceBLOInstanceByTypeEntity(item);
                     ShowEntityManagementForm AfficherFormulaire = new ShowEntityManagementForm(service,MdiForm);
                     EntityManagementForm emform = AfficherFormulaire.AfficherUneGestion(item);
                     emform.EntityManagementControl.bt_Ajouter_Click(new Button(), null);

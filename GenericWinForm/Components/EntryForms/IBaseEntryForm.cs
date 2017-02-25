@@ -20,7 +20,7 @@ namespace App.WinForm
         /// </summary>
         /// <param name="service"></param>
         /// <returns></returns>
-        BaseEntryForm CreateInstance(IBaseBAO service);
+        BaseEntryForm CreateInstance(IBaseBLO service);
 
         /// <summary>
         /// Créer d'une instance de l'objet en cours

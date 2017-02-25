@@ -19,7 +19,7 @@ using App.WinForm.Application.BAL;
 
 namespace App
 {
-    public class BaseBAO<T> : BaseEntityBAO<T> ,IBaseBAO where T : BaseEntity
+    public class BaseBAO<T> : BaseEntityBLO<T> ,IBaseBLO where T : BaseEntity
     {
      
         #region construcreur
@@ -56,11 +56,10 @@ namespace App
         /// </summary>
         /// <param name="TypeEntity">the entity type</param>
         /// <returns></returns>
-        public override IBaseBAO CreateEntityInstanceByType(Type TypeEntity)
+        public override IBaseBLO CreateServiceBLOInstanceByTypeEntity(Type TypeEntity)
         {
-
             Type TypeEntityService = typeof(BaseBAO<>).MakeGenericType(TypeEntity);
-            IBaseBAO EntityService = (IBaseBAO)Activator.CreateInstance(TypeEntityService, this.Context);
+            IBaseBLO EntityService = (IBaseBLO)Activator.CreateInstance(TypeEntityService, this.Context);
             return EntityService;
         }
         /// <summary>
@@ -69,14 +68,16 @@ namespace App
         /// <param name="TypeEntity">the entity type</param>
         /// <param name="context">the context</param>
         /// <returns></returns>
-        public virtual IBaseBAO CreateEntityInstanceByTypeAndContext(Type TypeEntity, DbContext context)
+        public virtual IBaseBLO CreateEntityInstanceByTypeAndContext(Type TypeEntity, DbContext context)
         {
 
             Type TypeEntityService = typeof(BaseBAO<>).MakeGenericType(TypeEntity);
-            IBaseBAO EntityService = (IBaseBAO)Activator.CreateInstance(TypeEntityService, context);
+            IBaseBLO EntityService = (IBaseBLO)Activator.CreateInstance(TypeEntityService, context);
             return EntityService;
         }
         #endregion
+
+       
 
     }
 }

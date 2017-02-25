@@ -6,12 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace App.WinForm.Forms
+namespace App.WinForm.Application.Presentation
 {
     public class BaseForm : Form , IBaseForm
     {
         /// <summary>
-        /// Reload the form
+        /// Reload the form after language change
         /// </summary>
        public virtual void Reload() { } 
     }

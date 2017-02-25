@@ -53,7 +53,7 @@ namespace App.WinForm.Fields
         #endregion
 
         #region Private Properties
-        public IBaseBAO EntityBAO { get; set; }
+        public IBaseBLO EntityBAO { get; set; }
         /// <summary>
         /// Type of The object that use this field
         /// </summary>
@@ -83,7 +83,7 @@ namespace App.WinForm.Fields
             Size SizeLabel,
             Size SizeControl,
             ConfigEntity ConfigEntity,
-            Control MainContainer, IBaseBAO Service)
+            Control MainContainer, IBaseBLO Service)
             : base()
         {
             InitializeComponent();
@@ -116,7 +116,7 @@ namespace App.WinForm.Fields
             {
                 // Fill the listBox data if the filed not have private filter 
                 Type TypeGenericList = this.PropertyInfo.PropertyType.GetGenericArguments()[0];
-                IBaseBAO ServiceTypeGenericList = this.EntityBAO.CreateEntityInstanceByType(TypeGenericList);
+                IBaseBLO ServiceTypeGenericList = this.EntityBAO.CreateServiceBLOInstanceByTypeEntity(TypeGenericList);
                 List<Object> ls_possible_value = ServiceTypeGenericList.GetAll();
                 listBoxChoices.Items.AddRange(ls_possible_value.ToArray());
                 ChangeSizeListBox(listBoxChoices.Items.Count);
@@ -148,7 +148,7 @@ namespace App.WinForm.Fields
             if (ValueEntity == null) return;
 
             Type TypeGenericList = this.PropertyInfo.PropertyType.GetGenericArguments()[0];
-            IBaseBAO ServiceTypeGenericList = this.EntityBAO.CreateEntityInstanceByType(TypeGenericList);
+            IBaseBLO ServiceTypeGenericList = this.EntityBAO.CreateServiceBLOInstanceByTypeEntity(TypeGenericList);
             List<Object> ls_entity_in_filter = ServiceTypeGenericList.Recherche(
                  new Dictionary<string, object>() {
                     { Type_ValueEntity.Name, ValueEntity.Id }

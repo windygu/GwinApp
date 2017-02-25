@@ -71,7 +71,7 @@ namespace App.WinForm.Fields.Controls
 
         #region Variables
 
-        private IBaseBAO Service { set; get; }
+        private IBaseBLO Service { set; get; }
         /// <summary>
         /// Indique si le programme en état de changement de la vlaeurs pardéfaut du champs
         /// dans cette étape il aura l'éxécution seulement des événement d'initialisation
@@ -118,7 +118,7 @@ namespace App.WinForm.Fields.Controls
 
         #region Constructeur
         public SelectionFilterManager(
-            IBaseBAO Service,
+            IBaseBLO Service,
             PropertyInfo PropertyInfo,
             Control MainContainner,
             Size SizeLabel,
@@ -240,8 +240,8 @@ namespace App.WinForm.Fields.Controls
             if(ListeValeursInitiaux.Count > 0)
             ListeValeursInitiaux[ListeValeursInitiaux.Last().Key] = Value;
 
-            IBaseBAO curentService = this.Service
-                  .CreateEntityInstanceByType(LsiteTypeObjetCritere[ListeValeursInitiaux.Last().Key]);
+            IBaseBLO curentService = this.Service
+                  .CreateServiceBLOInstanceByTypeEntity(LsiteTypeObjetCritere[ListeValeursInitiaux.Last().Key]);
             BaseEntity curentEntity = curentService.GetBaseEntityByID(Value);
 
             BaseEntity previousEntity = null;
@@ -291,8 +291,8 @@ namespace App.WinForm.Fields.Controls
             comboBoxChanged.CreateControl();
             int indexComboBoxChanged = ListeComboBox.Values.ToList<ManyToOneField>().IndexOf(comboBoxChanged);
             string keyComboBoxCanged = ListeComboBox.Keys.ElementAt(indexComboBoxChanged);
-            IBaseBAO serviceComboBoxActuel = this.Service
-                .CreateEntityInstanceByType(LsiteTypeObjetCritere[keyComboBoxCanged]);
+            IBaseBLO serviceComboBoxActuel = this.Service
+                .CreateServiceBLOInstanceByTypeEntity(LsiteTypeObjetCritere[keyComboBoxCanged]);
             BaseEntity EntiteActuel = serviceComboBoxActuel.GetBaseEntityByID(Convert.ToInt64(comboBoxChanged.SelectedValue));
 
             /// Actualisation de ComboBox suivant s'il existe
@@ -366,8 +366,8 @@ namespace App.WinForm.Fields.Controls
             if (ListeComboBox.Values.Count() <= 0) return;
             ManyToOneField comboBox = ListeComboBox.Values.ElementAt(0);
             string key = ListeComboBox.Keys.ElementAt(0);
-            IBaseBAO service = this.Service
-                .CreateEntityInstanceByType(LsiteTypeObjetCritere[key]);
+            IBaseBLO service = this.Service
+                .CreateServiceBLOInstanceByTypeEntity(LsiteTypeObjetCritere[key]);
 
 
             // Initalisation avec la valeur par défaux s'il existe

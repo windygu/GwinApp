@@ -48,7 +48,7 @@ namespace App.WinForm
         /// l'instance de service de la gestion en cours
         /// 
         /// </summary> 
-        public IBaseBAO Service { get; set; }
+        public IBaseBLO Service { get; set; }
 
         /// <summary>
         /// Message da validation des champs de la formulire
@@ -102,7 +102,7 @@ namespace App.WinForm
         /// </summary>
         /// <param name="service"></param>
         public BaseEntryForm(
-            IBaseBAO service, 
+            IBaseBLO service, 
             BaseEntity entity,
             Dictionary<string, object> critereRechercheFiltre, 
             bool AutoGenerateField)
@@ -143,7 +143,7 @@ namespace App.WinForm
                 }
             }
         }
-        public BaseEntryForm(IBaseBAO service) 
+        public BaseEntryForm(IBaseBLO service) 
             : this(service, null, null,true) { }
         [Obsolete]
         private BaseEntryForm() : this(null, null, null,true) { }
@@ -196,7 +196,7 @@ namespace App.WinForm
                 if (attributesOfProperty.Relationship?.Relation == RelationshipAttribute.Relations.ManyToOne)
                 {
                     BaseEntity valeur_filtre = this.Service
-                        .CreateEntityInstanceByType(item.PropertyType)
+                        .CreateServiceBLOInstanceByTypeEntity(item.PropertyType)
                         .GetBaseEntityByID(Convert.ToInt64(this.CritereRechercheFiltre[item.Name]));
                     typeEntity.GetProperty(NomPropriete).SetValue(this.Entity, valeur_filtre);
                 }
@@ -243,7 +243,7 @@ namespace App.WinForm
 
         #region CreateInsce
         [Obsolete]
-        public virtual BaseEntryForm CreateInstance(IBaseBAO Service)
+        public virtual BaseEntryForm CreateInstance(IBaseBLO Service)
         {
             BaseEntryForm formilaire = (BaseEntryForm)Activator.CreateInstance(this.GetType(), Service);
             return formilaire;
@@ -252,7 +252,7 @@ namespace App.WinForm
         /// Création d'une instance comme cette formulaire
         /// </summary>
         /// <returns></returns>
-        public virtual BaseEntryForm CreateInstance(IBaseBAO Service, BaseEntity entity, Dictionary<string, object> CritereRechercheFiltre)
+        public virtual BaseEntryForm CreateInstance(IBaseBLO Service, BaseEntity entity, Dictionary<string, object> CritereRechercheFiltre)
         {
             BaseEntryForm formilaire = (BaseEntryForm)Activator.CreateInstance(this.GetType(), Service, entity, CritereRechercheFiltre,true);
             return formilaire;

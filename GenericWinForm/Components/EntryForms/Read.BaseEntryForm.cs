@@ -102,7 +102,7 @@ namespace App.WinForm
                         id = Convert.ToInt64(comboBox.SelectedValue);
 
                     }
-                    IBaseBAO ServicesEntity = this.Service.CreateEntityInstanceByType(item.PropertyType);
+                    IBaseBLO ServicesEntity = this.Service.CreateServiceBLOInstanceByTypeEntity(item.PropertyType);
                     BaseEntity ManyToOneEntity = ServicesEntity.GetBaseEntityByID(Convert.ToInt32(id));
                     typeEntity.GetProperty(NomPropriete).SetValue(entity, ManyToOneEntity);
                 }
@@ -143,7 +143,7 @@ namespace App.WinForm
                     }
 
                   
-                    IBaseBAO ServicesEntity =  this.Service.CreateEntityInstanceByTypeAndContext(item.PropertyType.GetGenericArguments()[0], this.Service.Context);
+                    IBaseBLO ServicesEntity =  this.Service.CreateEntityInstanceByTypeAndContext(item.PropertyType.GetGenericArguments()[0], this.Service.Context);
 
 
                     Type TypeListeObjetValeur = typeof(List<>).MakeGenericType(item.PropertyType.GetGenericArguments()[0]);

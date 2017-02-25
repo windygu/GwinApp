@@ -23,7 +23,7 @@ namespace App.WinForm
         /// <summary>
         /// Le Service de gestion  
         /// </summary>
-        protected IBaseBAO Service { set; get; }
+        protected IBaseBLO Service { set; get; }
 
         /// <summary>
         /// Instance de filtre controle
@@ -103,7 +103,7 @@ namespace App.WinForm
         /// </param>
         /// <param name="ValeursFiltre">Les valeurs de filtre</param>
         public EntityManagementControl(
-            IBaseBAO Service,
+            IBaseBLO Service,
             BaseEntryForm Formulaire,
             BaseFilterControl FilterControl,
             EntityDataGridControl EntityDataGridControl,
@@ -129,7 +129,7 @@ namespace App.WinForm
         /// </summary>
         /// <param name="Service">Le service de gestion</param>
         /// <param name="ValeursFiltre">Les valeurs de filtre</param>
-        public EntityManagementControl(IBaseBAO Service,
+        public EntityManagementControl(IBaseBLO Service,
             Dictionary<string, object> ValeursFiltre, Form FormApplicationMdi)
             : this(Service, null,null,null, ValeursFiltre, FormApplicationMdi)
         {
@@ -141,7 +141,7 @@ namespace App.WinForm
         /// et la formulaire généique et sans valeurs de filtre
         /// </summary>
         /// <param name="Service">Le service de gestion</param>
-        public EntityManagementControl(IBaseBAO Service, Form FormApplicationMdi) 
+        public EntityManagementControl(IBaseBLO Service, Form FormApplicationMdi) 
             : this(Service, null, null,null,null, FormApplicationMdi)
         {
         }
@@ -153,7 +153,7 @@ namespace App.WinForm
         /// <param name="Formulaire">Une instance de formulaire de saisie, il est utilisr 
         /// pour la creation des autres instance en cas d'édition des objet
         /// </param>
-        public EntityManagementControl(IBaseBAO Service,
+        public EntityManagementControl(IBaseBLO Service,
             BaseEntryForm Formulaire, Form FormApplicationMdi) : this(Service, Formulaire,null,null, null, FormApplicationMdi)
         {
         }

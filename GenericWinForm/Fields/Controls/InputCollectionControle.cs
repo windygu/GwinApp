@@ -24,7 +24,7 @@ namespace App.WinForm
         /// <summary>
         /// The service of the management in progress, it contains the context
         /// </summary>
-        private IBaseBAO Service { set; get; }
+        private IBaseBLO Service { set; get; }
 
         /// <summary>
         /// Evenement de changement de la valeur
@@ -101,7 +101,7 @@ namespace App.WinForm
         {
             InitializeComponent();
         }
-        public InputCollectionControle(IBaseBAO Service,
+        public InputCollectionControle(IBaseBLO Service,
             PropertyInfo propertyInfo,
             List<BaseEntity> DefaultValueList,
             BaseEntity Entity)
@@ -121,7 +121,7 @@ namespace App.WinForm
         ///  ComboBox de critère de filtrage
         /// </param>
         /// <param name="Entity">L'objet qui contient la collection</param>
-        public void Config(IBaseBAO Service,
+        public void Config(IBaseBLO Service,
             PropertyInfo propertyInfo,
             List<BaseEntity> DefaultValueList,
             BaseEntity Entity)
@@ -293,8 +293,8 @@ namespace App.WinForm
             if (ListeComboBox.Values.Count() <= 0) return;
             ComboBox comboBox = ListeComboBox.Values.ElementAt(0);
             string key = ListeComboBox.Keys.ElementAt(0);
-            IBaseBAO service = this.Service
-                .CreateEntityInstanceByType(LsiteTypeObjetCritere[key]);
+            IBaseBLO service = this.Service
+                .CreateServiceBLOInstanceByTypeEntity(LsiteTypeObjetCritere[key]);
             comboBox.DataSource = service.GetAll();
         }
 
@@ -315,8 +315,8 @@ namespace App.WinForm
                        
 
                     // Actualisation de ComboBoxs suivant
-                    IBaseBAO EntityPereService = this.Service
-                                                .CreateEntityInstanceByType(LsiteTypeObjetCritere[key]);
+                    IBaseBLO EntityPereService = this.Service
+                                                .CreateServiceBLOInstanceByTypeEntity(LsiteTypeObjetCritere[key]);
                     BaseEntity EntityPere = EntityPereService.GetBaseEntityByID(ListeValeursCritere[key].Id);
 
 
@@ -347,8 +347,8 @@ namespace App.WinForm
 
             // Le Service de l'objet de ComboBox
             string key = ListeComboBox.Keys.ElementAt(index_comboBox);
-            IBaseBAO service = this.Service
-                .CreateEntityInstanceByType(LsiteTypeObjetCritere[key]);
+            IBaseBLO service = this.Service
+                .CreateServiceBLOInstanceByTypeEntity(LsiteTypeObjetCritere[key]);
 
             // Actualisation de ComboBox suivant s'il existe, et le comboBox actual a une valeur
             if (comboBox.SelectedValue != null && (ListeComboBox.Values.Count() - 1) >= (index_comboBox + 1))
@@ -419,7 +419,7 @@ namespace App.WinForm
         private void Show_List_Of_Choices()
         {
 
-            IBaseBAO service = this.Service.CreateEntityInstanceByType(this.TypeObjetOfCollection);
+            IBaseBLO service = this.Service.CreateServiceBLOInstanceByTypeEntity(this.TypeObjetOfCollection);
        //     this.listBoxChoices.DataSource = service.GetAll();
 
             if (DefaultValueList == null) return;

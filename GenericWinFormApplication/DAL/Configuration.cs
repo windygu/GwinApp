@@ -40,7 +40,7 @@ namespace App.Migrations
               new Role { Id = 4, Name = "Project Management system" }
             );
 
-            InstallApplication InstallApplication = new InstallApplication(typeof(ModelContext));
+            InstallApplicationGwinBLO InstallApplication = new InstallApplicationGwinBLO(typeof(ModelContext));
             InstallApplication.Update();
 
         }

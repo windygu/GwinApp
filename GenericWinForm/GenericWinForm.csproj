@@ -59,14 +59,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Application\BAL\BaseEntityBAO.cs" />
-    <Compile Include="Application\BAL\InstallApplication.cs" />
+    <Compile Include="Application\BAL\Authentication\UserGwinBLO.cs" />
+    <Compile Include="Application\BAL\BaseEntityBLO.cs" />
+    <Compile Include="Application\BAL\GwinApplication\GwinLanguageBLO.cs" />
+    <Compile Include="Exceptions\Gwin\GwinMustBeStartException.cs" />
+    <Compile Include="Application\BAL\GwinApplication\InstallApplicationGwinBLO.cs" />
     <Compile Include="Application\BAL\Security\RoleBAO.cs" />
-    <Compile Include="Application\Class1.cs" />
-    <Compile Include="Application\Presentation\FormApplication.cs">
+    <Compile Include="Application\Presentation\Authentication\Class1.cs" />
+    <Compile Include="Application\Presentation\Class1.cs" />
+    <Compile Include="Application\Presentation\EntityManagement\Class1.cs" />
+    <Compile Include="Application\Presentation\MainForm\Class1.cs" />
+    <Compile Include="Application\Presentation\MainForm\FormApplication.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Application\Presentation\FormApplication.Designer.cs">
+    <Compile Include="Application\Presentation\MainForm\FormApplication.Designer.cs">
       <DependentUpon>FormApplication.cs</DependentUpon>
     </Compile>
     <Compile Include="Application\Presentation\Messages\MessageToUser_Resource.fr-FR.Designer.cs">
@@ -148,12 +154,12 @@
     <Compile Include="Fields\ManyToManyField.Designer.cs">
       <DependentUpon>ManyToManyField.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModelData\EntitiesModel.cs" />
-    <Compile Include="Shared\Exceptions\DisplayMember_NotExist_In_DisplayEntityAttribute_Exception.cs" />
+    <Compile Include="ModelInfo\ModelConfiguration.cs" />
+    <Compile Include="Exceptions\ModelConfig\DisplayMember_NotExist_In_DisplayEntityAttribute_Exception.cs" />
     <Compile Include="Attributes\BaseAttribute.cs" />
     <Compile Include="Attributes\ReadConfiguration\ConfigEntity.cs" />
     <Compile Include="Attributes\ButtonAddAttribute.cs" />
-    <Compile Include="Application\BAL\IBaseBAO.cs" />
+    <Compile Include="Application\BAL\IBaseBLO.cs" />
     <Compile Include="Components\Authentication\Authentification.cs" />
     <Compile Include="Components\Authentication\LoginControl.cs">
       <SubType>UserControl</SubType>
@@ -216,7 +222,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Glossary.resx</DependentUpon>
     </Compile>
-    <Compile Include="Forms\BaseForm.cs">
+    <Compile Include="Application\Presentation\BaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Attributes\DisplayPropertyAttribute.cs" />
@@ -254,29 +260,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BaseEntity.resx</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormMenu\ConfigMenuApplication.cs" />
-    <Compile Include="Forms\FormMenu\IApplicationMenu.cs" />
-    <Compile Include="Forms\IBaseForm.cs" />
-    <Compile Include="Forms\LoginForm.cs">
+    <Compile Include="Application\Presentation\MainForm\ConfigMenuApplication.cs" />
+    <Compile Include="Application\Presentation\MainForm\IApplicationMenu.cs" />
+    <Compile Include="Application\Presentation\IBaseForm.cs" />
+    <Compile Include="Application\Presentation\Authentication\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\LoginForm.Designer.cs">
+    <Compile Include="Application\Presentation\Authentication\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\MenuForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\MenuForm.Designer.cs">
-      <DependentUpon>MenuForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Ressouces\MenuForm\MenuForm.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MenuForm.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Shared\Exceptions\AffichageClasseAttributeNotExitException.cs" />
-    <Compile Include="Shared\Exceptions\AnnotationNotExistException.cs" />
-    <Compile Include="Shared\Exceptions\PropertyNotExistInEntityException.cs" />
+    <Compile Include="Exceptions\ModelConfig\AffichageClasseAttributeNotExitException.cs" />
+    <Compile Include="Exceptions\ModelConfig\AnnotationNotExistException.cs" />
+    <Compile Include="Exceptions\ModelConfig\PropertyNotExistInEntityException.cs" />
     <Compile Include="Fields\Controls\IInputCollectionControle.cs" />
     <Compile Include="Fields\Controls\InputCollectionControle.cs">
       <SubType>UserControl</SubType>
@@ -300,10 +295,10 @@
       <DependentUpon>EntityDataGridControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Components\DataGrid\IEntityDataGrideControl.cs" />
-    <Compile Include="Forms\EntityManagementForm.cs">
+    <Compile Include="Application\Presentation\EntityManagement\EntityManagementForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\EntityManagementForm.Designer.cs">
+    <Compile Include="Application\Presentation\EntityManagement\EntityManagementForm.Designer.cs">
       <DependentUpon>EntityManagementForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Components\EntryForms\BaseEntryForm.cs">
@@ -312,7 +307,7 @@
     <Compile Include="Components\EntryForms\BaseEntryForm.Designer.cs">
       <DependentUpon>BaseEntryForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Shared\Exceptions\FieldNotExistInFormException.cs" />
+    <Compile Include="Exceptions\Fields\FieldNotExistInFormException.cs" />
     <Compile Include="Components\EntryForms\Generate.BaseEntryForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -335,7 +330,7 @@
     <Compile Include="Components\Filter\IBaseFilterControl.cs" />
     <Compile Include="Entities\Persons\Person.cs" />
     <Compile Include="Entities\Authentication\User.cs" />
-    <Compile Include="Shared\Exceptions\PropertyDoesNotExistException.cs" />
+    <Compile Include="Exceptions\ModelConfig\PropertyDoesNotExistException.cs" />
     <Compile Include="Shared\Extensions\Linq\LinqExtension.cs" />
     <Compile Include="Components\Manager\AddForm.EntityManagementControl.cs">
       <SubType>UserControl</SubType>
@@ -364,7 +359,7 @@
     <Compile Include="Components\Manager\Vide.EntityManagementControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Forms\ShowEntityManagementForm.cs" />
+    <Compile Include="Application\Presentation\EntityManagement\EntityManagementCreator.cs" />
     <Compile Include="Components\TabPanel\BaseEntityTabControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -380,8 +375,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Application\ApplicationInstance.cs" />
-    <Compile Include="Application\Security\Session.cs" />
+    <Compile Include="Application\BAL\GwinApplication\GWinAppBLO.cs" />
     <Compile Include="Shared\Resources\RessoucesManagerHelper.cs" />
     <Compile Include="TestModelContext.cs" />
   </ItemGroup>
@@ -414,7 +408,7 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Application\Presentation\FormApplication.resx">
+    <EmbeddedResource Include="Application\Presentation\MainForm\FormApplication.resx">
       <DependentUpon>FormApplication.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Application\Presentation\Messages\MessageToUser_Resource.ar.resx" />
@@ -542,7 +536,7 @@
     <EmbeddedResource Include="Components\DataGrid\EntityDataGridControl.resx">
       <DependentUpon>EntityDataGridControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\EntityManagementForm.resx">
+    <EmbeddedResource Include="Application\Presentation\EntityManagement\EntityManagementForm.resx">
       <DependentUpon>EntityManagementForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\EntryForms\BaseEntryForm.resx">
@@ -557,15 +551,8 @@
     <EmbeddedResource Include="Components\TabPanel\BaseEntityTabControl.resx">
       <DependentUpon>BaseEntityTabControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\LoginForm.resx">
+    <EmbeddedResource Include="Application\Presentation\Authentication\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MenuForm.resx">
-      <DependentUpon>MenuForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Ressouces\MenuForm\MenuForm.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>MenuForm.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
