@@ -5,6 +5,7 @@ using App.WinForm.Entities.Authentication;
 using App.WinForm.Exceptions.Gwin;
 using System;
 using System.Globalization;
+using System.Runtime.Serialization;
 
 namespace App.WinForm.Application.BAL.GwinApplication
 {
@@ -22,7 +23,7 @@ namespace App.WinForm.Application.BAL.GwinApplication
         public static Gwin Instance {
             get
             {
-             
+                TestIf_Gwin_isStart();
                 return instance;
             }
             set
@@ -113,7 +114,7 @@ namespace App.WinForm.Application.BAL.GwinApplication
         public static void Start(Type TypeDbContext, Type TypeBaseBLO, FormApplication AppMenu, User user)
         {
             // Create Gwin Instance
-            if (Gwin.Instance == null)
+            if (Gwin.instance == null)
             {
                 if (user == null)
                 {
@@ -133,7 +134,7 @@ namespace App.WinForm.Application.BAL.GwinApplication
         }
         private static void TestIf_Gwin_isStart()
         {
-            if (Gwin.Instance == null) throw new GwinMustBeStartException();
+            if (Gwin.instance == null) throw new GwinException("The Gwin Application Must be started befor use Gwin.Instance");
         }
         #endregion
 
@@ -159,4 +160,6 @@ namespace App.WinForm.Application.BAL.GwinApplication
        
         #endregion
     }
+
+    
 }

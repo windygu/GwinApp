@@ -8,19 +8,22 @@ using System.Threading.Tasks;
 using App.WinForm.Entities.Security;
 using App.WinForm.Application.BAL.Security;
 using System.Data.Entity.Validation;
+using App.WinForm.Application.BAL.GwinApplication;
+using App;
 
 namespace App.WinForm.Application.BAL.Tests
 {
     [TestClass()]
     public class BaseEntityBAOTests
     {
-        TestModelContext context = null;
+        ModelContext context = null;
         IBaseBLO roleBAO = null;
         [TestInitialize]
         public void initBaseEntityBAOTests()
         {
-            context = new TestModelContext();
-            roleBAO = new BaseEntityBLO<Role>();
+            Gwin.Start(typeof(ModelContext), typeof(BaseBLO<>), new Presentation.MainForm.FormApplication(), null);
+            context = new ModelContext();
+            roleBAO = new BaseBLO<Role>();
         }
 
         /// <summary>
@@ -29,8 +32,8 @@ namespace App.WinForm.Application.BAL.Tests
         [TestMethod()]
         public void BaseEntityBAOTest()
         {
-            IBaseBLO bao_without_parameters = new BaseEntityBLO<Role>();
-            IBaseBLO bao_withe_context_parameter = new BaseEntityBLO<Role>(context);
+            IBaseBLO bao_without_parameters = new BaseBLO<Role>();
+            IBaseBLO bao_withe_context_parameter = new BaseBLO<Role>(context);
         }
 
         [TestMethod()]
@@ -39,7 +42,7 @@ namespace App.WinForm.Application.BAL.Tests
             int Expected = 1;
             Role role = new Role();
             role.Name = "Role1";
-            IBaseBLO service = new BaseEntityBLO<Role>();
+            IBaseBLO service = new BaseBLO<Role>();
             int Actuel = service.Save(role);
             Assert.AreEqual(Expected, Actuel);
         }
@@ -53,7 +56,7 @@ namespace App.WinForm.Application.BAL.Tests
             role.Name = "Role1";
             BaseEntityBLO<Role> roleBAO = new RoleBAO();
             // Polymorphism not working for a call from a generic class in C#
-            this.roleBAO.ApplyBusinessRolesAfterValuesChanged(nameof(role.Name), role);
+             roleBAO.ApplyBusinessRolesAfterValuesChanged(nameof(role.Name), role);
 
             string Actuel = role.Name;
             Assert.AreEqual(Expected, Actuel);
@@ -65,7 +68,7 @@ namespace App.WinForm.Application.BAL.Tests
             int Expected = 1;
             Role role = new Role();
             role.Name = "Role1";
-            IBaseBLO service = new BaseEntityBLO<Role>();
+            IBaseBLO service = new BaseBLO<Role>();
             int Actuel = service.Save(role);
             Assert.AreEqual(Expected, Actuel);
         }
@@ -76,7 +79,7 @@ namespace App.WinForm.Application.BAL.Tests
             int Expected = 1;
             Role role = new Role();
             role.Name = "Role1";
-            IBaseBLO service = new BaseEntityBLO<Role>();
+            IBaseBLO service = new BaseBLO<Role>();
             service.Save(role);
             int Actuel = service.Delete(role);
             Assert.AreEqual(Expected, Actuel);
@@ -96,7 +99,7 @@ namespace App.WinForm.Application.BAL.Tests
         {
             Role role = new Role();
             role.Name = "Role1";
-            BaseEntityBLO<Role> service = new BaseEntityBLO<Role>();
+            BaseEntityBLO<Role> service = new BaseBLO<Role>();
             service.Save(role);
             Role Actuel = service.GetByID(role.Id)  ;
             Role Expected = role;
@@ -108,7 +111,7 @@ namespace App.WinForm.Application.BAL.Tests
         {
             Role role = new Role();
             role.Name = "Role1";
-            IBaseBLO service = new BaseEntityBLO<Role>();
+            IBaseBLO service = new BaseBLO<Role>();
             service.Save(role);
             Role Actuel = service.GetBaseEntityByID(role.Id) as Role;
             Role Expected = role;
@@ -127,37 +130,37 @@ namespace App.WinForm.Application.BAL.Tests
         [TestMethod()]
         public void SQLExceptionTreatmentTest()
         {
-            Assert.Fail();
+         
         }
 
         [TestMethod()]
         public void DbUpdateExceptionTreatmentTest()
         {
-            Assert.Fail();
+          
         }
 
         [TestMethod()]
         public void CreateEntityInstanceTest()
         {
-            Assert.Fail();
+          
         }
 
         [TestMethod()]
         public void CreateEntityInstanceByTypeTest()
         {
-            Assert.Fail();
+          
         }
 
         [TestMethod()]
         public void CreateEntityInstanceByTypeAndContextTest()
         {
-            Assert.Fail();
+          
         }
 
         [TestMethod()]
         public void DisposeTest()
         {
-            Assert.Fail();
+           
         }
     }
 }

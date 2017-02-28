@@ -1,4 +1,5 @@
-﻿using App.WinForm.Attributes;
+﻿using App.WinForm.Application.BAL.GwinApplication;
+using App.WinForm.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,14 +9,24 @@ using System.Threading.Tasks;
 
 namespace App.WinForm.ModelData
 {
+    /// <summary>
+    /// Model Configuration from Entities attributes
+    /// </summary>
     public class ModelConfiguration
     {
-
+        /// <summary>
+        /// Get All Assebply that containes Entities
+        /// </summary>
+        /// <returns>List of Assembly</returns>
         public List<Assembly> GetAll_Assembly_Contains_Entities()
         {
+          //[Bug] it not load All Entities en Project
           return   AppDomain.CurrentDomain.GetAssemblies()
                    .Where(a => (!a.FullName.Contains("DynamicProxies")
-                   && (a.FullName.Contains("Entities") || a.FullName.Contains(this.GetType().Assembly.FullName)))
+                   && (a.FullName.Contains("Entities")                                      // Entities Assemply
+                   || a.FullName.Contains(Gwin.Instance.GetType().Assembly.FullName)        // Gwin Assemply
+                   || a.FullName.Contains(Gwin.Instance.TypeDBContext.Assembly.FullName)    // DAL Assemply
+                   ))
                    ).Cast<Assembly>().ToList<Assembly>();
         }
 
@@ -37,6 +48,10 @@ namespace App.WinForm.ModelData
             return Liste_All_Entities_types;
         }
 
+        /// <summary>
+        /// Get All Entity Type in Project
+        /// </summary>
+        /// <returns> Dictionary : Type, MenuAttributes </returns>
         public Dictionary<Type, MenuAttribute> Get_All_Type_And_MenuAttributes()
         {
             Dictionary<Type, MenuAttribute> Dictionary_Type_MenyAttribute = new Dictionary<Type, MenuAttribute>();

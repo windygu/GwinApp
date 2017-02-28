@@ -18,7 +18,7 @@ namespace App.WinForm.Application.BAL
 {
     /// <summary>
     /// BaseEntityBAO
-    /// this classe is not Abstract bacause it is used in Test Project as EntityBAO
+    /// this classe is not Abstract bacause it is used in Application Update 
     /// it is inherited by EntityBAO
     /// </summary>
     /// <typeparam name="T"></typeparam>
@@ -54,21 +54,14 @@ namespace App.WinForm.Application.BAL
             this.ConfigEntity = ConfigEntity.CreateConfigEntity(this.TypeEntity);
 
             // Create Context instance
-            if (this.Context == null)
+            if (TypeDBContext != null)
             {
-                if (TypeDBContext == null)
-                {
-                    this.Context = new TestModelContext();
-                   
-                }
-                else
-                {
-                    this.Context = Activator.CreateInstance(TypeDBContext) as DbContext;
-                }
+             this.Context = Activator.CreateInstance(TypeDBContext) as DbContext;
             }
+            if(this.Context != null)
             this.DbSet = this.Context.Set<T>();
         }
-        public BaseEntityBLO() : this(null, null) { }
+     
         public BaseEntityBLO(Type TypeDBContext) : this(null, TypeDBContext) { }
         public BaseEntityBLO(DbContext context) : this(context, null) { }
         #endregion

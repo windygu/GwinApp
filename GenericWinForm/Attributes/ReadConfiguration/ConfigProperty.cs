@@ -102,6 +102,8 @@ namespace App.Shared.AttributesManager
                     
                     if ( this.PropertyInfo.PropertyType.IsSubclassOf(typeof(BaseEntity)))
                         this.DisplayProperty.Titre = ConfigEntity.CreateConfigEntity(this.PropertyInfo.PropertyType).DisplayEntity.SingularName;
+                    else
+                        this.DisplayProperty.Titre = GetStringFromRessource(propertyInfo.Name);
                 }
                 else
                     this.DisplayProperty.Titre = GetStringFromRessource(propertyInfo.Name);

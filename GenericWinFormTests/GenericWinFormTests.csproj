@@ -61,16 +61,26 @@
     <Compile Include="Application\BAL\BaseEntityBAOTests.cs" />
     <Compile Include="Application\BAL\InstallApplicationTests.cs" />
     <Compile Include="Attributes\ReadConfiguration\ConfigEntityTests.cs" />
+    <Compile Include="Attributes\ReadConfiguration\ConfigPropertyTests.cs" />
     <Compile Include="ManagementForm\EntityManagementFormTests.cs" />
     <Compile Include="ManagementForm\MinimumEntityConfigurationTest.cs" />
+    <Compile Include="ModelInfo\ModelConfigurationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GenericWinFormApplication\Demo.csproj">
+      <Project>{79de0f1b-a471-46e4-91e5-145dbeffdf23}</Project>
+      <Name>Demo</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GenericWinForm\GenericWinForm.csproj">
       <Project>{7B89BD41-7117-4C2D-845F-45EEB252CC35}</Project>
       <Name>GenericWinForm</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

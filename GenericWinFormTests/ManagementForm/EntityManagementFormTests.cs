@@ -1,15 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using App.WinForm;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using App.WinFrom.Menu;
 using System.Windows.Forms;
 using App.WinForm.Entities;
-using App.WinForm.Forms;
 using App.WinForm.Application.BAL;
+using App.WinForm.Application.Presentation;
+using App.WinForm.Application.Presentation.EntityManagement;
 
 namespace App.WinForm.Tests
 {
@@ -27,13 +21,12 @@ namespace App.WinForm.Tests
             MdiForm.IsMdiContainer = true;
 
             // Tester tous les bouttons ajouter 
-            using (TestModelContext db = new TestModelContext())
+            using (ModelContext db = new ModelContext())
             {
                 foreach (var item in db.GetTypesSets())
                 {
-                    IBaseBLO service = new BaseEntityBLO<BaseEntity>().CreateServiceBLOInstanceByTypeEntity(item);
-                    ShowEntityManagementForm AfficherFormulaire = new ShowEntityManagementForm(service,MdiForm);
-                    EntityManagementForm emform = AfficherFormulaire.AfficherUneGestion(item);
+                    EntityManagementCreator AfficherFormulaire = new EntityManagementCreator(typeof(ModelContext),MdiForm);
+                    EntityManagementForm emform = AfficherFormulaire.ShowManagementForm(item);
                     emform.EntityManagementControl.bt_Ajouter_Click(new Button(), null);
                 }
             }

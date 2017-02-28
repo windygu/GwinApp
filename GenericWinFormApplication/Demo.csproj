@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>GenericWinForm.Demo</RootNamespace>
-    <AssemblyName>GenericWinFormApplication</AssemblyName>
+    <AssemblyName>GwinDemo</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -58,8 +58,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BAL\BaseBAO.cs" />
+    <Compile Include="BAL\Security\RoleBAO.cs" />
     <Compile Include="DAL\Configuration.cs" />
     <Compile Include="DAL\ModelContext.cs" />
+    <Compile Include="Entities\MinimumConfiguration_Loalizable_Entity.cs" />
+    <Compile Include="Entities\Resources\MinimumConfiguration_Loalizable_Entity\MinimumConfiguration_Loalizable_Entity.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MinimumConfiguration_Loalizable_Entity.resx</DependentUpon>
+    </Compile>
     <Compile Include="EntryFormTest.cs" />
     <Compile Include="FormMenuApplication.cs">
       <SubType>Form</SubType>
@@ -75,6 +82,10 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Entities\Resources\MinimumConfiguration_Loalizable_Entity\MinimumConfiguration_Loalizable_Entity.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MinimumConfiguration_Loalizable_Entity.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMenuApplication.resx">
       <DependentUpon>FormMenuApplication.cs</DependentUpon>
     </EmbeddedResource>
@@ -110,9 +121,7 @@
       <Name>GenericWinForm</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Entities\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

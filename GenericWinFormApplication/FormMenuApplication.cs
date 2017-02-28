@@ -23,7 +23,7 @@ namespace GenericWinForm.Demo
             user.Language = Gwin.Languages.fr;
 
             // Start Gwin Application
-            Gwin.Start(typeof(ModelContext), typeof(BaseBAO<>),this, user);
+            Gwin.Start(typeof(ModelContext), typeof(BaseBLO<>),this, user);
         }
 
         /// <summary>

@@ -1,11 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Windows.Forms;
-using App;
-using App.WinFrom.Menu;
-using App.WinForm;
-using App.WinForm.Forms;
-using App.WinForm.Application.BAL;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace WinFormTests.ManagementForm
 {

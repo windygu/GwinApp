@@ -61,10 +61,9 @@
   <ItemGroup>
     <Compile Include="Application\BAL\Authentication\UserGwinBLO.cs" />
     <Compile Include="Application\BAL\BaseEntityBLO.cs" />
+    <Compile Include="Exceptions\Gwin\GwinException.cs" />
     <Compile Include="Application\BAL\GwinApplication\GwinLanguageBLO.cs" />
-    <Compile Include="Exceptions\Gwin\GwinMustBeStartException.cs" />
     <Compile Include="Application\BAL\GwinApplication\InstallApplicationGwinBLO.cs" />
-    <Compile Include="Application\BAL\Security\RoleBAO.cs" />
     <Compile Include="Application\Presentation\Authentication\Class1.cs" />
     <Compile Include="Application\Presentation\Class1.cs" />
     <Compile Include="Application\Presentation\EntityManagement\Class1.cs" />
@@ -86,7 +85,6 @@
       <DependentUpon>MessageToUser_Resource.resx</DependentUpon>
     </Compile>
     <Compile Include="Attributes\ReadConfiguration\ConfigProperty.cs" />
-    <Compile Include="Configuration.cs" />
     <Compile Include="Entities\Application\MenuItemApplication.cs" />
     <Compile Include="Entities\Application\Resources\ApplicationName\ApplicationName.Designer.cs">
       <DependentUpon>ApplicationName.resx</DependentUpon>
@@ -377,7 +375,6 @@
     </Compile>
     <Compile Include="Application\BAL\GwinApplication\GWinAppBLO.cs" />
     <Compile Include="Shared\Resources\RessoucesManagerHelper.cs" />
-    <Compile Include="TestModelContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Entities\ClassDiagramGenericWinForm.cd" />

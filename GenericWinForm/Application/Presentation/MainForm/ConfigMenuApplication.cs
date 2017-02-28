@@ -13,7 +13,7 @@ using System.Windows.Forms;
 namespace App.WinForm.Application.Presentation.MainForm
 {
     /// <summary>
-    /// Configuration de Menu d'application
+    /// Application Menu Configuration
     /// </summary>
     public class ConfigMenuApplication
     {
@@ -39,6 +39,9 @@ namespace App.WinForm.Application.Presentation.MainForm
         }
 
 
+        /// <summary>
+        /// Create Menu from ModelConfig
+        /// </summary>
         private void CreateMenu()
         {
             // Create Parent Menu from ManuItemApplication Table
