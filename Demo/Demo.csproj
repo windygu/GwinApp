@@ -116,12 +116,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GenericWinForm\GenericWinForm.csproj">
+    <ProjectReference Include="..\Gwin\Gwin.csproj">
       <Project>{7b89bd41-7117-4c2d-845f-45eeb252cc35}</Project>
-      <Name>GenericWinForm</Name>
+      <Name>Gwin</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -68,13 +68,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GenericWinFormApplication\Demo.csproj">
+    <ProjectReference Include="..\Demo\Demo.csproj">
       <Project>{79de0f1b-a471-46e4-91e5-145dbeffdf23}</Project>
       <Name>Demo</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GenericWinForm\GenericWinForm.csproj">
-      <Project>{7B89BD41-7117-4C2D-845F-45EEB252CC35}</Project>
-      <Name>GenericWinForm</Name>
+    <ProjectReference Include="..\Gwin\Gwin.csproj">
+      <Project>{7b89bd41-7117-4c2d-845f-45eeb252cc35}</Project>
+      <Name>Gwin</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

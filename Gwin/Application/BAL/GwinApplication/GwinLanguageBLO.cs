@@ -28,6 +28,10 @@ namespace App.WinForm.Application.BAL.GwinApplication
             {
                 formApplication.RightToLeftLayout = false;
                 formApplication.RightToLeft = RightToLeft.No;
+            }else
+            {
+                formApplication.RightToLeftLayout = true;
+                formApplication.RightToLeft = RightToLeft.Yes;
             }
 
         }

@@ -1,4 +1,6 @@
-﻿using App.WinForm.Application.BAL.Authentication;
+﻿using App.WinForm.Application.BAL;
+using App.WinForm.Application.BAL.Authentication;
+using App.WinForm.Application.BAL.GwinApplication;
 using App.WinForm.Application.Presentation.MainForm;
 using App.WinForm.Attributes;
 using App.WinForm.Entities.Authentication;
@@ -7,7 +9,7 @@ using System;
 using System.Globalization;
 using System.Runtime.Serialization;
 
-namespace App.WinForm.Application.BAL.GwinApplication
+namespace App.WinForm
 {
     /// <summary>
     /// GenericWinFrom Application instance
@@ -157,9 +159,22 @@ namespace App.WinForm.Application.BAL.GwinApplication
             new GwinLanguageBLO().ChangeLanguage(Gwin.Instance.CultureInfo, Gwin.Instance.ApplicationMenu);
         }
 
-       
+
+        #endregion
+
+        #region Install and Update
+        /// <summary>
+        /// Update Gwin Tables, it must be executed after Model configuration change
+        /// </summary>
+        public static void Update_Gwin_Table()
+        {
+            TestIf_Gwin_isStart();
+            // Update GwinApplicatio, after  ModelConfiguration changes
+            InstallApplicationGwinBLO installApplication = new InstallApplicationGwinBLO(Gwin.instance.TypeDBContext);
+            installApplication.Update();
+        }
         #endregion
     }
 
-    
+
 }
