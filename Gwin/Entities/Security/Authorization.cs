@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.WinForm.Entities.Security
+namespace App.Gwin.Entities.Security
 {
     public class Authorization : BaseEntity
     {

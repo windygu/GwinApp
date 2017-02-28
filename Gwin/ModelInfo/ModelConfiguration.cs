@@ -1,5 +1,5 @@
-﻿using App.WinForm.Application.BAL.GwinApplication;
-using App.WinForm.Attributes;
+﻿using App.Gwin.Application.BAL.GwinApplication;
+using App.Gwin.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.WinForm.ModelData
+namespace App.Gwin.ModelData
 {
     /// <summary>
     /// Model Configuration from Entities attributes
@@ -24,8 +24,8 @@ namespace App.WinForm.ModelData
           return   AppDomain.CurrentDomain.GetAssemblies()
                    .Where(a => (!a.FullName.Contains("DynamicProxies")
                    && (a.FullName.Contains("Entities")                                      // Entities Assemply
-                   || a.FullName.Contains(Gwin.Instance.GetType().Assembly.FullName)        // Gwin Assemply
-                   || a.FullName.Contains(Gwin.Instance.TypeDBContext.Assembly.FullName)    // DAL Assemply
+                   || a.FullName.Contains(GwinApp.Instance.GetType().Assembly.FullName)        // Gwin Assemply
+                   || a.FullName.Contains(GwinApp.Instance.TypeDBContext.Assembly.FullName)    // DAL Assemply
                    ))
                    ).Cast<Assembly>().ToList<Assembly>();
         }

@@ -1,4 +1,4 @@
-﻿namespace App.WinForm.EntityManagement
+﻿namespace App.Gwin.EntityManagement
 {
     partial class BaseEntityTabControl
     {

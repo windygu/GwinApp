@@ -1,5 +1,5 @@
-﻿using App.WinForm.Attributes;
-using App.WinForm.Entities.Application;
+﻿using App.Gwin.Attributes;
+using App.Gwin.Entities.Application;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.WinForm.Entities.Security
+namespace App.Gwin.Entities.Security
 {
     /// <summary>
     /// This Eity is Used by Test Project to Teste : 

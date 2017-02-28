@@ -1,12 +1,8 @@
 namespace App.Migrations
 {
-    using System;
-    using System.Data.Entity;
+    using Gwin.Application.BAL;
+    using Gwin.Entities.Security;
     using System.Data.Entity.Migrations;
-    using System.Linq;
-    using WinForm.Application.BAL;
-    using WinForm.Entities.Authentication;
-    using WinForm.Entities.Security;
 
     internal sealed class Configuration : DbMigrationsConfiguration<ModelContext>
     {

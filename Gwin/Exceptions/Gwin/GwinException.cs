@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace App.WinForm.Exceptions.Gwin
+namespace App.Gwin.Exceptions.Gwin
 {
     [Serializable]
     internal class GwinException : Exception

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace App.WinForm.Entities.Application.Resources.MenuItemApplication {
+namespace App.Gwin.Entities.Application.Resources.MenuItemApplication {
     using System;
     
     
@@ -39,8 +39,7 @@ namespace App.WinForm.Entities.Application.Resources.MenuItemApplication {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("App.WinForm.Entities.Application.Resources.MenuItemApplication.MenuItemApplicatio" +
-                            "n", typeof(MenuItemApplication).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("App.Gwin.Entities.Application.Resources.MenuItemApplication.MenuItemApplication", typeof(MenuItemApplication).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

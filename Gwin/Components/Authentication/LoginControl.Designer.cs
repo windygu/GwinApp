@@ -1,4 +1,4 @@
-﻿namespace App.WinForm.Components.Authentication
+﻿namespace App.Gwin.Components.Authentication
 {
     partial class LoginControl
     {

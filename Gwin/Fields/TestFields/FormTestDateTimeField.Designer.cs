@@ -1,4 +1,7 @@
-﻿namespace App.WinForm.Fields.TestFields
+﻿using App.Gwin.Fields.Controls;
+using App.WinForm.Fields;
+
+namespace App.Gwin.Fields.TestFields
 {
     partial class FormTestDateTimeField
     {
@@ -28,8 +31,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dateTimeControl1 = new App.WinFrom.Fields.Controls.DateTimeControl();
-            this.dateTimeField1 = new App.WinForm.Fields.DateTimeField();
+            this.dateTimeControl1 = new DateTimeControl();
+            this.dateTimeField1 = new DateTimeField();
             this.SuspendLayout();
             // 
             // dateTimeControl1
@@ -67,7 +70,7 @@
 
         #endregion
 
-        private WinFrom.Fields.Controls.DateTimeControl dateTimeControl1;
+        private DateTimeControl dateTimeControl1;
         private DateTimeField dateTimeField1;
     }
 }

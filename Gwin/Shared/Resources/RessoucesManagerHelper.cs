@@ -1,4 +1,4 @@
-﻿using App.WinForm.Application.Presentation.Messages;
+﻿using App.Gwin.Application.Presentation.Messages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace App.WinForm.Shared.Resources
+namespace App.Gwin.Shared.Resources
 {
     public class RessoucesManagerHelper
     {

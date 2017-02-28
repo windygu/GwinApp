@@ -1,4 +1,4 @@
-﻿namespace App.WinForm.Application.Presentation
+﻿namespace App.Gwin.Application.Presentation
 {
     public interface IBaseForm
     {

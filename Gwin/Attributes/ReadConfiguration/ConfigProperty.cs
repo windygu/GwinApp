@@ -1,11 +1,11 @@
-﻿using App.WinForm;
-using App.WinForm.Application;
-using App.WinForm.Application.BAL.GwinApplication;
-using App.WinForm.Application.Presentation.Messages;
-using App.WinForm.Attributes;
-using App.WinForm.Entities;
-using App.WinForm.Entities.Resources.Glossary;
-using App.WinForm.Shared.Resources;
+﻿using App.Gwin;
+using App.Gwin.Application;
+using App.Gwin.Application.BAL.GwinApplication;
+using App.Gwin.Application.Presentation.Messages;
+using App.Gwin.Attributes;
+using App.Gwin.Entities;
+using App.Gwin.Shared.Resources;
+using App.Gwin.Entities.Resources.Glossary;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -55,7 +55,7 @@ namespace App.Shared.AttributesManager
 
 
             // Culture Info
-            this.CultureInfo = Gwin.Instance.CultureInfo;
+            this.CultureInfo = GwinApp.Instance.CultureInfo;
 
             // Localizable
             this.TypeOfEntity = propertyInfo.ReflectedType;
@@ -83,7 +83,7 @@ namespace App.Shared.AttributesManager
             }
             if (this.DisplayProperty.isInGlossary)
             {
-                string GlossaryRessouceFullName = "App.WinForm.Entities.Resources.Glossary.Glossary";
+                string GlossaryRessouceFullName = "App.Gwin.Entities.Resources.Glossary.Glossary";
                 ResourceManager GlossaryResourceManager = null;
                 GlossaryResourceManager = new ResourceManager(GlossaryRessouceFullName, typeof(Glossary).Assembly);
                 string title = GlossaryResourceManager.GetString(propertyInfo.Name, this.CultureInfo);

@@ -1,8 +1,7 @@
 ﻿using App.Shared.AttributesManager;
-using App.WinForm.Attributes;
-using App.WinForm.Fields;
-using App.WinForm.Entities;
-using App.WinFrom.Fields;
+using App.Gwin.Attributes;
+using App.Gwin.Fields;
+using App.Gwin.Entities;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,10 +12,11 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using App.WinForm.Shared.Resources;
+using App.Gwin.Shared.Resources;
 using System.Resources;
+using App.WinForm.Fields;
 
-namespace App.WinForm
+namespace App.Gwin
 {
     public partial class BaseEntryForm
     {
@@ -191,6 +191,7 @@ namespace App.WinForm
                                     new Size(width_label, height_label),
                                    new Size(width_control_config, height_control), InitValue, this.ConfigEntity
                                     );
+                               
                                 manyToOneField.Location = new System.Drawing.Point(x_field, y_field);
                                 manyToOneField.Name = item.Name;
                                 manyToOneField.TabIndex = ++TabIndex;

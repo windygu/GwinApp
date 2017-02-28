@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.WinForm.Exceptions
+namespace App.Gwin.Exceptions
 {
     class AffichageClasseAttributeNotExitException
     {

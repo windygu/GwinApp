@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace App.WinForm
+namespace App.Gwin
 {
     [Serializable]
 

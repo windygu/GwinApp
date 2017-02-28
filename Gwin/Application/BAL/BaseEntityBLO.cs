@@ -1,6 +1,6 @@
-﻿using App.WinForm.Application.Presentation.Messages;
-using App.WinForm.Attributes;
-using App.WinForm.Entities;
+﻿using App.Gwin.Application.Presentation.Messages;
+using App.Gwin.Attributes;
+using App.Gwin.Entities;
 using LinqExtension;
 using System;
 using System.Collections.Generic;
@@ -14,7 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace App.WinForm.Application.BAL
+namespace App.Gwin.Application.BAL
 {
     /// <summary>
     /// BaseEntityBAO

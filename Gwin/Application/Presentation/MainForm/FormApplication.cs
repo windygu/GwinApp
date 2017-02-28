@@ -1,10 +1,10 @@
-﻿using App.WinForm.Application.BAL.GwinApplication;
-using App.WinForm.Application.Presentation.EntityManagement;
+﻿using App.Gwin.Application.BAL.GwinApplication;
+using App.Gwin.Application.Presentation.EntityManagement;
 using System;
 using System.Globalization;
 using System.Windows.Forms;
 
-namespace App.WinForm.Application.Presentation.MainForm
+namespace App.Gwin.Application.Presentation.MainForm
 {
     public partial class FormApplication : BaseForm, IApplicationMenu
     { 
@@ -14,7 +14,7 @@ namespace App.WinForm.Application.Presentation.MainForm
         protected void InitializeForm()
         {
             InitializeComponent();
-            showManagementForm = new EntityManagementCreator(Gwin.Instance.TypeDBContext, this);
+            showManagementForm = new EntityManagementCreator(GwinApp.Instance.TypeDBContext, this);
             new ConfigMenuApplication(this);
 
         }
@@ -34,17 +34,17 @@ namespace App.WinForm.Application.Presentation.MainForm
 
         private void frenchToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Gwin.ChangeLanguage(CultureInfo.CreateSpecificCulture("fr"));
+            GwinApp.ChangeLanguage(CultureInfo.CreateSpecificCulture("fr"));
         }
 
         private void englishToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Gwin.ChangeLanguage(CultureInfo.CreateSpecificCulture("en"));
+            GwinApp.ChangeLanguage(CultureInfo.CreateSpecificCulture("en"));
         }
 
         private void arabToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Gwin.ChangeLanguage(new CultureInfo("ar"));
+            GwinApp.ChangeLanguage(new CultureInfo("ar"));
         }
 
        

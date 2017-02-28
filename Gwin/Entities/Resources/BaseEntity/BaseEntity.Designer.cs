@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace App.WinForm.Entities.Resources.BaseEntity {
+namespace App.Gwin.Entities.Resources.BaseEntity {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace App.WinForm.Entities.Resources.BaseEntity {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("App.WinForm.Entities.Resources.BaseEntity.BaseEntity", typeof(BaseEntity).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("App.Gwin.Entities.Resources.BaseEntity.BaseEntity", typeof(BaseEntity).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

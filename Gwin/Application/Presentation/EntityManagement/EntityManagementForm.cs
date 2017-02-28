@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace App.WinForm.Application.Presentation.EntityManagement
+namespace App.Gwin.Application.Presentation.EntityManagement
 {
     /// <summary>
     /// Interface de mise à jour d'une entity

@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Reflection;
-using App.WinForm.Attributes;
+using App.Gwin.Attributes;
 using System.Collections;
-using App.WinForm.Entities;
+using App.Gwin.Entities;
 
-namespace App.WinForm
+namespace App.Gwin
 {
     /// <summary>
     /// Permet la saisie d'une collection d'entity dans une relation ManyToMany

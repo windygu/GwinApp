@@ -1,12 +1,12 @@
-﻿using App.WinForm.Attributes;
-using App.WinForm.Entities.ContactInformations;
+﻿using App.Gwin.Attributes;
+using App.Gwin.Entities.ContactInformations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.WinForm.Entities.Persons
+namespace App.Gwin.Entities.Persons
 {
     [DisplayEntity(DisplayMember ="Name")]
     public class Person : BaseEntity

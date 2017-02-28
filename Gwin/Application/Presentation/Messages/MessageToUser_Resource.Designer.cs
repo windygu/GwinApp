@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace App.WinForm.Application.Presentation.Messages {
+namespace App.Gwin.Application.Presentation.Messages {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace App.WinForm.Application.Presentation.Messages {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("App.WinForm.Application.Presentation.Messages.MessageToUser_Resource", typeof(MessageToUser_Resource).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("App.Gwin.Application.Presentation.Messages.MessageToUser_Resource", typeof(MessageToUser_Resource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

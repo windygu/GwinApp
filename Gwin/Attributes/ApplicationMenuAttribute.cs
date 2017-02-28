@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace App.WinForm.Attributes
+namespace App.Gwin.Attributes
 {
     /// <summary>
     /// Displaying the object in the application menu

@@ -9,16 +9,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using App.WinFrom.Validation;
 using System.Reflection;
-using App.WinForm.Attributes;
+using App.Gwin.Attributes;
 using System.Data.Entity;
-using App.WinForm.Fields;
-using App.WinFrom.Fields;
+using App.Gwin.Fields;
 using App.Shared.AttributesManager;
-using App.WinForm.Entities;
+using App.Gwin.Entities;
 using System.Resources;
-using App.WinForm.Shared.Resources;
+using App.Gwin.Shared.Resources;
 
-namespace App.WinForm
+namespace App.Gwin
 {
     /// <summary>
     /// Formulaire Mère de Saisie, il permet de création des formulaire spécifique à chaque Entity

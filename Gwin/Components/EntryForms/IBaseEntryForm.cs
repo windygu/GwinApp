@@ -1,7 +1,7 @@
 ﻿
-using App.WinForm.Entities;
+using App.Gwin.Entities;
 
-namespace App.WinForm
+namespace App.Gwin
 {
     public interface IBaseEntryForm
     {

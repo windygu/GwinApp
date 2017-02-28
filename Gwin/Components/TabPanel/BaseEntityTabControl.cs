@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
-using App.WinForm.Attributes;
+using App.Gwin.Attributes;
 using System.Reflection;
-using App.WinForm.Entities;
-using App.WinForm.Application.Presentation.EntityManagement;
-using App.WinForm.Application.Presentation;
+using App.Gwin.Entities;
+using App.Gwin.Application.Presentation.EntityManagement;
+using App.Gwin.Application.Presentation;
 
-namespace App.WinForm.EntityManagement
+namespace App.Gwin.EntityManagement
 {
     public partial class BaseEntityTabControl : UserControl
     {

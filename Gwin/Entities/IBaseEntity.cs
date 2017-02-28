@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.WinForm.Entities
+namespace App.Gwin.Entities
 {
     public interface IBaseEntity
     {

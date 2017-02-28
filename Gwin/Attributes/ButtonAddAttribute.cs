@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace App.WinForm.Attributes
+namespace App.Gwin.Attributes
 {
     /// <summary>
     /// The Add button of Management Interface

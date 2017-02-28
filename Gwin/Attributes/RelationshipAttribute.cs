@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace App.WinForm.Attributes
+namespace App.Gwin.Attributes
 {
     public class RelationshipAttribute : Attribute
     {

@@ -1,8 +1,7 @@
 ﻿using App.Shared.AttributesManager;
-using App.WinForm.Attributes;
-using App.WinForm.Fields;
-using App.WinForm.Entities;
-using App.WinFrom.Fields;
+using App.Gwin.Attributes;
+using App.Gwin.Fields;
+using App.Gwin.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Collections;
 
-namespace App.WinForm
+namespace App.Gwin
 {
     /// <summary>
     /// Lire 

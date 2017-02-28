@@ -1,16 +1,16 @@
-﻿using App.WinForm.Application.BAL;
-using App.WinForm.Application.BAL.GwinApplication;
-using App.WinForm.Application.Presentation.EntityManagement;
-using App.WinForm.Attributes;
-using App.WinForm.Entities;
-using App.WinForm.Entities.Application;
-using App.WinForm.ModelData;
+﻿using App.Gwin.Application.BAL;
+using App.Gwin.Application.BAL.GwinApplication;
+using App.Gwin.Application.Presentation.EntityManagement;
+using App.Gwin.Attributes;
+using App.Gwin.Entities;
+using App.Gwin.Entities.Application;
+using App.Gwin.ModelData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace App.WinForm.Application.Presentation.MainForm
+namespace App.Gwin.Application.Presentation.MainForm
 {
     /// <summary>
     /// Application Menu Configuration
@@ -32,9 +32,9 @@ namespace App.WinForm.Application.Presentation.MainForm
             this.formMenu = formMenu;
             this.menuStrip = formMenu.getMenuStrip();
             MenuItems = new Dictionary<string, Type>();
-            this.ShowManagementForm = new EntityManagementCreator(Gwin.Instance.TypeDBContext,formMenu);
+            this.ShowManagementForm = new EntityManagementCreator(GwinApp.Instance.TypeDBContext,formMenu);
             this.Service = BaseEntityBLO<BaseEntity>
-                .CreateBLOInstanceByTypeEntity(typeof(MenuItemApplication),Gwin.Instance.TypeBaseBLO, this.ShowManagementForm.CreateContext());
+                .CreateBLOInstanceByTypeEntity(typeof(MenuItemApplication),GwinApp.Instance.TypeBaseBLO, this.ShowManagementForm.CreateContext());
             this.CreateMenu();
         }
 
@@ -51,7 +51,7 @@ namespace App.WinForm.Application.Presentation.MainForm
                 ToolStripMenuItem toolStripMenuItem = new ToolStripMenuItem();
                 toolStripMenuItem.Name = "toolStripMenuItem" + menuItemApplication.Name;
                 toolStripMenuItem.Size = new System.Drawing.Size(82, 20);
-                toolStripMenuItem.Text = menuItemApplication.TitrleCulture(Gwin.Instance.CultureInfo);
+                toolStripMenuItem.Text = menuItemApplication.TitrleCulture(GwinApp.Instance.CultureInfo);
                 this.menuStrip.Items.Add(toolStripMenuItem);
             }
 

@@ -1,10 +1,11 @@
 ﻿using App;
-using App.WinForm.Application.BAL.GwinApplication;
-using App.WinForm.Application.Presentation.EntityManagement;
-using App.WinForm.Application.Presentation.MainForm;
-using App.WinForm.Entities;
-using App.WinForm.Entities.Application;
-using App.WinForm.Entities.Authentication;
+using App.Gwin;
+using App.Gwin.Application.BAL.GwinApplication;
+using App.Gwin.Application.Presentation.EntityManagement;
+using App.Gwin.Application.Presentation.MainForm;
+using App.Gwin.Entities;
+using App.Gwin.Entities.Application;
+using App.Gwin.Entities.Authentication;
 using System;
 
 namespace GenericWinForm.Demo
@@ -20,10 +21,10 @@ namespace GenericWinForm.Demo
         {
             // Application User
             User user = new User();
-            user.Language = Gwin.Languages.ar;
+            user.Language = GwinApp.Languages.ar;
 
             // Start Gwin Application
-            Gwin.Start(typeof(ModelContext), typeof(BaseBLO<>),this, user);
+            GwinApp.Start(typeof(ModelContext), typeof(BaseBLO<>),this, user);
         }
 
         /// <summary>

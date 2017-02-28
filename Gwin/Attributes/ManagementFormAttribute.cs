@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Resources;
 
-namespace App.WinForm.Attributes
+namespace App.Gwin.Attributes
 {
     /// <summary>
     ///  The configuration of the management interface

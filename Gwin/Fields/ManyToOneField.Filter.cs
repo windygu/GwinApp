@@ -1,6 +1,6 @@
-﻿using App.WinForm.Attributes;
-using App.WinForm.EntityManagement;
-using App.WinForm.Entities;
+﻿using App.Gwin.Attributes;
+using App.Gwin.EntityManagement;
+using App.Gwin.Entities;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace App.WinForm.Fields
+namespace App.Gwin.Fields
 {
     /// <summary>
     /// Filtrer du champs ManyToOne

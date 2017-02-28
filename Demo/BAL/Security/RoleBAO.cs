@@ -1,13 +1,13 @@
-﻿using App.WinForm.Entities.Security;
+﻿using App.Gwin.Entities.Security;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using App.WinForm.Entities;
+using App.Gwin.Entities;
 using System.Windows.Forms;
 
-namespace App.WinForm.Application.BAL.Security
+namespace App.Gwin.Application.BAL.Security
 {
     /// <summary>
     /// [Bug] this class use TestModelContext and Not ModelContext of Application

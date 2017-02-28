@@ -1,5 +1,5 @@
-﻿using App.WinForm.Attributes;
-using App.WinForm.Entities;
+﻿using App.Gwin.Attributes;
+using App.Gwin.Entities;
 namespace GenericWinForm.Demo.Entities
 {
 

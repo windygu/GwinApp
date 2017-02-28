@@ -1,17 +1,17 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using App.WinForm.Application.BAL;
+using App.Gwin.Application.BAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using App.WinForm.Entities.Security;
-using App.WinForm.Application.BAL.Security;
+using App.Gwin.Entities.Security;
+using App.Gwin.Application.BAL.Security;
 using System.Data.Entity.Validation;
-using App.WinForm.Application.BAL.GwinApplication;
+using App.Gwin.Application.BAL.GwinApplication;
 using App;
 
-namespace App.WinForm.Application.BAL.Tests
+namespace App.Gwin.Application.BAL.Tests
 {
     [TestClass()]
     public class BaseEntityBAOTests
@@ -21,7 +21,7 @@ namespace App.WinForm.Application.BAL.Tests
         [TestInitialize]
         public void initBaseEntityBAOTests()
         {
-            Gwin.Start(typeof(ModelContext), typeof(BaseBLO<>), new Presentation.MainForm.FormApplication(), null);
+            GwinApp.Start(typeof(ModelContext), typeof(BaseBLO<>), new Presentation.MainForm.FormApplication(), null);
             context = new ModelContext();
             roleBAO = new BaseBLO<Role>();
         }

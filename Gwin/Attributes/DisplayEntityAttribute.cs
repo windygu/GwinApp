@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace App.WinForm.Attributes
+namespace App.Gwin.Attributes
 {
     /// <summary>
     /// The display of the entity

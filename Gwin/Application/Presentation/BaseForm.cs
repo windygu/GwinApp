@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace App.WinForm.Application.Presentation
+namespace App.Gwin.Application.Presentation
 {
     public class BaseForm : Form , IBaseForm
     {

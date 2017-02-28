@@ -1,6 +1,6 @@
-﻿using App.WinForm.Attributes;
-using App.WinForm.Entities.Application;
-using App.WinForm.ModelData;
+﻿using App.Gwin.Attributes;
+using App.Gwin.Entities.Application;
+using App.Gwin.ModelData;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.WinForm.Application.BAL
+namespace App.Gwin.Application.BAL
 {
     /// <summary>
     /// Configuration After Update or first installation

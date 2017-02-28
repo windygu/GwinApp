@@ -1,5 +1,5 @@
-﻿using App.WinForm.Application.Presentation;
-using App.WinForm.Application.Presentation.MainForm;
+﻿using App.Gwin.Application.Presentation;
+using App.Gwin.Application.Presentation.MainForm;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -9,7 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace App.WinForm.Application.BAL.GwinApplication
+namespace App.Gwin.Application.BAL.GwinApplication
 {
     public class GwinLanguageBLO
     {
@@ -24,7 +24,7 @@ namespace App.WinForm.Application.BAL.GwinApplication
 
             formApplication.Reload();
 
-            if (cultureInfo.ThreeLetterISOLanguageName == "fr" || cultureInfo.ThreeLetterISOLanguageName == "en")
+            if (cultureInfo.TwoLetterISOLanguageName == "fr" || cultureInfo.TwoLetterISOLanguageName == "en")
             {
                 formApplication.RightToLeftLayout = false;
                 formApplication.RightToLeft = RightToLeft.No;

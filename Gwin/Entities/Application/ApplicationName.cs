@@ -1,5 +1,5 @@
-﻿using App.WinForm.Attributes;
-using App.WinForm.Entities;
+﻿using App.Gwin.Attributes;
+using App.Gwin.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

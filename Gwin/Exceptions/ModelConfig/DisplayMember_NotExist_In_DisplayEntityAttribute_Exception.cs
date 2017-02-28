@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace App.WinForm.Attributes
+namespace App.Gwin.Attributes
 {
     [Serializable]
     internal class DisplayMember_NotExist_In_DisplayEntityAttribute_Exception : Exception

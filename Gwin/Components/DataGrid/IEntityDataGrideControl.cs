@@ -1,11 +1,11 @@
-﻿using App.WinForm.Entities;
+﻿using App.Gwin.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.WinForm
+namespace App.Gwin
 {
     /// <summary>
     /// Le contôle DataGrid pour l'affichage et l'édition d'une liste des entités

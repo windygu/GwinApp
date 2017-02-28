@@ -1,17 +1,14 @@
 ﻿namespace App
 {
     using GenericWinForm.Demo.Entities;
+    using Gwin.Entities.Application;
+    using Gwin.Entities.Authentication;
+    using Gwin.Entities.ContactInformations;
+    using Gwin.Entities.Security;
     using System;
     using System.Collections.Generic;
     using System.Data.Entity;
-    using System.Data.Entity.Infrastructure;
-    using System.Data.Entity.Validation;
     using System.Linq;
-    using System.Text;
-    using WinForm.Entities.Application;
-    using WinForm.Entities.Authentication;
-    using WinForm.Entities.ContactInformations;
-    using WinForm.Entities.Security;
 
     public class ModelContext : DbContext
     {

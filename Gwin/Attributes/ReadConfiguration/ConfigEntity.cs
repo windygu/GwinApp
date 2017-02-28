@@ -1,5 +1,5 @@
 ﻿
-using App.WinForm.Entities;
+using App.Gwin.Entities;
 using System;
 using System.Globalization;
 using System.Linq;
@@ -9,10 +9,10 @@ using System.Data.Entity.Infrastructure.Pluralization;
 using System.Data.Entity.Design.PluralizationServices;
 using System.Threading;
 using System.Collections.Generic;
-using App.WinForm.Shared.Resources;
-using App.WinForm.Application.Presentation.Messages;
+using App.Gwin.Shared.Resources;
+using App.Gwin.Application.Presentation.Messages;
 
-namespace App.WinForm.Attributes
+namespace App.Gwin.Attributes
 {
     /// <summary>
     /// Read Entity configuration

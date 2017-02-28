@@ -1,13 +1,13 @@
 ﻿using App;
-using App.WinForm.Application.BAL;
-using App.WinForm.Application.BAL.GwinApplication;
-using App.WinForm.Entities;
+using App.Gwin.Application.BAL;
+using App.Gwin.Application.BAL.GwinApplication;
+using App.Gwin.Entities;
 using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace App.WinForm.Application.Presentation.EntityManagement
+namespace App.Gwin.Application.Presentation.EntityManagement
 {
     /// <summary>
     /// Show Entity Management Form
@@ -61,7 +61,7 @@ namespace App.WinForm.Application.Presentation.EntityManagement
 
         public EntityManagementForm ShowManagementForm(Type TypeEntity)
         {
-            IBaseBLO baseRepository = BaseEntityBLO<BaseEntity>.CreateBLOInstanceByTypeEntity(TypeEntity,Gwin.Instance.TypeBaseBLO, CreateContext());
+            IBaseBLO baseRepository = BaseEntityBLO<BaseEntity>.CreateBLOInstanceByTypeEntity(TypeEntity,GwinApp.Instance.TypeBaseBLO, CreateContext());
             EntityManagementForm form = new EntityManagementForm(baseRepository, null, null, (Form)this.FormApplicationMdi);
             this.ShwoForm(form);
             return form;

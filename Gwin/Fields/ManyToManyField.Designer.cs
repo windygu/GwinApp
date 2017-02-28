@@ -1,4 +1,4 @@
-﻿namespace App.WinForm.Fields
+﻿namespace App.Gwin.Fields
 {
     partial class ManyToManyField
     {

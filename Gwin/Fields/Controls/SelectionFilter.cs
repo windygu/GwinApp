@@ -1,4 +1,4 @@
-﻿using App.WinForm.Attributes;
+﻿using App.Gwin.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Reflection;
-using App.WinForm.Entities;
+using App.Gwin.Entities;
 using System.Collections;
 
-namespace App.WinForm.Fields.Controls
+namespace App.Gwin.Fields.Controls
 {
     /// <summary>
     /// Manage the the selection filter of Filed

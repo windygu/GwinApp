@@ -5,11 +5,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using App.WinForm.Attributes;
+using App.Gwin.Attributes;
 using GenericWinForm.Demo.Entities;
 using System.Reflection;
-using App.WinForm.Application.BAL.GwinApplication;
-using App.WinForm.Application.Presentation.MainForm;
+using App.Gwin.Application.BAL.GwinApplication;
+using App.Gwin.Application.Presentation.MainForm;
+using App.Gwin;
 
 namespace App.Shared.AttributesManager.Tests
 {
@@ -20,7 +21,7 @@ namespace App.Shared.AttributesManager.Tests
         [TestInitialize]
         public void initBaseEntityBAOTests()
         {
-            Gwin.Start(typeof(ModelContext), typeof(BaseBLO<>), new FormApplication(), null);
+            GwinApp.Start(typeof(ModelContext), typeof(BaseBLO<>), new FormApplication(), null);
         }
 
         [TestMethod()]

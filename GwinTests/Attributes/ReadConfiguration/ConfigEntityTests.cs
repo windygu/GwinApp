@@ -1,14 +1,14 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using App.WinForm.Attributes;
+using App.Gwin.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using App.WinForm.Entities.Security;
-using App.WinForm.ModelData;
+using App.Gwin.Entities.Security;
+using App.Gwin.ModelData;
 
-namespace App.WinForm.Attributes.Tests
+namespace App.Gwin.Attributes.Tests
 {
     [TestClass()]
     public class ConfigEntityTests

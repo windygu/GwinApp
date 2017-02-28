@@ -7,11 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using App.WinForm.Attributes;
-using App.WinForm.EntityManagement;
+using App.Gwin.Attributes;
+using App.Gwin.EntityManagement;
 using System.Reflection;
 
-namespace App.WinForm
+namespace App.Gwin
 {
     /// <summary>
     /// Interface de mise à jour d'une entity

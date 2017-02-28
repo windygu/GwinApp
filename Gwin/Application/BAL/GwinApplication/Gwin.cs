@@ -1,28 +1,28 @@
-﻿using App.WinForm.Application.BAL;
-using App.WinForm.Application.BAL.Authentication;
-using App.WinForm.Application.BAL.GwinApplication;
-using App.WinForm.Application.Presentation.MainForm;
-using App.WinForm.Attributes;
-using App.WinForm.Entities.Authentication;
-using App.WinForm.Exceptions.Gwin;
+﻿using App.Gwin.Application.BAL;
+using App.Gwin.Application.BAL.Authentication;
+using App.Gwin.Application.BAL.GwinApplication;
+using App.Gwin.Application.Presentation.MainForm;
+using App.Gwin.Attributes;
+using App.Gwin.Entities.Authentication;
+using App.Gwin.Exceptions.Gwin;
 using System;
 using System.Globalization;
 using System.Runtime.Serialization;
 
-namespace App.WinForm
+namespace App.Gwin
 {
     /// <summary>
     /// GenericWinFrom Application instance
     /// Sengleton classes
     /// </summary>
-    public class Gwin
+    public class GwinApp
     {
         #region private static Properties
-        private static Gwin instance = null;
+        private static GwinApp instance = null;
         /// <summary>
         /// Get or Set Gwin Instance
         /// </summary>
-        public static Gwin Instance {
+        public static GwinApp Instance {
             get
             {
                 TestIf_Gwin_isStart();
@@ -87,7 +87,7 @@ namespace App.WinForm
         /// is is MdiForm
         /// </param>
         /// <param name="user">Connected user</param>
-        public Gwin(Type TypeDbContext, Type TypeBaseBLO, FormApplication applicationMenuInstance, User user)
+        public GwinApp(Type TypeDbContext, Type TypeBaseBLO, FormApplication applicationMenuInstance, User user)
         {
             this.TypeDBContext = TypeDbContext;
             this.TypeBaseBLO = TypeBaseBLO;
@@ -116,13 +116,13 @@ namespace App.WinForm
         public static void Start(Type TypeDbContext, Type TypeBaseBLO, FormApplication AppMenu, User user)
         {
             // Create Gwin Instance
-            if (Gwin.instance == null)
+            if (GwinApp.instance == null)
             {
                 if (user == null)
                 {
                     user = new UserGwinBLO().CreateGuestUser();
                 }
-                Gwin.Instance = new Gwin(TypeDbContext, TypeBaseBLO,AppMenu, user);
+                GwinApp.Instance = new GwinApp(TypeDbContext, TypeBaseBLO,AppMenu, user);
             }
 
             // Update GwinApplicatio, after  ModelConfiguration changes
@@ -130,13 +130,13 @@ namespace App.WinForm
             installApplication.Update();
 
             // Change Gwin Language 
-            new GwinLanguageBLO().ChangeLanguage(Gwin.Instance.CultureInfo, Gwin.Instance.ApplicationMenu);
+            new GwinLanguageBLO().ChangeLanguage(GwinApp.Instance.CultureInfo, GwinApp.Instance.ApplicationMenu);
 
 
         }
         private static void TestIf_Gwin_isStart()
         {
-            if (Gwin.instance == null) throw new GwinException("The Gwin Application Must be started befor use Gwin.Instance");
+            if (GwinApp.instance == null) throw new GwinException("The Gwin Application Must be started befor use Gwin.Instance");
         }
         #endregion
 
@@ -154,9 +154,9 @@ namespace App.WinForm
         #region Langauage
         public static void ChangeLanguage(CultureInfo cultureInfo)
         {
-            Gwin.TestIf_Gwin_isStart();
-            Gwin.Instance.CultureInfo = cultureInfo;
-            new GwinLanguageBLO().ChangeLanguage(Gwin.Instance.CultureInfo, Gwin.Instance.ApplicationMenu);
+            GwinApp.TestIf_Gwin_isStart();
+            GwinApp.Instance.CultureInfo = cultureInfo;
+            new GwinLanguageBLO().ChangeLanguage(GwinApp.Instance.CultureInfo, GwinApp.Instance.ApplicationMenu);
         }
 
 
@@ -166,11 +166,11 @@ namespace App.WinForm
         /// <summary>
         /// Update Gwin Tables, it must be executed after Model configuration change
         /// </summary>
-        public static void Update_Gwin_Table()
+        public static void Update()
         {
             TestIf_Gwin_isStart();
             // Update GwinApplicatio, after  ModelConfiguration changes
-            InstallApplicationGwinBLO installApplication = new InstallApplicationGwinBLO(Gwin.instance.TypeDBContext);
+            InstallApplicationGwinBLO installApplication = new InstallApplicationGwinBLO(GwinApp.instance.TypeDBContext);
             installApplication.Update();
         }
         #endregion

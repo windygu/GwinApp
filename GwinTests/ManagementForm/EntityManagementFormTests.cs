@@ -1,11 +1,11 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Windows.Forms;
-using App.WinForm.Entities;
-using App.WinForm.Application.BAL;
-using App.WinForm.Application.Presentation;
-using App.WinForm.Application.Presentation.EntityManagement;
+using App.Gwin.Entities;
+using App.Gwin.Application.BAL;
+using App.Gwin.Application.Presentation;
+using App.Gwin.Application.Presentation.EntityManagement;
 
-namespace App.WinForm.Tests
+namespace App.Gwin.Tests
 {
     [TestClass()]
     public class EntityManagementFormTests

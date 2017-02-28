@@ -1,11 +1,11 @@
-﻿using App.WinForm.Entities.Authentication;
+﻿using App.Gwin.Entities.Authentication;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.WinForm.Application.BAL.Authentication
+namespace App.Gwin.Application.BAL.Authentication
 {
     /// <summary>
     /// User Gwin Business Logic

@@ -1,8 +1,8 @@
-﻿using App.WinForm.Application;
-using App.WinForm.Application.BAL.GwinApplication;
-using App.WinForm.Attributes;
-using App.WinForm.Entities.Persons;
-using App.WinForm.Entities.Security;
+﻿using App.Gwin.Application;
+using App.Gwin.Application.BAL.GwinApplication;
+using App.Gwin.Attributes;
+using App.Gwin.Entities.Persons;
+using App.Gwin.Entities.Security;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.WinForm.Entities.Authentication
+namespace App.Gwin.Entities.Authentication
 {
     [DisplayEntity(Localizable =true,isMaleName =true, DisplayMember = "Login")]
     [Menu]
@@ -45,7 +45,7 @@ namespace App.WinForm.Entities.Authentication
 
         public List<Role> Roles { set; get; }
 
-        public Gwin.Languages Language { set; get; }
+        public GwinApp.Languages Language { set; get; }
 
 
     }

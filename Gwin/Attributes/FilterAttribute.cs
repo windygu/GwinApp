@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 
-namespace App.WinForm.Attributes
+namespace App.Gwin.Attributes
 {
     public class FilterAttribute : Attribute
     {

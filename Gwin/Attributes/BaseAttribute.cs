@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.WinForm.Attributes
+namespace App.Gwin.Attributes
 {
     public class BaseAttribute :Attribute
     {

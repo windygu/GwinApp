@@ -1,4 +1,4 @@
-﻿namespace App.WinForm
+﻿namespace App.Gwin
 {
     partial class EntityManagementControl
     {

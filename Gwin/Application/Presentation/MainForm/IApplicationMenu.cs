@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace App.WinForm.Application.Presentation.MainForm
+namespace App.Gwin.Application.Presentation.MainForm
 {
     /// <summary>
     /// Application menu interface

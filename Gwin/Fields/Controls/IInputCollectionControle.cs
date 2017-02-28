@@ -1,7 +1,7 @@
-﻿using App.WinForm.Entities;
+﻿using App.Gwin.Entities;
 using System.Collections.Generic;
 
-namespace App.WinForm
+namespace App.Gwin
 {
     public interface IInputCollectionControle
     {

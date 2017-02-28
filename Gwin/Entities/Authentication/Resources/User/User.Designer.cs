@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace App.WinForm.Entities.Authentication.Resources.User {
+namespace App.Gwin.Entities.Authentication.Resources.User {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace App.WinForm.Entities.Authentication.Resources.User {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("App.WinForm.Entities.Authentication.Resources.User.User", typeof(User).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("App.Gwin.Entities.Authentication.Resources.User.User", typeof(User).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

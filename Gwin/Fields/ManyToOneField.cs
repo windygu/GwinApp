@@ -1,6 +1,6 @@
 ﻿using App.Shared.AttributesManager;
-using App.WinForm.Attributes;
-using App.WinForm.EntityManagement;
+using App.Gwin.Attributes;
+using App.Gwin.EntityManagement;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,9 +10,9 @@ using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 
-namespace App.WinForm.Fields
+namespace App.Gwin.Fields
 {
-    public partial class ManyToOneField : App.WinFrom.Fields.BaseField
+    public partial class ManyToOneField : BaseField
     {
 
         #region Propriété

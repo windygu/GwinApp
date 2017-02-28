@@ -1,6 +1,6 @@
-﻿using App.WinForm.Attributes;
-using App.WinForm.Entities.Authentication;
-using App.WinForm.Entities.Security;
+﻿using App.Gwin.Attributes;
+using App.Gwin.Entities.Authentication;
+using App.Gwin.Entities.Security;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.WinForm.Entities.Application
+namespace App.Gwin.Entities.Application
 {
     [DisplayEntity(Localizable =true, DisplayMember = "Name",isMaleName =true)]
     [ManagementForm(FormTitle ="MenuManager")]

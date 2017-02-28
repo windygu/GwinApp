@@ -1,4 +1,4 @@
-﻿namespace App.WinForm { 
+﻿namespace App.Gwin { 
     partial class EntityDataGridControl
     {
         /// <summary> 
@@ -59,7 +59,7 @@
             // Editer
             // 
             this.Editer.HeaderText = "";
-            this.Editer.Image = global::App.WinForm.Properties.Resources.edit;
+            this.Editer.Image = global::App.Gwin.Properties.Resources.edit;
             this.Editer.Name = "Editer";
             this.Editer.ReadOnly = true;
             this.Editer.ToolTipText = "Editer";
@@ -68,7 +68,7 @@
             // Supprimer
             // 
             this.Supprimer.HeaderText = "";
-            this.Supprimer.Image = global::App.WinForm.Properties.Resources.delete;
+            this.Supprimer.Image = global::App.Gwin.Properties.Resources.delete;
             this.Supprimer.Name = "Supprimer";
             this.Supprimer.ReadOnly = true;
             this.Supprimer.Width = 50;

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace App.WinForm.Entities.ContactInformations.Resources.City {
+namespace App.Gwin.Entities.ContactInformations.Resources.City {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace App.WinForm.Entities.ContactInformations.Resources.City {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("App.WinForm.Entities.ContactInformations.Resources.City.City", typeof(City).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("App.Gwin.Entities.ContactInformations.Resources.City.City", typeof(City).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

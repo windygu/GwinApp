@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace App.WinForm
+namespace App.Gwin
 {
     /// <summary>
     /// Ajouter un nouveau Entité 

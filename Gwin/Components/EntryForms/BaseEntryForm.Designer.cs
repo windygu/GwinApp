@@ -1,4 +1,4 @@
-﻿namespace App.WinForm
+﻿namespace App.Gwin
 {
     partial class BaseEntryForm
     {
@@ -61,7 +61,7 @@
             // 
             this.btEnregistrer.AccessibleDescription = "Enregistrement des informations";
             this.btEnregistrer.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btEnregistrer.Image = global::App.WinForm.Properties.Resources.save;
+            this.btEnregistrer.Image = global::App.Gwin.Properties.Resources.save;
             this.btEnregistrer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btEnregistrer.Location = new System.Drawing.Point(3, 9);
             this.btEnregistrer.Name = "btEnregistrer";
@@ -76,7 +76,7 @@
             // 
             this.btAnnuler.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btAnnuler.CausesValidation = false;
-            this.btAnnuler.Image = global::App.WinForm.Properties.Resources.fermer_noir;
+            this.btAnnuler.Image = global::App.Gwin.Properties.Resources.fermer_noir;
             this.btAnnuler.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btAnnuler.Location = new System.Drawing.Point(574, 9);
             this.btAnnuler.Name = "btAnnuler";

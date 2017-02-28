@@ -1,7 +1,7 @@
 ﻿using App.Shared.AttributesManager;
-using App.WinForm.Attributes;
-using App.WinForm.Entities;
-using App.WinForm.Fields.Controls;
+using App.Gwin.Attributes;
+using App.Gwin.Entities;
+using App.Gwin.Fields.Controls;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,7 +14,7 @@ using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 
-namespace App.WinForm.Fields
+namespace App.Gwin.Fields
 {
     /// <summary>
     /// Meny to Many Field
@@ -23,7 +23,7 @@ namespace App.WinForm.Fields
     /// It can use Private Filter to selected Data
     /// The Private filter is configured in Entity Classe
     /// </summary>
-    public partial class ManyToManyField : App.WinFrom.Fields.BaseField
+    public partial class ManyToManyField : BaseField
     {
         #region public Properties
         /// <summary>

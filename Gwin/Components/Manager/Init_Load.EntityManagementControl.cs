@@ -1,16 +1,16 @@
-﻿using App.WinForm.Attributes;
-using App.WinForm.EntityManagement;
-using App.WinForm.Entities;
+﻿using App.Gwin.Attributes;
+using App.Gwin.EntityManagement;
+using App.Gwin.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using App.WinForm.Shared.Resources;
+using App.Gwin.Shared.Resources;
 using System.Resources;
 
-namespace App.WinForm
+namespace App.Gwin
 {
     public partial class EntityManagementControl
     {

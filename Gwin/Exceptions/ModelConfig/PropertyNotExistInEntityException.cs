@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace App.WinForm.Fields
+namespace App.Gwin.Fields
 {
     [Serializable]
     public class PropertyNotExistInEntityException : Exception

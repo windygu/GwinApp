@@ -1,11 +1,12 @@
-﻿using System;
+﻿using App.Gwin.Application.Presentation.Messages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace App.WinForm.Application.Presentation.Messages
+namespace App.Gwin.Application.Presentation.Messages
 {
     /// <summary>
     /// Show message in Presentation Layer

@@ -8,15 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Reflection;
-using App.WinForm.Attributes;
-using App.WinFrom.Fields;
-using App.WinForm.Fields;
+using App.Gwin.Attributes;
+using App.Gwin.Fields;
 using App.Shared.AttributesManager;
-using App.WinForm.Entities;
+using App.Gwin.Entities;
 using System.Resources;
-using App.WinForm.Shared.Resources;
+using App.Gwin.Shared.Resources;
+using App.WinForm.Fields;
 
-namespace App.WinForm.EntityManagement
+namespace App.Gwin.EntityManagement
 {
     /// <summary>
     /// Filter control, it is used in 

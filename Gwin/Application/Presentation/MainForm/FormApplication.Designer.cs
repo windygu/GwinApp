@@ -1,4 +1,4 @@
-﻿namespace App.WinForm.Application.Presentation.MainForm
+﻿namespace App.Gwin.Application.Presentation.MainForm
 {
     partial class FormApplication
     {
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormApplication));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.languageToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.frenchToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,11 +41,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.languageToolStripMenuItem1});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(572, 24);
-            this.menuStrip1.TabIndex = 1;
-            this.menuStrip1.Text = "menuStrip1";
             // 
             // languageToolStripMenuItem1
             // 
@@ -53,39 +51,34 @@
             this.englishToolStripMenuItem,
             this.arabToolStripMenuItem});
             this.languageToolStripMenuItem1.Name = "languageToolStripMenuItem1";
-            this.languageToolStripMenuItem1.Size = new System.Drawing.Size(71, 20);
-            this.languageToolStripMenuItem1.Text = "Language";
+            resources.ApplyResources(this.languageToolStripMenuItem1, "languageToolStripMenuItem1");
             // 
             // frenchToolStripMenuItem1
             // 
             this.frenchToolStripMenuItem1.Name = "frenchToolStripMenuItem1";
-            this.frenchToolStripMenuItem1.Size = new System.Drawing.Size(112, 22);
-            this.frenchToolStripMenuItem1.Text = "French";
+            resources.ApplyResources(this.frenchToolStripMenuItem1, "frenchToolStripMenuItem1");
             this.frenchToolStripMenuItem1.Click += new System.EventHandler(this.frenchToolStripMenuItem1_Click);
             // 
             // englishToolStripMenuItem
             // 
             this.englishToolStripMenuItem.Name = "englishToolStripMenuItem";
-            this.englishToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
-            this.englishToolStripMenuItem.Text = "English";
+            resources.ApplyResources(this.englishToolStripMenuItem, "englishToolStripMenuItem");
             this.englishToolStripMenuItem.Click += new System.EventHandler(this.englishToolStripMenuItem_Click);
             // 
             // arabToolStripMenuItem
             // 
             this.arabToolStripMenuItem.Name = "arabToolStripMenuItem";
-            this.arabToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
-            this.arabToolStripMenuItem.Text = "Arab";
+            resources.ApplyResources(this.arabToolStripMenuItem, "arabToolStripMenuItem");
             this.arabToolStripMenuItem.Click += new System.EventHandler(this.arabToolStripMenuItem_Click);
             // 
             // FormApplication
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(572, 320);
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
             this.Name = "FormApplication";
-            this.Text = "FormApplication";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormApplication_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

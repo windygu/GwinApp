@@ -8,12 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Reflection;
-using App.WinForm.Attributes;
+using App.Gwin.Attributes;
 using App.Shared.AttributesManager;
-using App.WinForm.Entities;
+using App.Gwin.Entities;
 using System.Resources;
 
-namespace App.WinForm
+namespace App.Gwin
 {
     public partial class EntityDataGridControl : UserControl, IEntityDataGrideControl
     {

@@ -1,11 +1,11 @@
-﻿using App.WinForm.Attributes;
+﻿using App.Gwin.Attributes;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
 
-namespace App.WinForm.Entities
+namespace App.Gwin.Entities
 {
     /// <summary>
     /// La classe de Base de toutes les entity
