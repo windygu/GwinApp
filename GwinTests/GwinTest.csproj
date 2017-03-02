@@ -62,6 +62,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Application\BAL\BaseEntityBAOTests.cs" />
+    <Compile Include="Application\BAL\GwinApplication\GwinAppTests.cs" />
     <Compile Include="Application\BAL\GwinApplication\GwinTests.cs" />
     <Compile Include="Application\BAL\InstallApplicationTests.cs" />
     <Compile Include="Attributes\ReadConfiguration\ConfigEntityTests.cs" />

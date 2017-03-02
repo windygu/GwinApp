@@ -24,7 +24,7 @@
         }
 
         //
-        // Gwin : Authentication
+        // Gwin : Entites
         //
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<User> Users { get; set; }
@@ -32,6 +32,7 @@
         public virtual DbSet<Country> Countrys { get; set; }
         public virtual DbSet<City> Citys { get; set; }
         public virtual DbSet<ContactInformation> ContactInformations { get; set; }
+        public virtual DbSet<ApplicationName> ApplicationNames { get; set; }
 
 
         // Demo

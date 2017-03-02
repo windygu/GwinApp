@@ -22,7 +22,8 @@ namespace App.Gwin
         /// <summary>
         /// Get or Set Gwin Instance
         /// </summary>
-        public static GwinApp Instance {
+        public static GwinApp Instance
+        {
             get
             {
                 TestIf_Gwin_isStart();
@@ -122,15 +123,20 @@ namespace App.Gwin
                 {
                     user = new UserGwinBLO().CreateGuestUser();
                 }
-                GwinApp.Instance = new GwinApp(TypeDbContext, TypeBaseBLO,AppMenu, user);
+                GwinApp.Instance = new GwinApp(TypeDbContext, TypeBaseBLO, AppMenu, user);
             }
 
             // Update GwinApplicatio, after  ModelConfiguration changes
+            //[Update]
             InstallApplicationGwinBLO installApplication = new InstallApplicationGwinBLO(TypeDbContext);
             installApplication.Update();
 
-            // Change Gwin Language 
-            new GwinLanguageBLO().ChangeLanguage(GwinApp.Instance.CultureInfo, GwinApp.Instance.ApplicationMenu);
+
+            if (AppMenu != null && user != null)
+            {
+                // Change Gwin Language 
+                new GwinLanguageBLO().ChangeLanguage(GwinApp.Instance.CultureInfo, GwinApp.Instance.ApplicationMenu);
+            }
 
 
         }
@@ -146,6 +152,7 @@ namespace App.Gwin
         /// </summary>
         public static void End()
         {
+            GwinApp.instance = null;
             // Despose All Calculated Configuration
             ConfigEntity.Despose();
         }
@@ -165,12 +172,12 @@ namespace App.Gwin
         #region Install and Update
         /// <summary>
         /// Update Gwin Tables, it must be executed after Model configuration change
+        /// It can be used befor Gwin Creation.
         /// </summary>
-        public static void Update()
+        public static void Update(Type Type_DbContext)
         {
-            TestIf_Gwin_isStart();
             // Update GwinApplicatio, after  ModelConfiguration changes
-            InstallApplicationGwinBLO installApplication = new InstallApplicationGwinBLO(GwinApp.instance.TypeDBContext);
+            InstallApplicationGwinBLO installApplication = new InstallApplicationGwinBLO(Type_DbContext);
             installApplication.Update();
         }
         #endregion

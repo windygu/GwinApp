@@ -10,6 +10,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using App.Gwin.Entities.MultiLanguage;
 
 namespace App.Gwin
 {
@@ -83,6 +84,26 @@ namespace App.Gwin
                         date = dateTimePicker.Value;
                     }
                     typeEntity.GetProperty(NomPropriete).SetValue(entity, date);
+                }
+                #endregion
+
+                #region Read :LocalizedString 
+                if (typePropriete.Name == "LocalizedString")
+                {
+                    string value = "";
+                    if (this.AutoGenerateField)
+                    {
+                        BaseField baseField = this.FindGenerateField(item.Name);
+                        value = baseField.Value.ToString();
+                    }
+                    else
+                    {
+                        TextBox txtBox = (TextBox)this.FindPersonelField(item.Name, "TextBox");
+                        value = txtBox.Text;
+                    }
+                    LocalizedString localizedString = (LocalizedString) typeEntity.GetProperty(NomPropriete).GetValue(entity);
+                    localizedString.Current = value;
+                    typeEntity.GetProperty(NomPropriete).SetValue(entity, localizedString);
                 }
                 #endregion
 

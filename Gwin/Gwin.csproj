@@ -60,6 +60,8 @@
   <ItemGroup>
     <Compile Include="Application\BAL\Authentication\UserGwinBLO.cs" />
     <Compile Include="Application\BAL\BaseEntityBLO.cs" />
+    <Compile Include="Entities\Application\Class1.cs" />
+    <Compile Include="Entities\MultiLanguage\LocalizedString.cs" />
     <Compile Include="Exceptions\Gwin\GwinException.cs" />
     <Compile Include="Application\BAL\GwinApplication\GwinLanguageBLO.cs" />
     <Compile Include="Application\BAL\GwinApplication\InstallApplicationGwinBLO.cs" />

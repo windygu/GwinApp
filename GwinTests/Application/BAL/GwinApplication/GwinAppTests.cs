@@ -1,16 +1,19 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using App.Gwin.Application.BAL.GwinApplication;
+using App.Gwin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Gwin.Application.BAL.GwinApplication.Tests
+namespace App.Gwin.Tests
 {
     [TestClass()]
-    public class GwinTests
+    public class GwinAppTests
     {
+      
         
+        
+       
     }
 }

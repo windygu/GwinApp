@@ -12,6 +12,7 @@ using App.Gwin.Attributes;
 using App.Shared.AttributesManager;
 using App.Gwin.Entities;
 using System.Resources;
+using App.Gwin.Entities.MultiLanguage;
 
 namespace App.Gwin
 {
@@ -94,7 +95,6 @@ namespace App.Gwin
 
         #endregion
 
-
         #region Constructeurs
 
         public EntityDataGridControl(IBaseBLO Service, Dictionary<string, object> critereRechercheFiltre = null) 
@@ -107,7 +107,6 @@ namespace App.Gwin
         }
         public EntityDataGridControl() : this(null) { }
         #endregion
-
 
         #region Actualiser
         /// <summary>
@@ -170,6 +169,12 @@ namespace App.Gwin
                             colonne.DataPropertyName = propertyInfo.Name;
                         }
                         break;
+                    case "LocalizedString":
+                        {
+                            colonne.ValueType = typeof(LocalizedString);
+                            colonne.DataPropertyName = propertyInfo.Name;
+                        }
+                        break;
                     case "Integer":
                         {
                             colonne.ValueType = typeof(String);
@@ -194,13 +199,6 @@ namespace App.Gwin
                                 colonne = c;
                                 colonne.ReadOnly = true;
                             }
-                            else
-                            {
-                                if(propertyInfo.PropertyType.Name != "List`1")
-                                colonne.DataPropertyName = propertyInfo.Name;
-                            }
-
-                            
                         }
                         break;
                 }

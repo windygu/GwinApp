@@ -310,7 +310,7 @@ namespace App.Gwin.EntityManagement
                         {
                             ConfigProperty ConfigProperty = new ConfigProperty(propertyInfo, this.ConfigEntity);
 
-                            if (ConfigProperty.Relationship.Relation == RelationshipAttribute.Relations.ManyToOne)
+                            if (ConfigProperty.Relationship?.Relation == RelationshipAttribute.Relations.ManyToOne)
                             {
                                 // [bug] groupBoxFiltrage doit être MainContainner
                                 ManyToOneField ComboBoxEntity = (ManyToOneField)this.groupBoxFiltrage.Controls.Find(propertyInfo.Name, true).First();

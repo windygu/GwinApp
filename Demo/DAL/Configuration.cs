@@ -1,32 +1,21 @@
 namespace App.Migrations
 {
+    using Gwin;
     using Gwin.Application.BAL;
     using Gwin.Entities.Security;
     using System.Data.Entity.Migrations;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<ModelContext>
+    public sealed class Configuration : DbMigrationsConfiguration<ModelContext>
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
             ContextKey = "GeneticWinFormApp";
         }
 
         protected override void Seed(App.ModelContext context)
         {
-            //  This method will be called after migrating to the latest version.
-
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //context.Projets.AddOrUpdate(
-            //  p => p.Id
-            //  ,
-            //  new Project { Id = 1, Title = "Projet 1" },
-            //  new Project { Id = 1, Title = "Projet 2" },
-            //   new Project { Id = 1, Title = "Projet 3" }
-            //);
-
+     
             context.Roles.AddOrUpdate(
                  r => r.Id
               ,
@@ -35,10 +24,6 @@ namespace App.Migrations
               new Role { Id = 3, Name = "User" },
               new Role { Id = 4, Name = "Project Management system" }
             );
-
-            InstallApplicationGwinBLO InstallApplication = new InstallApplicationGwinBLO(typeof(ModelContext));
-            InstallApplication.Update();
-
         }
     }
 }

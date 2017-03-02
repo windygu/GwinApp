@@ -79,6 +79,14 @@
     <Compile Include="Form_EntryFromDemo.Designer.cs">
       <DependentUpon>Form_EntryFromDemo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703021123319_Update_Application_Name_Tables.cs" />
+    <Compile Include="Migrations\201703021123319_Update_Application_Name_Tables.Designer.cs">
+      <DependentUpon>201703021123319_Update_Application_Name_Tables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703021215263_Update_ApplicationNames_2.cs" />
+    <Compile Include="Migrations\201703021215263_Update_ApplicationNames_2.Designer.cs">
+      <DependentUpon>201703021215263_Update_ApplicationNames_2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Entities\Resources\MinimumConfiguration_Loalizable_Entity\MinimumConfiguration_Loalizable_Entity.resx">
@@ -90,6 +98,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form_EntryFromDemo.resx">
       <DependentUpon>Form_EntryFromDemo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703021123319_Update_Application_Name_Tables.resx">
+      <DependentUpon>201703021123319_Update_Application_Name_Tables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703021215263_Update_ApplicationNames_2.resx">
+      <DependentUpon>201703021215263_Update_ApplicationNames_2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -120,6 +134,7 @@
       <Name>Gwin</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

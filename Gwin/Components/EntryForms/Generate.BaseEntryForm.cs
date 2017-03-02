@@ -170,6 +170,40 @@ namespace App.Gwin
                         break;
                     #endregion
 
+                    #region Champs LocalizedString
+                    case "LocalizedString":
+
+
+                        StringField LocalizedString = new StringField();
+                        LocalizedString.StopAutoSizeConfig();
+                        LocalizedString.Name = item.Name;
+                        LocalizedString.Location = new System.Drawing.Point(x_field, y_field);
+                        LocalizedString.OrientationField = orientation_config;
+                        LocalizedString.SizeLabel = new Size(width_label, height_label);
+                        LocalizedString.SizeControl = new Size(width_control_config, height_control);
+                        if (configProperty.EntryForm?.MultiLine == true)
+                        {
+                            LocalizedString.IsMultiline = true;
+                            LocalizedString.NombreLigne = configProperty.EntryForm.NumberLine;
+                        }
+
+
+
+                        LocalizedString.TabIndex = ++TabIndex;
+                        LocalizedString.Text_Label = configProperty.DisplayProperty.Titre;
+                        LocalizedString.ConfigSizeField();
+
+                        LocalizedString.FieldChanged += ControlPropriete_ValueChanged;
+                        if (configProperty.EntryForm?.isOblegatoir == true)
+                            LocalizedString.ValidatingFiled += textBoxString_Validating;
+
+                        // Insertion à l'interface
+                        this.ConteneurFormulaire.Controls.Add(LocalizedString);
+                        field_control = LocalizedString;
+
+                        break;
+                    #endregion
+
                     default:
                         {
                             #region Champs : ManyToOne

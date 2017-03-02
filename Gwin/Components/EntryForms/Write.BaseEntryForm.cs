@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Collections;
+using App.Gwin.Entities.MultiLanguage;
 
 namespace App.Gwin
 {
@@ -51,6 +52,7 @@ namespace App.Gwin
 
                 switch (typePropriete.Name)
                 {
+                    #region Write : String
                     case "String":
                         {
                             string valeur = (string)typeEntity.GetProperty(NomPropriete).GetValue(entity);
@@ -68,6 +70,33 @@ namespace App.Gwin
                             }
                         }
                         break;
+                    #endregion
+
+                    #region Write : LocalizedString
+                    case "LocalizedString":
+                        {
+                            LocalizedString valeur = (LocalizedString)typeEntity.GetProperty(NomPropriete).GetValue(entity);
+                            if (CritereRechercheFiltre != null && CritereRechercheFiltre.ContainsKey(item.Name))
+                            {
+                                valeur.Current = CritereRechercheFiltre[item.Name].ToString();
+                            }
+                               
+                            if (this.AutoGenerateField)
+                            {
+                                BaseField baseField = this.FindGenerateField(item.Name);
+                                if(valeur != null)
+                                baseField.Value = valeur.Current;
+                            }
+                            else
+                            {
+                                TextBox txtBox = (TextBox)this.FindPersonelField(item.Name, "TextBox");
+                                txtBox.Text = valeur.Current;
+                            }
+                        }
+                        break;
+                    #endregion
+
+                    #region Write Int32
                     case "Int32":
                         {
                             int valeur = (int)typeEntity.GetProperty(NomPropriete).GetValue(entity);
@@ -87,6 +116,9 @@ namespace App.Gwin
 
                         }
                         break;
+                    #endregion
+
+                    #region Write DateTime
                     case "DateTime":
                         {
                             DateTime valeur = (DateTime)typeEntity.GetProperty(NomPropriete).GetValue(entity);
@@ -108,7 +140,12 @@ namespace App.Gwin
 
                         }
                         break;
+                    #endregion
+
+                    
                     default:
+
+                        #region ManyToOne
                         if (attributesOfProperty.Relationship?.Relation == RelationshipAttribute.Relations.ManyToOne)
                         {
                             BaseEntity valeur = (BaseEntity)typeEntity.GetProperty(NomPropriete).GetValue(entity);
@@ -131,6 +168,9 @@ namespace App.Gwin
                                 comboBox.SelectedValue = valeur.Id;
                             }
                         }
+                        #endregion
+
+                        #region ManyToMany_Selection
                         if (attributesOfProperty.Relationship?.Relation == RelationshipAttribute.Relations.ManyToMany_Selection)
                         {
                             IList v_ls_object = typeEntity.GetProperty(NomPropriete).GetValue(entity) as IList;
@@ -162,8 +202,9 @@ namespace App.Gwin
                             }
                         }
                         break;
+                        #endregion
                 }
- 
+
             }
 
             // Fin de la phase d'initialisaiton
