@@ -79,13 +79,17 @@
     <Compile Include="Form_EntryFromDemo.Designer.cs">
       <DependentUpon>Form_EntryFromDemo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201703021123319_Update_Application_Name_Tables.cs" />
-    <Compile Include="Migrations\201703021123319_Update_Application_Name_Tables.Designer.cs">
-      <DependentUpon>201703021123319_Update_Application_Name_Tables.cs</DependentUpon>
+    <Compile Include="Migrations\201703030834277_Table_ApplicationName.cs" />
+    <Compile Include="Migrations\201703030834277_Table_ApplicationName.Designer.cs">
+      <DependentUpon>201703030834277_Table_ApplicationName.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201703021215263_Update_ApplicationNames_2.cs" />
-    <Compile Include="Migrations\201703021215263_Update_ApplicationNames_2.Designer.cs">
-      <DependentUpon>201703021215263_Update_ApplicationNames_2.cs</DependentUpon>
+    <Compile Include="Migrations\201703030917398_Update_Description_Table_ApplicationName.cs" />
+    <Compile Include="Migrations\201703030917398_Update_Description_Table_ApplicationName.Designer.cs">
+      <DependentUpon>201703030917398_Update_Description_Table_ApplicationName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703031231575_Update-Menu-Item-Table.cs" />
+    <Compile Include="Migrations\201703031231575_Update-Menu-Item-Table.Designer.cs">
+      <DependentUpon>201703031231575_Update-Menu-Item-Table.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -99,11 +103,14 @@
     <EmbeddedResource Include="Form_EntryFromDemo.resx">
       <DependentUpon>Form_EntryFromDemo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703021123319_Update_Application_Name_Tables.resx">
-      <DependentUpon>201703021123319_Update_Application_Name_Tables.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201703030834277_Table_ApplicationName.resx">
+      <DependentUpon>201703030834277_Table_ApplicationName.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703021215263_Update_ApplicationNames_2.resx">
-      <DependentUpon>201703021215263_Update_ApplicationNames_2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201703030917398_Update_Description_Table_ApplicationName.resx">
+      <DependentUpon>201703030917398_Update_Description_Table_ApplicationName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703031231575_Update-Menu-Item-Table.resx">
+      <DependentUpon>201703031231575_Update-Menu-Item-Table.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

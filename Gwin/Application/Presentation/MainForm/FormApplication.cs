@@ -1,32 +1,66 @@
 ﻿using App.Gwin.Application.BAL.GwinApplication;
 using App.Gwin.Application.Presentation.EntityManagement;
+using SplashScreen;
 using System;
+using System.ComponentModel;
 using System.Globalization;
 using System.Windows.Forms;
 
 namespace App.Gwin.Application.Presentation.MainForm
 {
     public partial class FormApplication : BaseForm, IApplicationMenu
-    { 
-    
-        protected EntityManagementCreator showManagementForm { set; get; }
+    {
 
-        protected void InitializeForm()
-        {
-            InitializeComponent();
-            showManagementForm = new EntityManagementCreator(GwinApp.Instance.TypeDBContext, this);
-            new ConfigMenuApplication(this);
+      //  protected EntityManagementCreator entityManagementCreator { set; get; }
 
-        }
         public FormApplication()
         {
+            if(LicenseManager.UsageMode == LicenseUsageMode.Runtime)
+            {
+               
+            }
             InitializeComponent();
+
         }
         private void FormApplication_Load(object sender, EventArgs e)
         {
-           
+
         }
-       
+        /// <summary>
+        /// InitializeComponent
+        /// Create Application Menu
+        /// Change Direction when language is changed
+        /// </summary>
+        public override void Reload()
+        {
+            // Clear All controls in Form Application
+            this.Controls.Clear();
+
+            InitializeComponent();
+
+            // Create Menu Application
+             // -- entityManagementCreator = new EntityManagementCreator(GwinApp.Instance.TypeDBContext, this);
+            new CreateApplicationMenu(this);
+
+            // Change Form Direction  - When  Languauge is changed
+            if (GwinApp.Instance.CultureInfo.TwoLetterISOLanguageName == "fr" || GwinApp.Instance.CultureInfo.TwoLetterISOLanguageName == "en")
+            {
+                this.RightToLeftLayout = false;
+                this.RightToLeft = RightToLeft.No;
+            }
+            else
+            {
+                this.RightToLeftLayout = true;
+                this.RightToLeft = RightToLeft.Yes;
+            }
+
+            // Refrech interface
+            this.WindowState = FormWindowState.Minimized;
+            this.WindowState = FormWindowState.Maximized;
+
+
+        }
+
         public MenuStrip getMenuStrip()
         {
             return this.menuStrip1;
@@ -47,6 +81,9 @@ namespace App.Gwin.Application.Presentation.MainForm
             GwinApp.ChangeLanguage(new CultureInfo("ar"));
         }
 
-       
+        private void languageToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

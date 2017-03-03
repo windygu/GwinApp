@@ -10,7 +10,7 @@ namespace App.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "GeneticWinFormApp";
+            ContextKey = "GwinApp";
         }
 
         protected override void Seed(App.ModelContext context)

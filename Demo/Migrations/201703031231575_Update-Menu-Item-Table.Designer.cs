@@ -7,13 +7,13 @@ namespace App.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class Update_Application_Name_Tables : IMigrationMetadata
+    public sealed partial class UpdateMenuItemTable : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Update_Application_Name_Tables));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(UpdateMenuItemTable));
         
         string IMigrationMetadata.Id
         {
-            get { return "201703021123319_Update_Application_Name_Tables"; }
+            get { return "201703031231575_Update-Menu-Item-Table"; }
         }
         
         string IMigrationMetadata.Source

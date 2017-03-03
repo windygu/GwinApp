@@ -1,5 +1,6 @@
 ﻿using App.Gwin.Attributes;
 using App.Gwin.Entities.Authentication;
+using App.Gwin.Entities.MultiLanguage;
 using App.Gwin.Entities.Security;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace App.Gwin.Entities.Application
 {
-    [DisplayEntity(Localizable =true, DisplayMember = "Name",isMaleName =true)]
+    [DisplayEntity(Localizable =true, DisplayMember = nameof(Code),isMaleName =true)]
     [ManagementForm(FormTitle ="MenuManager")]
     [Menu(Group ="Admin")]
     public class MenuItemApplication : BaseEntity
@@ -20,32 +21,18 @@ namespace App.Gwin.Entities.Application
         [EntryForm(Ordre = 2,GroupeBox = "Description")]
         [Filter]
         [DataGrid]
-        public string Name { set; get; }
+        public string Code { set; get; }
 
         [DisplayProperty(isInGlossary = true)]
         [EntryForm(Ordre = 3, MultiLine = true, GroupeBox = "Description")]
         [DataGrid]
-        public string Description { set; get; }
-
-
+        public LocalizedString Description { set; get; }
 
         [DisplayProperty(isInGlossary = true)]
         [EntryForm(Ordre = 2,GroupeBox ="Title")]
         [Filter]
         [DataGrid]
-        public string TitleArabic { set; get; }
-
-        [DisplayProperty(isInGlossary = true)]
-        [EntryForm(Ordre = 2,GroupeBox = "Title")]
-        [Filter]
-        [DataGrid]
-        public string TitleFrench { set; get; }
-
-        [DisplayProperty(isInGlossary = true)]
-        [EntryForm(Ordre = 2, GroupeBox = "Title")]
-        [Filter]
-        [DataGrid]
-        public string TitleEnglish { set; get; }
+        public LocalizedString Title { set; get; }
 
         [DisplayProperty(isInGlossary = true)]
         [EntryForm(Ordre = 2, GroupeBox = "Authorisation")]
@@ -53,19 +40,5 @@ namespace App.Gwin.Entities.Application
         [DataGrid]
         [Relationship(Relation = RelationshipAttribute.Relations.ManyToMany_Selection,EditMode= RelationshipAttribute.EditingModes.Selection_With_Check_Box)]
         public virtual List<Role> Roles { set; get; }
-
-
-        public string TitrleCulture(CultureInfo cultureInfo)
-        {
-            string title = "";
-            switch (cultureInfo.TwoLetterISOLanguageName)
-            {
-                case "fr": title = this.TitleFrench; break;
-                case "ar": title = this.TitleArabic; break;
-                case "en": title = this.TitleEnglish; break;
-            }
-            if (title == null) return cultureInfo.TwoLetterISOLanguageName + "_" + this.Name;
-            else return title;
-        }
     }
 }

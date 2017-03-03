@@ -52,6 +52,7 @@
             this.arabToolStripMenuItem});
             this.languageToolStripMenuItem1.Name = "languageToolStripMenuItem1";
             resources.ApplyResources(this.languageToolStripMenuItem1, "languageToolStripMenuItem1");
+            this.languageToolStripMenuItem1.Click += new System.EventHandler(this.languageToolStripMenuItem1_Click);
             // 
             // frenchToolStripMenuItem1
             // 
@@ -88,11 +89,10 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem languageToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem frenchToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem englishToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem arabToolStripMenuItem;
+        protected System.Windows.Forms.ToolStripMenuItem languageToolStripMenuItem1;
+        protected System.Windows.Forms.ToolStripMenuItem frenchToolStripMenuItem1;
+        protected System.Windows.Forms.ToolStripMenuItem englishToolStripMenuItem;
+        protected System.Windows.Forms.ToolStripMenuItem arabToolStripMenuItem;
+        protected System.Windows.Forms.MenuStrip menuStrip1;
     }
 }

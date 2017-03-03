@@ -102,6 +102,7 @@ namespace App.Gwin
                         value = txtBox.Text;
                     }
                     LocalizedString localizedString = (LocalizedString) typeEntity.GetProperty(NomPropriete).GetValue(entity);
+                    if (localizedString == null) localizedString = new LocalizedString();
                     localizedString.Current = value;
                     typeEntity.GetProperty(NomPropriete).SetValue(entity, localizedString);
                 }

@@ -4,6 +4,7 @@ using App.Gwin.Application.Presentation.EntityManagement;
 using App.Gwin.Attributes;
 using App.Gwin.Entities;
 using App.Gwin.Entities.Application;
+using App.Gwin.Exceptions.Gwin;
 using App.Gwin.ModelData;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace App.Gwin.Application.Presentation.MainForm
     /// <summary>
     /// Application Menu Configuration
     /// </summary>
-    public class ConfigMenuApplication
+    public class CreateApplicationMenu
     {
         #region Params
         private IApplicationMenu formMenu;
@@ -27,7 +28,7 @@ namespace App.Gwin.Application.Presentation.MainForm
         private IBaseBLO Service { get;  set; }
         #endregion
 
-        public ConfigMenuApplication(IApplicationMenu formMenu)
+        public CreateApplicationMenu(IApplicationMenu formMenu)
         {
             this.formMenu = formMenu;
             this.menuStrip = formMenu.getMenuStrip();
@@ -49,9 +50,17 @@ namespace App.Gwin.Application.Presentation.MainForm
             {
                 // ToolStripMenu
                 ToolStripMenuItem toolStripMenuItem = new ToolStripMenuItem();
-                toolStripMenuItem.Name = "toolStripMenuItem" + menuItemApplication.Name;
+                toolStripMenuItem.Name = "toolStripMenuItem" + menuItemApplication.Code;
                 toolStripMenuItem.Size = new System.Drawing.Size(82, 20);
-                toolStripMenuItem.Text = menuItemApplication.TitrleCulture(GwinApp.Instance.CultureInfo);
+                if(menuItemApplication.Title.Current != string.Empty)
+                {
+                    toolStripMenuItem.Text = menuItemApplication.Title.Current;
+                }
+               
+                else
+                {
+                    toolStripMenuItem.Text = menuItemApplication.Code;
+                }
                 this.menuStrip.Items.Add(toolStripMenuItem);
             }
 
@@ -73,11 +82,15 @@ namespace App.Gwin.Application.Presentation.MainForm
 
                 // Find groupe
                 if (configEntity.Menu.Group != null) {
-                    ToolStripItem GroupeToolStripItem = this.menuStrip.Items.Find("toolStripMenuItem" + configEntity.Menu.Group, true).SingleOrDefault();
+                    string toolStripMenuItem_key = "toolStripMenuItem" + configEntity.Menu.Group;
+                    ToolStripItem GroupeToolStripItem = this.menuStrip.Items.Find(toolStripMenuItem_key, true).SingleOrDefault();
                     ToolStripMenuItem GroupeToolStripMenuItem = GroupeToolStripItem as ToolStripMenuItem;
-                    if(GroupeToolStripMenuItem != null)
-                      GroupeToolStripMenuItem.DropDownItems.Add(toolStripMenuItem);
-                }else
+                    if (GroupeToolStripMenuItem != null)
+                        GroupeToolStripMenuItem.DropDownItems.Add(toolStripMenuItem);
+                    else
+                        throw new GwinException("toolStripMenuItem :" + toolStripMenuItem_key + " not exist in Menu Application");
+                }
+                else
                 {
                     this.menuStrip.Items.Add(toolStripMenuItem);
                 }

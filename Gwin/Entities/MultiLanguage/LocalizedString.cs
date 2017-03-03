@@ -16,7 +16,7 @@ namespace App.Gwin.Entities.MultiLanguage
         public string Arab { get; set; }
         public override string ToString()
         {
-            return English;
+            return this.Current;
         }
         [NotMapped]
         public string Current
@@ -26,13 +26,22 @@ namespace App.Gwin.Entities.MultiLanguage
                 switch (Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName.ToUpperInvariant())
                 {
                     case "FR":
-                        return French;
+                        if (French != null)
+                            return French;
+                        else
+                            return this.GetCode("FR");
                     case "EN":
-                        return English;
+                        if (English != null)
+                            return English;
+                        else
+                            return this.GetCode("EN");
                     case "AR":
-                        return Arab;
+                        if (Arab != null)
+                            return Arab;
+                        else
+                            return this.GetCode("AR");
                 }
-                return ToString();
+                return string.Empty;
             }
             set
             {
@@ -49,6 +58,17 @@ namespace App.Gwin.Entities.MultiLanguage
                         break;
                 }
             }
+        }
+
+        private string GetCode(string TwoLetterISOLanguageName)
+        {
+            if (this.English != null)
+                return TwoLetterISOLanguageName + "_" + this.English;
+            if (this.French != null)
+                return TwoLetterISOLanguageName + "_" + this.French;
+            if (this.Arab != null)
+                return TwoLetterISOLanguageName + "_" + this.Arab;
+            return string.Empty;
         }
     }
 }

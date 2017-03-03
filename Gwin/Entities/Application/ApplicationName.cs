@@ -13,8 +13,8 @@ namespace App.Gwin.Entities.Application
     [Menu(Group ="Root")]
     public class ApplicationName : BaseEntity
     {
-
-
+       
+ 
         [EntryForm]
         [Filter]
         [DataGrid]
@@ -23,7 +23,9 @@ namespace App.Gwin.Entities.Application
         [EntryForm]
         [Filter]
         [DataGrid]
-        public string Description { set; get; }
+        public LocalizedString Description { set; get; }
+
+
 
         
     }

@@ -43,18 +43,25 @@ namespace App.Gwin.Application.BAL
         /// </summary>
         public void Update()
         {
-            //Update Table Menu form Entities
+            //
+            // Update Table Menu form Entities
+            //
+
+            // Create MenuItemApplicationBLO Instance
             var ModelContext = Activator.CreateInstance(TypeModelContext);
-            IBaseBLO service = new BaseEntityBLO<MenuItemApplication>((DbContext)ModelContext);
+            IBaseBLO menuItemApplicationBLO = new BaseEntityBLO<MenuItemApplication>((DbContext)ModelContext);
 
             DbSet<MenuItemApplication> MenuItemApplicationSet =(DbSet < MenuItemApplication >) this.TypeModelContext.GetProperty("MenuItemApplications").GetValue(ModelContext);
+
             ModelConfiguration entitiesModel = new ModelConfiguration();
+
+            // Add MeniItemMenu for each Entities that has Menu configuration
             Dictionary<Type, MenuAttribute> Dictionary_Type_MenyAttribute = entitiesModel.Get_All_Type_And_MenuAttributes();
             foreach (var item in Dictionary_Type_MenyAttribute.Values)
             {
              if (item.Group == null) continue;
-                if (service.Recherche(new Dictionary<string, object> { { "Name", item.Group } }).Count == 0)
-                    service.Save(new MenuItemApplication { Name = item.Group });
+                if (menuItemApplicationBLO.Recherche(new Dictionary<string, object> { { nameof(MenuItemApplication.Code), item.Group } }).Count == 0)
+                    menuItemApplicationBLO.Save(new MenuItemApplication { Code = item.Group,Title = new Entities.MultiLanguage.LocalizedString(),Description = new Entities.MultiLanguage.LocalizedString() });
             }
 
 

@@ -6,7 +6,9 @@ using App.Gwin.Application.Presentation.MainForm;
 using App.Gwin.Entities;
 using App.Gwin.Entities.Application;
 using App.Gwin.Entities.Authentication;
+using SplashScreen;
 using System;
+using System.Windows.Forms;
 
 namespace GenericWinForm.Demo
 {
@@ -14,7 +16,9 @@ namespace GenericWinForm.Demo
     {
         public FormMenuApplication()
         {
+           // GwinApp.Loading_Status("Creating Application Menu...");
             InitializeComponent();
+         
         }
 
         private void FormMenuApplication_Load(object sender, EventArgs e)
@@ -25,17 +29,17 @@ namespace GenericWinForm.Demo
 
             // Start Gwin Application
             GwinApp.Start(typeof(ModelContext), typeof(BaseBLO<>),this, user);
+            
         }
 
-        /// <summary>
-        /// Reload the form after language change
-        /// </summary>
-        public override void Reload()
-        {
-            this.Controls.Clear();
-            base.InitializeForm();
-            InitializeComponent();
-        }
+        ///// <summary>
+        ///// Reload the form after language change
+        ///// </summary>
+        //public override void Reload()
+        //{
+        //    base.Reload();
+        //    InitializeComponent();
+        //}
 
 
     }

@@ -8,10 +8,9 @@ namespace App.Gwin.Attributes
     public class MenuAttribute : BaseAttribute
     {
         /// <summary>
-        /// The group name
+        /// Parent MenuItem Name
         /// </summary>
         public string Group { get; set; }
-        public string ParentGroup { get; set; }
 
         /// <summary>
         /// The item name

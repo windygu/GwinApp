@@ -19,20 +19,7 @@ namespace App.Gwin.Application.BAL.GwinApplication
         /// <param name="cultureInfo"></param>
         public void ChangeLanguage(CultureInfo cultureInfo, FormApplication formApplication)
         {
-            Thread.CurrentThread.CurrentCulture = cultureInfo;
-            Thread.CurrentThread.CurrentUICulture = cultureInfo;
-
-            formApplication.Reload();
-
-            if (cultureInfo.TwoLetterISOLanguageName == "fr" || cultureInfo.TwoLetterISOLanguageName == "en")
-            {
-                formApplication.RightToLeftLayout = false;
-                formApplication.RightToLeft = RightToLeft.No;
-            }else
-            {
-                formApplication.RightToLeftLayout = true;
-                formApplication.RightToLeft = RightToLeft.Yes;
-            }
+           
 
         }
     }

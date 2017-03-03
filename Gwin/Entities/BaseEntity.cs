@@ -1,4 +1,5 @@
 ﻿using App.Gwin.Attributes;
+using App.Gwin.Exceptions.Gwin;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -61,6 +62,11 @@ namespace App.Gwin.Entities
         {
             string Titre = "";
             DisplayEntityAttribute AffichageClasse = (DisplayEntityAttribute)this.GetType().GetCustomAttributes(typeof(DisplayEntityAttribute), true)[0];
+
+            // Test if the object has the memeber AffichageClasse.DisplayMember
+            if (this.GetType().GetProperty(AffichageClasse.DisplayMember) == null)
+                throw new GwinException("The Entity " + this.GetType() + "does not have the membe  : " + AffichageClasse.DisplayMember);
+
             object value = this.GetType().GetProperty(AffichageClasse.DisplayMember).GetValue(this);
             if (value != null)  Titre = value.ToString();
             if (Titre == string.Empty) return AffichageClasse.SingularName;

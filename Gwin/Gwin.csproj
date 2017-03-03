@@ -58,8 +58,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Application\BAL\Application\ApplicationNameBLO.cs" />
     <Compile Include="Application\BAL\Authentication\UserGwinBLO.cs" />
     <Compile Include="Application\BAL\BaseEntityBLO.cs" />
+    <Compile Include="Application\BAL\GwinApplication\GwinApp_Install_Update.cs" />
+    <Compile Include="Application\BAL\GwinApplication\GwinApp_Language.cs" />
+    <Compile Include="Application\BAL\GwinApplication\GwinApp_Start.cs" />
+    <Compile Include="Application\BAL\GwinApplication\Gwin_Loading.cs" />
+    <Compile Include="Application\Presentation\MainForm\FormLoader.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Application\Presentation\MainForm\FormLoader.Designer.cs">
+      <DependentUpon>FormLoader.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Application\Presentation\GwinLoader\GwinLoader.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Application\Presentation\GwinLoader\GwinLoader.Designer.cs">
+      <DependentUpon>GwinLoader.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Application\Presentation\GwinLoader\ISplashForm.cs" />
+    <Compile Include="Application\Presentation\GwinLoader\Splasher.cs" />
     <Compile Include="Entities\Application\Class1.cs" />
     <Compile Include="Entities\MultiLanguage\LocalizedString.cs" />
     <Compile Include="Exceptions\Gwin\GwinException.cs" />
@@ -415,6 +434,9 @@
     <EmbeddedResource Include="Application\Presentation\MainForm\FormApplication.resx">
       <DependentUpon>FormApplication.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Application\Presentation\MainForm\FormLoader.resx">
+      <DependentUpon>FormLoader.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Application\Presentation\Messages\MessageToUser_Resource.ar.resx" />
     <EmbeddedResource Include="Application\Presentation\Messages\MessageToUser_Resource.fr-FR.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -423,6 +445,9 @@
     <EmbeddedResource Include="Application\Presentation\Messages\MessageToUser_Resource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>MessageToUser_Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Application\Presentation\GwinLoader\GwinLoader.resx">
+      <DependentUpon>GwinLoader.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\Authentication\LoginControl.resx">
       <DependentUpon>LoginControl.cs</DependentUpon>
