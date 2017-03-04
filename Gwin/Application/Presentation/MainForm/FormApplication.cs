@@ -1,5 +1,4 @@
-﻿using App.Gwin.Application.BAL.GwinApplication;
-using App.Gwin.Application.Presentation.EntityManagement;
+﻿using App.Gwin.Application.Presentation.EntityManagement;
 using SplashScreen;
 using System;
 using System.ComponentModel;

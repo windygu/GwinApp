@@ -1,5 +1,4 @@
 ﻿using App.Gwin.Application;
-using App.Gwin.Application.BAL.GwinApplication;
 using App.Gwin.Attributes;
 using App.Gwin.Entities.Persons;
 using App.Gwin.Entities.Security;

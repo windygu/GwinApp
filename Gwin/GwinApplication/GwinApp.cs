@@ -1,6 +1,5 @@
 ﻿using App.Gwin.Application.BAL;
 using App.Gwin.Application.BAL.Authentication;
-using App.Gwin.Application.BAL.GwinApplication;
 using App.Gwin.Application.Presentation.MainForm;
 using App.Gwin.Attributes;
 using App.Gwin.Entities.Application;

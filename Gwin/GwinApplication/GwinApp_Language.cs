@@ -1,4 +1,4 @@
-﻿using App.Gwin.Application.BAL.GwinApplication;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -43,10 +43,14 @@ namespace App.Gwin
             Thread.CurrentThread.CurrentCulture = cultureInfo;
             Thread.CurrentThread.CurrentUICulture = cultureInfo;
 
-            GwinApp.Restart();
+            
 
             // ReLoad Applicaton Interface
             instance.ApplicationMenu.Reload();
+
+            //[Role] Restart must be after Language change, for Set Application Name Title after 
+            // Initialize Form
+            GwinApp.Restart();
         }
 
         /// <summary>

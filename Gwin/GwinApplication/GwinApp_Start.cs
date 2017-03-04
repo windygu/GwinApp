@@ -1,6 +1,5 @@
 ﻿using App.Gwin.Application.BAL;
 using App.Gwin.Application.BAL.Authentication;
-using App.Gwin.Application.BAL.GwinApplication;
 using App.Gwin.Application.Presentation.MainForm;
 using App.Gwin.Attributes;
 using App.Gwin.Entities.Application;
@@ -57,8 +56,6 @@ namespace App.Gwin
             GwinApp.Loading_Start();
             GwinApp.Loading_Status("Start Gwin Applicaton ...");
             
-           
-
             // Create Gwin Instance
             if (GwinApp.instance == null)
             {
@@ -113,8 +110,12 @@ namespace App.Gwin
         #endregion
 
         #region Restart
+        /// <summary>
+        /// Restart Gwin Application
+        /// </summary>
         public static void Restart()
         {
+           
             GwinApp old_instance = GwinApp.instance;
             GwinApp.End();
             GwinApp.Start(old_instance.TypeDBContext, old_instance.TypeBaseBLO, old_instance.ApplicationMenu, old_instance.user);

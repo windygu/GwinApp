@@ -1,6 +1,5 @@
 ﻿using App;
 using App.Gwin;
-using App.Gwin.Application.BAL.GwinApplication;
 using App.Gwin.Application.Presentation.EntityManagement;
 using App.Gwin.Application.Presentation.MainForm;
 using App.Gwin.Entities;

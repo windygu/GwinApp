@@ -1,6 +1,5 @@
 ﻿using App.Gwin;
 using App.Gwin.Application;
-using App.Gwin.Application.BAL.GwinApplication;
 using App.Gwin.Application.Presentation.Messages;
 using App.Gwin.Attributes;
 using App.Gwin.Entities;

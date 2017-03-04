@@ -61,10 +61,10 @@
     <Compile Include="Application\BAL\Application\ApplicationNameBLO.cs" />
     <Compile Include="Application\BAL\Authentication\UserGwinBLO.cs" />
     <Compile Include="Application\BAL\BaseEntityBLO.cs" />
-    <Compile Include="Application\BAL\GwinApplication\GwinApp_Install_Update.cs" />
-    <Compile Include="Application\BAL\GwinApplication\GwinApp_Language.cs" />
-    <Compile Include="Application\BAL\GwinApplication\GwinApp_Start.cs" />
-    <Compile Include="Application\BAL\GwinApplication\Gwin_Loading.cs" />
+    <Compile Include="GwinApplication\GwinApp_Install_Update.cs" />
+    <Compile Include="GwinApplication\GwinApp_Language.cs" />
+    <Compile Include="GwinApplication\GwinApp_Start.cs" />
+    <Compile Include="GwinApplication\GwinApp_Loading.cs" />
     <Compile Include="Application\Presentation\MainForm\FormLoader.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,8 +82,7 @@
     <Compile Include="Entities\Application\Class1.cs" />
     <Compile Include="Entities\MultiLanguage\LocalizedString.cs" />
     <Compile Include="Exceptions\Gwin\GwinException.cs" />
-    <Compile Include="Application\BAL\GwinApplication\GwinLanguageBLO.cs" />
-    <Compile Include="Application\BAL\GwinApplication\InstallApplicationGwinBLO.cs" />
+    <Compile Include="Application\BAL\InstallApplicationGwinBLO.cs" />
     <Compile Include="Application\Presentation\Authentication\Class1.cs" />
     <Compile Include="Application\Presentation\Class1.cs" />
     <Compile Include="Application\Presentation\EntityManagement\Class1.cs" />
@@ -393,7 +392,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Application\BAL\GwinApplication\Gwin.cs" />
+    <Compile Include="GwinApplication\GwinApp.cs" />
     <Compile Include="Shared\Resources\RessoucesManagerHelper.cs" />
   </ItemGroup>
   <ItemGroup>

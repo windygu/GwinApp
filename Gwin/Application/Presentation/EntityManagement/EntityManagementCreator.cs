@@ -1,6 +1,5 @@
 ﻿using App;
 using App.Gwin.Application.BAL;
-using App.Gwin.Application.BAL.GwinApplication;
 using App.Gwin.Entities;
 using System;
 using System.Data.Entity;
