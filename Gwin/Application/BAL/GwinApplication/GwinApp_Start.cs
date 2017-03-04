@@ -17,7 +17,7 @@ namespace App.Gwin
 {
     public partial class GwinApp
     {
-        #region private static Properties
+        #region GwinApp Instance
         private static GwinApp instance = null;
         /// <summary>
         /// Get or Set Gwin Instance
@@ -53,8 +53,11 @@ namespace App.Gwin
         /// </param>
         public static void Start(Type TypeDbContext, Type TypeBaseBLO, FormApplication AppMenu, User user)
         {
+             
             GwinApp.Loading_Start();
             GwinApp.Loading_Status("Start Gwin Applicaton ...");
+            
+           
 
             // Create Gwin Instance
             if (GwinApp.instance == null)

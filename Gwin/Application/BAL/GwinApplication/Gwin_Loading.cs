@@ -1,6 +1,7 @@
 ﻿using SplashScreen;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,7 +18,9 @@ namespace App.Gwin
         /// </summary>
         public static void Loading_Start()
         {
-            Splasher.Show(typeof(GwinLoader));
+            // Run Loadind Interface if the programme is not en debug Mode
+            if (!Debugger.IsAttached)
+                Splasher.Show(typeof(GwinLoader));
         }
 
         /// <summary>
@@ -26,7 +29,8 @@ namespace App.Gwin
         /// <param name="status"></param>
         public static void Loading_Status(string status)
         {
-            Splasher.Status = status;
+            if (!Debugger.IsAttached)
+                Splasher.Status = status;
         }
 
         /// <summary>
@@ -34,7 +38,8 @@ namespace App.Gwin
         /// </summary>
         public static void Loading_Close()
         {
-            Splasher.Close();
+            if (!Debugger.IsAttached)
+                Splasher.Close();
         }
 
     }
