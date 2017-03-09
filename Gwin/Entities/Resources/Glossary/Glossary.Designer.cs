@@ -61,6 +61,15 @@ namespace App.Gwin.Entities.Resources.Glossary {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Add.
+        /// </summary>
+        internal static string Add {
+            get {
+                return ResourceManager.GetString("Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Code.
         /// </summary>
         internal static string Code {

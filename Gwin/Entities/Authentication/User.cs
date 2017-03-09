@@ -1,7 +1,7 @@
 ﻿using App.Gwin.Application;
 using App.Gwin.Attributes;
+using App.Gwin.Entities.Autorizations;
 using App.Gwin.Entities.Persons;
-using App.Gwin.Entities.Security;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;

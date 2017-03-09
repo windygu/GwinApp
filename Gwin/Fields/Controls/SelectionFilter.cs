@@ -9,6 +9,8 @@ using System.Drawing;
 using System.Reflection;
 using App.Gwin.Entities;
 using System.Collections;
+using App.Gwin.Application.BAL;
+using App.Gwin.Exceptions.Gwin;
 
 namespace App.Gwin.Fields.Controls
 {
@@ -154,6 +156,15 @@ namespace App.Gwin.Fields.Controls
             this.DisplayMember = "";
             this.ValueMember = "Id";
 
+            if (this.PropertyInfo.PropertyType.GetGenericArguments().Count() == 0)
+            {
+                string msg_exception = "The Type :" + this.PropertyInfo.PropertyType.Name;
+                msg_exception += " of member " + this.PropertyInfo.Name;
+                msg_exception += " in Entity " + this.PropertyInfo.DeclaringType.Name;
+                msg_exception += " is not a valid generic List";
+                throw new GwinException(msg_exception);
+            }
+               
             Attribute selectionCriteriaAttribute = this.PropertyInfo.PropertyType.GetGenericArguments()[0]
                 .GetCustomAttribute(typeof(SelectionCriteriaAttribute));
 

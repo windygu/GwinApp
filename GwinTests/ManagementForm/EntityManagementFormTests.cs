@@ -4,12 +4,20 @@ using App.Gwin.Entities;
 using App.Gwin.Application.BAL;
 using App.Gwin.Application.Presentation;
 using App.Gwin.Application.Presentation.EntityManagement;
+using GenericWinForm.Demo.BAL;
 
 namespace App.Gwin.Tests
 {
     [TestClass()]
     public class EntityManagementFormTests
     {
+
+        [TestInitialize]
+        public void initBaseEntityBAOTests()
+        {
+            GwinApp.Start(typeof(ModelContext), typeof(BaseBLO<>), new Application.Presentation.MainForm.FormApplication(), null);
+          
+        }
 
         /// <summary>
         ///  Test la generation de tous les formilaire de l'application

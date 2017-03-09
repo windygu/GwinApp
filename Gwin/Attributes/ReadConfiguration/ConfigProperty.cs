@@ -13,6 +13,8 @@ using System.Reflection;
 using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
+using App.Gwin.FieldsTraitements.Enumerations;
+using App.Gwin.Exceptions.Gwin;
 
 namespace App.Shared.AttributesManager
 {
@@ -27,17 +29,14 @@ namespace App.Shared.AttributesManager
         public EntryFormAttribute EntryForm { set; get; }
         public FilterAttribute Filter { set; get; }
         public DataGridAttribute DataGrid { set; get; }
-        #endregion
-
-        #region Private Properties
-        private Type TypeOfEntity { set; get; }
-        private bool Localizable { get;   set; }
-        private CultureInfo CultureInfo { get;   set; }
-        private PropertyInfo PropertyInfo { get;   set; }
-        private ConfigEntity ConfigEntity { get;   set; }
-
-
-
+        public DataSourceAttribute DataSource { set; get; }
+        public FieldsNatures FieldNature { set; get; }
+        public PropertyInfo PropertyInfo { get; set; }
+        public ConfigEntity ConfigEntity { get; set; }
+        public Type TypeOfEntity { set; get; }
+        public bool Localizable { get;   set; }
+        public CultureInfo CultureInfo { get;   set; }
+       
         /// <summary>
         ///  Resource Manager of the Entity and its BaseType
         /// </summary>
@@ -48,6 +47,8 @@ namespace App.Shared.AttributesManager
         {
 
             this.PropertyInfo = propertyInfo;
+
+
             this.ConfigEntity = configEntity;
             //Fill RessouceManager
             this.RessoucesManagers = this.ConfigEntity.RessourcesManagers;
@@ -65,6 +66,23 @@ namespace App.Shared.AttributesManager
             //
             Attribute Relationship = propertyInfo.GetCustomAttribute(typeof(RelationshipAttribute));
             this.Relationship = Relationship as RelationshipAttribute;
+            if(this.Relationship != null)
+            {
+                // Check if Type of Memeber is valide Generic List
+                if (
+                    (this.Relationship.Relation == RelationshipAttribute.Relations.ManyToMany_Creation
+                    || this.Relationship.Relation == RelationshipAttribute.Relations.ManyToMany_Selection
+                    || this.Relationship.Relation == RelationshipAttribute.Relations.OneToMany) 
+                    &&
+                    this.PropertyInfo.PropertyType.GetGenericArguments().Count() == 0)
+                {
+                    string msg_exception = "The Type :" + this.PropertyInfo.PropertyType.Name;
+                    msg_exception += " of member " + this.PropertyInfo.Name;
+                    msg_exception += " in Entity " + this.PropertyInfo.DeclaringType.Name;
+                    msg_exception += " is not a valid generic List";
+                    throw new GwinException(msg_exception);
+                }
+            }
 
             //
             // DisplayProperty
@@ -131,6 +149,45 @@ namespace App.Shared.AttributesManager
             Attribute Filter = propertyInfo.GetCustomAttribute(typeof(FilterAttribute));
             this.Filter = Filter as FilterAttribute;
 
+            //
+            // DataSource
+            //
+            Attribute dataSource = propertyInfo.GetCustomAttribute(typeof(DataSourceAttribute));
+            this.DataSource = dataSource as DataSourceAttribute;
+
+            // Determine FieldNautre
+            if (this.PropertyInfo.PropertyType.Name == "String" && this.DataSource == null)
+            {
+                this.FieldNature = FieldsNatures.String;
+            }
+            if (this.PropertyInfo.PropertyType.Name == "String" && this.DataSource != null)
+            {
+                this.FieldNature = FieldsNatures.StringWithDataSource;
+            }
+            if (this.PropertyInfo.PropertyType.Name == "LocalizedString")
+            {
+                this.FieldNature = FieldsNatures.LocalizedString;
+            }
+            if (this.PropertyInfo.PropertyType.Name == "Int32")
+            {
+                this.FieldNature = FieldsNatures.Int32;
+            }
+            if (this.PropertyInfo.PropertyType.Name == "DateTime")
+            {
+                this.FieldNature = FieldsNatures.DateTime;
+            }
+            if (this.PropertyInfo.PropertyType.IsEnum)
+            {
+                this.FieldNature = FieldsNatures.Enumeration;
+            }
+            if (this.Relationship?.Relation == RelationshipAttribute.Relations.ManyToOne)
+            {
+                this.FieldNature = FieldsNatures.ManyToOne;
+            }
+            if (this.Relationship?.Relation == RelationshipAttribute.Relations.ManyToMany_Selection)
+            {
+                this.FieldNature = FieldsNatures.ManyToMany_Selection;
+            }
 
         }
 

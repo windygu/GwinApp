@@ -4,6 +4,7 @@ namespace App.Gwin.Attributes
 {
     /// <summary>
     /// The display of the entity
+    /// it is required attribut, because it containe DiplayMameber config that used by ToString methode
     /// </summary>
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
     public class DisplayEntityAttribute : BaseAttribute

@@ -3,8 +3,8 @@
     using GenericWinForm.Demo.Entities;
     using Gwin.Entities.Application;
     using Gwin.Entities.Authentication;
+    using Gwin.Entities.Autorizations;
     using Gwin.Entities.ContactInformations;
-    using Gwin.Entities.Security;
     using System;
     using System.Collections.Generic;
     using System.Data.Entity;
@@ -26,6 +26,7 @@
         //
         // Gwin : Entites
         //
+        public virtual DbSet<Authorization> Authorizations { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<MenuItemApplication> MenuItemApplications { get; set; }
@@ -36,13 +37,20 @@
 
 
         // Demo
-        public virtual DbSet<MinimumConfiguration_Loalizable_Entity> MinimumConfiguration_Loalizable_Entitys { get; set; }
+        public virtual DbSet<EntityMiniConfig> MinimumConfiguration_Loalizable_Entitys { get; set; }
         
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-           
+            modelBuilder.Entity<EntityMiniConfig>()
+                .HasMany<Entity_ManyToMany>(s => s.ManyToMany_Creation)
+                .WithMany(c => c.EntityMiniConfig_creation);
+
+            modelBuilder.Entity<EntityMiniConfig>()
+                .HasMany<Entity_ManyToMany>(s => s.ManyToMany_Selection)
+                .WithMany(c => c.EntityMiniConfig_selection);
+
         }
 
         /// <summary>

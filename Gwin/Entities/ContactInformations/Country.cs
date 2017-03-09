@@ -1,5 +1,6 @@
 ﻿using App.Gwin.Attributes;
 using App.Gwin.Entities;
+using App.Gwin.Entities.MultiLanguage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,16 +13,14 @@ namespace App.Gwin.Entities.ContactInformations
     [Menu(Group = "The Configuration")]
     public class Country : BaseEntity
     {
-        [DisplayProperty(isInGlossary=true)]
         [EntryForm]
         [Filter]
         [DataGrid]
-        public string Name { set; get; }
+        public LocalizedString Name { set; get; }
 
-        [DisplayProperty(isInGlossary = true)]
         [EntryForm(MultiLine =true)]
         [DataGrid]
-        public string Description { set; get; }
+        public LocalizedString Description { set; get; }
 
         [DataGrid]
         [Relationship(Relation = RelationshipAttribute.Relations.OneToMany)]

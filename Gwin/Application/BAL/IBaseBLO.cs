@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 
-namespace App
+namespace App.Gwin.Application.BAL
 {
     /// <summary>
     ///  BaseBAO Interface
@@ -93,7 +93,7 @@ namespace App
         /// </summary>
         /// <param name="TypeEntity">the entity type</param>
         IBaseBLO CreateServiceBLOInstanceByTypeEntity(Type TypeEntity);
-        IBaseBLO CreateEntityInstanceByTypeAndContext(Type TypeEntity,DbContext context);
+        IBaseBLO CreateServiceBLOInstanceByTypeEntityAndContext(Type TypeEntity,DbContext context);
         #endregion
 
     }

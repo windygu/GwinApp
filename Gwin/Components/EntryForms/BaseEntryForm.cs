@@ -16,6 +16,7 @@ using App.Shared.AttributesManager;
 using App.Gwin.Entities;
 using System.Resources;
 using App.Gwin.Shared.Resources;
+using App.Gwin.Application.BAL;
 
 namespace App.Gwin
 {
@@ -32,6 +33,7 @@ namespace App.Gwin
         /// Indique si les champs seront automatiquement générer ou manuellement implémenter 
         /// par la classe Hérité
         /// </summary>
+        [Obsolete]
         bool AutoGenerateField { set; get; }
 
         /// <summary>
@@ -205,12 +207,17 @@ namespace App.Gwin
         }
         #endregion
 
-        private void BaseEntryForm_Load(object sender, EventArgs e)
+        /// <summary>
+        /// Load and Create Field
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void BaseEntryForm_Load(object sender, EventArgs e)
         {
             // Génération du Formulaire
            
             
-                this.GenerateFormIfNotGenerated();
+                this.CreateFieldIfNotGenerated();
         
            
         }

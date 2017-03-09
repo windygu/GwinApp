@@ -15,6 +15,15 @@ namespace App.Gwin.ModelData
     public class ModelConfiguration
     {
         /// <summary>
+        /// Data Categories returns in ModelConfiguration
+        /// </summary>
+        public enum DataCategories
+        {
+            Entities,
+            Assemblies,
+        }
+
+        /// <summary>
         /// Get All Assebply that containes Entities
         /// </summary>
         /// <returns>List of Assembly</returns>

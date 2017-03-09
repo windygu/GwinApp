@@ -59,23 +59,5 @@ namespace App.Gwin.Entities {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à .
-        /// </summary>
-        internal static string PluralName {
-            get {
-                return ResourceManager.GetString("PluralName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à .
-        /// </summary>
-        internal static string SingularName {
-            get {
-                return ResourceManager.GetString("SingularName", resourceCulture);
-            }
-        }
     }
 }

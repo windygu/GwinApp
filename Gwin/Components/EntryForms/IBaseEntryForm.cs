@@ -1,4 +1,5 @@
 ﻿
+using App.Gwin.Application.BAL;
 using App.Gwin.Entities;
 
 namespace App.Gwin

@@ -153,4 +153,16 @@
   <data name="StartDate" xml:space="preserve">
     <value>Date de début</value>
   </data>
+  <data name="Add" xml:space="preserve">
+    <value>Ajouter</value>
+  </data>
+  <data name="TitleArabic" xml:space="preserve">
+    <value>Titre arabe</value>
+  </data>
+  <data name="TitleEnglish" xml:space="preserve">
+    <value>Titre en anglais</value>
+  </data>
+  <data name="TitleFrench" xml:space="preserve">
+    <value>Titre Français</value>
+  </data>
 </root>

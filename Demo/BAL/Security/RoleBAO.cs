@@ -1,4 +1,4 @@
-﻿using App.Gwin.Entities.Security;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using App.Gwin.Entities;
 using System.Windows.Forms;
+using App.Gwin.Entities.Autorizations;
+using GenericWinForm.Demo.BAL;
 
 namespace App.Gwin.Application.BAL.Security
 {

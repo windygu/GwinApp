@@ -1,1 +1,2 @@
-Form - Loading avec Exception
+1 + Form - Loading avec Exception
+2 - Chang Langauge with showen ManagerForm not work

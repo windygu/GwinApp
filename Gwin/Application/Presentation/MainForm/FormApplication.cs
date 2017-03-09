@@ -33,7 +33,7 @@ namespace App.Gwin.Application.Presentation.MainForm
         public override void Reload()
         {
             // Clear All controls in Form Application
-            this.Controls.Clear();
+            this.ClearAllControls();
 
             InitializeComponent();
 
@@ -53,11 +53,24 @@ namespace App.Gwin.Application.Presentation.MainForm
                 this.RightToLeft = RightToLeft.Yes;
             }
 
-            // Refrech interface
+            // [Bug] : Form somtime not good showen when language is changed
+            // [Temporary Fix] 
             this.WindowState = FormWindowState.Minimized;
             this.WindowState = FormWindowState.Maximized;
+        }
 
-
+        /// <summary>
+        /// Clear All Controls in this form
+        /// </summary>
+        private void ClearAllControls()
+        {
+            // [Bug] : Not working with showen child form
+            // [Temporary Fix]
+            foreach (Control item in this.MdiChildren)
+            {
+                item.Dispose();
+            }
+            this.Controls.Clear();
         }
 
         public MenuStrip getMenuStrip()

@@ -2,7 +2,7 @@ namespace App.Migrations
 {
     using Gwin;
     using Gwin.Application.BAL;
-    using Gwin.Entities.Security;
+    using Gwin.Entities.Autorizations;
     using System.Data.Entity.Migrations;
 
     public sealed class Configuration : DbMigrationsConfiguration<ModelContext>

@@ -5,21 +5,32 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using App.Gwin.Entities.Security;
 using App.Gwin.ModelData;
+using App.Gwin.Entities.Autorizations;
+using GenericWinForm.Demo.BAL;
 
 namespace App.Gwin.Attributes.Tests
 {
     [TestClass()]
     public class ConfigEntityTests
     {
+
+        [TestInitialize]
+        public void GwinAppStart()
+        {
+            GwinApp.Start(typeof(ModelContext), typeof(BaseBLO<>), new Application.Presentation.MainForm.FormApplication(), null);
+           
+
+        }
+
+
         [TestMethod()]
         public void ConfigEntityConstructorTest()
         {
             List<Type> ls = new ModelConfiguration().GetAll_Entities_Type();
             foreach (Type item in ls)
             {
-                ConfigEntity configEntity = new ConfigEntity(item);
+                ConfigEntity configEntity = ConfigEntity.CreateConfigEntity(item);
             }
            
              

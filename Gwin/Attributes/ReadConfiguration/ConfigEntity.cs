@@ -11,6 +11,8 @@ using System.Threading;
 using System.Collections.Generic;
 using App.Gwin.Shared.Resources;
 using App.Gwin.Application.Presentation.Messages;
+using App.Gwin.Entities.Resources.Glossary;
+using App.Gwin.Exceptions.Gwin;
 
 namespace App.Gwin.Attributes
 {
@@ -44,7 +46,7 @@ namespace App.Gwin.Attributes
         #endregion
 
 
-        public ConfigEntity(Type type_of_entity)
+        private ConfigEntity(Type type_of_entity)
         {
             this.TypeOfEntity = type_of_entity;
             this.CultureInfo = Thread.CurrentThread.CurrentCulture;
@@ -84,10 +86,23 @@ namespace App.Gwin.Attributes
             #endregion
 
             #region Read DisplayEntityAttribute
+            // 
+            // Read Disply Entity Configuration
+            //
+
+            // Load and Check Existance of DisplayEntityAttribute
             Object[] ls_attribut = this.TypeOfEntity.GetCustomAttributes(typeof(DisplayEntityAttribute), false);
             if (ls_attribut == null || ls_attribut.Count() == 0)
-                throw new AnnotationNotExistException(typeof(DisplayEntityAttribute).ToString());
+            {
+                string msg_excepion = "The meta annotation :" + nameof(DisplayEntityAttribute) + " not exist ";
+                msg_excepion += " in Entity : " + this.TypeOfEntity.Name;
+                msg_excepion += ". It is required, because it contain DiplayMameber config that is used by ToString method to diply Entity";
+                throw new GwinException(msg_excepion); 
+            }
+
             this.DisplayEntity = (DisplayEntityAttribute)ls_attribut[0];
+
+            // Check DisplayMember existance
             if (this.DisplayEntity.DisplayMember == null)
                 throw new DisplayMember_NotExist_In_DisplayEntityAttribute_Exception("DisplayMember not exist in " + typeof(DisplayEntityAttribute).ToString() + " : " + this.TypeOfEntity.Name);
             if (this.DisplayEntity.Localizable)
@@ -113,6 +128,7 @@ namespace App.Gwin.Attributes
             ls_attribut = this.TypeOfEntity.GetCustomAttributes(typeof(ManagementFormAttribute), false);
             if (ls_attribut == null || ls_attribut.Count() == 0) this.ManagementForm = new ManagementFormAttribute();
             else this.ManagementForm = (ManagementFormAttribute)ls_attribut[0];
+
             if (this.Localizable)
             {
                 if (this.ManagementForm.TitrePageGridView != null)
@@ -146,8 +162,7 @@ namespace App.Gwin.Attributes
                 switch (this.CultureInfo.TwoLetterISOLanguageName)
                 {
                     case "fr":
-                        this.AddButton.Title = baseEntityResourceManager
-                    .GetString("Add", this.CultureInfo) + " " + (this.DisplayEntity.isMaleName ? "un" : "une") + " " + this.DisplayEntity.SingularName.ToLower();
+                        this.AddButton.Title = Glossary.Add  + " " + (this.DisplayEntity.isMaleName ? "un" : "une") + " " + this.DisplayEntity.SingularName.ToLower();
                         break;
                     default:
                         this.AddButton.Title = baseEntityResourceManager
@@ -208,7 +223,7 @@ namespace App.Gwin.Attributes
 
         public bool Dispose()
         {
-           return ConfigEntity.ConfigurationOfEntities.Remove(this.GetType());
+           return ConfigEntity.ConfigurationOfEntities.Remove(this.TypeOfEntity);
         }
         /// <summary>
         /// Delete all ConfigEntity object

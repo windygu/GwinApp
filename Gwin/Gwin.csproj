@@ -61,6 +61,58 @@
     <Compile Include="Application\BAL\Application\ApplicationNameBLO.cs" />
     <Compile Include="Application\BAL\Authentication\UserGwinBLO.cs" />
     <Compile Include="Application\BAL\BaseEntityBLO.cs" />
+    <Compile Include="Components\EntryForms\Resources\ResourceEntryForm.ar.Designer.cs">
+      <DependentUpon>ResourceEntryForm.ar.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Components\EntryForms\Resources\ResourceEntryForm.fr.Designer.cs">
+      <DependentUpon>ResourceEntryForm.fr.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Components\EntryForms\Resources\ResourceEntryForm.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResourceEntryForm.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Autorizations\UserActionInGwin.cs" />
+    <Compile Include="Attributes\DataSourceAttribute.cs" />
+    <Compile Include="Entities\Autorizations\Resources\Authorization\Authorization.ar.Designer.cs">
+      <DependentUpon>Authorization.ar.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Entities\Autorizations\Resources\Authorization\Authorization.fr.Designer.cs">
+      <DependentUpon>Authorization.fr.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Entities\Autorizations\Resources\Authorization\Authorization.Designer.cs">
+      <DependentUpon>Authorization.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Fields.Traitements\Params\CreateField_In_Filter_Params.cs" />
+    <Compile Include="Fields.Traitements\Params\WriteEntity_To_EntryForm_Param.cs" />
+    <Compile Include="Fields\ComboBoxField.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fields\ComboBoxField.Designer.cs">
+      <DependentUpon>ComboBoxField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fields.Traitements\DateTimeTraitements.cs" />
+    <Compile Include="Fields.Traitements\FieldNature\FieldsNatures.cs" />
+    <Compile Include="Fields.Traitements\EnumerationTraitements.cs" />
+    <Compile Include="Fields.Traitements\Interface\FieldTraitement.cs" />
+    <Compile Include="Fields.Traitements\Interface\IFieldTraitements.cs" />
+    <Compile Include="Fields.Traitements\ManyToManyTraitements.cs" />
+    <Compile Include="Fields.Traitements\ManyToOneTraitements.cs" />
+    <Compile Include="Fields.Traitements\Int32Traitements.cs" />
+    <Compile Include="Fields.Traitements\Params\CreateFieldParams.cs" />
+    <Compile Include="Fields.Traitements\LocalizedStringTraitements.cs" />
+    <Compile Include="Fields.Traitements\StringWithDataSourceTraitements.cs" />
+    <Compile Include="Fields.Traitements\StringTraitements.cs" />
     <Compile Include="GwinApplication\GwinApp_Install_Update.cs" />
     <Compile Include="GwinApplication\GwinApp_Language.cs" />
     <Compile Include="GwinApplication\GwinApp_Start.cs" />
@@ -115,17 +167,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MenuItemApplication.resx</DependentUpon>
     </Compile>
-    <Compile Include="Entities\Security\Resources\Role\Role.ar.Designer.cs">
+    <Compile Include="Entities\Autorizations\Resources\Role\Role.ar.Designer.cs">
       <DependentUpon>Role.ar.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Entities\Security\Resources\Role\Role.fr.Designer.cs">
+    <Compile Include="Entities\Autorizations\Resources\Role\Role.fr.Designer.cs">
       <DependentUpon>Role.fr.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Entities\Security\Resources\Role\Role.Designer.cs">
+    <Compile Include="Entities\Autorizations\Resources\Role\Role.Designer.cs">
       <DependentUpon>Role.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -155,9 +207,8 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Entities\Security\UserAction.cs" />
-    <Compile Include="Entities\Security\Authorization.cs" />
-    <Compile Include="Entities\Security\Role.cs" />
+    <Compile Include="Entities\Autorizations\Authorization.cs" />
+    <Compile Include="Entities\Autorizations\Role.cs" />
     <Compile Include="Fields\Controls\SelectionFilter.cs" />
     <Compile Include="Fields\TestFields\FormTestDateTimeField.cs">
       <SubType>Form</SubType>
@@ -325,7 +376,7 @@
       <DependentUpon>BaseEntryForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Exceptions\Fields\FieldNotExistInFormException.cs" />
-    <Compile Include="Components\EntryForms\Generate.BaseEntryForm.cs">
+    <Compile Include="Components\EntryForms\Fields_creation.BaseEntryForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Components\EntryForms\IBaseEntryForm.cs" />
@@ -335,7 +386,7 @@
     <Compile Include="Components\EntryForms\Save.BaseEntyForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\EntryForms\Write.BaseEntryForm.cs">
+    <Compile Include="Components\EntryForms\Write.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Components\Filter\BaseFilterControl.cs">
@@ -397,7 +448,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Entities\ClassDiagramGenericWinForm.cd" />
-    <None Include="Entities\Security\ClassDiagramSecurity.cd" />
     <None Include="Resources\save1.png" />
     <None Include="Resources\Logo C+1.png" />
     <None Include="Resources\fermer_vert1.png" />
@@ -451,6 +501,24 @@
     <EmbeddedResource Include="Components\Authentication\LoginControl.resx">
       <DependentUpon>LoginControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Components\EntryForms\BaseEntryForm.ar.resx">
+      <DependentUpon>BaseEntryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\EntryForms\BaseEntryForm.en.resx">
+      <DependentUpon>BaseEntryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\EntryForms\Resources\ResourceEntryForm.ar.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourceEntryForm.ar.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\EntryForms\Resources\ResourceEntryForm.fr.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourceEntryForm.fr.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\EntryForms\Resources\ResourceEntryForm.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourceEntryForm.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Entities\Application\Resources\ApplicationName\ApplicationName.ar.resx" />
     <EmbeddedResource Include="Entities\Application\Resources\ApplicationName\ApplicationName.fr.resx" />
     <EmbeddedResource Include="Entities\Application\Resources\ApplicationName\ApplicationName.resx">
@@ -463,15 +531,27 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>MenuItemApplication.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Entities\Security\Resources\Role\Role.ar.resx">
+    <EmbeddedResource Include="Entities\Autorizations\Resources\Authorization\Authorization.ar.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Authorization.ar.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Entities\Autorizations\Resources\Authorization\Authorization.fr.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Authorization.fr.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Entities\Autorizations\Resources\Authorization\Authorization.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Authorization.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Entities\Autorizations\Resources\Role\Role.ar.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Role.ar.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Entities\Security\Resources\Role\Role.fr.resx">
+    <EmbeddedResource Include="Entities\Autorizations\Resources\Role\Role.fr.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Role.fr.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Entities\Security\Resources\Role\Role.resx">
+    <EmbeddedResource Include="Entities\Autorizations\Resources\Role\Role.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Role.Designer.cs</LastGenOutput>
     </EmbeddedResource>
@@ -549,6 +629,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Person.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Fields\ComboBoxField.resx">
+      <DependentUpon>ComboBoxField.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Fields\Controls\InputCollectionControle.resx">
       <DependentUpon>InputCollectionControle.cs</DependentUpon>
     </EmbeddedResource>
@@ -602,6 +685,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>BaseEntity.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Enumerations\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

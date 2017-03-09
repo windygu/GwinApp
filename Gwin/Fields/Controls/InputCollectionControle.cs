@@ -11,6 +11,7 @@ using System.Reflection;
 using App.Gwin.Attributes;
 using System.Collections;
 using App.Gwin.Entities;
+using App.Gwin.Application.BAL;
 
 namespace App.Gwin
 {

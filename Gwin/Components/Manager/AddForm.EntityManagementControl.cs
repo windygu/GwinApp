@@ -31,10 +31,10 @@ namespace App.Gwin
                 // Insertion du formulaire 
                 //
                 BaseEntity Entity = (BaseEntity)this.Service.CreateEntityInstance();
-                BaseEntryForm form = Formulaire.CreateInstance(Service, Entity, this.FilterControl.CritereRechercheFiltre());
+                BaseEntryForm form = Formulaire.CreateInstance(Service, Entity, this.FilterControl.GetFilterValues());
                 form.Name = "Form";
                 form.Dock = DockStyle.Fill;
-                form.WriteEntityToField(this.FilterControl.CritereRechercheFiltre());
+                form.WriteEntityToField(this.FilterControl.GetFilterValues());
                 tabPageAdd.Controls.Add(form);
                 form.EnregistrerClick += Form_EnregistrerClick;
                 form.AnnulerClick += Form_AnnulerAjouterClick;

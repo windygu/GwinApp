@@ -8,6 +8,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using App.Gwin.Application.BAL;
 
 namespace App.Gwin
 {
@@ -36,7 +37,7 @@ namespace App.Gwin
                 form.Dock = DockStyle.Fill;
                 this.tabControl_MainManager.TabPages[tabEditerName].Controls.Add(form);
                 tabControl_MainManager.SelectedTab = tabEditer;
-                form.WriteEntityToField(this.FilterControl.CritereRechercheFiltre());
+                form.WriteEntityToField(this.FilterControl.GetFilterValues());
                 form.EnregistrerClick += Form_EditerClick;
                 form.AnnulerClick += Form_AnnulerEditerClick;
 

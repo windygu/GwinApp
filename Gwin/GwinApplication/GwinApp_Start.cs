@@ -66,16 +66,18 @@ namespace App.Gwin
                 GwinApp.Instance = new GwinApp(TypeDbContext, TypeBaseBLO, AppMenu, user);
             }
 
-            // Update GwinApplicatio, after  ModelConfiguration changes
-            //[Update]
-            InstallApplicationGwinBLO installApplication = new InstallApplicationGwinBLO(TypeDbContext);
-            installApplication.Update();
+           
 
             // Change Gwin Language 
             if (AppMenu != null && user != null)
             {
                 GwinApp.SetLanguage(GwinApp.Instance.CultureInfo);
             }
+
+            // Update GwinApplicatio, after  ModelConfiguration changes
+            //[Update]
+            InstallApplicationGwinBLO installApplication = new InstallApplicationGwinBLO(TypeDbContext);
+            installApplication.Update();
 
             // Load ApplicationName Instance
             IBaseBLO ApplicationNameBLO = new BaseEntityBLO<ApplicationName>((DbContext)Activator.CreateInstance(instance.TypeDBContext));

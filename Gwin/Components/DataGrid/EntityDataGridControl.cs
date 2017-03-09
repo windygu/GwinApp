@@ -13,6 +13,7 @@ using App.Shared.AttributesManager;
 using App.Gwin.Entities;
 using System.Resources;
 using App.Gwin.Entities.MultiLanguage;
+using App.Gwin.Application.BAL;
 
 namespace App.Gwin
 {
@@ -69,12 +70,12 @@ namespace App.Gwin
         public event EventHandler EditManyToOneCollection;
         protected void onEditManyToOneCollection(object sender, EventArgs e)
         {
-            
+
             if (EditManyToOneCollection != null)
                 EditManyToOneCollection(sender, e);
         }
 
-        
+
         public event EventHandler EditManyToManyCollection;
         protected void onEditManyToManyCollection(object sender, EventArgs e)
         {
@@ -85,7 +86,7 @@ namespace App.Gwin
 
 
         public event EventHandler RefreshEvent;
-        
+
 
         protected void onRefreshEvent(object sender, EventArgs e)
         {
@@ -97,7 +98,7 @@ namespace App.Gwin
 
         #region Constructeurs
 
-        public EntityDataGridControl(IBaseBLO Service, Dictionary<string, object> critereRechercheFiltre = null) 
+        public EntityDataGridControl(IBaseBLO Service, Dictionary<string, object> critereRechercheFiltre = null)
         {
             InitializeComponent(); if (this.DesignMode) return;
             this.Service = Service;
@@ -128,91 +129,120 @@ namespace App.Gwin
 
         #region InitDisingeDataGrid
 
-        protected void InitPropertyListDataGrid()
-        {
-            // [Bug]
-            // Ajoutez la condition filtre 
-            var requete = from i in Service.TypeEntity.GetProperties()
-                          where i.GetCustomAttribute(typeof(DataGridAttribute)) != null 
-                          orderby ((DataGridAttribute)i.GetCustomAttribute(typeof(DataGridAttribute))).Ordre
-                          select i;
-            this.ListeProprieteDataGrid = requete.ToList<PropertyInfo>();
-        }
 
         /// <summary>
-        /// Insertion des colonne selon Dans DataGrid
+        /// Insert Column in DataGrid
         /// </summary>
         private void InitDataGridView()
         {
-            InitPropertyListDataGrid();
+
+            // List of Property with DataGrid Annotation
+            var requete = from i in Service.TypeEntity.GetProperties()
+                          where i.GetCustomAttribute(typeof(DataGridAttribute)) != null
+                          orderby ((DataGridAttribute)i.GetCustomAttribute(typeof(DataGridAttribute))).Ordre
+                          select i;
+            this.ListeProprieteDataGrid = requete.ToList<PropertyInfo>();
+
 
             int index_colonne = 0;
 
             foreach (PropertyInfo propertyInfo in this.ListeProprieteDataGrid)
             {
-                // Colonne Ordre
-                if (propertyInfo.Name == "Ordre" && this.ConfigEntity.ManagementForm?.isDisplayWithOrder == false)
+                ConfigProperty configProperty = new ConfigProperty(propertyInfo, this.ConfigEntity);
+
+                //  Ordre column
+                if (propertyInfo.Name == nameof(BaseEntity.Ordre) && this.ConfigEntity.ManagementForm?.isDisplayWithOrder == false)
                     continue;
 
-                
-                ConfigProperty attributesOfProperty = new ConfigProperty(propertyInfo, this.ConfigEntity);
+                // Not show Collection if not have relationship : ManyToMany_Creation
+                if (propertyInfo.PropertyType.Name == "List`1" &&
+                    configProperty.Relationship?.Relation == RelationshipAttribute.Relations.ManyToMany_Creation)
+                    continue;
 
+              
                 // Insertion des la colonne selon le tupe de la propriété
                 DataGridViewColumn colonne = new DataGridViewTextBoxColumn(); ;
                 index_colonne++;
 
-                switch (propertyInfo.PropertyType.Name)
+               
+
+                if (propertyInfo.PropertyType.Name == "String")
                 {
-                    case "String":
-                        {
-                            colonne.ValueType = typeof(String);
-                            colonne.DataPropertyName = propertyInfo.Name;
-                        }
-                        break;
-                    case "LocalizedString":
-                        {
-                            colonne.ValueType = typeof(LocalizedString);
-                            colonne.DataPropertyName = propertyInfo.Name;
-                        }
-                        break;
-                    case "Integer":
-                        {
-                            colonne.ValueType = typeof(String);
-                            colonne.DataPropertyName = propertyInfo.Name;
-                        }
-                        break;
-                    case "DateTime":
-                        {
-                            colonne = new DataGridViewTextBoxColumn();
-                            colonne.ValueType = typeof(DateTime);
-                            colonne.DataPropertyName = propertyInfo.Name;
-                        }
-                        break;
-                    default:
-                        {
-                            if (
-                                attributesOfProperty.Relationship?.Relation == RelationshipAttribute.Relations.ManyToMany_Creation)
-                            {
-                                DataGridViewButtonColumn c = new DataGridViewButtonColumn();
-                                c.UseColumnTextForButtonValue = true;
-                                c.Text = propertyInfo.Name;
-                                colonne = c;
-                                colonne.ReadOnly = true;
-                            }
-                        }
-                        break;
+                    colonne.ValueType = typeof(String);
+                    colonne.DataPropertyName = propertyInfo.Name;
+                    colonne.HeaderText = configProperty.DisplayProperty.Titre;
+                    colonne.Name = propertyInfo.Name;
+                    colonne.ReadOnly = true;
+                    if (configProperty.DataGrid?.WidthColonne != 0) colonne.Width = configProperty.DataGrid.WidthColonne;
+                    this.dataGridView.Columns.Insert(index_colonne, colonne);
+
+                    continue;
+                }
+                // [Bug] Change static string to Variable nameof
+                if (propertyInfo.PropertyType.Name == "LocalizedString")
+                {
+                    colonne.ValueType = typeof(LocalizedString);
+                    colonne.DataPropertyName = propertyInfo.Name;
+                    colonne.HeaderText = configProperty.DisplayProperty.Titre;
+                    colonne.Name = propertyInfo.Name;
+                    colonne.ReadOnly = true;
+                    if (configProperty.DataGrid?.WidthColonne != 0) colonne.Width = configProperty.DataGrid.WidthColonne;
+                    this.dataGridView.Columns.Insert(index_colonne, colonne);
+                    continue;
                 }
 
-                // Not show Collection if not have relationship : ManyToMany_Creation
-                if (propertyInfo.PropertyType.Name == "List`1" &&
-                    attributesOfProperty.Relationship?.Relation != RelationshipAttribute.Relations.ManyToMany_Creation)
-                    continue;
+                if (propertyInfo.PropertyType.Name == "Integer")
 
-                colonne.HeaderText = attributesOfProperty.DisplayProperty.Titre;
-                colonne.Name = propertyInfo.Name;
-                colonne.ReadOnly = true;
-                if (attributesOfProperty.DataGrid?.WidthColonne != 0) colonne.Width = attributesOfProperty.DataGrid.WidthColonne;
-                this.dataGridView.Columns.Insert(index_colonne, colonne);
+                {
+                    colonne.ValueType = typeof(String);
+                    colonne.DataPropertyName = propertyInfo.Name;
+                    colonne.HeaderText = configProperty.DisplayProperty.Titre;
+                    colonne.Name = propertyInfo.Name;
+                    colonne.ReadOnly = true;
+                    if (configProperty.DataGrid?.WidthColonne != 0) colonne.Width = configProperty.DataGrid.WidthColonne;
+                    this.dataGridView.Columns.Insert(index_colonne, colonne);
+                    continue;
+                }
+                if (propertyInfo.PropertyType.Name == "DateTime")
+                {
+                    colonne = new DataGridViewTextBoxColumn();
+                    colonne.ValueType = typeof(DateTime);
+                    colonne.DataPropertyName = propertyInfo.Name;
+                    colonne.HeaderText = configProperty.DisplayProperty.Titre;
+                    colonne.Name = propertyInfo.Name;
+                    colonne.ReadOnly = true;
+                    if (configProperty.DataGrid?.WidthColonne != 0) colonne.Width = configProperty.DataGrid.WidthColonne;
+                    this.dataGridView.Columns.Insert(index_colonne, colonne);
+                    continue;
+                }
+
+                if (propertyInfo.PropertyType.IsEnum)
+                {
+                    colonne.ValueType = propertyInfo.PropertyType;
+                    colonne.DataPropertyName = propertyInfo.Name;
+                    colonne.HeaderText = configProperty.DisplayProperty.Titre;
+                    colonne.Name = propertyInfo.Name;
+                    colonne.ReadOnly = true;
+                    if (configProperty.DataGrid?.WidthColonne != 0) colonne.Width = configProperty.DataGrid.WidthColonne;
+                    this.dataGridView.Columns.Insert(index_colonne, colonne);
+
+                    continue;
+                }
+
+                if (configProperty.Relationship?.Relation == RelationshipAttribute.Relations.ManyToMany_Creation)
+                {
+                    DataGridViewButtonColumn c = new DataGridViewButtonColumn();
+                    c.UseColumnTextForButtonValue = true;
+                    c.Text = propertyInfo.Name;
+                    colonne = c;
+                    colonne.ReadOnly = true;
+                    colonne.HeaderText = configProperty.DisplayProperty.Titre;
+                    colonne.Name = propertyInfo.Name;
+                    if (configProperty.DataGrid?.WidthColonne != 0) colonne.Width = configProperty.DataGrid.WidthColonne;
+                    this.dataGridView.Columns.Insert(index_colonne, colonne);
+                    continue;
+                }
+
             }
         }
 
@@ -236,7 +266,7 @@ namespace App.Gwin
                 onEditClick(this, null);
             }
 
-            
+
 
             foreach (var item in this.ListeProprieteDataGrid.Where(p => p.PropertyType.Name == "List`1"))
             {
@@ -263,7 +293,7 @@ namespace App.Gwin
         #endregion
 
 
-      
-        
+
+
     }
 }

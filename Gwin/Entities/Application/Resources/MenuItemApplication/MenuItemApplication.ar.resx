@@ -123,4 +123,7 @@
   <data name="SingularName" xml:space="preserve">
     <value>عنصر القائمة</value>
   </data>
+  <data name="MenuManager" xml:space="preserve">
+    <value>إدارة القائمة</value>
+  </data>
 </root>

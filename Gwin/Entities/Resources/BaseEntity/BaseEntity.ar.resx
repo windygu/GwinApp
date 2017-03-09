@@ -120,4 +120,7 @@
   <data name="management_of" xml:space="preserve">
     <value>تدبير</value>
   </data>
+  <data name="Add" xml:space="preserve">
+    <value>إظافة</value>
+  </data>
 </root>

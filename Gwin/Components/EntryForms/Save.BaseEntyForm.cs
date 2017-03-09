@@ -1,4 +1,5 @@
-﻿using System;
+﻿using App.Gwin.Components.EntryForms.Resources;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +8,7 @@ using System.Windows.Forms;
 
 namespace App.Gwin
 {
- 
+
     public partial class BaseEntryForm
     {
 
@@ -19,31 +20,30 @@ namespace App.Gwin
         /// <param name="e"></param>
         protected virtual void btEnregistrer_Click(object sender, EventArgs e)
         {
-            // Varéfier la validation 
-            bool validation = true;
+            // Check is All controls en Form are validate
+
             if (ValidationManager.hasValidationErrors(this.Controls))
                 return;
 
             this.ReadFormToEntity();
 
-            if (validation)
+
+            if (Service.Save(this.Entity) > 0)
             {
-                if (Service.Save(this.Entity) > 0)
-                {
-                    MessageBox.Show(string.Format("'{0}' a été bien enregistrer", this.Entity.ToString()));
-                    onEnregistrerClick(this, e);
-                }
-                else
-                {
-                    MessageBox.Show(
-                        string.Format("L'information n'est pas enregistrer car il n'y a pas des modifications"
-                        , this.Entity.ToString())
-                        , "Il n'y a pas des modification"
-
-                        );
-                }
-
+                MessageBox.Show(string.Format(ResourceEntryForm.Entity_has_been_properly_registered, this.Entity.ToString()));
+                onEnregistrerClick(this, e);
             }
+            else
+            {
+                MessageBox.Show(
+                    string.Format(ResourceEntryForm.The_information_is_not_saved_because_there_are_no_changes
+                    , this.Entity.ToString())
+                    , ResourceEntryForm.There_are_no_changes
+
+                    );
+            }
+
+
         }
 
         private void btAnnuler_Click(object sender, EventArgs e)

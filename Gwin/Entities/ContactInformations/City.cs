@@ -1,5 +1,6 @@
 ﻿using App.Gwin.Attributes;
 using App.Gwin.Entities;
+using App.Gwin.Entities.MultiLanguage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,14 +15,14 @@ namespace App.Gwin.Entities.ContactInformations
     public class City : BaseEntity
     {
         [DisplayProperty(isInGlossary = true)]
-        [EntryForm]
+        [EntryForm(isOblegatoir =true)]
         [Filter]
         [DataGrid]
-        public string Name { set; get; }
+        public LocalizedString Name { set; get; }
 
         [DisplayProperty(isInGlossary = true)]
         [EntryForm(MultiLine = true)]
-        public string Description { set; get; }
+        public LocalizedString Description { set; get; }
 
         [DisplayProperty(isInGlossary = true)]
         [EntryForm]

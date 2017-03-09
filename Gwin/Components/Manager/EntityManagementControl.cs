@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using App.Gwin.Attributes;
 using App.Gwin.EntityManagement;
 using System.Reflection;
+using App.Gwin.Application.BAL;
 
 namespace App.Gwin
 {
@@ -169,7 +170,7 @@ namespace App.Gwin
         /// </summary> 
         public void Actualiser()
         {
-            this.DataGridControl.Actualiser(this.FilterControl.CritereRechercheFiltre());
+            this.DataGridControl.Actualiser(this.FilterControl.GetFilterValues());
         }
         #endregion
 

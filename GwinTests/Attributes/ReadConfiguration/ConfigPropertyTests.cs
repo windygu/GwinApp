@@ -11,6 +11,7 @@ using System.Reflection;
 using App.Gwin.Application.BAL.GwinApplication;
 using App.Gwin.Application.Presentation.MainForm;
 using App.Gwin;
+using GenericWinForm.Demo.BAL;
 
 namespace App.Shared.AttributesManager.Tests
 {
@@ -27,9 +28,9 @@ namespace App.Shared.AttributesManager.Tests
         [TestMethod()]
         public void ConfigProperty_of_MinimumConfiguration_entity_Test()
         {
-            ConfigEntity ConfigEntity = ConfigEntity.CreateConfigEntity(typeof(MinimumConfiguration_Loalizable_Entity));
+            ConfigEntity ConfigEntity = ConfigEntity.CreateConfigEntity(typeof(EntityMiniConfig));
 
-            PropertyInfo PropertyInfoName = typeof(MinimumConfiguration_Loalizable_Entity).GetProperty("StingField");
+            PropertyInfo PropertyInfoName = typeof(EntityMiniConfig).GetProperty(nameof(EntityMiniConfig.StringField));
             ConfigProperty ConfigProperty = new ConfigProperty(PropertyInfoName, ConfigEntity);
             Assert.IsNotNull(ConfigProperty.DisplayProperty.Titre);
             Assert.AreNotEqual(ConfigProperty.DisplayProperty.Titre,String.Empty);

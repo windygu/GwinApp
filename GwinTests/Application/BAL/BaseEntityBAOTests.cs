@@ -5,11 +5,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using App.Gwin.Entities.Security;
 using App.Gwin.Application.BAL.Security;
 using System.Data.Entity.Validation;
 using App.Gwin.Application.BAL.GwinApplication;
 using App;
+using App.Gwin.Entities.Autorizations;
+using GenericWinForm.Demo.BAL;
 
 namespace App.Gwin.Application.BAL.Tests
 {
@@ -120,11 +121,10 @@ namespace App.Gwin.Application.BAL.Tests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(DbEntityValidationException))]
         public void DbEntityValidationExceptionTreatmentTest()
         {
-            Role role = new Role();
-            roleBAO.Save(role);
+           Role role = new Role();
+           Assert.AreEqual( roleBAO.Save(role), -1);
         }
 
         [TestMethod()]

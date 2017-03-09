@@ -2,6 +2,9 @@
 
 namespace App.Gwin.Attributes
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class RelationshipAttribute : Attribute
     {
 
@@ -27,6 +30,7 @@ namespace App.Gwin.Attributes
 
         /// <summary>
         /// Indique le type de la relation, ManyToOne ou ManyToMany
+        /// a Member ManyToMany must be a valide Generic List
         /// </summary>
         public Relations Relation { set; get; }
         

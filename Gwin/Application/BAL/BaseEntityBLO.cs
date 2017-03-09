@@ -10,6 +10,7 @@ using System.Data.Entity.Validation;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -24,11 +25,15 @@ namespace App.Gwin.Application.BAL
     /// <typeparam name="T"></typeparam>
     public class BaseEntityBLO<T> : IBaseBLO where T : BaseEntity
     {
-        #region public Properties
+        #region Context
         /// <summary>
         /// Entity Framework context
         /// </summary>
         public virtual DbContext Context { get; set; }
+        protected IDbSet<T> DbSet { get; set; }
+        #endregion
+
+        #region Entity
         /// <summary>
         /// Entity Type
         /// </summary>
@@ -37,31 +42,23 @@ namespace App.Gwin.Application.BAL
         /// ConfigEntity Object
         /// </summary>
         public ConfigEntity ConfigEntity { set; get; }
-
         #endregion
 
-        #region Private Properties
-        protected IDbSet<T> DbSet { get; set; }
-        #endregion
 
-        #region Construcreur
+        #region Constructor
         public BaseEntityBLO(DbContext context, Type TypeDBContext)
         {
             // Params
             this.Context = context;
-            
             this.TypeEntity = typeof(T);
             this.ConfigEntity = ConfigEntity.CreateConfigEntity(this.TypeEntity);
 
             // Create Context instance
             if (TypeDBContext != null)
-            {
-             this.Context = Activator.CreateInstance(TypeDBContext) as DbContext;
-            }
-            if(this.Context != null)
-            this.DbSet = this.Context.Set<T>();
+                this.Context = Activator.CreateInstance(TypeDBContext) as DbContext;
+            if (this.Context != null)
+                this.DbSet = this.Context.Set<T>();
         }
-     
         public BaseEntityBLO(Type TypeDBContext) : this(null, TypeDBContext) { }
         public BaseEntityBLO(DbContext context) : this(context, null) { }
         #endregion
@@ -120,7 +117,7 @@ namespace App.Gwin.Application.BAL
             catch (DbEntityValidationException e)
             {
                 DbEntityValidationExceptionTreatment(e);
-                return 0;
+                return -1;
             }
 
         }
@@ -348,6 +345,9 @@ namespace App.Gwin.Application.BAL
         {
             return this.Context.Set<T>().Create();
         }
+        #endregion
+
+        #region Create BLO Instance
 
         /// <summary>
         /// Creating an instance of the Service object from the entity type
@@ -367,7 +367,7 @@ namespace App.Gwin.Application.BAL
         /// <param name="TypeEntity">the entity type</param>
         /// <param name="context">the context</param>
         /// <returns></returns>
-        public virtual IBaseBLO CreateEntityInstanceByTypeAndContext(Type TypeEntity, DbContext context)
+        public virtual IBaseBLO CreateServiceBLOInstanceByTypeEntityAndContext(Type TypeEntity, DbContext context)
         {
 
             Type TypeEntityService = typeof(BaseEntityBLO<>).MakeGenericType(TypeEntity);
@@ -388,15 +388,53 @@ namespace App.Gwin.Application.BAL
 
         #region Static Method
         /// <summary>
-        /// Creating an instance of the Service object from the entity type
+        ///  Creating an instance of the Service object from the entity type
         /// </summary>
         /// <param name="TypeEntity">the entity type</param>
+        /// <param name="TypeBaseBAO">Type of Base BAL object</param>
+        /// <param name="context"></param>
         /// <returns></returns>
         public static IBaseBLO CreateBLOInstanceByTypeEntity(Type TypeEntity, Type TypeBaseBAO, DbContext context)
         {
+            // Test if BLO Exist
+
+            // Create generic Instance if EntiyBLO Not Exist
             Type TypeEntityService = TypeBaseBAO.MakeGenericType(TypeEntity);
             IBaseBLO EntityService = (IBaseBLO)Activator.CreateInstance(TypeEntityService, context);
             return EntityService;
+        }
+
+        /// <summary>
+        ///  Creating an instance of the BLO
+        ///  From EtityBLO id Exist
+        ///  if not exist it use generic BaseBLO
+        /// </summary>
+        /// <param name="TypeEntity">the entity type</param>
+        /// <param name="TypeBaseBLO">Type of Base BLO object</param>
+        /// <param name="context"></param>
+        /// <returns></returns>
+        public static IBaseBLO CreateBLO_Instance(Type TypeEntity, Type TypeBaseBLO)
+        {
+            // EntityBLO Object
+            IBaseBLO EntityBLO = null;
+
+            // Load TypeEntityBLO
+            String Name_Entity_BLO = TypeBaseBLO.Namespace + "." + TypeEntity.Name + "BLO";
+            Type TypeEntityBLO =  TypeBaseBLO.Assembly.GetType(Name_Entity_BLO);
+
+            // Create EntityBLO Instance if Exist
+            if (TypeEntityBLO != null)
+            {
+                EntityBLO = (IBaseBLO)Activator.CreateInstance(TypeEntityBLO);
+            }
+            // Create Generic_EntityBLO Instance if EntityBLO not exist
+            else
+            {
+                Type TypeGenericEntityBLO = TypeBaseBLO.MakeGenericType(TypeEntity);
+                EntityBLO = (IBaseBLO)Activator.CreateInstance(TypeGenericEntityBLO);
+            }
+
+            return EntityBLO;
         }
         #endregion
     }

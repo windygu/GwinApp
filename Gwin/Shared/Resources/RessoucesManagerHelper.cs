@@ -46,7 +46,8 @@ namespace App.Gwin.Shared.Resources
                 RessoucesManagers.Add(type_entity.Name, new ResourceManager(RessouceFullName, type_entity.Assembly));
             else
             {
-                MessageToUser.AddMessage(MessageToUser.Category.BusinessRule, "The resource file does not exist : " + RessouceFullName);
+                // [Log]
+                // MessageToUser.AddMessage(MessageToUser.Category.BusinessRule, "The resource file does not exist : " + RessouceFullName);
                 return;
             }
             if (type_entity.BaseType != typeof(object))

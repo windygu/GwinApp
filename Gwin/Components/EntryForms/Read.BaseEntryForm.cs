@@ -11,9 +11,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using App.Gwin.Entities.MultiLanguage;
+using App.Gwin.Application.BAL;
 
 namespace App.Gwin
 {
+    /// <summary>
+    /// Read from Interface to Entity
+    /// </summary>
     public partial class BaseEntryForm
     {
         /// <summary>
@@ -26,13 +30,13 @@ namespace App.Gwin
             foreach (PropertyInfo item in ListeChampsFormulaire())
             {
                 
-                ConfigProperty attributesOfProperty = new ConfigProperty(item, this.ConfigEntity);
+                ConfigProperty configProperty = new ConfigProperty(item, this.ConfigEntity);
 
                 Type typePropriete = item.PropertyType;
                 string NomPropriete = item.Name;
 
-                #region Read :String Field
-                if (typePropriete.Name == "String")
+                #region Read :String Field without DataSource
+                if (typePropriete.Name == "String" && configProperty.DataSource == null)
                 {
                     string value = "";
                     if (this.AutoGenerateField)
@@ -44,6 +48,24 @@ namespace App.Gwin
                     {
                         TextBox txtBox = (TextBox)this.FindPersonelField(item.Name, "TextBox");
                         value = txtBox.Text;
+                    }
+                    typeEntity.GetProperty(NomPropriete).SetValue(entity, value);
+                }
+                #endregion
+
+                #region Read :String Field With DataSource
+                if (typePropriete.Name == "String" && configProperty.DataSource != null)
+                {
+                    string value = "";
+                    if (this.AutoGenerateField)
+                    {
+                        BaseField baseField = this.FindGenerateField(item.Name);
+                        value = baseField.Value.ToString();
+                    }
+                    else
+                    {
+                        ComboBox txtBox = (ComboBox)this.FindPersonelField(item.Name, "ComboBox");
+                        value = txtBox.SelectedItem.ToString() ;
                     }
                     typeEntity.GetProperty(NomPropriete).SetValue(entity, value);
                 }
@@ -87,6 +109,27 @@ namespace App.Gwin
                 }
                 #endregion
 
+                #region Read :Enumeration
+                if (item.PropertyType.IsEnum)
+                {
+                    // Default Enumeration Value
+                    var value = Activator.CreateInstance(item.PropertyType);
+ 
+                    if (this.AutoGenerateField)
+                    {
+
+                        BaseField baseField = this.FindGenerateField(item.Name);
+                        value = baseField.Value;
+                    }
+                    else
+                    {
+                        ComboBox txtBox = (ComboBox)this.FindPersonelField(item.Name, "ComboBox");
+                        value = txtBox.SelectedItem.ToString();
+                    }
+                    typeEntity.GetProperty(NomPropriete).SetValue(entity, value);
+                }
+                #endregion
+
                 #region Read :LocalizedString 
                 if (typePropriete.Name == "LocalizedString")
                 {
@@ -109,7 +152,7 @@ namespace App.Gwin
                 #endregion
 
                 #region Read : ManyToOne Field
-                if (attributesOfProperty.Relationship?.Relation == RelationshipAttribute.Relations.ManyToOne)
+                if (configProperty.Relationship?.Relation == RelationshipAttribute.Relations.ManyToOne)
                 {
                     Int64 id;
                     if (this.AutoGenerateField)
@@ -130,13 +173,13 @@ namespace App.Gwin
                 #endregion
 
                 #region  Read : ManyToMany
-                if (attributesOfProperty.Relationship?.Relation == RelationshipAttribute.Relations.ManyToMany_Selection)
+                if (configProperty.Relationship?.Relation == RelationshipAttribute.Relations.ManyToMany_Selection)
                 {
                     List<BaseEntity> ls = null;
                     if (this.AutoGenerateField)
                     {
                         ManyToManyField manyToManyField = null;
-                        if (attributesOfProperty.EntryForm?.TabPage == true)
+                        if (configProperty.EntryForm?.TabPage == true)
                         {
                            
                             Control[] recherche = this.tabControlForm.Controls.Find(item.Name, true);
@@ -164,7 +207,7 @@ namespace App.Gwin
                     }
 
                   
-                    IBaseBLO ServicesEntity =  this.Service.CreateEntityInstanceByTypeAndContext(item.PropertyType.GetGenericArguments()[0], this.Service.Context);
+                    IBaseBLO ServicesEntity =  this.Service.CreateServiceBLOInstanceByTypeEntityAndContext(item.PropertyType.GetGenericArguments()[0], this.Service.Context);
 
 
                     Type TypeListeObjetValeur = typeof(List<>).MakeGenericType(item.PropertyType.GetGenericArguments()[0]);

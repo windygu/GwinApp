@@ -9,8 +9,16 @@ using System.Windows.Forms;
 
 namespace App
 {
+    /// <summary>
+    /// Check is controls are validate
+    /// </summary>
     public class ValidationManager
     {
+        /// <summary>
+        /// Check if Collection of controls are Validate
+        /// </summary>
+        /// <param name="controls"></param>
+        /// <returns></returns>
         public static bool hasValidationErrors(System.Windows.Forms.Control.ControlCollection controls)
         {
             bool hasError = false;

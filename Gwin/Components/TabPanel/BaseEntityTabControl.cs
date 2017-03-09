@@ -8,6 +8,7 @@ using System.Reflection;
 using App.Gwin.Entities;
 using App.Gwin.Application.Presentation.EntityManagement;
 using App.Gwin.Application.Presentation;
+using App.Gwin.Application.BAL;
 
 namespace App.Gwin.EntityManagement
 {
