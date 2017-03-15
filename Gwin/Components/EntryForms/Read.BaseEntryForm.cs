@@ -26,7 +26,7 @@ namespace App.Gwin
         public virtual void ReadFormToEntity()
         {
             BaseEntity entity = this.Entity;
-            Type typeEntity = this.Service.TypeEntity;
+            Type typeEntity = this.EntityBLO.TypeEntity;
             foreach (PropertyInfo item in ListeChampsFormulaire())
             {
                 
@@ -166,7 +166,7 @@ namespace App.Gwin
                         id = Convert.ToInt64(comboBox.SelectedValue);
 
                     }
-                    IBaseBLO ServicesEntity = this.Service.CreateServiceBLOInstanceByTypeEntity(item.PropertyType);
+                    IBaseBLO ServicesEntity = this.EntityBLO.CreateServiceBLOInstanceByTypeEntity(item.PropertyType);
                     BaseEntity ManyToOneEntity = ServicesEntity.GetBaseEntityByID(Convert.ToInt32(id));
                     typeEntity.GetProperty(NomPropriete).SetValue(entity, ManyToOneEntity);
                 }
@@ -207,7 +207,7 @@ namespace App.Gwin
                     }
 
                   
-                    IBaseBLO ServicesEntity =  this.Service.CreateServiceBLOInstanceByTypeEntityAndContext(item.PropertyType.GetGenericArguments()[0], this.Service.Context);
+                    IBaseBLO ServicesEntity =  this.EntityBLO.CreateServiceBLOInstanceByTypeEntityAndContext(item.PropertyType.GetGenericArguments()[0], this.EntityBLO.Context);
 
 
                     Type TypeListeObjetValeur = typeof(List<>).MakeGenericType(item.PropertyType.GetGenericArguments()[0]);

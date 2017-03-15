@@ -25,15 +25,15 @@ namespace App.Gwin.FieldsTraitements.Tests
     public class FieldTraitementTests
     {
         ConfigEntity configEntity = null;
-        EntityMiniConfig Entity = null;
+        TaskProject Entity = null;
         IBaseBLO entityMiniConfigBLO = null;
         [TestInitialize]
         public void GwinAppStart()
         {
             GwinApp.Start(typeof(ModelContext), typeof(BaseBLO<>), new Application.Presentation.MainForm.FormApplication(), null);
-            configEntity = ConfigEntity.CreateConfigEntity(typeof(EntityMiniConfig));
-            Entity = new EntityMiniConfig();
-            entityMiniConfigBLO = BaseEntityBLO<BaseEntity>.CreateBLO_Instance(typeof(EntityMiniConfig), typeof(BaseBLO<>));
+            configEntity = ConfigEntity.CreateConfigEntity(typeof(TaskProject));
+            Entity = new TaskProject();
+            entityMiniConfigBLO = BaseEntityBLO<BaseEntity>.CreateBLO_Instance(typeof(TaskProject), typeof(BaseBLO<>));
 
         }
 
@@ -43,7 +43,7 @@ namespace App.Gwin.FieldsTraitements.Tests
             BaseEntryForm baseEntryForm = new BaseEntryForm(entityMiniConfigBLO, Entity, new Dictionary<string, object>(), true);
             baseEntryForm.BaseEntryForm_Load(baseEntryForm, null);
             // Load EntityMiniConfigBLO dynamicly
-            Assert.AreEqual(typeof(EntityMiniConfigBLO), entityMiniConfigBLO.GetType());
+            Assert.AreEqual(typeof(TaskProjectBLO), entityMiniConfigBLO.GetType());
         }
 
         [TestMethod()]

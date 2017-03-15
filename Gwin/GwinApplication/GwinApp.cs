@@ -44,7 +44,7 @@ namespace App.Gwin
         /// <summary>
         ///  Form application menu instance
         /// </summary>
-        public FormApplication ApplicationMenu { set; get; }
+        public FormApplication FormApplication { set; get; }
         /// <summary>
         /// Connected user
         /// </summary>
@@ -67,7 +67,7 @@ namespace App.Gwin
         {
             this.TypeDBContext = TypeDbContext;
             this.TypeBaseBLO = TypeBaseBLO;
-            this.ApplicationMenu = applicationMenuInstance;
+            this.FormApplication = applicationMenuInstance;
             this.user = user;
             this.CultureInfo = new CultureInfo(user.Language.ToString());
         }

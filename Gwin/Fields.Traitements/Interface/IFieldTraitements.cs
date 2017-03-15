@@ -14,5 +14,7 @@ namespace App.Gwin.FieldsTraitements
         void WriteEntity_To_EntryForm(WriteEntity_To_EntryForm_Param param);
         BaseField CreateField_In_Filter(CreateField_In_Filter_Params param);
         object GetFieldValue_From_Filter(Control FilterContainer, ConfigProperty ConfigProperty);
+
+        void ConfigFieldColumn_In_EntityDataGrid(CreateFieldColumns_In_EntityDataGrid param);
     }
 }

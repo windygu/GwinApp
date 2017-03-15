@@ -28,13 +28,13 @@ namespace GenericWinForm.Demo.BAL.Tests
         [TestMethod()]
         public void ApplyBusinessRolesAfterValuesChangedTest()
         {
-            EntityMiniConfig EntityMiniConfig = new EntityMiniConfig();
-            EntityMiniConfig.StringField = "Hello";
+            TaskProject EntityMiniConfig = new TaskProject();
+            EntityMiniConfig.Title = "Hello";
             // Create entityMinConfigBLO dynamicly
-            IBaseBLO entityMinConfigBLO = BaseEntityBLO<BaseEntity>.CreateBLO_Instance(typeof(EntityMiniConfig), typeof(BaseBLO<>));
-            entityMinConfigBLO.ApplyBusinessRolesAfterValuesChanged("StringField", EntityMiniConfig);
+            IBaseBLO entityMinConfigBLO = BaseEntityBLO<BaseEntity>.CreateBLO_Instance(typeof(TaskProject), typeof(BaseBLO<>));
+            entityMinConfigBLO.ApplyBusinessRolesAfterValuesChanged(nameof(TaskProject.Title), EntityMiniConfig);
 
-            Assert.AreEqual(EntityMiniConfig.StringField, "HELLO");
+            Assert.AreEqual(EntityMiniConfig.Title, "HELLO");
 
         }
     }

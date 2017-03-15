@@ -27,12 +27,16 @@ namespace App.Gwin.Application.Presentation.MainForm
         private IBaseBLO Service { get;  set; }
         #endregion
 
-        public CreateApplicationMenu(IApplicationMenu formMenu)
+        /// <summary>
+        /// Create Application Menu
+        /// </summary>
+        /// <param name="FormMenu">MDI Form that cotrain Menu of Application</param>
+        public CreateApplicationMenu(IApplicationMenu FormMenu)
         {
-            this.formMenu = formMenu;
-            this.menuStrip = formMenu.getMenuStrip();
+            this.formMenu = FormMenu;
+            this.menuStrip = FormMenu.getMenuStrip();
             MenuItems = new Dictionary<string, Type>();
-            this.ShowManagementForm = new EntityManagementCreator(GwinApp.Instance.TypeDBContext,formMenu);
+            this.ShowManagementForm = new EntityManagementCreator(GwinApp.Instance.TypeDBContext,FormMenu);
             this.Service = BaseEntityBLO<BaseEntity>
                 .CreateBLOInstanceByTypeEntity(typeof(MenuItemApplication),GwinApp.Instance.TypeBaseBLO, this.ShowManagementForm.CreateContext());
             this.CreateMenu();
@@ -60,7 +64,18 @@ namespace App.Gwin.Application.Presentation.MainForm
                 {
                     toolStripMenuItem.Text = menuItemApplication.Code;
                 }
-                this.menuStrip.Items.Add(toolStripMenuItem);
+                // Add or Update Item in Menu after Langauge change
+               if( this.menuStrip.Items.Find(toolStripMenuItem.Name, true).Count() == 0)
+                {
+                    // new
+                    this.menuStrip.Items.Add(toolStripMenuItem);
+                }else
+                {
+                    // Update
+                    ToolStripItem toolStripItem =  this.menuStrip.Items.Find(toolStripMenuItem.Name, true).First();
+                    toolStripItem.Text = toolStripMenuItem.Text;
+                }
+               
             }
 
 
@@ -87,7 +102,7 @@ namespace App.Gwin.Application.Presentation.MainForm
                     if (GroupeToolStripMenuItem != null)
                         GroupeToolStripMenuItem.DropDownItems.Add(toolStripMenuItem);
                     else
-                        throw new GwinException("toolStripMenuItem :" + toolStripMenuItem_key + " not exist in Menu Application");
+                        throw new GwinException(toolStripMenuItem_key + " not exist in Menu of Application");
                 }
                 else
                 {

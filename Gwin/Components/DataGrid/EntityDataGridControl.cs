@@ -14,51 +14,56 @@ using App.Gwin.Entities;
 using System.Resources;
 using App.Gwin.Entities.MultiLanguage;
 using App.Gwin.Application.BAL;
+using App.Gwin.Fields.Traitements.Params;
+using App.Gwin.FieldsTraitements;
+using App.Gwin.Exceptions.Gwin;
+using App.Gwin.Exceptions.Helpers;
 
 namespace App.Gwin
 {
     public partial class EntityDataGridControl : UserControl, IEntityDataGrideControl
     {
-
-
-        #region Propriétés
+        #region Properties
+        /// <summary>
+        /// Selected Entity in DataGrid
+        /// </summary>
         public BaseEntity SelectedEntity
         {
-
             get
             {
                 return this.ObjetBindingSource.Current as BaseEntity;
             }
         }
-
-
+        /// <summary>
+        ///  ??
+        /// </summary>
         public PropertyInfo SelectedProperty { set; get; }
+
+        /// <summary>
+        /// EtityBLO Instance
+        /// </summary>
+        public IBaseBLO EntityBLO { set; get; }
+
+        /// <summary>
+        /// FilterValues : Key : String, Value :Object
+        /// Key : Property name, Value : Entity ID
+        /// </summary>
+        public Dictionary<string, object> FilterValues { set; get; }
+
+        /// <summary>
+        /// List of  Property taht can be shown in DataGrid
+        /// </summary>
+        public List<PropertyInfo> ListeProprieteDataGrid { set; get; }
+
+        /// <summary>
+        /// Entity config instance
+        /// </summary>
+        public ConfigEntity ConfigEntity { get;  set; }
         #endregion
-
-        #region Params
-
-        /// <summary>
-        /// Le service de l'entité en gestion  
-        /// </summary>
-        protected IBaseBLO Service { set; get; }
-
-
-        /// <summary>
-        /// Critère de filtre de recherche
-        /// </summary>
-        protected Dictionary<string, object> CritereRechercheFiltre { set; get; }
-
-        /// <summary>
-        /// Obient ou définire la liste des propriété de l'entity en cours de gestion
-        /// </summary>
-        protected List<PropertyInfo> ListeProprieteDataGrid { set; get; }
-        public ConfigEntity ConfigEntity { get; private set; }
-        #endregion
-
 
         #region Evénement
         /// <summary>
-        /// Lancer aprés un click sur éditer
+        /// Edit Click event
         /// </summary>
         public event EventHandler EditClick;
         protected void onEditClick(object sender, EventArgs e)
@@ -67,6 +72,9 @@ namespace App.Gwin
                 EditClick(sender, e);
         }
 
+        /// <summary>
+        /// Edit Many to one click event
+        /// </summary>
         public event EventHandler EditManyToOneCollection;
         protected void onEditManyToOneCollection(object sender, EventArgs e)
         {
@@ -74,60 +82,92 @@ namespace App.Gwin
             if (EditManyToOneCollection != null)
                 EditManyToOneCollection(sender, e);
         }
-
-
+        /// <summary>
+        /// Edit Many to Many click event
+        /// </summary>
         public event EventHandler EditManyToManyCollection;
         protected void onEditManyToManyCollection(object sender, EventArgs e)
         {
-
             if (EditManyToManyCollection != null)
                 EditManyToManyCollection(sender, e);
         }
 
-
+        /// <summary>
+        /// Refresh Event
+        /// </summary>
         public event EventHandler RefreshEvent;
-
-
         protected void onRefreshEvent(object sender, EventArgs e)
         {
             RefreshEvent(sender, e);
         }
-
-
         #endregion
 
         #region Constructeurs
-
-        public EntityDataGridControl(IBaseBLO Service, Dictionary<string, object> critereRechercheFiltre = null)
+        /// <summary>
+        /// Create EntityDataGrid Instance
+        /// </summary>
+        /// <param name="EtityBLO"></param>
+        /// <param name="FilterValues"></param>
+        public EntityDataGridControl(IBaseBLO EtityBLO, Dictionary<string, object> FilterValues)
         {
-            InitializeComponent(); if (this.DesignMode) return;
-            this.Service = Service;
-            this.ConfigEntity = ConfigEntity.CreateConfigEntity(this.Service.TypeEntity);
-            this.CritereRechercheFiltre = critereRechercheFiltre;
+            InitializeComponent();
+
+            CheckPramIsNull.CheckParam_is_NotNull(EtityBLO, this, nameof(EtityBLO));
+
+
+            this.EntityBLO = EtityBLO;
+            this.ConfigEntity = ConfigEntity.CreateConfigEntity(this.EntityBLO.TypeEntity);
+            this.FilterValues = FilterValues;
+
+            // List of Property with DataGrid Annotation
+            var requete = from i in EntityBLO.TypeEntity.GetProperties()
+                          where i.GetCustomAttribute(typeof(DataGridAttribute)) != null
+                          orderby ((DataGridAttribute)i.GetCustomAttribute(typeof(DataGridAttribute))).Ordre
+                          select i;
+            this.ListeProprieteDataGrid = requete.ToList<PropertyInfo>();
+
             InitDataGridView();
         }
-        public EntityDataGridControl() : this(null) { }
-        #endregion
-
-        #region Actualiser
         /// <summary>
-        /// Affichage des information dans DataGrid selon le filtre s'il exsiste
-        /// </summary> 
-        public void Actualiser()
-        {
-            this.Actualiser(this.CritereRechercheFiltre);
+        /// You can not use this constuctor to create EntityDataGrid Instance
+        /// It is used en to support DesinMode en Visaul Sutdio
+        /// </summary>
+        public EntityDataGridControl()  {
+            if (LicenseManager.UsageMode == LicenseUsageMode.Runtime)
+                throw new GwinUsageModeException("This constructor is used just for DesineMode in Visal Studio, you can not use it per Code");
+            InitializeComponent();
         }
-        public void Actualiser(Dictionary<string, object> CritereRechercheFiltre)
-        {
-            ObjetBindingSource.Clear();
-            this.CritereRechercheFiltre = CritereRechercheFiltre;
-            var ls = Service.Recherche(CritereRechercheFiltre);
-            ObjetBindingSource.DataSource = ls;
-        }
-
         #endregion
 
-        #region InitDisingeDataGrid
+        #region Refresh
+        /// <summary>
+        /// Show Entity List in DataGrid, With Intial FilterValues
+        /// </summary> 
+        public void RefreshEntities()
+        {
+            this.RefreshEntities(this.FilterValues);
+        }
+        /// <summary>
+        /// Show Entity List in DataGrid with FilterValues
+        /// </summary>
+        /// <param name="FilterValues">Filter Values to filter Data in GridView</param>
+        public void RefreshEntities(Dictionary<string, object> FilterValues)
+        {
+            
+            this.FilterValues = FilterValues;
+            var ls = EntityBLO.Recherche(FilterValues);
+
+            ObjetBindingSource.Clear();
+            foreach (var item in ls)
+            {
+                ObjetBindingSource.Add(item);
+            }
+           
+            
+        }
+        #endregion
+
+        #region Insert Column in DataGrid
 
 
         /// <summary>
@@ -135,19 +175,11 @@ namespace App.Gwin
         /// </summary>
         private void InitDataGridView()
         {
-
-            // List of Property with DataGrid Annotation
-            var requete = from i in Service.TypeEntity.GetProperties()
-                          where i.GetCustomAttribute(typeof(DataGridAttribute)) != null
-                          orderby ((DataGridAttribute)i.GetCustomAttribute(typeof(DataGridAttribute))).Ordre
-                          select i;
-            this.ListeProprieteDataGrid = requete.ToList<PropertyInfo>();
-
-
             int index_colonne = 0;
 
             foreach (PropertyInfo propertyInfo in this.ListeProprieteDataGrid)
             {
+
                 ConfigProperty configProperty = new ConfigProperty(propertyInfo, this.ConfigEntity);
 
                 //  Ordre column
@@ -164,85 +196,19 @@ namespace App.Gwin
                 DataGridViewColumn colonne = new DataGridViewTextBoxColumn(); ;
                 index_colonne++;
 
-               
 
-                if (propertyInfo.PropertyType.Name == "String")
-                {
-                    colonne.ValueType = typeof(String);
-                    colonne.DataPropertyName = propertyInfo.Name;
-                    colonne.HeaderText = configProperty.DisplayProperty.Titre;
-                    colonne.Name = propertyInfo.Name;
-                    colonne.ReadOnly = true;
-                    if (configProperty.DataGrid?.WidthColonne != 0) colonne.Width = configProperty.DataGrid.WidthColonne;
-                    this.dataGridView.Columns.Insert(index_colonne, colonne);
+                // Params to Creat Fields
+                CreateFieldColumns_In_EntityDataGrid param = new CreateFieldColumns_In_EntityDataGrid();
+                param.Column = colonne;
+                param.ConfigProperty = configProperty;
+                // Create FieldTraitement Instance
+                IFieldTraitements fieldTraitement = FieldTraitement.CreateInstance(configProperty);
 
-                    continue;
-                }
-                // [Bug] Change static string to Variable nameof
-                if (propertyInfo.PropertyType.Name == "LocalizedString")
-                {
-                    colonne.ValueType = typeof(LocalizedString);
-                    colonne.DataPropertyName = propertyInfo.Name;
-                    colonne.HeaderText = configProperty.DisplayProperty.Titre;
-                    colonne.Name = propertyInfo.Name;
-                    colonne.ReadOnly = true;
-                    if (configProperty.DataGrid?.WidthColonne != 0) colonne.Width = configProperty.DataGrid.WidthColonne;
-                    this.dataGridView.Columns.Insert(index_colonne, colonne);
-                    continue;
-                }
+                // Invok Create Column 
+                fieldTraitement.ConfigFieldColumn_In_EntityDataGrid(param);
 
-                if (propertyInfo.PropertyType.Name == "Integer")
-
-                {
-                    colonne.ValueType = typeof(String);
-                    colonne.DataPropertyName = propertyInfo.Name;
-                    colonne.HeaderText = configProperty.DisplayProperty.Titre;
-                    colonne.Name = propertyInfo.Name;
-                    colonne.ReadOnly = true;
-                    if (configProperty.DataGrid?.WidthColonne != 0) colonne.Width = configProperty.DataGrid.WidthColonne;
-                    this.dataGridView.Columns.Insert(index_colonne, colonne);
-                    continue;
-                }
-                if (propertyInfo.PropertyType.Name == "DateTime")
-                {
-                    colonne = new DataGridViewTextBoxColumn();
-                    colonne.ValueType = typeof(DateTime);
-                    colonne.DataPropertyName = propertyInfo.Name;
-                    colonne.HeaderText = configProperty.DisplayProperty.Titre;
-                    colonne.Name = propertyInfo.Name;
-                    colonne.ReadOnly = true;
-                    if (configProperty.DataGrid?.WidthColonne != 0) colonne.Width = configProperty.DataGrid.WidthColonne;
-                    this.dataGridView.Columns.Insert(index_colonne, colonne);
-                    continue;
-                }
-
-                if (propertyInfo.PropertyType.IsEnum)
-                {
-                    colonne.ValueType = propertyInfo.PropertyType;
-                    colonne.DataPropertyName = propertyInfo.Name;
-                    colonne.HeaderText = configProperty.DisplayProperty.Titre;
-                    colonne.Name = propertyInfo.Name;
-                    colonne.ReadOnly = true;
-                    if (configProperty.DataGrid?.WidthColonne != 0) colonne.Width = configProperty.DataGrid.WidthColonne;
-                    this.dataGridView.Columns.Insert(index_colonne, colonne);
-
-                    continue;
-                }
-
-                if (configProperty.Relationship?.Relation == RelationshipAttribute.Relations.ManyToMany_Creation)
-                {
-                    DataGridViewButtonColumn c = new DataGridViewButtonColumn();
-                    c.UseColumnTextForButtonValue = true;
-                    c.Text = propertyInfo.Name;
-                    colonne = c;
-                    colonne.ReadOnly = true;
-                    colonne.HeaderText = configProperty.DisplayProperty.Titre;
-                    colonne.Name = propertyInfo.Name;
-                    if (configProperty.DataGrid?.WidthColonne != 0) colonne.Width = configProperty.DataGrid.WidthColonne;
-                    this.dataGridView.Columns.Insert(index_colonne, colonne);
-                    continue;
-                }
-
+                // Insert Column in DataGriView
+                this.dataGridView.Columns.Insert(index_colonne, colonne);
             }
         }
 
@@ -256,8 +222,8 @@ namespace App.Gwin
                     "Voullez-vous vraimment supprimer :" + obj.ToString(),
                     "Confirmation de supprision", MessageBoxButtons.YesNo))
                 {
-                    this.Service.Delete(obj);
-                    this.Actualiser();
+                    this.EntityBLO.Delete(obj);
+                    this.RefreshEntities();
                 }
             }
             // Editer
@@ -291,9 +257,5 @@ namespace App.Gwin
         }
 
         #endregion
-
-
-
-
     }
 }

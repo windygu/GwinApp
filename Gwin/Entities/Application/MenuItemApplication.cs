@@ -4,6 +4,8 @@ using App.Gwin.Entities.Autorizations;
 using App.Gwin.Entities.MultiLanguage;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -21,6 +23,8 @@ namespace App.Gwin.Entities.Application
         [EntryForm(Ordre = 2)]
         [Filter]
         [DataGrid]
+        [StringLength(65)]
+        [Index("IX_Code",1, IsUnique = true)]
         public string Code { set; get; }
 
         [DisplayProperty(isInGlossary = true)]

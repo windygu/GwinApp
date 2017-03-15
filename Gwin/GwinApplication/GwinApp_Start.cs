@@ -66,7 +66,11 @@ namespace App.Gwin
                 GwinApp.Instance = new GwinApp(TypeDbContext, TypeBaseBLO, AppMenu, user);
             }
 
-           
+            // Update GwinApplicatio, after  ModelConfiguration changes
+            //[Update]
+            // Must be befor Language Change, because SetLanguge Use MenuTable
+            InstallApplicationGwinBLO installApplication = new InstallApplicationGwinBLO(TypeDbContext);
+            installApplication.Update();
 
             // Change Gwin Language 
             if (AppMenu != null && user != null)
@@ -74,10 +78,7 @@ namespace App.Gwin
                 GwinApp.SetLanguage(GwinApp.Instance.CultureInfo);
             }
 
-            // Update GwinApplicatio, after  ModelConfiguration changes
-            //[Update]
-            InstallApplicationGwinBLO installApplication = new InstallApplicationGwinBLO(TypeDbContext);
-            installApplication.Update();
+            
 
             // Load ApplicationName Instance
             IBaseBLO ApplicationNameBLO = new BaseEntityBLO<ApplicationName>((DbContext)Activator.CreateInstance(instance.TypeDBContext));
@@ -120,7 +121,7 @@ namespace App.Gwin
            
             GwinApp old_instance = GwinApp.instance;
             GwinApp.End();
-            GwinApp.Start(old_instance.TypeDBContext, old_instance.TypeBaseBLO, old_instance.ApplicationMenu, old_instance.user);
+            GwinApp.Start(old_instance.TypeDBContext, old_instance.TypeBaseBLO, old_instance.FormApplication, old_instance.user);
         }
         #endregion
 

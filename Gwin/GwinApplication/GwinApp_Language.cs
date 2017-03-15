@@ -46,7 +46,7 @@ namespace App.Gwin
             
 
             // ReLoad Applicaton Interface
-            instance.ApplicationMenu.Reload();
+            instance.FormApplication.Reload();
 
             //[Role] Restart must be after Language change, for Set Application Name Title after 
             // Initialize Form
@@ -69,7 +69,7 @@ namespace App.Gwin
             Thread.CurrentThread.CurrentUICulture = cultureInfo;
 
             // ReLoad Applicaton Interface
-            instance.ApplicationMenu.Reload();
+            instance.FormApplication.Reload();
         }
 
         /// <summary>

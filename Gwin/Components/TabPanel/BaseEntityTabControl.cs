@@ -94,9 +94,7 @@ namespace App.Gwin.EntityManagement
 
         #endregion
 
-        #region Load
 
-        #endregion
 
         #region Editer une liste OneToMany
 

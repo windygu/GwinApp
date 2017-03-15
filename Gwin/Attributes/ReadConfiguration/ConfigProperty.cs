@@ -156,39 +156,57 @@ namespace App.Shared.AttributesManager
             this.DataSource = dataSource as DataSourceAttribute;
 
             // Determine FieldNautre
+            this.DetermineFieldNature();
+
+        }
+
+        /// <summary>
+        /// Determine FieldNature
+        /// </summary>
+        private void DetermineFieldNature()
+        {
+            
             if (this.PropertyInfo.PropertyType.Name == "String" && this.DataSource == null)
             {
                 this.FieldNature = FieldsNatures.String;
+                return;
             }
             if (this.PropertyInfo.PropertyType.Name == "String" && this.DataSource != null)
             {
                 this.FieldNature = FieldsNatures.StringWithDataSource;
+                return;
             }
             if (this.PropertyInfo.PropertyType.Name == "LocalizedString")
             {
                 this.FieldNature = FieldsNatures.LocalizedString;
+                return;
             }
             if (this.PropertyInfo.PropertyType.Name == "Int32")
             {
                 this.FieldNature = FieldsNatures.Int32;
+                return;
             }
             if (this.PropertyInfo.PropertyType.Name == "DateTime")
             {
                 this.FieldNature = FieldsNatures.DateTime;
+                return;
+
             }
             if (this.PropertyInfo.PropertyType.IsEnum)
             {
                 this.FieldNature = FieldsNatures.Enumeration;
+                return;
             }
             if (this.Relationship?.Relation == RelationshipAttribute.Relations.ManyToOne)
             {
                 this.FieldNature = FieldsNatures.ManyToOne;
+                return;
             }
             if (this.Relationship?.Relation == RelationshipAttribute.Relations.ManyToMany_Selection)
             {
                 this.FieldNature = FieldsNatures.ManyToMany_Selection;
+                return;
             }
-
         }
 
 

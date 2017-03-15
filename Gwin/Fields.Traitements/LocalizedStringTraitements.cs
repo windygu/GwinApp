@@ -115,5 +115,23 @@ namespace App.Gwin.FieldsTraitements
                 return null;
         }
         #endregion
+
+        #region EntityDataGrid
+        /// <summary>
+        /// Create Field Colomn in Entity DataGrid
+        /// </summary>
+        /// <param name="param"></param>
+        public void ConfigFieldColumn_In_EntityDataGrid(CreateFieldColumns_In_EntityDataGrid param)
+        {
+            param.Column.ValueType = typeof(LocalizedString);
+            param.Column.DataPropertyName = param.ConfigProperty.PropertyInfo.Name;
+            param.Column.HeaderText = param.ConfigProperty.DisplayProperty.Titre;
+            param.Column.Name = param.ConfigProperty.PropertyInfo.Name;
+            param.Column.ReadOnly = true;
+            if (param.ConfigProperty.DataGrid?.WidthColonne != 0)
+                param.Column.Width = param.ConfigProperty.DataGrid.WidthColonne;
+
+        }
+        #endregion
     }
 }

@@ -61,6 +61,7 @@
     <Compile Include="Application\BAL\Application\ApplicationNameBLO.cs" />
     <Compile Include="Application\BAL\Authentication\UserGwinBLO.cs" />
     <Compile Include="Application\BAL\BaseEntityBLO.cs" />
+    <Compile Include="Exceptions\Gwin\GwinUsageModeException.cs" />
     <Compile Include="Components\EntryForms\Resources\ResourceEntryForm.ar.Designer.cs">
       <DependentUpon>ResourceEntryForm.ar.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -93,8 +94,14 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Exceptions\Gwin\GwinAppImplementedException.cs" />
+    <Compile Include="Exceptions\Gwin\GwinNullParameterException.cs" />
+    <Compile Include="Exceptions\Helpers\ParamsValidationg.cs" />
+    <Compile Include="Fields.Traitements\ManyToMany_CreationTraitements.cs" />
+    <Compile Include="Fields.Traitements\Params\CreateFieldColumns_In_EntityDataGrid.cs" />
     <Compile Include="Fields.Traitements\Params\CreateField_In_Filter_Params.cs" />
     <Compile Include="Fields.Traitements\Params\WriteEntity_To_EntryForm_Param.cs" />
+    <Compile Include="Fields.Traitements\DefaultFieldTraitements.cs" />
     <Compile Include="Fields\ComboBoxField.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -106,7 +113,7 @@
     <Compile Include="Fields.Traitements\EnumerationTraitements.cs" />
     <Compile Include="Fields.Traitements\Interface\FieldTraitement.cs" />
     <Compile Include="Fields.Traitements\Interface\IFieldTraitements.cs" />
-    <Compile Include="Fields.Traitements\ManyToManyTraitements.cs" />
+    <Compile Include="Fields.Traitements\ManyToMany_SelectionTraitements.cs" />
     <Compile Include="Fields.Traitements\ManyToOneTraitements.cs" />
     <Compile Include="Fields.Traitements\Int32Traitements.cs" />
     <Compile Include="Fields.Traitements\Params\CreateFieldParams.cs" />

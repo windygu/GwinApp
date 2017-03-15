@@ -19,22 +19,32 @@ namespace App.Shared.AttributesManager.Tests
     public class ConfigPropertyTests
     {
 
+        /// <summary>
+        /// Create GwinApp
+        /// </summary>
         [TestInitialize]
         public void initBaseEntityBAOTests()
         {
             GwinApp.Start(typeof(ModelContext), typeof(BaseBLO<>), new FormApplication(), null);
         }
 
+        /// <summary>
+        /// Create ConfigProperty instance of Minimum Configuration Entity
+        /// </summary>
         [TestMethod()]
-        public void ConfigProperty_of_MinimumConfiguration_entity_Test()
+        public void ConfigProperty_of_AllField_Test()
         {
-            ConfigEntity ConfigEntity = ConfigEntity.CreateConfigEntity(typeof(EntityMiniConfig));
+            ConfigEntity ConfigEntity = ConfigEntity.CreateConfigEntity(typeof(TaskProject));
 
-            PropertyInfo PropertyInfoName = typeof(EntityMiniConfig).GetProperty(nameof(EntityMiniConfig.StringField));
-            ConfigProperty ConfigProperty = new ConfigProperty(PropertyInfoName, ConfigEntity);
-            Assert.IsNotNull(ConfigProperty.DisplayProperty.Titre);
-            Assert.AreNotEqual(ConfigProperty.DisplayProperty.Titre,String.Empty);
+            foreach (PropertyInfo PropertyInfoName in typeof(TaskProject).GetProperties())
+            {
+                ConfigProperty ConfigProperty = new ConfigProperty(PropertyInfoName, ConfigEntity);
+                Assert.IsNotNull(ConfigProperty.DisplayProperty.Titre);
+                Assert.AreNotEqual(ConfigProperty.DisplayProperty.Titre, String.Empty);
+            }
+           
 
         }
+ 
     }
 }

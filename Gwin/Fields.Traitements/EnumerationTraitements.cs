@@ -62,7 +62,7 @@ namespace App.Gwin.FieldsTraitements
 
             // Use Filter Value
             if (param.CritereRechercheFiltre != null && param.CritereRechercheFiltre.ContainsKey(param.ConfigProperty.PropertyInfo.Name))
-                throw new NotImplementedException("Search per Enumeation not yet implmented");
+                throw new GwinNotImplementedException("Enumeation in Filter not yet implmented");
 
             // Find baseField control in ConteneurFormulaire
             // And Set Value
@@ -118,6 +118,22 @@ namespace App.Gwin.FieldsTraitements
         }
         #endregion
 
+        #region EntityDataGrid
+        /// <summary>
+        /// Create Field Colomn in Entity DataGrid
+        /// </summary>
+        /// <param name="param"></param>
+        public void ConfigFieldColumn_In_EntityDataGrid(CreateFieldColumns_In_EntityDataGrid param)
+        {
+            param.Column.ValueType = param.ConfigProperty.PropertyInfo.PropertyType;
+            param.Column.DataPropertyName = param.ConfigProperty.PropertyInfo.Name;
+            param.Column.HeaderText = param.ConfigProperty.DisplayProperty.Titre;
+            param.Column.Name = param.ConfigProperty.PropertyInfo.Name;
+            param.Column.ReadOnly = true;
+            if (param.ConfigProperty.DataGrid?.WidthColonne != 0)
+                param.Column.Width = param.ConfigProperty.DataGrid.WidthColonne;
 
+        }
+        #endregion
     }
 }

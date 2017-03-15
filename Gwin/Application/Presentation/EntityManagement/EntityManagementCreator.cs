@@ -81,7 +81,7 @@ namespace App.Gwin.Application.Presentation.EntityManagement
         /// </summary>
         public EntityManagementForm ShowManagementForm<T>(BaseEntryForm formulaire) where T : BaseEntity
         {
-            EntityManagementForm form = new EntityManagementForm(formulaire.Service, formulaire, null, (Form)this.FormApplicationMdi);
+            EntityManagementForm form = new EntityManagementForm(formulaire.EntityBLO, formulaire, null, (Form)this.FormApplicationMdi);
             this.ShwoForm(form);
             return form;
         }

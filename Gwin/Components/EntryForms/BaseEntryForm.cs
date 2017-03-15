@@ -17,6 +17,8 @@ using App.Gwin.Entities;
 using System.Resources;
 using App.Gwin.Shared.Resources;
 using App.Gwin.Application.BAL;
+using App.Gwin.Exceptions.Gwin;
+using App.Gwin.Exceptions.Helpers;
 
 namespace App.Gwin
 {
@@ -27,7 +29,7 @@ namespace App.Gwin
     {
         #region Variables
 
-  
+
 
         /// <summary>
         /// Indique si les champs seront automatiquement générer ou manuellement implémenter 
@@ -49,7 +51,7 @@ namespace App.Gwin
         /// l'instance de service de la gestion en cours
         /// 
         /// </summary> 
-        public IBaseBLO Service { get; set; }
+        public IBaseBLO EntityBLO { get; set; }
 
         /// <summary>
         /// Message da validation des champs de la formulire
@@ -99,55 +101,61 @@ namespace App.Gwin
 
         #region Constructeurs
         /// <summary>
-        /// Créer du formuliare  
+        /// Entry form
         /// </summary>
-        /// <param name="service"></param>
+        /// <param name="EtityBLO"></param>
         public BaseEntryForm(
-            IBaseBLO service, 
+            IBaseBLO EtityBLO,
             BaseEntity entity,
-            Dictionary<string, object> critereRechercheFiltre, 
+            Dictionary<string, object> critereRechercheFiltre,
             bool AutoGenerateField)
         {
             InitializeComponent();
-            if (!DesignMode )
+
+            CheckPramIsNull.CheckParam_is_NotNull(EtityBLO, this, nameof(EtityBLO));
+
+            // Params
+            this.EntityBLO = EtityBLO;
+
+            this.Entity = entity;
+            this.CritereRechercheFiltre = critereRechercheFiltre;
+            this.AutoGenerateField = AutoGenerateField;
+            this.ConfigEntity = ConfigEntity.CreateConfigEntity(this.EntityBLO.TypeEntity);
+
+            // Les valeus par défaux
+            this.isStepInitializingValues = false;
+            this.MessageValidation = new MessageValidation(errorProvider);
+
+
+            // Préparation de l'objet Entity
+            if (this.EntityBLO != null && this.Entity == null)
+                this.Entity = (BaseEntity)EtityBLO.CreateEntityInstance();
+            if ((this.Entity == null || this.Entity.Id == 0) && this.CritereRechercheFiltre != null)
+                this.InitialisationEntityParCritereRechercheFiltre();
+
+            // Conteneurs du formulaire
+            this.ConteneurFormulaire = this.flowLayoutPanelForm;
+
+            // Génération du Formulaire
+            if (this.AutoGenerateField)
             {
-               
-                // Params
-                this.Service = service;
-                this.Entity = entity;
-                this.CritereRechercheFiltre = critereRechercheFiltre;
-                this.AutoGenerateField = AutoGenerateField;
-                this.ConfigEntity = ConfigEntity.CreateConfigEntity(this.Service.TypeEntity);
-
-                // Les valeus par défaux
-                this.isStepInitializingValues = false;
-                this.MessageValidation = new MessageValidation(errorProvider);
-                
-
-                // Préparation de l'objet Entity
-                if (this.Service != null && this.Entity == null)
-                    this.Entity = (BaseEntity)service.CreateEntityInstance();
-                if ((this.Entity == null || this.Entity.Id == 0) && this.CritereRechercheFiltre != null)
-                    this.InitialisationEntityParCritereRechercheFiltre();
-
-                // Conteneurs du formulaire
-                this.ConteneurFormulaire = this.flowLayoutPanelForm;
-
-                // Génération du Formulaire
-                if (this.AutoGenerateField)
+                if (this.ConfigEntity == null)
                 {
-                    if (this.ConfigEntity == null)
-                    {
-                        this.ConfigEntity = ConfigEntity.CreateConfigEntity(this.Service.TypeEntity);
-                    }
-                   
+                    this.ConfigEntity = ConfigEntity.CreateConfigEntity(this.EntityBLO.TypeEntity);
                 }
+
             }
+
         }
-        public BaseEntryForm(IBaseBLO service) 
-            : this(service, null, null,true) { }
-        [Obsolete]
-        private BaseEntryForm() : this(null, null, null,true) { }
+        public BaseEntryForm(IBaseBLO service)
+            : this(service, null, null, true) { }
+
+        public BaseEntryForm()
+        {
+            if (LicenseManager.UsageMode == LicenseUsageMode.Runtime)
+                throw new GwinUsageModeException("This constructor is used just for DesineMode in Visal Studio, you can not use it per Code");
+            InitializeComponent();
+        }
 
 
         /// <summary>
@@ -157,13 +165,13 @@ namespace App.Gwin
         {
 
             // ? this.Entity.GetType();
-            Type typeEntity = this.Service.TypeEntity;
+            Type typeEntity = this.EntityBLO.TypeEntity;
 
 
             foreach (PropertyInfo item in ListeChampsFormulaire())
             {
                 // Configuration de la propriété
-                  ConfigProperty attributesOfProperty = new ConfigProperty(item,this.ConfigEntity);
+                ConfigProperty attributesOfProperty = new ConfigProperty(item, this.ConfigEntity);
 
                 Type typePropriete = item.PropertyType;
                 string NomPropriete = item.Name;
@@ -196,7 +204,7 @@ namespace App.Gwin
 
                 if (attributesOfProperty.Relationship?.Relation == RelationshipAttribute.Relations.ManyToOne)
                 {
-                    BaseEntity valeur_filtre = this.Service
+                    BaseEntity valeur_filtre = this.EntityBLO
                         .CreateServiceBLOInstanceByTypeEntity(item.PropertyType)
                         .GetBaseEntityByID(Convert.ToInt64(this.CritereRechercheFiltre[item.Name]));
                     typeEntity.GetProperty(NomPropriete).SetValue(this.Entity, valeur_filtre);
@@ -215,11 +223,11 @@ namespace App.Gwin
         public void BaseEntryForm_Load(object sender, EventArgs e)
         {
             // Génération du Formulaire
-           
-            
-                this.CreateFieldIfNotGenerated();
-        
-           
+
+
+            this.CreateFieldIfNotGenerated();
+
+
         }
 
 
@@ -260,7 +268,7 @@ namespace App.Gwin
         /// <returns></returns>
         public virtual BaseEntryForm CreateInstance(IBaseBLO Service, BaseEntity entity, Dictionary<string, object> CritereRechercheFiltre)
         {
-            BaseEntryForm formilaire = (BaseEntryForm)Activator.CreateInstance(this.GetType(), Service, entity, CritereRechercheFiltre,true);
+            BaseEntryForm formilaire = (BaseEntryForm)Activator.CreateInstance(this.GetType(), Service, entity, CritereRechercheFiltre, true);
             return formilaire;
         }
         /// <summary>
@@ -281,7 +289,7 @@ namespace App.Gwin
         protected List<PropertyInfo> ListeChampsFormulaire()
         {
             // Obtien la liste des PropertyInfo par ordrer d'affichage
-            var listeProprite = from i in this.Service.TypeEntity.GetProperties()
+            var listeProprite = from i in this.EntityBLO.TypeEntity.GetProperties()
                                 where i.GetCustomAttribute(typeof(EntryFormAttribute)) != null
                                 orderby ((EntryFormAttribute)i.GetCustomAttribute(typeof(EntryFormAttribute))).Ordre
                                 select i;
@@ -314,6 +322,6 @@ namespace App.Gwin
 
         }
 
-      
+
     }
 }

@@ -59,7 +59,7 @@ namespace App.Gwin
             int TabIndex = 0;
 
             // Get Properties with EntryForm Configuration
-            var listeProprite = from i in this.Service.TypeEntity.GetProperties()
+            var listeProprite = from i in this.EntityBLO.TypeEntity.GetProperties()
                                 where i.GetCustomAttribute(typeof(EntryFormAttribute)) != null
                                 orderby ((EntryFormAttribute)i.GetCustomAttribute(typeof(EntryFormAttribute))).Ordre
                                 select i;
@@ -96,7 +96,7 @@ namespace App.Gwin
                 param.SizeControl = new Size(width_control_config, height_control);
                 param.ConfigProperty = configProperty;
                 param.TabIndex = ++TabIndex;
-                param.EntityBLO = this.Service; //  used per ManyToOne Field
+                param.EntityBLO = this.EntityBLO; //  used per ManyToOne Field
                 param.TabControlForm = this.tabControlForm; //  used per ManyToMany Field
                 param.Entity = this.Entity;
                 param.ConteneurFormulaire = FieldContainner;
@@ -141,7 +141,7 @@ namespace App.Gwin
         private void CreateGroupesBoxes(Dictionary<string, Control> groupesBoxMainContainers, int width, int height)
         {
             // trouver la liste des groupes box
-            var listeProprite = from i in this.Service.TypeEntity.GetProperties()
+            var listeProprite = from i in this.EntityBLO.TypeEntity.GetProperties()
                                 where i.GetCustomAttribute(typeof(EntryFormAttribute)) != null
                                 && ((EntryFormAttribute)i.GetCustomAttribute(typeof(EntryFormAttribute))).GroupeBox != string.Empty
                                  && ((EntryFormAttribute)i.GetCustomAttribute(typeof(EntryFormAttribute))).GroupeBox != null
@@ -206,7 +206,7 @@ namespace App.Gwin
         /// </summary>
         private void InitTabPageInterface()
         {
-            var listeProprite = from i in this.Service.TypeEntity.GetProperties()
+            var listeProprite = from i in this.EntityBLO.TypeEntity.GetProperties()
                                 where i.GetCustomAttribute(typeof(EntryFormAttribute)) != null
                                 && ((EntryFormAttribute)i.GetCustomAttribute(typeof(EntryFormAttribute))).TabPage
                                 select i;
@@ -245,7 +245,7 @@ namespace App.Gwin
                 BaseField field = sender as BaseField;
                 // Lecture informations
                 this.ReadFormToEntity();
-                this.Service.ApplyBusinessRolesAfterValuesChanged(field.Name, this.Entity);
+                this.EntityBLO.ApplyBusinessRolesAfterValuesChanged(field.Name, this.Entity);
                 this.isStepInitializingValues = true;
                 this.WriteEntityToField();
                 this.isStepInitializingValues = false;

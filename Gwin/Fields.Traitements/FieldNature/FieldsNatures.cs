@@ -11,6 +11,7 @@ namespace App.Gwin.FieldsTraitements.Enumerations
     /// </summary>
     public enum FieldsNatures
     {
+        Default,
         String,
         StringWithDataSource,
         LocalizedString,

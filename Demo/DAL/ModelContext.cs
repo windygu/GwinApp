@@ -13,7 +13,7 @@
     public class ModelContext : DbContext
     {
 
-        public ModelContext() : base(@"data source =.\SQLEXPRESS; initial catalog = gwin-demo; user = sa; password = admintp4; MultipleActiveResultSets = True; App = EntityFramework")
+        public ModelContext() : base(@"data source =.\SQLEXPRESS; initial catalog = gwin-demo2; user = sa; password = admintp4; MultipleActiveResultSets = True; App = EntityFramework")
         {
           
         }
@@ -37,19 +37,19 @@
 
 
         // Demo
-        public virtual DbSet<EntityMiniConfig> MinimumConfiguration_Loalizable_Entitys { get; set; }
+        public virtual DbSet<TaskProject> EntityMiniConfigs { get; set; }
         
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<EntityMiniConfig>()
-                .HasMany<Entity_ManyToMany>(s => s.ManyToMany_Creation)
-                .WithMany(c => c.EntityMiniConfig_creation);
+            modelBuilder.Entity<TaskProject>()
+                .HasMany<Individual>(s => s.Peoples)
+                .WithMany(c => c.Histasks);
 
-            modelBuilder.Entity<EntityMiniConfig>()
-                .HasMany<Entity_ManyToMany>(s => s.ManyToMany_Selection)
-                .WithMany(c => c.EntityMiniConfig_selection);
+            modelBuilder.Entity<TaskProject>()
+                .HasMany<Individual>(s => s.Responsibles)
+                .WithMany(c => c.ResponsibilityFortasks);
 
         }
 

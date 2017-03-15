@@ -43,7 +43,7 @@ namespace App.Gwin
             isStepInitializingValues = true;
 
             BaseEntity entity = this.Entity;
-            Type typeEntity = this.Service.TypeEntity;
+            Type typeEntity = this.EntityBLO.TypeEntity;
 
            
 

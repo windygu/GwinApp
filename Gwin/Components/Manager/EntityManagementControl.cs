@@ -170,7 +170,7 @@ namespace App.Gwin
         /// </summary> 
         public void Actualiser()
         {
-            this.DataGridControl.Actualiser(this.FilterControl.GetFilterValues());
+            this.DataGridControl.RefreshEntities(this.FilterControl.GetFilterValues());
         }
         #endregion
 

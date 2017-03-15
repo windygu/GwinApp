@@ -28,7 +28,7 @@ namespace App.Gwin
             this.ReadFormToEntity();
 
 
-            if (Service.Save(this.Entity) > 0)
+            if (EntityBLO.Save(this.Entity) > 0)
             {
                 MessageBox.Show(string.Format(ResourceEntryForm.Entity_has_been_properly_registered, this.Entity.ToString()));
                 onEnregistrerClick(this, e);
