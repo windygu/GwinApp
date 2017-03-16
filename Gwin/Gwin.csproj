@@ -66,6 +66,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataModel\ModelInfo\GwinAssembliesManager.cs" />
+    <Compile Include="DataModel\ModelInfo\GwinEntitiesManager.cs" />
     <Compile Include="GwinApplication\BLL\Application\ApplicationNameBLO.cs" />
     <Compile Include="GwinApplication\BLL\Authentication\UserGwinBLO.cs" />
     <Compile Include="GwinApplication\BLL\GwinBaseBLO.cs" />

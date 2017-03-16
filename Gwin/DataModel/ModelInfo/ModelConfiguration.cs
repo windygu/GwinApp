@@ -77,5 +77,26 @@ namespace App.Gwin.ModelData
             }
             return Dictionary_Type_MenyAttribute;
         }
+
+
+        /// <summary>
+        /// Get All Entities in Project 
+        /// </summary>
+        /// <returns></returns>
+        public List<Type> GetAll_EntitiesBLO(Type TypeAttribute)
+        {
+
+            List<Type> Liste_All_Entities_types = (from assembly in this.GetAll_Assembly_Contains_Entities()
+                                                   from type in assembly.GetTypes()
+                                                   let attributes = type.GetCustomAttributes(TypeAttribute, false)
+                                                   where attributes != null && attributes.Length > 0
+                                                   select type
+           ).ToList();
+
+
+            return Liste_All_Entities_types;
+        }
+
+
     }
 }

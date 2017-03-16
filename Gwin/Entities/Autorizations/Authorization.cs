@@ -8,14 +8,11 @@ using System.Threading.Tasks;
 
 namespace App.Gwin.Entities.Autorizations
 {
-    [DisplayEntity(DisplayMember =nameof(Authorization.EntityName),Localizable =true)]
+    [DisplayEntity(DisplayMember =nameof(Authorization.EntityBLOName),Localizable =true)]
     [Menu(Group = "Admin")]
     public class Authorization : BaseEntity
     {
-        public override string ToString()
-        {
-            return this.EntityName + ":" + this.Action;
-        }
+       
 
         /// <summary>
         /// Entity Name : NameSpace.EntityName
@@ -26,13 +23,13 @@ namespace App.Gwin.Entities.Autorizations
         [DataSource(TypeObject = typeof(ModelConfiguration),
             MethodeName = nameof(ModelConfiguration.GetAll_Entities_Type),
             DisplayName ="Name")]
-        public String EntityName { set; get; }
+        public String EntityBLOName { set; get; }
 
         /// <summary>
         /// Action to Autoritze, Enummeration
         /// </summary>
         [EntryForm]
         [DataGrid]
-        public UserActionInGwin Action { set; get; }
+        public List<String> MethodesNames { set; get; }
     }
 }
