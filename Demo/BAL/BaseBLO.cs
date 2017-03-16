@@ -20,7 +20,7 @@ using App;
 
 namespace GenericWinForm.Demo.BAL
 {
-    public class BaseBLO<T> : BaseEntityBLO<T> ,IBaseBLO where T : BaseEntity
+    public class BaseBLO<T> : GwinBaseBLO<T> ,IGwinBaseBLO where T : BaseEntity
     {
      
         #region construcreur
@@ -57,10 +57,10 @@ namespace GenericWinForm.Demo.BAL
         /// </summary>
         /// <param name="TypeEntity">the entity type</param>
         /// <returns></returns>
-        public override IBaseBLO CreateServiceBLOInstanceByTypeEntity(Type TypeEntity)
+        public override IGwinBaseBLO CreateServiceBLOInstanceByTypeEntity(Type TypeEntity)
         {
             Type TypeEntityService = typeof(BaseBLO<>).MakeGenericType(TypeEntity);
-            IBaseBLO EntityService = (IBaseBLO)Activator.CreateInstance(TypeEntityService, this.Context);
+            IGwinBaseBLO EntityService = (IGwinBaseBLO)Activator.CreateInstance(TypeEntityService, this.Context);
             return EntityService;
         }
         /// <summary>
@@ -69,11 +69,11 @@ namespace GenericWinForm.Demo.BAL
         /// <param name="TypeEntity">the entity type</param>
         /// <param name="context">the context</param>
         /// <returns></returns>
-        public virtual IBaseBLO CreateServiceBLOInstanceByTypeEntityAndContext(Type TypeEntity, DbContext context)
+        public virtual IGwinBaseBLO CreateServiceBLOInstanceByTypeEntityAndContext(Type TypeEntity, DbContext context)
         {
 
             Type TypeEntityService = typeof(BaseBLO<>).MakeGenericType(TypeEntity);
-            IBaseBLO EntityService = (IBaseBLO)Activator.CreateInstance(TypeEntityService, context);
+            IGwinBaseBLO EntityService = (IGwinBaseBLO)Activator.CreateInstance(TypeEntityService, context);
             return EntityService;
         }
         #endregion

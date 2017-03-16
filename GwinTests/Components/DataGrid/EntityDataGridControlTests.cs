@@ -20,14 +20,14 @@ namespace App.Gwin.Tests
     {
         ConfigEntity configEntity = null;
         TaskProject Entity = null;
-        IBaseBLO entityMiniConfigBLO = null;
+        IGwinBaseBLO entityMiniConfigBLO = null;
         [TestInitialize]
         public void GwinAppStart()
         {
             GwinApp.Start(typeof(ModelContext), typeof(BaseBLO<>), new FormApplication(), null);
             configEntity = ConfigEntity.CreateConfigEntity(typeof(TaskProject));
             Entity = new TaskProject();
-            entityMiniConfigBLO = BaseEntityBLO<BaseEntity>.CreateBLO_Instance(typeof(TaskProject), typeof(BaseBLO<>));
+            entityMiniConfigBLO = GwinBaseBLO<BaseEntity>.CreateBLO_Instance(typeof(TaskProject), typeof(BaseBLO<>));
         }
 
 

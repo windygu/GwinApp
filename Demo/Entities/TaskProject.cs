@@ -13,7 +13,7 @@ namespace GenericWinForm.Demo.Entities
     /// this class must contain All C# Type
     /// becuase it is used to test All Gwin Fields and Components
     /// </summary>
-    [DisplayEntity(Localizable =true,DisplayMember = "Name")]
+    [DisplayEntity(Localizable =true,DisplayMember = nameof(TaskProject.Title))]
     [Menu]
     public class TaskProject : BaseEntity
     {

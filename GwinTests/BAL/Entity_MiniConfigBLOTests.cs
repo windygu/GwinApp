@@ -31,7 +31,7 @@ namespace GenericWinForm.Demo.BAL.Tests
             TaskProject EntityMiniConfig = new TaskProject();
             EntityMiniConfig.Title = "Hello";
             // Create entityMinConfigBLO dynamicly
-            IBaseBLO entityMinConfigBLO = BaseEntityBLO<BaseEntity>.CreateBLO_Instance(typeof(TaskProject), typeof(BaseBLO<>));
+            IGwinBaseBLO entityMinConfigBLO = GwinBaseBLO<BaseEntity>.CreateBLO_Instance(typeof(TaskProject), typeof(BaseBLO<>));
             entityMinConfigBLO.ApplyBusinessRolesAfterValuesChanged(nameof(TaskProject.Title), EntityMiniConfig);
 
             Assert.AreEqual(EntityMiniConfig.Title, "HELLO");

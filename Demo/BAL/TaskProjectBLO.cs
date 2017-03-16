@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using App.Gwin.Entities;
+using App.Gwin.GwinApplication.Security.Attributes;
 
 namespace GenericWinForm.Demo.BAL
 {
@@ -14,8 +15,11 @@ namespace GenericWinForm.Demo.BAL
     /// Withe the same NameSpace of BaseBLO
     /// because it is loaded dynamicly to executed Business Role in Gwin Application
     /// </summary>
+    [Authorize]
     public class TaskProjectBLO : BaseBLO<TaskProject>
     {
+
+
         public override void ApplyBusinessRolesAfterValuesChanged(object sender, BaseEntity entity)
         {
             TaskProject entityMiniConfig = entity as TaskProject;

@@ -18,7 +18,7 @@ namespace App.Gwin.Application.BAL.Tests
     public class BaseEntityBAOTests
     {
         ModelContext context = null;
-        IBaseBLO roleBAO = null;
+        IGwinBaseBLO roleBAO = null;
         [TestInitialize]
         public void initBaseEntityBAOTests()
         {
@@ -33,8 +33,8 @@ namespace App.Gwin.Application.BAL.Tests
         [TestMethod()]
         public void BaseEntityBAOTest()
         {
-            IBaseBLO bao_without_parameters = new BaseBLO<Role>();
-            IBaseBLO bao_withe_context_parameter = new BaseBLO<Role>(context);
+            IGwinBaseBLO bao_without_parameters = new BaseBLO<Role>();
+            IGwinBaseBLO bao_withe_context_parameter = new BaseBLO<Role>(context);
         }
 
         [TestMethod()]
@@ -43,7 +43,7 @@ namespace App.Gwin.Application.BAL.Tests
             int Expected = 1;
             Role role = new Role();
             role.Name = "Role1";
-            IBaseBLO service = new BaseBLO<Role>();
+            IGwinBaseBLO service = new BaseBLO<Role>();
             int Actuel = service.Save(role);
             Assert.AreEqual(Expected, Actuel);
         }
@@ -55,7 +55,7 @@ namespace App.Gwin.Application.BAL.Tests
 
             Role role = new Role();
             role.Name = "Role1";
-            BaseEntityBLO<Role> roleBAO = new RoleBAO();
+            GwinBaseBLO<Role> roleBAO = new RoleBAO();
             // Polymorphism not working for a call from a generic class in C#
              roleBAO.ApplyBusinessRolesAfterValuesChanged(nameof(role.Name), role);
 
@@ -69,7 +69,7 @@ namespace App.Gwin.Application.BAL.Tests
             int Expected = 1;
             Role role = new Role();
             role.Name = "Role1";
-            IBaseBLO service = new BaseBLO<Role>();
+            IGwinBaseBLO service = new BaseBLO<Role>();
             int Actuel = service.Save(role);
             Assert.AreEqual(Expected, Actuel);
         }
@@ -80,7 +80,7 @@ namespace App.Gwin.Application.BAL.Tests
             int Expected = 1;
             Role role = new Role();
             role.Name = "Role1";
-            IBaseBLO service = new BaseBLO<Role>();
+            IGwinBaseBLO service = new BaseBLO<Role>();
             service.Save(role);
             int Actuel = service.Delete(role);
             Assert.AreEqual(Expected, Actuel);
@@ -100,7 +100,7 @@ namespace App.Gwin.Application.BAL.Tests
         {
             Role role = new Role();
             role.Name = "Role1";
-            BaseEntityBLO<Role> service = new BaseBLO<Role>();
+            GwinBaseBLO<Role> service = new BaseBLO<Role>();
             service.Save(role);
             Role Actuel = service.GetByID(role.Id)  ;
             Role Expected = role;
@@ -112,7 +112,7 @@ namespace App.Gwin.Application.BAL.Tests
         {
             Role role = new Role();
             role.Name = "Role1";
-            IBaseBLO service = new BaseBLO<Role>();
+            IGwinBaseBLO service = new BaseBLO<Role>();
             service.Save(role);
             Role Actuel = service.GetBaseEntityByID(role.Id) as Role;
             Role Expected = role;

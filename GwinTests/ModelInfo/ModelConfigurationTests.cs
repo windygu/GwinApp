@@ -18,7 +18,7 @@ namespace App.Gwin.ModelData.Tests
         [TestMethod()]
         public void GetAll_Assembly_Contains_EntitiesTest()
         {
-            GwinApp.Start(typeof(ModelContext), typeof(BaseEntityBLO<>), new FormApplication(), null);
+            GwinApp.Start(typeof(ModelContext), typeof(GwinBaseBLO<>), new FormApplication(), null);
             List<Assembly> ls_assembly = new ModelConfiguration().GetAll_Assembly_Contains_Entities();
         }
     }
