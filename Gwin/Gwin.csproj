@@ -96,6 +96,7 @@
     </Compile>
     <Compile Include="Components\Manager\Fields.Traitements\Int64Traitements.cs" />
     <Compile Include="DataModel\Exceptions\Class1.cs" />
+    <Compile Include="DataModel\Helpers\GwinIdentifierManager.cs" />
     <Compile Include="DataModel\ModelInfo\GwinAssembliesManager.cs" />
     <Compile Include="DataModel\ModelInfo\GwinBusinessEntitiesManager.cs" />
     <Compile Include="DataModel\ModelInfo\GwinEntitiesManager.cs" />

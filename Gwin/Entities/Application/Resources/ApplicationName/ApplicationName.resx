@@ -124,9 +124,9 @@
     <value>Name</value>
   </data>
   <data name="PluralName" xml:space="preserve">
-    <value>Applications names</value>
+    <value>Application name</value>
   </data>
   <data name="SingularName" xml:space="preserve">
-    <value>Application name</value>
+    <value>Applications names</value>
   </data>
 </root>

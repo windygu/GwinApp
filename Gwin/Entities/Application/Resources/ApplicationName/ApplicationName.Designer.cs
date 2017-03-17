@@ -79,7 +79,7 @@ namespace App.Gwin.Entities.Application.Resources.ApplicationName {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Applications names.
+        ///   Recherche une chaîne localisée semblable à Application name.
         /// </summary>
         internal static string PluralName {
             get {
@@ -88,7 +88,7 @@ namespace App.Gwin.Entities.Application.Resources.ApplicationName {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Application name.
+        ///   Recherche une chaîne localisée semblable à Applications names.
         /// </summary>
         internal static string SingularName {
             get {

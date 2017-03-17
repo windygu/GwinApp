@@ -13,6 +13,7 @@ using App.Gwin.Shared.Resources;
 using App.Gwin.Application.Presentation.Messages;
 using App.Gwin.Entities.Resources.Glossary;
 using App.Gwin.Exceptions.Gwin;
+using App.Gwin.DataModel.Helpers;
 
 namespace App.Gwin.Attributes
 {
@@ -26,15 +27,13 @@ namespace App.Gwin.Attributes
         public ManagementFormAttribute ManagementForm { set; get; }
         public AddButtonAttribute AddButton { set; get; }
         public MenuAttribute Menu { set; get; }
-        #endregion
-
-        #region Private Properties
-        private Type TypeOfEntity { set; get; }
-        private bool Localizable { get; set; }
+   
+        public Type TypeOfEntity { set; get; }
+        public bool Localizable { get; set; }
         /// <summary>
         /// Culture Info
         /// </summary>
-        private CultureInfo CultureInfo { get;  set; }
+        public CultureInfo CultureInfo { get;  set; }
         /// <summary>
         /// Entity Ressource manager
         /// </summary>
@@ -111,16 +110,17 @@ namespace App.Gwin.Attributes
                 this.Localizable = this.DisplayEntity.Localizable;
 
                 // Titre
-                this.DisplayEntity.PluralName = this.GetStringFromRessource(nameof(this.DisplayEntity.PluralName), true);
-                this.DisplayEntity.SingularName = this.GetStringFromRessource(nameof(this.DisplayEntity.SingularName), true);
+                this.DisplayEntity.PluralName = this.GetStringFromRessource("PluralName", true);
+                this.DisplayEntity.SingularName = this.GetStringFromRessource("SingularName", true);
+
+                // Load Title with Name of Entity if PluraleNameKay Not exist
+                if(this.DisplayEntity.PluralName == null)
+                    this.DisplayEntity.PluralName = this.GetStringFromRessource(this.TypeOfEntity + "_PluraleName", false);
+                if (this.DisplayEntity.SingularName == null)
+                    this.DisplayEntity.SingularName = this.GetStringFromRessource(this.TypeOfEntity +"_SingularName", false);
 
 
-            }
-            if (this.DisplayEntity.SingularName == null)
-            {
-                this.DisplayEntity.SingularName = this.CultureInfo.TwoLetterISOLanguageName + "_" + this.TypeOfEntity.Name;
-                this.DisplayEntity.PluralName = this.CultureInfo.TwoLetterISOLanguageName + "_" + PluralizationService
-                                                 .CreateService(new CultureInfo("en")).Pluralize(this.TypeOfEntity.Name);
+
             }
             #endregion
 

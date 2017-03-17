@@ -88,13 +88,13 @@ namespace App.Gwin.Application.Presentation.MainForm
 
                 // ToolStripMenu
                 ToolStripMenuItem toolStripMenuItem = new ToolStripMenuItem();
-                toolStripMenuItem.Name = "toolStripMenuItem" + configEntity.Menu.Title;
+                toolStripMenuItem.Name = configEntity.TypeOfEntity.FullName;
                 toolStripMenuItem.Size = new System.Drawing.Size(82, 20);
                 toolStripMenuItem.Text = configEntity.Menu.Title;
                 toolStripMenuItem.Click += ToolStripMenuItem_Click;
                 MenuItems.Add(toolStripMenuItem.Name, menuAttributes_And_Types.Key);
 
-                // Find groupe
+                // Find Parent
                 if (configEntity.Menu.Group != null) {
                     string toolStripMenuItem_key = "toolStripMenuItem" + configEntity.Menu.Group;
                     ToolStripItem GroupeToolStripItem = this.menuStrip.Items.Find(toolStripMenuItem_key, true).SingleOrDefault();
