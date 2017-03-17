@@ -1,7 +1,6 @@
 ﻿using App.Gwin.Exceptions.Gwin;
 using App.Gwin.Fields;
-using App.Gwin.Fields.Traitements.Params;
-using App.Gwin.FieldsTraitements.Params;
+using App.Gwin.Components.Manager.Fields.Traitements.Params;
 using App.Shared.AttributesManager;
 using App.WinForm.Fields;
 using System;
@@ -14,7 +13,7 @@ using System.Windows.Forms;
 
 namespace App.Gwin.FieldsTraitements
 {
-    public class DateTimeFieldTraitement : FieldTraitement, IFieldTraitements
+    public class DateTimeFieldTraitement : BaseFieldTraitement, IFieldTraitements
     {
         private readonly object DateTime2;
 
@@ -61,7 +60,7 @@ namespace App.Gwin.FieldsTraitements
             return dateTimeField;
         }
 
-        public void WriteEntity_To_EntryForm(WriteEntity_To_EntryForm_Param param)
+        public void GetEntityValues_To_EntryForm(WriteEntity_To_EntryForm_Param param)
         {
             DateTime value = (DateTime)param.Entity.GetType().GetProperty(param.ConfigProperty.PropertyInfo.Name).GetValue(param.Entity);
 

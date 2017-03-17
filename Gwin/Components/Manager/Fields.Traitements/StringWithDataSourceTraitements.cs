@@ -1,7 +1,6 @@
 ﻿using App.Gwin.Exceptions.Gwin;
 using App.Gwin.Fields;
-using App.Gwin.Fields.Traitements.Params;
-using App.Gwin.FieldsTraitements.Params;
+using App.Gwin.Components.Manager.Fields.Traitements.Params;
 using App.Shared.AttributesManager;
 using System;
 using System.Collections;
@@ -15,7 +14,7 @@ using System.Windows.Forms;
 namespace App.Gwin.FieldsTraitements
 {
     
-    class StringWithDataSourceFieldTraitement : FieldTraitement, IFieldTraitements
+    class StringWithDataSourceFieldTraitement : BaseFieldTraitement, IFieldTraitements
     {
 
         public object GetTestValue(PropertyInfo propertyInfo)
@@ -69,7 +68,7 @@ namespace App.Gwin.FieldsTraitements
             return comboBoxField;
         }
 
-        public void WriteEntity_To_EntryForm(WriteEntity_To_EntryForm_Param param)
+        public void GetEntityValues_To_EntryForm(WriteEntity_To_EntryForm_Param param)
         {
             string valeur = (string)param.Entity.GetType().GetProperty(param.ConfigProperty.PropertyInfo.Name).GetValue(param.Entity);
 

@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using App.Gwin.FieldsTraitements.Params;
 using GenericWinForm.Demo.Entities;
 using System.Reflection;
 using System.Drawing;
@@ -16,7 +15,6 @@ using App.Gwin.Application.BAL;
 using App.Gwin.Entities;
 using App.Gwin.Fields;
 using GenericWinForm.Demo.BAL;
-using App.Gwin.Fields.Traitements.Params;
 using App.Gwin.EntityManagement;
 
 namespace App.Gwin.FieldsTraitements.Tests
@@ -53,7 +51,7 @@ namespace App.Gwin.FieldsTraitements.Tests
         {
             BaseEntryForm baseEntryForm = new BaseEntryForm(entityMiniConfigBLO, Entity, new Dictionary<string, object>(), true);
             baseEntryForm.BaseEntryForm_Load(baseEntryForm, null);
-            baseEntryForm.WriteEntityToField();
+            baseEntryForm.GetValues();
         }
 
         [TestMethod()]

@@ -1,8 +1,7 @@
 ﻿using App.Gwin.Entities;
 using App.Gwin.Exceptions.Gwin;
 using App.Gwin.Fields;
-using App.Gwin.Fields.Traitements.Params;
-using App.Gwin.FieldsTraitements.Params;
+using App.Gwin.Components.Manager.Fields.Traitements.Params;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,7 +14,7 @@ using System.Reflection;
 
 namespace App.Gwin.FieldsTraitements
 {
-    public class ManyToMany_CreationFieldTraitement : FieldTraitement, IFieldTraitements
+    public class ManyToMany_CreationFieldTraitement : BaseFieldTraitement, IFieldTraitements
     {
 
         public object GetTestValue(PropertyInfo propertyInfo)
@@ -57,7 +56,7 @@ namespace App.Gwin.FieldsTraitements
             throw new GwinException("Field Many to Many Creation in Filter not yet implemented in Gwin Application");
         }
 
-        public void WriteEntity_To_EntryForm(WriteEntity_To_EntryForm_Param param)
+        public void GetEntityValues_To_EntryForm(WriteEntity_To_EntryForm_Param param)
         {
             throw new GwinException("Field Many to Many Creation in EntryForm not yet implemented in Gwin Application");
         }

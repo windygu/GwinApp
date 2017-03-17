@@ -32,20 +32,20 @@ namespace App.Gwin.Tests
         }
 
         #region Static Test
-        [TestMethod()]
-        [ExpectedException(typeof(GwinUsageModeException))]
-        public void DefaultConstructor_BaseEntryFormTest()
-        {
-            BaseEntryForm BaseEntryForm = new BaseEntryForm();
-        }
+        //[TestMethod()]
+        //[ExpectedException(typeof(GwinUsageModeException))]
+        //public void DefaultConstructor_BaseEntryFormTest()
+        //{
+        //    BaseEntryForm BaseEntryForm = new BaseEntryForm();
+        //}
 
-        [TestMethod()]
-        [ExpectedException(typeof(GwinNullParameterException))]
-        public void Create_BaseEntryForm_with_null_parameterTest()
-        {
-            BaseEntryForm BaseEntryForm = new BaseEntryForm(null);
+        //[TestMethod()]
+        //[ExpectedException(typeof(GwinNullParameterException))]
+        //public void Create_BaseEntryForm_with_null_parameterTest()
+        //{
+        //    BaseEntryForm BaseEntryForm = new BaseEntryForm(null);
 
-        }
+        //}
 
         [TestMethod()]
         public void Create_With_EntityBLO_Instance_BaseEntryFormTest()

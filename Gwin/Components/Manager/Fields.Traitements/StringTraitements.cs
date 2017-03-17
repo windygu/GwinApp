@@ -1,7 +1,6 @@
 ﻿using App.Gwin.Exceptions.Gwin;
 using App.Gwin.Fields;
-using App.Gwin.Fields.Traitements.Params;
-using App.Gwin.FieldsTraitements.Params;
+using App.Gwin.Components.Manager.Fields.Traitements.Params;
 using App.Shared.AttributesManager;
 using System;
 using System.Collections.Generic;
@@ -16,7 +15,7 @@ namespace App.Gwin.FieldsTraitements
     /// <summary>
     /// You Can not change Traitement suffix, it used to load this Type
     /// </summary>
-    public class StringFieldTraitement : FieldTraitement, IFieldTraitements
+    public class StringFieldTraitement : BaseFieldTraitement, IFieldTraitements
     {
         #region EntryForm
         /// <summary>
@@ -65,7 +64,7 @@ namespace App.Gwin.FieldsTraitements
         /// Write Entity to EntryForm
         /// </summary>
         /// <param name="param">Parameters</param>
-        public void WriteEntity_To_EntryForm(WriteEntity_To_EntryForm_Param param)
+        public void GetEntityValues_To_EntryForm(WriteEntity_To_EntryForm_Param param)
         {
             string valeur = (string)param.Entity.GetType().GetProperty(param.ConfigProperty.PropertyInfo.Name).GetValue(param.Entity);
 
@@ -151,5 +150,7 @@ namespace App.Gwin.FieldsTraitements
         {
             return "String Value";
         }
+
+       
     }
 }

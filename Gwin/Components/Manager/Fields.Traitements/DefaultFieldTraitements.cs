@@ -1,7 +1,6 @@
 ﻿using App.Gwin.Exceptions.Gwin;
 using App.Gwin.Fields;
-using App.Gwin.Fields.Traitements.Params;
-using App.Gwin.FieldsTraitements.Params;
+using App.Gwin.Components.Manager.Fields.Traitements.Params;
 using App.Shared.AttributesManager;
 using System;
 using System.Collections.Generic;
@@ -16,12 +15,13 @@ namespace App.Gwin.FieldsTraitements
     /// <summary>
     /// You Can not change Traitement suffix, it used to load this Type
     /// </summary>
-    public class DefaultFieldTraitement : FieldTraitement, IFieldTraitements
+    public class DefaultFieldTraitement : BaseFieldTraitement, IFieldTraitements
     {
 
         public object GetTestValue(PropertyInfo propertyInfo)
         {
-            return null;
+            var value = Activator.CreateInstance(propertyInfo.PropertyType);
+            return value;
         }
 
 
@@ -72,7 +72,7 @@ namespace App.Gwin.FieldsTraitements
         /// Write Entity to EntryForm
         /// </summary>
         /// <param name="param">Parameters</param>
-        public void WriteEntity_To_EntryForm(WriteEntity_To_EntryForm_Param param)
+        public void GetEntityValues_To_EntryForm(WriteEntity_To_EntryForm_Param param)
         {
             object valeur = param
                 .Entity

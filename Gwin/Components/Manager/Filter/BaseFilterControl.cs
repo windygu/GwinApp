@@ -16,7 +16,7 @@ using System.Resources;
 using App.Gwin.Shared.Resources;
 using App.WinForm.Fields;
 using System.Collections;
-using App.Gwin.Fields.Traitements.Params;
+using App.Gwin.Components.Manager.Fields.Traitements.Params;
 using App.Gwin.FieldsTraitements;
 using App.Gwin.Exceptions.Gwin;
 using App.Gwin.Application.BAL;
@@ -137,10 +137,10 @@ namespace App.Gwin.EntityManagement
                 param.TabIndex = ++TabIndex;
                 param.FilterContainer = FilterContainer;
                 param.DefaultFilterValues = DefaultFilterValues;
-                param.BLO = BLO;
-                param.ConfigEntity = ConfigEntity;
+                param.EntityBLO = BLO;
+               
                 // Create FieldTraitement Instance
-                IFieldTraitements fieldTraitement = FieldTraitement.CreateInstance(configProperty);
+                IFieldTraitements fieldTraitement = BaseFieldTraitement.CreateInstance(configProperty);
 
                 BaseField baseField = null;
                 // Invok Create Field in filter Method
@@ -190,7 +190,7 @@ namespace App.Gwin.EntityManagement
             {
                 ConfigProperty configProperty = new ConfigProperty(propertyInfo, this.ConfigEntity);
 
-                IFieldTraitements fieldTraiement = FieldTraitement.CreateInstance(configProperty);
+                IFieldTraitements fieldTraiement = BaseFieldTraitement.CreateInstance(configProperty);
 
                 object value = fieldTraiement.GetFieldValue_From_Filter(FilterContainer, configProperty);
 

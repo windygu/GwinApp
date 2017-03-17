@@ -36,8 +36,8 @@ namespace App.Gwin.Application.Presentation.Messages
         public static void AddMessage(Category category, string msg)
         {
             // Not Show Message at Test
-            if (LicenseManager.UsageMode == LicenseUsageMode.Runtime)
-            {
+            //if (LicenseManager.UsageMode == LicenseUsageMode.Runtime)
+            //{
                 switch (category)
                 {
                     case Category.MultiLanguageResourceFile:
@@ -60,7 +60,7 @@ namespace App.Gwin.Application.Presentation.Messages
                     default:
                         break;
                 }
-            }
+            //}
 
           
 

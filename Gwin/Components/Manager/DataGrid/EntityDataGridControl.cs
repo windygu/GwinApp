@@ -14,7 +14,7 @@ using App.Gwin.Entities;
 using System.Resources;
 using App.Gwin.Entities.MultiLanguage;
 using App.Gwin.Application.BAL;
-using App.Gwin.Fields.Traitements.Params;
+using App.Gwin.Components.Manager.Fields.Traitements.Params;
 using App.Gwin.FieldsTraitements;
 using App.Gwin.Exceptions.Gwin;
 using App.Gwin.Exceptions.Helpers;
@@ -211,7 +211,7 @@ namespace App.Gwin
                 param.Column = colonne;
                 param.ConfigProperty = configProperty;
                 // Create FieldTraitement Instance
-                IFieldTraitements fieldTraitement = FieldTraitement.CreateInstance(configProperty);
+                IFieldTraitements fieldTraitement = BaseFieldTraitement.CreateInstance(configProperty);
 
                 // Invok Create Column 
                 fieldTraitement.ConfigFieldColumn_In_EntityDataGrid(param);

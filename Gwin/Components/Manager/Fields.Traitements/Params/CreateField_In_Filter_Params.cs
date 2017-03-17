@@ -9,13 +9,11 @@ using App.Gwin.Attributes;
 using App.Shared.AttributesManager;
 using App.Gwin.Application.BAL;
 
-namespace App.Gwin.Fields.Traitements.Params
+namespace App.Gwin.Components.Manager.Fields.Traitements.Params
 {
-    public class CreateField_In_Filter_Params
+    public class CreateField_In_Filter_Params : BaseFieldTraitementParam
     {
-        public IGwinBaseBLO BLO { get; internal set; }
-        public ConfigEntity ConfigEntity { get; internal set; }
-        public ConfigProperty ConfigProperty { get;  set; }
+
         public Control FilterContainer { get;  set; }
         public Dictionary<string, object> DefaultFilterValues { get; internal set; }
         public Size SizeControl { get;  set; }

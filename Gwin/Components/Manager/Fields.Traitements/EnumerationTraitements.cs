@@ -1,7 +1,6 @@
 ﻿using App.Gwin.Exceptions.Gwin;
 using App.Gwin.Fields;
-using App.Gwin.Fields.Traitements.Params;
-using App.Gwin.FieldsTraitements.Params;
+using App.Gwin.Components.Manager.Fields.Traitements.Params;
 using App.Shared.AttributesManager;
 using System;
 using System.Collections.Generic;
@@ -13,8 +12,12 @@ using System.Windows.Forms;
 
 namespace App.Gwin.FieldsTraitements
 {
-    public class EnumerationFieldTraitement : FieldTraitement, IFieldTraitements
+    public class EnumerationFieldTraitement : BaseFieldTraitement, IFieldTraitements
     {
+
+       
+
+
         public object GetTestValue(PropertyInfo propertyInfo)
         {
             return Activator.CreateInstance(propertyInfo.PropertyType);
@@ -63,7 +66,7 @@ namespace App.Gwin.FieldsTraitements
             return comboBoxField;
         }
       
-        public void WriteEntity_To_EntryForm(WriteEntity_To_EntryForm_Param param)
+        public void GetEntityValues_To_EntryForm(WriteEntity_To_EntryForm_Param param)
         {
             var valeur = param.Entity.GetType().GetProperty(param.ConfigProperty.PropertyInfo.Name).GetValue(param.Entity);
 

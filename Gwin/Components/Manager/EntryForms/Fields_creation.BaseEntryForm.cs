@@ -16,8 +16,8 @@ using App.Gwin.Shared.Resources;
 using System.Resources;
 using App.WinForm.Fields;
 using App.Gwin.FieldsTraitements;
-using App.Gwin.FieldsTraitements.Params;
 using App.Gwin.Exceptions.Gwin;
+using App.Gwin.Components.Manager.Fields.Traitements.Params;
 
 namespace App.Gwin
 {
@@ -102,7 +102,7 @@ namespace App.Gwin
                 param.ConteneurFormulaire = FieldContainner;
 
                 // Create FieldTraitement Instance
-                IFieldTraitements fieldTraitement = FieldTraitement.CreateInstance(configProperty);
+                IFieldTraitements fieldTraitement = BaseFieldTraitement.CreateInstance(configProperty);
 
                 // Invok Create Field Method
                 baseField = fieldTraitement.CreateField_In_EntryForm(param);
@@ -244,10 +244,10 @@ namespace App.Gwin
             {
                 BaseField field = sender as BaseField;
                 // Lecture informations
-                this.ReadFormToEntity();
+                this.SetValues();
                 this.EntityBLO.ApplyBusinessRolesAfterValuesChanged(field.Name, this.Entity);
                 this.isStepInitializingValues = true;
-                this.WriteEntityToField();
+                this.GetValues();
                 this.isStepInitializingValues = false;
                 // Re-Initialisation des valeurs
             }

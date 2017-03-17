@@ -1,8 +1,7 @@
 ﻿using App.Gwin.Entities.MultiLanguage;
 using App.Gwin.Exceptions.Gwin;
 using App.Gwin.Fields;
-using App.Gwin.Fields.Traitements.Params;
-using App.Gwin.FieldsTraitements.Params;
+using App.Gwin.Components.Manager.Fields.Traitements.Params;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,8 +13,23 @@ using System.Reflection;
 
 namespace App.Gwin.FieldsTraitements
 {
-    public class LocalizedStringFieldTraitement : FieldTraitement, IFieldTraitements
+    public class LocalizedStringFieldTraitement : BaseFieldTraitement, IFieldTraitements
     {
+
+        public override object ConvertValue(BaseFieldTraitementParam param)
+        {
+            LocalizedString localizedString = (LocalizedString)param
+                .Entity.GetType()
+                .GetProperty(param.ConfigProperty.PropertyInfo.Name)
+                .GetValue(param.Entity);
+
+            if (localizedString == null) localizedString = new LocalizedString();
+
+            localizedString.Current = param.BaseField.Value.ToString();
+            return localizedString;
+        }
+
+
         public object GetTestValue(PropertyInfo propertyInfo)
         {
             LocalizedString valeur = new LocalizedString();
@@ -67,7 +81,7 @@ namespace App.Gwin.FieldsTraitements
 
       
 
-        public void WriteEntity_To_EntryForm(WriteEntity_To_EntryForm_Param param)
+        public void GetEntityValues_To_EntryForm(WriteEntity_To_EntryForm_Param param)
         {
             LocalizedString valeur = (LocalizedString)param.Entity.GetType().GetProperty(param.ConfigProperty.PropertyInfo.Name).GetValue(param.Entity);
 

@@ -27,7 +27,7 @@ namespace App.WinForm.Fields.Tests
             Assert.AreEqual(SizeLabel.Height + SizeControl.Height, DateTimeField_Horizontal.Height);
             Assert.AreEqual (SizeControl.Width, DateTimeField_Horizontal.Width);
 
-            Assert.AreEqual(DateTimeField_Horizontal.DateTimeControl.Size, SizeControl);
+            //Assert.AreEqual(DateTimeField_Horizontal.DateTimeControl.Size, SizeControl);
             Assert.AreEqual(this.ExpectedDate.Year, DateTime.Now.AddYears(5).Year);
 
         }

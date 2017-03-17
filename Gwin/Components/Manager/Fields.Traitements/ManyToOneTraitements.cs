@@ -1,8 +1,7 @@
 ﻿using App.Gwin.Entities;
 using App.Gwin.Exceptions.Gwin;
 using App.Gwin.Fields;
-using App.Gwin.Fields.Traitements.Params;
-using App.Gwin.FieldsTraitements.Params;
+using App.Gwin.Components.Manager.Fields.Traitements.Params;
 using App.Shared.AttributesManager;
 using System;
 using System.Collections.Generic;
@@ -11,12 +10,22 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using App.Gwin.Application.BAL;
 
 namespace App.Gwin.FieldsTraitements
 {
-    public class ManyToOneFieldTraitement : FieldTraitement, IFieldTraitements
+    public class ManyToOneFieldTraitement : BaseFieldTraitement, IFieldTraitements
     {
 
+        public override object ConvertValue(BaseFieldTraitementParam param)
+        {
+            IGwinBaseBLO ServicesEntity = param
+                .EntityBLO
+                .CreateServiceBLOInstanceByTypeEntity(param.ConfigProperty.PropertyInfo.PropertyType);
+
+            BaseEntity ManyToOneEntity = ServicesEntity.GetBaseEntityByID(Convert.ToInt64(param.BaseField.Value));
+            return ManyToOneEntity;
+        }
         public object GetTestValue(PropertyInfo propertyInfo)
         {
             return null;
@@ -63,7 +72,7 @@ namespace App.Gwin.FieldsTraitements
             return manyToOneField;
         }
 
-        public void WriteEntity_To_EntryForm(WriteEntity_To_EntryForm_Param param)
+        public void GetEntityValues_To_EntryForm(WriteEntity_To_EntryForm_Param param)
         {
             BaseEntity valeur = (BaseEntity) param.Entity.GetType().GetProperty(param.ConfigProperty.PropertyInfo.Name).GetValue(param.Entity);
             if (valeur == null) return;
@@ -91,12 +100,12 @@ namespace App.Gwin.FieldsTraitements
             if (param.DefaultFilterValues != null && param.DefaultFilterValues.Keys.Contains(param.ConfigProperty.PropertyInfo.PropertyType.Name))
                 default_value = (Int64)param.DefaultFilterValues[param.ConfigProperty.PropertyInfo.PropertyType.Name];
 
-            ManyToOneField manyToOneField = new ManyToOneField(param.BLO, param.ConfigProperty.PropertyInfo,
+            ManyToOneField manyToOneField = new ManyToOneField(param.EntityBLO, param.ConfigProperty.PropertyInfo,
                 param.FilterContainer,
                 Orientation.Horizontal,
                  param.SizeLabel,
                  param.SizeControl,
-                 default_value, param.ConfigEntity
+                 default_value, param.ConfigProperty.ConfigEntity
                 );
             manyToOneField.Name = param.ConfigProperty.PropertyInfo.Name;
             manyToOneField.TabIndex = param.TabIndex;

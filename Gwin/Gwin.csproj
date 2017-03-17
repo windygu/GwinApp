@@ -95,6 +95,7 @@
       <DependentUpon>StringField.cs</DependentUpon>
     </Compile>
     <Compile Include="Components\Manager\Fields.Traitements\Int64Traitements.cs" />
+    <Compile Include="Components\Manager\Fields.Traitements\Params\Base\BaseFieldTraitementParam.cs" />
     <Compile Include="DataModel\Exceptions\Class1.cs" />
     <Compile Include="DataModel\Helpers\GwinIdentifierManager.cs" />
     <Compile Include="DataModel\ModelInfo\GwinAssembliesManager.cs" />
@@ -160,7 +161,7 @@
     <Compile Include="Components\Manager\Fields.Traitements\DateTimeTraitements.cs" />
     <Compile Include="Components\Manager\Fields.Traitements\FieldNature\FieldsNatures.cs" />
     <Compile Include="Components\Manager\Fields.Traitements\EnumerationTraitements.cs" />
-    <Compile Include="Components\Manager\Fields.Traitements\Interface\FieldTraitement.cs" />
+    <Compile Include="Components\Manager\Fields.Traitements\Base\FieldTraitement.cs" />
     <Compile Include="Components\Manager\Fields.Traitements\Interface\IFieldTraitements.cs" />
     <Compile Include="Components\Manager\Fields.Traitements\ManyToMany_SelectionTraitements.cs" />
     <Compile Include="Components\Manager\Fields.Traitements\ManyToOneTraitements.cs" />
@@ -430,13 +431,13 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Components\Manager\EntryForms\IBaseEntryForm.cs" />
-    <Compile Include="Components\Manager\EntryForms\Read.BaseEntryForm.cs">
+    <Compile Include="Components\Manager\EntryForms\SetValues.BaseEntryForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Components\Manager\EntryForms\Save.BaseEntyForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\Manager\EntryForms\Write.cs">
+    <Compile Include="Components\Manager\EntryForms\GetValues.BaseEntryForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Components\Manager\Filter\BaseFilterControl.cs">

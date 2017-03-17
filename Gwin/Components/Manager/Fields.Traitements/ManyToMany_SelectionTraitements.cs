@@ -1,8 +1,7 @@
 ﻿using App.Gwin.Entities;
 using App.Gwin.Exceptions.Gwin;
 using App.Gwin.Fields;
-using App.Gwin.Fields.Traitements.Params;
-using App.Gwin.FieldsTraitements.Params;
+using App.Gwin.Components.Manager.Fields.Traitements.Params;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,11 +11,40 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using App.Shared.AttributesManager;
 using System.Reflection;
+using App.Gwin.Application.BAL;
 
 namespace App.Gwin.FieldsTraitements
 {
-    public class ManyToMany_SelectionFieldTraitement : FieldTraitement, IFieldTraitements
+    public class ManyToMany_SelectionFieldTraitement : BaseFieldTraitement, IFieldTraitements
     {
+        public override object ConvertValue(BaseFieldTraitementParam param)
+        {
+            List<BaseEntity> ls = null;
+            ls = param.BaseField.Value as List<BaseEntity>;
+
+ 
+            IGwinBaseBLO ServicesEntity = param.EntityBLO
+                .CreateServiceBLOInstanceByTypeEntityAndContext(
+                    param.ConfigProperty.PropertyInfo.PropertyType.GetGenericArguments()[0],
+                    param.EntityBLO.Context
+                );
+
+
+            Type TypeListeObjetValeur = typeof(List<>).MakeGenericType(
+                param.ConfigProperty.PropertyInfo.PropertyType.GetGenericArguments()[0]);
+
+            IList ls_valeur = (IList)Activator.CreateInstance(TypeListeObjetValeur);
+
+            foreach (BaseEntity b in ls)
+            {
+                var entity_valeur = ServicesEntity.GetBaseEntityByID(b.Id);
+                ls_valeur.Add(entity_valeur);
+
+            }
+
+            return ls_valeur;
+        }
+
         public object GetTestValue(PropertyInfo propertyInfo)
         {
             return null;
@@ -50,7 +78,7 @@ namespace App.Gwin.FieldsTraitements
                 tabPage.Name = "tabPage" + param.PropertyInfo.Name;
                 tabPage.Text = param.ConfigProperty.DisplayProperty.Titre;
                 param.TabControlForm.TabPages.Add(tabPage);
-                param.ConteneurFormulaire  = tabPage;
+                param.ConteneurFormulaire = tabPage;
             }
 
 
@@ -73,7 +101,7 @@ namespace App.Gwin.FieldsTraitements
                                                 param.ConteneurFormulaire,
                                                 param.EntityBLO);
             manyToManyField.Name = param.PropertyInfo.Name;
- 
+
 
 
             if (param.ConfigProperty.EntryForm?.TabPage == true)
@@ -96,7 +124,7 @@ namespace App.Gwin.FieldsTraitements
             throw new GwinException("Create Field ManyToMany not yet implemented in Filter");
         }
 
-        public void WriteEntity_To_EntryForm(WriteEntity_To_EntryForm_Param param)
+        public void GetEntityValues_To_EntryForm(WriteEntity_To_EntryForm_Param param)
         {
             IList v_ls_object = param.Entity.GetType().GetProperty(param.ConfigProperty.PropertyInfo.Name).GetValue(param.Entity) as IList;
             if (v_ls_object == null) return;
@@ -108,7 +136,7 @@ namespace App.Gwin.FieldsTraitements
 
 
 
-             // Use Filter Value
+            // Use Filter Value
             if (param.CritereRechercheFiltre != null && param.CritereRechercheFiltre.ContainsKey(param.ConfigProperty.PropertyInfo.Name))
                 throw new NotImplementedException();
 

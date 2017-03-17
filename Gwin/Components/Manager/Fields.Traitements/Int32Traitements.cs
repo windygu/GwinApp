@@ -1,7 +1,6 @@
 ﻿using App.Gwin.Exceptions.Gwin;
 using App.Gwin.Fields;
-using App.Gwin.Fields.Traitements.Params;
-using App.Gwin.FieldsTraitements.Params;
+using App.Gwin.Components.Manager.Fields.Traitements.Params;
 using App.Shared.AttributesManager;
 using System;
 using System.Collections.Generic;
@@ -13,7 +12,7 @@ using System.Windows.Forms;
 
 namespace App.Gwin.FieldsTraitements
 {
-    public class Int32FieldTraitement : FieldTraitement, IFieldTraitements
+    public class Int32FieldTraitement : BaseFieldTraitement, IFieldTraitements
     {
 
         public virtual object GetTestValue(PropertyInfo propertyInfo)
@@ -60,7 +59,7 @@ namespace App.Gwin.FieldsTraitements
             return int32Filed;
         }
 
-        public  void WriteEntity_To_EntryForm(WriteEntity_To_EntryForm_Param param)
+        public  void GetEntityValues_To_EntryForm(WriteEntity_To_EntryForm_Param param)
         {
             var valeur = param.Entity.GetType().GetProperty(param.ConfigProperty.PropertyInfo.Name).GetValue(param.Entity);
 

@@ -34,7 +34,7 @@ namespace App.Gwin
                 BaseEntryForm form = Formulaire.CreateInstance(Service, Entity, this.FilterControl.GetFilterValues());
                 form.Name = "Form";
                 form.Dock = DockStyle.Fill;
-                form.WriteEntityToField(this.FilterControl.GetFilterValues());
+                form.GetValues(this.FilterControl.GetFilterValues());
                 tabPageAdd.Controls.Add(form);
                 form.EnregistrerClick += Form_EnregistrerClick;
                 form.AnnulerClick += Form_AnnulerAjouterClick;

@@ -37,7 +37,7 @@ namespace App.Gwin
                 form.Dock = DockStyle.Fill;
                 this.tabControl_MainManager.TabPages[tabEditerName].Controls.Add(form);
                 tabControl_MainManager.SelectedTab = tabEditer;
-                form.WriteEntityToField(this.FilterControl.GetFilterValues());
+                form.GetValues(this.FilterControl.GetFilterValues());
                 form.EnregistrerClick += Form_EditerClick;
                 form.AnnulerClick += Form_AnnulerEditerClick;
 
