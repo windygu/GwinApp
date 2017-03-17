@@ -12,7 +12,7 @@ namespace GenericWinForm.Demo.Entities
     /// <summary>
     /// Entity Exemple to be used in ManyToMany relationship 
     /// </summary>
-    [DisplayEntity(DisplayMember ="Title")]
+    [GwinEntity(DisplayMember ="Title")]
     public class Individual : Person
     {
         public List<TaskProject> Histasks { set; get; }

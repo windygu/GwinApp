@@ -27,6 +27,7 @@ namespace App.Gwin.ModelData
         /// Get All Assebply that containes Entities
         /// </summary>
         /// <returns>List of Assembly</returns>
+        [Obsolete]
         public List<Assembly> GetAll_Assembly_Contains_Entities()
         {
           //[Bug] it not load All Entities en Project
@@ -43,12 +44,13 @@ namespace App.Gwin.ModelData
         /// Get All Entities in Project 
         /// </summary>
         /// <returns></returns>
+        [Obsolete]
         public List<Type> GetAll_Entities_Type()
         {
 
             List<Type> Liste_All_Entities_types = (from assembly in this.GetAll_Assembly_Contains_Entities()
                                          from type in assembly.GetTypes()
-                                         let attributes = type.GetCustomAttributes(typeof(DisplayEntityAttribute), false)
+                                         let attributes = type.GetCustomAttributes(typeof(GwinEntityAttribute), false)
                                          where attributes != null && attributes.Length > 0
                                          select  type
            ).ToList();
@@ -61,6 +63,7 @@ namespace App.Gwin.ModelData
         /// Get All Entity Type in Project
         /// </summary>
         /// <returns> Dictionary : Type, MenuAttributes </returns>
+        [Obsolete]
         public Dictionary<Type, MenuAttribute> Get_All_Type_And_MenuAttributes()
         {
             Dictionary<Type, MenuAttribute> Dictionary_Type_MenyAttribute = new Dictionary<Type, MenuAttribute>();

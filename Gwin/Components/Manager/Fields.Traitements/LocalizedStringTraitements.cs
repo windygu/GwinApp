@@ -10,11 +10,23 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using App.Shared.AttributesManager;
+using System.Reflection;
 
 namespace App.Gwin.FieldsTraitements
 {
     public class LocalizedStringFieldTraitement : FieldTraitement, IFieldTraitements
     {
+        public object GetTestValue(PropertyInfo propertyInfo)
+        {
+            LocalizedString valeur = new LocalizedString();
+            valeur.Arab = "قيمة بالعربية";
+            valeur.English = "English value";
+            valeur.French = "Valeur en français";
+            return valeur;
+        }
+
+
+
         /// <summary>
         /// CreateField in EntryForm
         /// 

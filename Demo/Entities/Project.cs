@@ -11,7 +11,7 @@ namespace GenericWinForm.Demo.Entities
     /// <summary>
     /// Entity Exemple to be used in ManyToOne RelationShip
     /// </summary>
-    [DisplayEntity(DisplayMember = "Title")]
+    [GwinEntity(DisplayMember = "Title")]
     public class Project:BaseEntity
     {
         [EntryForm]

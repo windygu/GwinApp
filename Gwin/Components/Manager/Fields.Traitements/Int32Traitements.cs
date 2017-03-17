@@ -6,6 +6,7 @@ using App.Shared.AttributesManager;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,6 +15,13 @@ namespace App.Gwin.FieldsTraitements
 {
     public class Int32FieldTraitement : FieldTraitement, IFieldTraitements
     {
+
+        public virtual object GetTestValue(PropertyInfo propertyInfo)
+        {
+            return  5;
+        }
+
+
         /// <summary>
         /// CreateField in EntryForm
         /// 
@@ -52,9 +60,9 @@ namespace App.Gwin.FieldsTraitements
             return int32Filed;
         }
 
-        public void WriteEntity_To_EntryForm(WriteEntity_To_EntryForm_Param param)
+        public  void WriteEntity_To_EntryForm(WriteEntity_To_EntryForm_Param param)
         {
-            int valeur = (int)param.Entity.GetType().GetProperty(param.ConfigProperty.PropertyInfo.Name).GetValue(param.Entity);
+            var valeur = param.Entity.GetType().GetProperty(param.ConfigProperty.PropertyInfo.Name).GetValue(param.Entity);
 
             // Use Filter Value
             if (param.CritereRechercheFiltre != null && param.CritereRechercheFiltre.ContainsKey(param.ConfigProperty.PropertyInfo.Name))
@@ -105,7 +113,7 @@ namespace App.Gwin.FieldsTraitements
         /// <param name="param"></param>
         public void ConfigFieldColumn_In_EntityDataGrid(CreateFieldColumns_In_EntityDataGrid param)
         {
-            param.Column.ValueType = typeof(Int32);
+            param.Column.ValueType = param.ConfigProperty.PropertyInfo.PropertyType;
             param.Column.DataPropertyName = param.ConfigProperty.PropertyInfo.Name;
             param.Column.HeaderText = param.ConfigProperty.DisplayProperty.Titre;
             param.Column.Name = param.ConfigProperty.PropertyInfo.Name;

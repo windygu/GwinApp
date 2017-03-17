@@ -3,6 +3,7 @@ using App.Gwin.Fields.Traitements.Params;
 using App.Gwin.FieldsTraitements.Params;
 using App.Shared.AttributesManager;
 using System;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace App.Gwin.FieldsTraitements
@@ -16,5 +17,7 @@ namespace App.Gwin.FieldsTraitements
         object GetFieldValue_From_Filter(Control FilterContainer, ConfigProperty ConfigProperty);
 
         void ConfigFieldColumn_In_EntityDataGrid(CreateFieldColumns_In_EntityDataGrid param);
+
+        object GetTestValue(PropertyInfo propertyInfo);
     }
 }

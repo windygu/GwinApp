@@ -38,7 +38,7 @@ namespace App.Gwin.Fields
                 // DisplayMember de combobox actuel
                 // Annotation : Affichage de l'objet
 
-                DisplayEntityAttribute MetaAffichageClasse = this.ConfigEntity.DisplayEntity;
+                GwinEntityAttribute MetaAffichageClasse = this.ConfigEntity.DisplayEntity;
 
                 this.DisplayMember = MetaAffichageClasse.DisplayMember;
                 this.Text_Label = MetaAffichageClasse.SingularName;
@@ -68,7 +68,7 @@ namespace App.Gwin.Fields
                     foreach (Type item in MetaSelectionCriteria.Criteria)
                     {
                         // Meta information d'affichage du de Critère
-                        DisplayEntityAttribute MetaAffichageClasseCritere = (DisplayEntityAttribute)item.GetCustomAttribute(typeof(DisplayEntityAttribute));
+                        GwinEntityAttribute MetaAffichageClasseCritere = (GwinEntityAttribute)item.GetCustomAttribute(typeof(GwinEntityAttribute));
 
 
                         ManyToOneField manyToOneFilter = new ManyToOneField(this.Service, item, null, null,

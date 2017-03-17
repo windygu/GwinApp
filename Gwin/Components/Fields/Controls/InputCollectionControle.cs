@@ -230,7 +230,7 @@ namespace App.Gwin
             foreach (Type item in MetaSelectionCriteria.Criteria)
             {
                 // Meta information d'affichage du de Critère
-                 DisplayEntityAttribute MetaAffichageClasseCritere = (DisplayEntityAttribute)item.GetCustomAttribute(typeof(DisplayEntityAttribute));
+                 GwinEntityAttribute MetaAffichageClasseCritere = (GwinEntityAttribute)item.GetCustomAttribute(typeof(GwinEntityAttribute));
 
                 // 
                 // label1

@@ -1,7 +1,8 @@
 ﻿using App.Gwin.Attributes;
+using App.Gwin.DataModel.ModelInfo;
 using App.Gwin.Entities;
-using App.Gwin.Entities.Autorizations;
 using App.Gwin.Entities.MultiLanguage;
+using App.Gwin.GwinApplication.Security.Attributes;
 using App.Gwin.ModelData;
 using System.Collections.Generic;
 
@@ -13,10 +14,12 @@ namespace GenericWinForm.Demo.Entities
     /// this class must contain All C# Type
     /// becuase it is used to test All Gwin Fields and Components
     /// </summary>
-    [DisplayEntity(Localizable =true,DisplayMember = nameof(TaskProject.Title))]
+    [GwinEntity(Localizable =true,DisplayMember = nameof(TaskProject.Title))]
     [Menu]
     public class TaskProject : BaseEntity
     {
+
+        #region Primitive Type 
         /// <summary>
         /// Type : String
         /// </summary>
@@ -90,7 +93,9 @@ namespace GenericWinForm.Demo.Entities
         [Filter]
         [DataGrid]
         public double var_double { set; get; }
- 
+        #endregion
+
+        #region Localized Type
 
         /// <summary>
         /// Type : LocalizedString
@@ -99,10 +104,10 @@ namespace GenericWinForm.Demo.Entities
         [Filter]
         [DataGrid]
         public LocalizedString LocalizedTitle { set; get; }
+        #endregion
 
-        
+        #region DataSourceType
 
-      
         /// <summary>
         /// Type : String Wtih DataSource
         /// </summary>
@@ -114,6 +119,19 @@ namespace GenericWinForm.Demo.Entities
             DisplayName = "Name")]
         public string EntityToManimulate { set; get; }
 
+        [Filter(WidthControl = 400, isValeurFiltreVide = true)]
+        [EntryForm(WidthControl = 400)]
+        [DataGrid(WidthColonne = 400)]
+        [DataSource(TypeObject = typeof(GwinBusinessEntitiesManager),
+            MethodeName = nameof(GwinBusinessEntitiesManager.GetAll),
+            Param1 = typeof(AuthorizeAttribute),
+            DisplayName = "Name")]
+        public string BusinessEntity { set; get; }
+
+
+        #endregion
+
+        #region Enumeration
         /// <summary>
         /// Type : Enumeration
         /// </summary>
@@ -121,7 +139,9 @@ namespace GenericWinForm.Demo.Entities
         // [Filter] Enumeation in Filter not yet implmented
         [DataGrid]
         public TaskCategory Categoy { set; get; }
+        #endregion
 
+        #region RelationShip
         /// <summary>
         /// Type : ManyToOne
         /// </summary>
@@ -148,5 +168,7 @@ namespace GenericWinForm.Demo.Entities
         [DataGrid]
         [Relationship(Relation = RelationshipAttribute.Relations.ManyToMany_Selection)]
         public virtual List<Individual> Peoples { set; get; }
+
+        #endregion
     }
 }

@@ -7,6 +7,7 @@ using App.Shared.AttributesManager;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,6 +16,12 @@ namespace App.Gwin.FieldsTraitements
 {
     public class ManyToOneFieldTraitement : FieldTraitement, IFieldTraitements
     {
+
+        public object GetTestValue(PropertyInfo propertyInfo)
+        {
+            return null;
+        }
+
         /// <summary>
         /// CreateField in EntryForm
         /// 

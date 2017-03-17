@@ -73,6 +73,15 @@ namespace App.Gwin
         }
 
         /// <summary>
+        /// Get DataGrid View Instance 
+        /// Used to Test Control
+        /// </summary>
+        public DataGridView GetDataGridViewInstance()
+        {
+            return this.dataGridView;
+        }
+
+        /// <summary>
         /// Edit Many to one click event
         /// </summary>
         public event EventHandler EditManyToOneCollection;
@@ -182,14 +191,14 @@ namespace App.Gwin
 
                 ConfigProperty configProperty = new ConfigProperty(propertyInfo, this.ConfigEntity);
 
-                //  Ordre column
-                if (propertyInfo.Name == nameof(BaseEntity.Ordre) && this.ConfigEntity.ManagementForm?.isDisplayWithOrder == false)
-                    continue;
+                ////  Ordre column
+                //if (propertyInfo.Name == nameof(BaseEntity.Ordre) && this.ConfigEntity.ManagementForm?.isDisplayWithOrder == false)
+                //    continue;
 
                 // Not show Collection if not have relationship : ManyToMany_Creation
-                if (propertyInfo.PropertyType.Name == "List`1" &&
-                    configProperty.Relationship?.Relation == RelationshipAttribute.Relations.ManyToMany_Creation)
-                    continue;
+                //if (propertyInfo.PropertyType.Name == "List`1" &&
+                //    configProperty.Relationship?.Relation != RelationshipAttribute.Relations.ManyToMany_Creation)
+                //    continue;
 
               
                 // Insertion des la colonne selon le tupe de la propriété

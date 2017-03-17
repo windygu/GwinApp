@@ -7,6 +7,7 @@ using App.WinForm.Fields;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,6 +17,11 @@ namespace App.Gwin.FieldsTraitements
     public class DateTimeFieldTraitement : FieldTraitement, IFieldTraitements
     {
         private readonly object DateTime2;
+
+        public object GetTestValue(PropertyInfo propertyInfo)
+        {
+            return DateTimeField.GetTestValue();
+        }
 
         /// <summary>
         /// CreateField in EntryForm

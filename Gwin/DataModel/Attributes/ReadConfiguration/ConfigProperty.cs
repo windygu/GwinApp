@@ -15,6 +15,7 @@ using System.Text;
 using System.Threading.Tasks;
 using App.Gwin.FieldsTraitements.Enumerations;
 using App.Gwin.Exceptions.Gwin;
+using App.Gwin.DataModel.Exceptions;
 
 namespace App.Shared.AttributesManager
 {
@@ -95,7 +96,14 @@ namespace App.Shared.AttributesManager
             if (this.DisplayProperty == null)
             {
                 if (this.Localizable == false)
-                    throw new AnnotationNotExistException("DisplayPropertyAttribute :" + propertyInfo.ToString());
+                {
+                    string message = String.Format("The Attribute : {0} not exist", nameof(DisplayPropertyAttribute));
+                    message += " with Property :" + propertyInfo.ToString();
+                    message += " in Entity " + propertyInfo.ReflectedType.Name; 
+                    message += " \n Bacause the Entity is not configured as Localazible";
+                    throw new AnnotationNotExistException(message);
+                }
+                  
                 this.DisplayProperty = new DisplayPropertyAttribute();
             }
             if (this.DisplayProperty.isInGlossary)
@@ -184,6 +192,11 @@ namespace App.Shared.AttributesManager
             if (this.PropertyInfo.PropertyType.Name == "Int32")
             {
                 this.FieldNature = FieldsNatures.Int32;
+                return;
+            }
+            if (this.PropertyInfo.PropertyType.Name == "Int64")
+            {
+                this.FieldNature = FieldsNatures.Int64;
                 return;
             }
             if (this.PropertyInfo.PropertyType.Name == "DateTime")

@@ -18,6 +18,13 @@ namespace App.Gwin.FieldsTraitements
     /// </summary>
     public class DefaultFieldTraitement : FieldTraitement, IFieldTraitements
     {
+
+        public object GetTestValue(PropertyInfo propertyInfo)
+        {
+            return null;
+        }
+
+
         #region EntryForm
         /// <summary>
         /// CreateField in EntryForm

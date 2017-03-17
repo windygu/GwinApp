@@ -1,4 +1,5 @@
 ﻿using App.Gwin.Attributes;
+using App.Gwin.Entities.Secrurity.Authentication;
 using App.Gwin.Exceptions.Gwin;
 using System;
 using System.ComponentModel.DataAnnotations;
@@ -11,7 +12,6 @@ namespace App.Gwin.Entities
     /// <summary>
     /// La classe de Base de toutes les entity
     /// </summary>
-    [DisplayEntity(DisplayMember ="Id")]
     public  class BaseEntity : IBaseEntity
     {
 
@@ -28,9 +28,8 @@ namespace App.Gwin.Entities
         [Key]
         public Int64 Id { get; set; }
 
-
         [DisplayProperty(isInGlossary = true)]
-        [DataGrid(WidthColonne = 50)]
+       
         public int Ordre { set; get; }
 
         public DateTime DateCreation { get; set; }
@@ -39,6 +38,11 @@ namespace App.Gwin.Entities
         [DisplayProperty(isInGlossary = true)]
         [DataGrid(Ordre = 1000, WidthColonne = 110)]
         public DateTime DateModification { get; set; }
+
+        ///// <summary>
+        ///// The uset that create the Entity : The Owner
+        ///// </summary>
+        //public virtual User Owner { set; get; }
         #endregion
 
         #region Equals & ToString
@@ -61,7 +65,7 @@ namespace App.Gwin.Entities
         public override string ToString()
         {
             string Titre = "";
-            DisplayEntityAttribute AffichageClasse = (DisplayEntityAttribute)this.GetType().GetCustomAttributes(typeof(DisplayEntityAttribute), true)[0];
+            GwinEntityAttribute AffichageClasse = (GwinEntityAttribute)this.GetType().GetCustomAttributes(typeof(GwinEntityAttribute), true)[0];
 
             // Test if the object has the memeber AffichageClasse.DisplayMember
             if (this.GetType().GetProperty(AffichageClasse.DisplayMember) == null)
@@ -74,26 +78,6 @@ namespace App.Gwin.Entities
         }
         #endregion
 
-        #region Annotation
-
-      
-        ///// <summary>
-        ///// Trouver l'annotation AffichageClasseAttribute
-        ///// </summary>
-        ///// <param name="propertyType"></param>
-        ///// <returns></returns>
-        //public static DisplayEntityAttribute GetAffichageClasseAttribute(Type propertyType)
-        //{
-        //    Attribute attribute = propertyType.GetCustomAttribute(typeof(DisplayEntityAttribute));
-        //    if (attribute == null) throw new AnnotationNotExistException(typeof(DisplayEntityAttribute).ToString());
-        //    return (DisplayEntityAttribute)attribute;
-        //}
-
-        //public DisplayEntityAttribute GetAffichageClasseAttribute()
-        //{
-        //  return (DisplayEntityAttribute) this.GetType().GetCustomAttributes(typeof(DisplayEntityAttribute),true).First();
-        //}
-
-        #endregion
+       
     }
 }

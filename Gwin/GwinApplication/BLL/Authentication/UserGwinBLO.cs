@@ -1,4 +1,5 @@
-﻿using App.Gwin.Entities.Authentication;
+﻿
+using App.Gwin.Entities.Secrurity.Authentication;
 using System;
 using System.Collections.Generic;
 using System.Linq;

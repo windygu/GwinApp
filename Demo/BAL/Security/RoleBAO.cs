@@ -6,8 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using App.Gwin.Entities;
 using System.Windows.Forms;
-using App.Gwin.Entities.Autorizations;
 using GenericWinForm.Demo.BAL;
+using App.Gwin.Entities.Secrurity.Autorizations;
 
 namespace App.Gwin.Application.BAL.Security
 {

@@ -1,4 +1,5 @@
 ﻿using App.Gwin.Application.BAL;
+using App.Gwin.DataModel.ModelInfo;
 using App.Gwin.Entities;
 using App.Gwin.Entities.ContactInformations;
 using App.Gwin.Logging;
@@ -19,13 +20,13 @@ namespace App.Gwin.GwinApplication.IoC
                     .ImplementedBy<LoggingInterceptor>());
 
             // Registrer All BLO Objects
-            foreach (Type EntityType in new ModelConfiguration().GetAll_Entities_Type())
+            foreach (Type EntityType in new GwinEntitiesManager().GetAll_Entities_Type())
             {
 
-                Type ServiceType = GwinBaseBLO<BaseEntity>.Detemine_Type_EntityBLO(EntityType, GwinApp.Instance.TypeBaseBLO);
+                Type BLOEntity_Type = GwinBaseBLO<BaseEntity>.Detemine_Type_EntityBLO(EntityType, GwinApp.Instance.TypeBaseBLO);
 
                 kernel.Register(
-              Component.For(ServiceType).ImplementedBy(ServiceType)
+              Component.For(BLOEntity_Type).ImplementedBy(BLOEntity_Type)
                        .Interceptors(InterceptorReference.ForType<LoggingInterceptor>()).Anywhere);
             }
           

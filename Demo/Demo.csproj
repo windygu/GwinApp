@@ -99,6 +99,18 @@
     <Compile Include="Migrations\201703112059197_Update3.Designer.cs">
       <DependentUpon>201703112059197_Update3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703170930469_Update4.cs" />
+    <Compile Include="Migrations\201703170930469_Update4.Designer.cs">
+      <DependentUpon>201703170930469_Update4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703170952416_Update5.cs" />
+    <Compile Include="Migrations\201703170952416_Update5.Designer.cs">
+      <DependentUpon>201703170952416_Update5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703171057412_Update6.cs" />
+    <Compile Include="Migrations\201703171057412_Update6.Designer.cs">
+      <DependentUpon>201703171057412_Update6.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Entities\Resources\TaskProject\TaskProject.resx">
@@ -122,6 +134,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703112059197_Update3.resx">
       <DependentUpon>201703112059197_Update3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703170930469_Update4.resx">
+      <DependentUpon>201703170930469_Update4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703170952416_Update5.resx">
+      <DependentUpon>201703170952416_Update5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703171057412_Update6.resx">
+      <DependentUpon>201703171057412_Update6.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace App.Gwin.Entities.ContactInformations
 {
-    [DisplayEntity(Localizable =true,isMaleName =false, DisplayMember = "Email")]
+    [GwinEntity(Localizable =true,isMaleName =false, DisplayMember = "Email")]
     public class ContactInformation : BaseEntity
     {
 

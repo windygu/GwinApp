@@ -190,7 +190,7 @@ namespace App.Gwin.Fields.Controls
             foreach (Type item in MetaSelectionCriteria.Criteria)
             {
                 // Meta information d'affichage du de Critère
-                DisplayEntityAttribute DisplayEntityAttributeCritere = (DisplayEntityAttribute)item.GetCustomAttribute(typeof(DisplayEntityAttribute));
+                GwinEntityAttribute DisplayEntityAttributeCritere = (GwinEntityAttribute)item.GetCustomAttribute(typeof(GwinEntityAttribute));
 
 
                 ManyToOneField manyToOneFilter = new ManyToOneField(this.Service, item, null, null,

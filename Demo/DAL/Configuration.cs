@@ -3,7 +3,7 @@
     using GenericWinForm.Demo.Entities;
     using Gwin;
     using Gwin.Application.BAL;
-    using Gwin.Entities.Autorizations;
+    using Gwin.Entities.Secrurity.Autorizations;
     using System;
     using System.Collections.Generic;
     using System.Data.Entity.Migrations;

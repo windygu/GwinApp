@@ -11,12 +11,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using App.Shared.AttributesManager;
+using System.Reflection;
 
 namespace App.Gwin.FieldsTraitements
 {
     public class ManyToMany_SelectionFieldTraitement : FieldTraitement, IFieldTraitements
     {
-       
+        public object GetTestValue(PropertyInfo propertyInfo)
+        {
+            return null;
+        }
 
         /// <summary>
         /// CreateField in EntryForm

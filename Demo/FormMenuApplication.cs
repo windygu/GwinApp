@@ -4,7 +4,7 @@ using App.Gwin.Application.Presentation.EntityManagement;
 using App.Gwin.Application.Presentation.MainForm;
 using App.Gwin.Entities;
 using App.Gwin.Entities.Application;
-using App.Gwin.Entities.Authentication;
+using App.Gwin.Entities.Secrurity.Authentication;
 using GenericWinForm.Demo.BAL;
 using SplashScreen;
 using System;

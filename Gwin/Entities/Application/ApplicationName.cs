@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace App.Gwin.Entities.Application
 {
-    [DisplayEntity(Localizable =true,isMaleName =false,DisplayMember ="Name",PluralName ="Applications",SingularName = "Application")]
+    [GwinEntity(Localizable =true,isMaleName =false,DisplayMember ="Name",PluralName ="Applications",SingularName = "Application")]
     [Menu(Group ="Root")]
     public class ApplicationName : BaseEntity
     {

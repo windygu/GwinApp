@@ -22,7 +22,7 @@ namespace App.Gwin.Attributes
     public class ConfigEntity
     {
         #region Public Properties
-        public DisplayEntityAttribute DisplayEntity { set; get; }
+        public GwinEntityAttribute DisplayEntity { set; get; }
         public ManagementFormAttribute ManagementForm { set; get; }
         public AddButtonAttribute AddButton { set; get; }
         public MenuAttribute Menu { set; get; }
@@ -91,20 +91,20 @@ namespace App.Gwin.Attributes
             //
 
             // Load and Check Existance of DisplayEntityAttribute
-            Object[] ls_attribut = this.TypeOfEntity.GetCustomAttributes(typeof(DisplayEntityAttribute), false);
+            Object[] ls_attribut = this.TypeOfEntity.GetCustomAttributes(typeof(GwinEntityAttribute), false);
             if (ls_attribut == null || ls_attribut.Count() == 0)
             {
-                string msg_excepion = "The meta annotation :" + nameof(DisplayEntityAttribute) + " not exist ";
+                string msg_excepion = "The meta annotation :" + nameof(GwinEntityAttribute) + " not exist ";
                 msg_excepion += " in Entity : " + this.TypeOfEntity.Name;
                 msg_excepion += ". It is required, because it contain DiplayMameber config that is used by ToString method to diply Entity";
                 throw new GwinException(msg_excepion); 
             }
 
-            this.DisplayEntity = (DisplayEntityAttribute)ls_attribut[0];
+            this.DisplayEntity = (GwinEntityAttribute)ls_attribut[0];
 
             // Check DisplayMember existance
             if (this.DisplayEntity.DisplayMember == null)
-                throw new DisplayMember_NotExist_In_DisplayEntityAttribute_Exception("DisplayMember not exist in " + typeof(DisplayEntityAttribute).ToString() + " : " + this.TypeOfEntity.Name);
+                throw new DisplayMember_NotExist_In_DisplayEntityAttribute_Exception("DisplayMember not exist in " + typeof(GwinEntityAttribute).ToString() + " : " + this.TypeOfEntity.Name);
             if (this.DisplayEntity.Localizable)
             {
                 // set all attribute Localizable

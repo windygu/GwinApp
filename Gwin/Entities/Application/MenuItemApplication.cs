@@ -1,7 +1,6 @@
 ﻿using App.Gwin.Attributes;
-using App.Gwin.Entities.Authentication;
-using App.Gwin.Entities.Autorizations;
 using App.Gwin.Entities.MultiLanguage;
+using App.Gwin.Entities.Secrurity.Autorizations;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -13,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace App.Gwin.Entities.Application
 {
-    [DisplayEntity(Localizable =true, DisplayMember = nameof(Code),isMaleName =true)]
+    [GwinEntity(Localizable =true, DisplayMember = nameof(Code),isMaleName =true)]
     [ManagementForm(FormTitle ="MenuManager")]
     [Menu(Group ="Admin")]
     public class MenuItemApplication : BaseEntity

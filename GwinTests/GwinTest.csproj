@@ -42,9 +42,6 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="GwinField">
-      <HintPath>..\packages\GwinField\GwinField.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
@@ -57,26 +54,34 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework">
+          <Private>False</Private>
+        </Reference>
       </ItemGroup>
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Application\BAL\BaseEntityBAOTests.cs" />
-    <Compile Include="Application\BAL\GwinApplication\GwinAppTests.cs" />
-    <Compile Include="Application\BAL\GwinApplication\GwinTests.cs" />
-    <Compile Include="Application\BAL\InstallApplicationTests.cs" />
-    <Compile Include="Application\Presentation\MainForm\CreateApplicationMenuTests.cs" />
-    <Compile Include="Attributes\ReadConfiguration\ConfigEntityTests.cs" />
-    <Compile Include="Attributes\ReadConfiguration\ConfigPropertyTests.cs" />
-    <Compile Include="BAL\Entity_MiniConfigBLOTests.cs" />
-    <Compile Include="Components\DataGrid\EntityDataGridControlTests.cs" />
-    <Compile Include="Components\EntryForms\BaseEntryFormTests.cs" />
-    <Compile Include="Components\Filter\BaseFilterControlTests.cs" />
+    <Compile Include="BAL\TaskProjectBLOTests.cs" />
+    <Compile Include="Components\Fields\Controls\DateTimeControlTests.cs" />
+    <Compile Include="Components\Fields\DateTimeFieldTests.cs" />
+    <Compile Include="Components\Fields\Int32FiledTests.cs" />
+    <Compile Include="Components\Fields\StringFiledTests.cs" />
+    <Compile Include="Entities\EntitiesTest.cs" />
+    <Compile Include="GwinApplication\BLL\BaseEntityBAOTests.cs" />
+    <Compile Include="GwinApplication\BLL\GwinApplication\GwinAppTests.cs" />
+    <Compile Include="GwinApplication\BLL\GwinApplication\GwinTests.cs" />
+    <Compile Include="GwinApplication\BLL\InstallApplicationTests.cs" />
+    <Compile Include="GwinApplication\Presentation\MainForm\CreateApplicationMenuTests.cs" />
+    <Compile Include="DataModel\Attributes\ReadConfiguration\ConfigEntityTests.cs" />
+    <Compile Include="DataModel\Attributes\ReadConfiguration\ConfigPropertyTests.cs" />
+    <Compile Include="GwinApplication\BLL\Entity_MiniConfigBLOTests.cs" />
+    <Compile Include="Components\Manager\DataGrid\EntityDataGridControlTests.cs" />
+    <Compile Include="Components\Manager\EntryForms\BaseEntryFormTests.cs" />
+    <Compile Include="Components\Manager\Filter\BaseFilterControlTests.cs" />
     <Compile Include="Components\Manager\EntityManagementControlTests.cs" />
-    <Compile Include="Fields.Traitements\FieldTraitementTests.cs" />
-    <Compile Include="Fields.Traitements\GwinException.cs" />
-    <Compile Include="ModelInfo\ModelConfigurationTests.cs" />
+    <Compile Include="Components\Manager\Fields.Traitements\FieldTraitementTests.cs" />
+    <Compile Include="Components\Manager\Fields.Traitements\GwinException.cs" />
+    <Compile Include="DataModel\ModelInfo\ModelConfigurationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -93,7 +98,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ManagementForm\" />
+    <Folder Include="Components\Manager\ManagementForm\" />
+    <Folder Include="NewFolder1\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

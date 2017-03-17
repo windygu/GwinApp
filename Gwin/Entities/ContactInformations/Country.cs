@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace App.Gwin.Entities.ContactInformations
 {
-    [DisplayEntity(Localizable =true,isMaleName =true,DisplayMember = "Name")]
+    [GwinEntity(Localizable =true,isMaleName =true,DisplayMember = "Name")]
     [Menu(Group = "The Configuration")]
     public class Country : BaseEntity
     {

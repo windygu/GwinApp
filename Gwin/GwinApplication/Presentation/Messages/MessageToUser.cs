@@ -2,6 +2,7 @@
 using App.Gwin.GwinApplication.Presentation.Messages;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,30 +35,34 @@ namespace App.Gwin.Application.Presentation.Messages
 
         public static void AddMessage(Category category, string msg)
         {
-         
-                
-            switch (category)
+            // Not Show Message at Test
+            if (LicenseManager.UsageMode == LicenseUsageMode.Runtime)
             {
-                case Category.MultiLanguageResourceFile:
-                    MessageBox.Show(msg, MessageToUser_Resource.MultiLanguageResourceFile_Title);
-                    break;
-                case Category.BusinessRule:
+                switch (category)
+                {
+                    case Category.MultiLanguageResourceFile:
+                        MessageBox.Show(msg, MessageToUser_Resource.MultiLanguageResourceFile_Title);
+                        break;
+                    case Category.BusinessRule:
                         MessageBox.Show(msg, MessageToUser_Resource.BusinessRule_Title);
                         break;
-                case Category.Convert:
+                    case Category.Convert:
                         MessageBox.Show(msg, MessageToUser_Resource.Convert_Title);
                         break;
-                case Category.ForeignKeViolation:
-                    if (msg == string.Empty) msg = MessageToUser_Resource.ForeignKeViolation_Message;
-                    MessageBox.Show(msg, MessageToUser_Resource.ForeignKeViolation_Title);
+                    case Category.ForeignKeViolation:
+                        if (msg == string.Empty) msg = MessageToUser_Resource.ForeignKeViolation_Message;
+                        MessageBox.Show(msg, MessageToUser_Resource.ForeignKeViolation_Title);
                         break;
-                case Category.EntityValidation:
-                    if (msg == string.Empty) msg = MessageToUser_Resource.EntityValidation_Message;
-                    MessageBox.Show(msg, MessageToUser_Resource.EntityValidation_Title);
-                    break;
-                default:
-                    break;
+                    case Category.EntityValidation:
+                        if (msg == string.Empty) msg = MessageToUser_Resource.EntityValidation_Message;
+                        MessageBox.Show(msg, MessageToUser_Resource.EntityValidation_Title);
+                        break;
+                    default:
+                        break;
+                }
             }
+
+          
 
             
         }

@@ -7,7 +7,7 @@ namespace App.Gwin.Attributes
     /// it is required attribut, because it containe DiplayMameber config that used by ToString methode
     /// </summary>
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
-    public class DisplayEntityAttribute : BaseAttribute
+    public class GwinEntityAttribute : BaseAttribute
     {
         /// <summary>
         /// The name of the property that represents the entity

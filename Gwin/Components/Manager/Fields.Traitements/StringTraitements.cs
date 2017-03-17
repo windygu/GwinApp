@@ -143,6 +143,13 @@ namespace App.Gwin.FieldsTraitements
                 param.Column.Width = param.ConfigProperty.DataGrid.WidthColonne;
 
         }
+
+
         #endregion
+
+        public object GetTestValue(PropertyInfo propertyInfo)
+        {
+            return "String Value";
+        }
     }
 }

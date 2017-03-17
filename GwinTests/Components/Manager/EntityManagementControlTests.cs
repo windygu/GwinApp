@@ -10,6 +10,7 @@ using App.Gwin.Application.Presentation.MainForm;
 using App.Gwin.Application.Presentation;
 using App.Gwin.Application.Presentation.EntityManagement;
 using System.Windows.Forms;
+using App.Gwin.DataModel.ModelInfo;
 
 namespace App.Gwin.Tests
 {
@@ -36,7 +37,7 @@ namespace App.Gwin.Tests
             // Tester tous les bouttons ajouter 
             using (ModelContext db = new ModelContext())
             {
-                foreach (var item in db.GetTypesSets())
+                foreach (var item in new GwinEntitiesManager().GetAll_Entities_Type())
                 {
                     EntityManagementCreator AfficherFormulaire = new EntityManagementCreator(typeof(ModelContext), MdiForm);
                     EntityManagementForm emform = AfficherFormulaire.ShowManagementForm(item);

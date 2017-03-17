@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace App.Gwin.Entities.Persons
 {
-    [DisplayEntity(DisplayMember ="Name")]
+    
     public class Person : BaseEntity
     {
 

@@ -6,6 +6,7 @@ using App.Shared.AttributesManager;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,6 +15,12 @@ namespace App.Gwin.FieldsTraitements
 {
     public class EnumerationFieldTraitement : FieldTraitement, IFieldTraitements
     {
+        public object GetTestValue(PropertyInfo propertyInfo)
+        {
+            return Activator.CreateInstance(propertyInfo.PropertyType);
+        }
+
+
         #region EntryForm
         /// <summary>
         /// CreateField in EntryForm

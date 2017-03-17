@@ -10,8 +10,14 @@ namespace App.Gwin.Attributes
     {
         /// <summary>
         /// Determine whether the annotation is locatable
+        /// Default is True
         /// </summary>
         public bool Localizable { set; get; }
+
+        public BaseAttribute()
+        {
+            Localizable = true;
+        }
 
 
 

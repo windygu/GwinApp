@@ -7,15 +7,22 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace App.Gwin.FieldsTraitements
 {
-         
+    
     class StringWithDataSourceFieldTraitement : FieldTraitement, IFieldTraitements
     {
+
+        public object GetTestValue(PropertyInfo propertyInfo)
+        {
+            return "String DataSource Value";
+        }
+
         /// <summary>
         /// CreateField in EntryForm
         /// 
@@ -50,8 +57,9 @@ namespace App.Gwin.FieldsTraitements
             comboBoxField.ConfigSizeField();
 
             // DataSource
-            var DataObject = Activator.CreateInstance(param.ConfigProperty.DataSource.TypeObject);
-            IList ls_data = (IList)DataObject.GetType().GetMethod(param.ConfigProperty.DataSource.MethodeName).Invoke(DataObject, null);
+            //var DataObject = Activator.CreateInstance(param.ConfigProperty.DataSource.TypeObject);
+            //IList ls_data = (IList)DataObject.GetType().GetMethod(param.ConfigProperty.DataSource.MethodeName).Invoke(DataObject, null);
+            IList ls_data = param.ConfigProperty.DataSource.GetData();
             List<string> ls_data_string = ls_data.Cast<Object>().Select(o => o.ToString()).ToList<string>();
             comboBoxField.DataSource = ls_data_string.ToList<object>();
 
@@ -95,8 +103,7 @@ namespace App.Gwin.FieldsTraitements
             stringFiled.ConfigSizeField();
 
             // DataSource
-            var DataObject = Activator.CreateInstance(param.ConfigProperty.DataSource.TypeObject);
-            IList ls_data = (IList)DataObject.GetType().GetMethod(param.ConfigProperty.DataSource.MethodeName).Invoke(DataObject, null);
+            IList ls_data = param.ConfigProperty.DataSource.GetData();
             List<string> ls_data_string = ls_data.Cast<Object>().Select(o => o.ToString()).ToList<string>();
             stringFiled.DataSource = ls_data_string.ToList<object>();
 

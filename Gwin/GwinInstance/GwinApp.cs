@@ -3,7 +3,7 @@ using App.Gwin.Application.BAL.Authentication;
 using App.Gwin.Application.Presentation.MainForm;
 using App.Gwin.Attributes;
 using App.Gwin.Entities.Application;
-using App.Gwin.Entities.Authentication;
+using App.Gwin.Entities.Secrurity.Authentication;
 using App.Gwin.Exceptions.Gwin;
 using SplashScreen;
 using System;
