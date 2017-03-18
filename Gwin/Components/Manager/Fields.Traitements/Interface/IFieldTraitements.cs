@@ -11,7 +11,7 @@ namespace App.Gwin.FieldsTraitements
     {
 
         BaseField CreateField_In_EntryForm(CreateFieldParams param);
-        void GetEntityValues_To_EntryForm(WriteEntity_To_EntryForm_Param param);
+        void ShowEntity_To_EntryForm(WriteEntity_To_EntryForm_Param param);
         object ConvertValue(BaseFieldTraitementParam param);
 
         BaseField CreateField_In_Filter(CreateField_In_Filter_Params param);

@@ -2,6 +2,7 @@
 using App.Gwin.Fields;
 using App.Gwin.Components.Manager.Fields.Traitements.Params;
 using App.Shared.AttributesManager;
+using App.WinForm.Fields;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,14 +13,14 @@ using System.Windows.Forms;
 
 namespace App.Gwin.FieldsTraitements
 {
-    public class Int32FieldTraitement : BaseFieldTraitement, IFieldTraitements
+    public class DateTimeFieldTraitement : BaseFieldTraitement, IFieldTraitements
     {
+        private readonly object DateTime2;
 
-        public virtual object GetTestValue(PropertyInfo propertyInfo)
+        public object GetTestValue(PropertyInfo propertyInfo)
         {
-            return  5;
+            return DateTimeField.GetTestValue();
         }
-
 
         /// <summary>
         /// CreateField in EntryForm
@@ -42,30 +43,30 @@ namespace App.Gwin.FieldsTraitements
         /// <returns>the created field</returns>
         public BaseField CreateField_In_EntryForm(CreateFieldParams param)
         {
-            Int32Filed int32Filed = new Int32Filed();
-            int32Filed.StopAutoSizeConfig();
-            int32Filed.Name = param.PropertyInfo.Name;
-            int32Filed.Location = param.Location;
-            int32Filed.OrientationField = param.OrientationField;
-            int32Filed.SizeLabel = param.SizeLabel;
-            int32Filed.SizeControl = param.SizeControl;
-            
-            int32Filed.TabIndex = param.TabIndex;
-            int32Filed.Text_Label = param.ConfigProperty.DisplayProperty.Titre;
-            int32Filed.ConfigSizeField();
+            DateTimeField dateTimeField = new DateTimeField();
+            dateTimeField.StopAutoSizeConfig();
+            dateTimeField.Name = param.PropertyInfo.Name;
+            dateTimeField.Location = param.Location;
+            dateTimeField.OrientationField = param.OrientationField;
+            dateTimeField.SizeLabel = param.SizeLabel;
+            dateTimeField.SizeControl = param.SizeControl;
+
+            dateTimeField.TabIndex = param.TabIndex;
+            dateTimeField.Text_Label = param.ConfigProperty.DisplayProperty.Titre;
+            dateTimeField.ConfigSizeField();
 
             // Insertion à l'interface
-            param.ConteneurFormulaire.Controls.Add(int32Filed);
-            return int32Filed;
+            param.ConteneurFormulaire.Controls.Add(dateTimeField);
+            return dateTimeField;
         }
 
-        public  void GetEntityValues_To_EntryForm(WriteEntity_To_EntryForm_Param param)
+        public void ShowEntity_To_EntryForm(WriteEntity_To_EntryForm_Param param)
         {
-            var valeur = param.Entity.GetType().GetProperty(param.ConfigProperty.PropertyInfo.Name).GetValue(param.Entity);
+            DateTime value = (DateTime)param.Entity.GetType().GetProperty(param.ConfigProperty.PropertyInfo.Name).GetValue(param.Entity);
 
             // Use Filter Value
             if (param.CritereRechercheFiltre != null && param.CritereRechercheFiltre.ContainsKey(param.ConfigProperty.PropertyInfo.Name))
-                valeur = Convert.ToInt32(param.CritereRechercheFiltre[param.ConfigProperty.PropertyInfo.Name]); 
+                value = Convert.ToDateTime(param.CritereRechercheFiltre[param.ConfigProperty.PropertyInfo.Name]);
 
             // Find baseField control in ConteneurFormulaire
             // And Set Value
@@ -74,33 +75,38 @@ namespace App.Gwin.FieldsTraitements
             {
                 BaseField baseField = (BaseField)recherche.First();
                 if (baseField == null) throw new GwinException("The field " + param.ConfigProperty.PropertyInfo.Name + "not exit in EntryForm");
-                baseField.Value = valeur;
+
+                if (value.Year == 1)
+                    // [DataBase] Imcompatiblite with other DataBase
+                    baseField.Value = System.Data.SqlTypes.SqlDateTime.MinValue.Value;
+                else
+                    baseField.Value = value;
             }
 
         }
 
         public BaseField CreateField_In_Filter(CreateField_In_Filter_Params param)
         {
-            Int32Filed int32Filed = new Int32Filed();
-            int32Filed.StopAutoSizeConfig();
-            int32Filed.Name = param.ConfigProperty.PropertyInfo.Name;
-            int32Filed.SizeLabel = param.SizeLabel;
-            int32Filed.SizeControl = param.SizeControl;
-            int32Filed.OrientationField = Orientation.Horizontal;
-            int32Filed.TabIndex = param.TabIndex;
-            int32Filed.Text_Label = param.ConfigProperty.DisplayProperty.Titre;
+            DateTimeField dateTimeField = new DateTimeField();
+            dateTimeField.StopAutoSizeConfig();
+            dateTimeField.Name = param.ConfigProperty.PropertyInfo.Name;
+            dateTimeField.SizeLabel = param.SizeLabel;
+            dateTimeField.SizeControl = param.SizeControl;
+            dateTimeField.OrientationField = Orientation.Horizontal;
+            dateTimeField.TabIndex = param.TabIndex;
+            dateTimeField.Text_Label = param.ConfigProperty.DisplayProperty.Titre;
 
-            int32Filed.ConfigSizeField();
-            param.FilterContainer.Controls.Add(int32Filed);
+            dateTimeField.ConfigSizeField();
+            param.FilterContainer.Controls.Add(dateTimeField);
 
-            return int32Filed;
+            return dateTimeField;
         }
 
         public object GetFieldValue_From_Filter(Control FilterContainer, ConfigProperty ConfigProperty)
         {
-            Int32Filed int32Filed = (Int32Filed)FilterContainer.Controls.Find(ConfigProperty.PropertyInfo.Name, true).First();
-            if ((int)int32Filed.Value != 0)
-                return int32Filed.Value;
+            DateTimeField dateTimeField = (DateTimeField)FilterContainer.Controls.Find(ConfigProperty.PropertyInfo.Name, true).First();
+            if ((DateTime)dateTimeField.Value != DateTime.MinValue)
+                return dateTimeField.Value;
             else
                 return null;
         }
@@ -112,7 +118,7 @@ namespace App.Gwin.FieldsTraitements
         /// <param name="param"></param>
         public void ConfigFieldColumn_In_EntityDataGrid(CreateFieldColumns_In_EntityDataGrid param)
         {
-            param.Column.ValueType = param.ConfigProperty.PropertyInfo.PropertyType;
+            param.Column.ValueType = typeof(DateTime);
             param.Column.DataPropertyName = param.ConfigProperty.PropertyInfo.Name;
             param.Column.HeaderText = param.ConfigProperty.DisplayProperty.Titre;
             param.Column.Name = param.ConfigProperty.PropertyInfo.Name;

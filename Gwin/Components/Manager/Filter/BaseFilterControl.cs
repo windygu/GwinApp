@@ -145,7 +145,7 @@ namespace App.Gwin.EntityManagement
                 BaseField baseField = null;
                 // Invok Create Field in filter Method
                 baseField = fieldTraitement.CreateField_In_Filter(param);
-                baseField.FieldChanged += Filtre_SelectedValueChanged;
+                baseField.ValueChanged += Filtre_SelectedValueChanged;
 
             } // End For
         }

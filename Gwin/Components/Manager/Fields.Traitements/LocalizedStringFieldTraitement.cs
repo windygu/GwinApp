@@ -81,7 +81,7 @@ namespace App.Gwin.FieldsTraitements
 
       
 
-        public void GetEntityValues_To_EntryForm(WriteEntity_To_EntryForm_Param param)
+        public void ShowEntity_To_EntryForm(WriteEntity_To_EntryForm_Param param)
         {
             LocalizedString valeur = (LocalizedString)param.Entity.GetType().GetProperty(param.ConfigProperty.PropertyInfo.Name).GetValue(param.Entity);
 

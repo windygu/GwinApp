@@ -51,7 +51,7 @@ namespace App.Gwin.FieldsTraitements.Tests
         {
             BaseEntryForm baseEntryForm = new BaseEntryForm(entityMiniConfigBLO, Entity, new Dictionary<string, object>(), true);
             baseEntryForm.BaseEntryForm_Load(baseEntryForm, null);
-            baseEntryForm.GetValues();
+            baseEntryForm.ShowEntity();
         }
 
         [TestMethod()]

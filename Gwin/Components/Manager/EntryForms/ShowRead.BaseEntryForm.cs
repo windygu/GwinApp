@@ -18,21 +18,21 @@ using App.Gwin.Exceptions.Gwin;
 namespace App.Gwin
 {
     /// <summary>
-    /// Write from Entity to Interface
+    /// Shwo and Read Entity
     /// </summary>
     public partial class BaseEntryForm
     {
 
-        public virtual void GetValues()
+        public virtual void ShowEntity()
         {
-            this.GetValues(null);
+            this.ShowEntity(null);
         }
         /// <summary>
         /// Affiher l'entité dans le formulaire avec 
         /// les valeurs initiaux de l'objet
         /// et les initiaux de filtre avec la priéorité pour le filtre
         /// </summary>
-        public virtual void GetValues(Dictionary<string, object> CritereRechercheFiltre)
+        public virtual void ShowEntity(Dictionary<string, object> CritereRechercheFiltre)
         {
             // Generate the the form if is note generated
             CreateFieldIfNotGenerated();
@@ -54,16 +54,16 @@ namespace App.Gwin
                 // Get FieldTraitement Type
                 IFieldTraitements fieldTraitement = BaseFieldTraitement.CreateInstance(configProperty);
                 // Invok Create Field Method
-                fieldTraitement.GetEntityValues_To_EntryForm(param);
+                fieldTraitement.ShowEntity_To_EntryForm(param);
             }
             // Fin de la phase d'initialisaiton
             this.isStepInitializingValues = false;
         }
 
         /// <summary>
-        /// Lire les informations du formulaire vers l'Entity
+        /// Set Values to Entity
         /// </summary>
-        public virtual void SetValues()
+        public virtual void ReadEntity()
         {
             foreach (PropertyInfo item in ListeChampsFormulaire())
             {
@@ -93,6 +93,7 @@ namespace App.Gwin
                 param.ConfigProperty = ConfigProperty;
                 param.Entity = this.Entity;
                 param.BaseField = baseField;
+                param.EntityBLO = this.EntityBLO;
                 // Get FieldTraitement Type
                 IFieldTraitements fieldTraitement = BaseFieldTraitement.CreateInstance(param.ConfigProperty);
                 object value = fieldTraitement.ConvertValue(param);

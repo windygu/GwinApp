@@ -85,7 +85,7 @@ namespace App.Gwin.Fields
                         manyToOneFilter.ValueMember = "Id";
                         manyToOneFilter.DisplayMember = MetaAffichageClasseCritere.DisplayMember;
                         // pour le chargement de comboBox Suivant
-                        manyToOneFilter.FieldChanged += Value_SelectedIndexChanged;
+                        manyToOneFilter.ValueChanged += Value_SelectedIndexChanged;
 
                         manyToOneFilter.Visible = true;
 
@@ -119,7 +119,7 @@ namespace App.Gwin.Fields
                 LsiteTypeObjetCritere.Add(this.TypeOfObject.Name, this.TypeOfObject);
 
             }
-            this.FieldChanged += Value_SelectedIndexChanged;
+            this.ValueChanged += Value_SelectedIndexChanged;
 
           
              

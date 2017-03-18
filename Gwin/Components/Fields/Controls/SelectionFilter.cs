@@ -207,7 +207,7 @@ namespace App.Gwin.Fields.Controls
                 manyToOneFilter.ValueMember = "Id";
                 manyToOneFilter.DisplayMember = DisplayEntityAttributeCritere.DisplayMember;
                 // pour le chargement de comboBox Suivant
-                manyToOneFilter.FieldChanged += Value_SelectedIndexChanged;
+                manyToOneFilter.ValueChanged += Value_SelectedIndexChanged;
 
                 manyToOneFilter.Visible = true;
 

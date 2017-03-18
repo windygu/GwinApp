@@ -72,7 +72,7 @@ namespace App.Gwin.FieldsTraitements
             return manyToOneField;
         }
 
-        public void GetEntityValues_To_EntryForm(WriteEntity_To_EntryForm_Param param)
+        public void ShowEntity_To_EntryForm(WriteEntity_To_EntryForm_Param param)
         {
             BaseEntity valeur = (BaseEntity) param.Entity.GetType().GetProperty(param.ConfigProperty.PropertyInfo.Name).GetValue(param.Entity);
             if (valeur == null) return;

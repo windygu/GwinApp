@@ -88,14 +88,21 @@
     <Compile Include="Components\Fields\Int32Filed.Designer.cs">
       <DependentUpon>Int32Filed.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\Fields\DefaultField.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\Fields\DefaultField.Designer.cs">
+      <DependentUpon>DefaultField.cs</DependentUpon>
+    </Compile>
     <Compile Include="Components\Fields\StringField.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Components\Fields\StringField.Designer.cs">
       <DependentUpon>StringField.cs</DependentUpon>
     </Compile>
-    <Compile Include="Components\Manager\Fields.Traitements\Int64Traitements.cs" />
+    <Compile Include="Components\Manager\Fields.Traitements\Int64FieldTraitement.cs" />
     <Compile Include="Components\Manager\Fields.Traitements\Params\Base\BaseFieldTraitementParam.cs" />
+    <Compile Include="Components\Manager\Fields.Traitements\StringFieldTraitement.cs" />
     <Compile Include="DataModel\Exceptions\Class1.cs" />
     <Compile Include="DataModel\Helpers\GwinIdentifierManager.cs" />
     <Compile Include="DataModel\ModelInfo\GwinAssembliesManager.cs" />
@@ -147,29 +154,28 @@
     <Compile Include="GwinInstance\Exception\GwinAppImplementedException.cs" />
     <Compile Include="GwinInstance\Exception\GwinNullParameterException.cs" />
     <Compile Include="GwinInstance\Helpers\ParamsValidationg.cs" />
-    <Compile Include="Components\Manager\Fields.Traitements\ManyToMany_CreationTraitements.cs" />
+    <Compile Include="Components\Manager\Fields.Traitements\ManyToMany_CreationFieldTraitement.cs" />
     <Compile Include="Components\Manager\Fields.Traitements\Params\CreateFieldColumns_In_EntityDataGrid.cs" />
     <Compile Include="Components\Manager\Fields.Traitements\Params\CreateField_In_Filter_Params.cs" />
     <Compile Include="Components\Manager\Fields.Traitements\Params\WriteEntity_To_EntryForm_Param.cs" />
-    <Compile Include="Components\Manager\Fields.Traitements\DefaultFieldTraitements.cs" />
+    <Compile Include="Components\Manager\Fields.Traitements\DefaultFieldTraitement.cs" />
     <Compile Include="Components\Fields\ComboBoxField.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Components\Fields\ComboBoxField.Designer.cs">
       <DependentUpon>ComboBoxField.cs</DependentUpon>
     </Compile>
-    <Compile Include="Components\Manager\Fields.Traitements\DateTimeTraitements.cs" />
+    <Compile Include="Components\Manager\Fields.Traitements\DateTimeFieldTraitement.cs" />
     <Compile Include="Components\Manager\Fields.Traitements\FieldNature\FieldsNatures.cs" />
-    <Compile Include="Components\Manager\Fields.Traitements\EnumerationTraitements.cs" />
+    <Compile Include="Components\Manager\Fields.Traitements\EnumerationFieldTraitement.cs" />
     <Compile Include="Components\Manager\Fields.Traitements\Base\FieldTraitement.cs" />
     <Compile Include="Components\Manager\Fields.Traitements\Interface\IFieldTraitements.cs" />
-    <Compile Include="Components\Manager\Fields.Traitements\ManyToMany_SelectionTraitements.cs" />
-    <Compile Include="Components\Manager\Fields.Traitements\ManyToOneTraitements.cs" />
-    <Compile Include="Components\Manager\Fields.Traitements\Int32Traitements.cs" />
+    <Compile Include="Components\Manager\Fields.Traitements\ManyToMany_SelectionFieldTraitement.cs" />
+    <Compile Include="Components\Manager\Fields.Traitements\ManyToOneFieldTraitement.cs" />
+    <Compile Include="Components\Manager\Fields.Traitements\Int32FieldTraitement.cs" />
     <Compile Include="Components\Manager\Fields.Traitements\Params\CreateFieldParams.cs" />
-    <Compile Include="Components\Manager\Fields.Traitements\LocalizedStringTraitements.cs" />
-    <Compile Include="Components\Manager\Fields.Traitements\StringWithDataSourceTraitements.cs" />
-    <Compile Include="Components\Manager\Fields.Traitements\StringTraitements.cs" />
+    <Compile Include="Components\Manager\Fields.Traitements\LocalizedStringFieldTraitement.cs" />
+    <Compile Include="Components\Manager\Fields.Traitements\StringWithDataSourceFieldTraitement.cs" />
     <Compile Include="GwinInstance\GwinApp_Install_Update.cs" />
     <Compile Include="GwinInstance\GwinApp_Language.cs" />
     <Compile Include="GwinInstance\GwinApp_Start.cs" />
@@ -431,13 +437,10 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Components\Manager\EntryForms\IBaseEntryForm.cs" />
-    <Compile Include="Components\Manager\EntryForms\SetValues.BaseEntryForm.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Include="Components\Manager\EntryForms\Save.BaseEntyForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\Manager\EntryForms\GetValues.BaseEntryForm.cs">
+    <Compile Include="Components\Manager\EntryForms\ShowRead.BaseEntryForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Components\Manager\Filter\BaseFilterControl.cs">
@@ -536,6 +539,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Components\Fields\Int32Filed.resx">
       <DependentUpon>Int32Filed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Fields\DefaultField.resx">
+      <DependentUpon>DefaultField.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\Fields\StringField.resx">
       <DependentUpon>StringField.cs</DependentUpon>

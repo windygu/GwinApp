@@ -9,7 +9,7 @@ namespace App.Gwin
         /// <summary>
         /// Afficher l'objet dans le formulaire
         /// </summary>
-        void GetValues();
+        void ShowEntity();
 
         /// <summary>
         /// Lire l'objet à partire du formulaire

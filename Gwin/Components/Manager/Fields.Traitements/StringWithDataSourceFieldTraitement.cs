@@ -3,6 +3,7 @@ using App.Gwin.Fields;
 using App.Gwin.Components.Manager.Fields.Traitements.Params;
 using App.Shared.AttributesManager;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -12,12 +13,15 @@ using System.Windows.Forms;
 
 namespace App.Gwin.FieldsTraitements
 {
-    /// <summary>
-    /// You Can not change Traitement suffix, it used to load this Type
-    /// </summary>
-    public class StringFieldTraitement : BaseFieldTraitement, IFieldTraitements
+    
+    class StringWithDataSourceFieldTraitement : BaseFieldTraitement, IFieldTraitements
     {
-        #region EntryForm
+
+        public object GetTestValue(PropertyInfo propertyInfo)
+        {
+            return "String DataSource Value";
+        }
+
         /// <summary>
         /// CreateField in EntryForm
         /// 
@@ -39,32 +43,32 @@ namespace App.Gwin.FieldsTraitements
         /// <returns>the created field</returns>
         public BaseField CreateField_In_EntryForm(CreateFieldParams param)
         {
-            StringField stringField = new StringField();
-            stringField.StopAutoSizeConfig();
-            stringField.Name = param.PropertyInfo.Name;
-            stringField.Location = param.Location;
-            stringField.OrientationField = param.OrientationField;
-            stringField.SizeLabel = param.SizeLabel;
-            stringField.SizeControl = param.SizeControl;
-            if (param.ConfigProperty.EntryForm?.MultiLine == true)
-            {
-                stringField.IsMultiline = true;
-                stringField.NombreLigne = param.ConfigProperty.EntryForm.NumberLine;
-            }
-            stringField.TabIndex = param.TabIndex;
-            stringField.Text_Label = param.ConfigProperty.DisplayProperty.Titre;
-            stringField.ConfigSizeField();
+            ComboBoxField comboBoxField = new ComboBoxField();
+            comboBoxField.StopAutoSizeConfig();
+            comboBoxField.Name = param.PropertyInfo.Name;
+            comboBoxField.Location = param.Location;
+            comboBoxField.OrientationField = param.OrientationField;
+            comboBoxField.SizeLabel = param.SizeLabel;
+            comboBoxField.SizeControl = param.SizeControl;
+            
+            comboBoxField.TabIndex = param.TabIndex;
+            comboBoxField.Text_Label = param.ConfigProperty.DisplayProperty.Titre;
+            comboBoxField.ConfigSizeField();
+
+            // DataSource
+            //var DataObject = Activator.CreateInstance(param.ConfigProperty.DataSource.TypeObject);
+            //IList ls_data = (IList)DataObject.GetType().GetMethod(param.ConfigProperty.DataSource.MethodeName).Invoke(DataObject, null);
+            IList ls_data = param.ConfigProperty.DataSource.GetData();
+            List<string> ls_data_string = ls_data.Cast<Object>().Select(o => o.ToString()).ToList<string>();
+            comboBoxField.DataSource = ls_data_string.ToList<object>();
+
 
             // Insertion à l'interface
-            param.ConteneurFormulaire.Controls.Add(stringField);
-            return stringField;
+            param.ConteneurFormulaire.Controls.Add(comboBoxField);
+            return comboBoxField;
         }
 
-        /// <summary>
-        /// Write Entity to EntryForm
-        /// </summary>
-        /// <param name="param">Parameters</param>
-        public void GetEntityValues_To_EntryForm(WriteEntity_To_EntryForm_Param param)
+        public void ShowEntity_To_EntryForm(WriteEntity_To_EntryForm_Param param)
         {
             string valeur = (string)param.Entity.GetType().GetProperty(param.ConfigProperty.PropertyInfo.Name).GetValue(param.Entity);
 
@@ -83,17 +87,10 @@ namespace App.Gwin.FieldsTraitements
             }
 
         }
-        #endregion
 
-        #region Filter 
-        /// <summary>
-        /// Create Field in Filter
-        /// </summary>
-        /// <param name="param">Parameters</param>
-        /// <returns>The created field</returns>
         public BaseField CreateField_In_Filter(CreateField_In_Filter_Params param)
         {
-            StringField stringFiled = new StringField();
+            ComboBoxField stringFiled = new ComboBoxField();
             stringFiled.StopAutoSizeConfig();
             stringFiled.Name = param.ConfigProperty.PropertyInfo.Name;
             stringFiled.SizeLabel = param.SizeLabel;
@@ -103,28 +100,27 @@ namespace App.Gwin.FieldsTraitements
             stringFiled.Text_Label = param.ConfigProperty.DisplayProperty.Titre;
 
             stringFiled.ConfigSizeField();
+
+            // DataSource
+            IList ls_data = param.ConfigProperty.DataSource.GetData();
+            List<string> ls_data_string = ls_data.Cast<Object>().Select(o => o.ToString()).ToList<string>();
+            stringFiled.DataSource = ls_data_string.ToList<object>();
+
+
+
             param.FilterContainer.Controls.Add(stringFiled);
 
             return stringFiled;
         }
 
-        /// <summary>
-        /// Get Field Value from Filter
-        /// </summary>
-        /// <param name="FilterContainer">Filter container</param>
-        /// <param name="ConfigProperty">Config property instance</param>
-        /// <returns>Value of Field in Filter</returns>
         public object GetFieldValue_From_Filter(Control FilterContainer, ConfigProperty ConfigProperty)
         {
-            StringField stringFiled = (StringField)FilterContainer.Controls.Find(ConfigProperty.PropertyInfo.Name, true).First();
+            ComboBoxField stringFiled = (ComboBoxField)FilterContainer.Controls.Find(ConfigProperty.PropertyInfo.Name, true).First();
             if (stringFiled.Value.ToString() != "")
                 return stringFiled.Value;
             else
                 return null;
         }
-
-
-        #endregion
 
         #region EntityDataGrid
         /// <summary>
@@ -142,15 +138,6 @@ namespace App.Gwin.FieldsTraitements
                 param.Column.Width = param.ConfigProperty.DataGrid.WidthColonne;
 
         }
-
-
         #endregion
-
-        public object GetTestValue(PropertyInfo propertyInfo)
-        {
-            return "String Value";
-        }
-
-       
     }
 }

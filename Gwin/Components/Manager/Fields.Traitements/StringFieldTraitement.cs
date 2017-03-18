@@ -15,16 +15,8 @@ namespace App.Gwin.FieldsTraitements
     /// <summary>
     /// You Can not change Traitement suffix, it used to load this Type
     /// </summary>
-    public class DefaultFieldTraitement : BaseFieldTraitement, IFieldTraitements
+    public class StringFieldTraitement : BaseFieldTraitement, IFieldTraitements
     {
-
-        public object GetTestValue(PropertyInfo propertyInfo)
-        {
-            var value = Activator.CreateInstance(propertyInfo.PropertyType);
-            return value;
-        }
-
-
         #region EntryForm
         /// <summary>
         /// CreateField in EntryForm
@@ -72,13 +64,9 @@ namespace App.Gwin.FieldsTraitements
         /// Write Entity to EntryForm
         /// </summary>
         /// <param name="param">Parameters</param>
-        public void GetEntityValues_To_EntryForm(WriteEntity_To_EntryForm_Param param)
+        public void ShowEntity_To_EntryForm(WriteEntity_To_EntryForm_Param param)
         {
-            object valeur = param
-                .Entity
-                .GetType()
-                .GetProperty(param.ConfigProperty.PropertyInfo.Name)
-                .GetValue(param.Entity);
+            string valeur = (string)param.Entity.GetType().GetProperty(param.ConfigProperty.PropertyInfo.Name).GetValue(param.Entity);
 
             // Use Filter Value
             if (param.CritereRechercheFiltre != null && param.CritereRechercheFiltre.ContainsKey(param.ConfigProperty.PropertyInfo.Name))
@@ -154,6 +142,15 @@ namespace App.Gwin.FieldsTraitements
                 param.Column.Width = param.ConfigProperty.DataGrid.WidthColonne;
 
         }
+
+
         #endregion
+
+        public object GetTestValue(PropertyInfo propertyInfo)
+        {
+            return "String Value";
+        }
+
+       
     }
 }

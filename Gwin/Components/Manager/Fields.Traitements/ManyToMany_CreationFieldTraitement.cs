@@ -56,7 +56,7 @@ namespace App.Gwin.FieldsTraitements
             throw new GwinException("Field Many to Many Creation in Filter not yet implemented in Gwin Application");
         }
 
-        public void GetEntityValues_To_EntryForm(WriteEntity_To_EntryForm_Param param)
+        public void ShowEntity_To_EntryForm(WriteEntity_To_EntryForm_Param param)
         {
             throw new GwinException("Field Many to Many Creation in EntryForm not yet implemented in Gwin Application");
         }

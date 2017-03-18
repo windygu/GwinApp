@@ -76,7 +76,7 @@ namespace App.Gwin.Fields
         
         private void textBoxField_TextChanged(object sender, EventArgs e)
         {
-            onFieldChanged(this, e);
+            onValueChanged(this, e);
         }
         /// <summary>
         /// Initialisation spécifique à zone de texte

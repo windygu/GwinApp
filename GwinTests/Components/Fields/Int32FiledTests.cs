@@ -21,7 +21,7 @@ namespace App.Gwin.Fields.Tests
             int32Filed_Horizontal.SizeLabel = SizeLabel;
             int32Filed_Horizontal.SizeControl = SizeControl;
             int32Filed_Horizontal.OrientationField = Orientation.Horizontal;
-            int32Filed_Horizontal.FieldChanged += Int32Filed_FieldChanged;
+            int32Filed_Horizontal.ValueChanged += Int32Filed_FieldChanged;
             int32Filed_Horizontal.Value = 5;
 
 
@@ -32,7 +32,7 @@ namespace App.Gwin.Fields.Tests
             int32Filed_Horizontal.OrientationField = Orientation.Vertical;
             int32Filed_Horizontal.ConfigSizeField();
 
-            int32Filed_Vertical.FieldChanged += Int32Filed_FieldChanged;
+            int32Filed_Vertical.ValueChanged += Int32Filed_FieldChanged;
             int32Filed_Vertical.Value = 5;
 
            

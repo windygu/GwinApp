@@ -108,11 +108,11 @@ namespace App.Gwin
                 baseField = fieldTraitement.CreateField_In_EntryForm(param);
 
                 // Chang Event
-                baseField.FieldChanged += ControlPropriete_ValueChanged;
+                baseField.ValueChanged += ControlPropriete_ValueChanged;
 
                 // [Bug] Validation per FieldNature
                 if (configProperty.EntryForm?.isOblegatoir == true)
-                    baseField.ValidatingFiled += textBoxString_Validating;
+                    baseField.ValidatingField += textBoxString_Validating;
 
             }// Fin de for
 
@@ -244,10 +244,10 @@ namespace App.Gwin
             {
                 BaseField field = sender as BaseField;
                 // Lecture informations
-                this.SetValues();
+                this.ReadEntity();
                 this.EntityBLO.ApplyBusinessRolesAfterValuesChanged(field.Name, this.Entity);
                 this.isStepInitializingValues = true;
-                this.GetValues();
+                this.ShowEntity();
                 this.isStepInitializingValues = false;
                 // Re-Initialisation des valeurs
             }

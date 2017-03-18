@@ -25,7 +25,7 @@ namespace App.Gwin
             if (ValidationManager.hasValidationErrors(this.Controls))
                 return;
 
-            this.SetValues();
+            this.ReadEntity();
 
 
             if (EntityBLO.Save(this.Entity) > 0)

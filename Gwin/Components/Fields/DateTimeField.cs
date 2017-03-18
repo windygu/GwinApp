@@ -57,7 +57,7 @@ namespace App.WinForm.Fields
 
         private void dateTimeControl_ValueChanged(object sender, EventArgs e)
         {
-            onFieldChanged(this, e);
+            onValueChanged(this, e);
         }
     }
 }

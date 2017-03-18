@@ -11,7 +11,16 @@ namespace App.Gwin.FieldsTraitements
 
         public virtual object ConvertValue(BaseFieldTraitementParam param)
         {
-            return param.BaseField.Value ;
+            object value = null;
+            if (param.ConfigProperty.PropertyInfo.PropertyType.IsPrimitive)
+            {
+                value = Convert.ChangeType(param.BaseField.Value, param.ConfigProperty.PropertyInfo.PropertyType);
+            }
+            else
+            {
+                value = param.BaseField.Value;
+            }
+            return value;
         }
 
         /// <summary>
@@ -21,7 +30,7 @@ namespace App.Gwin.FieldsTraitements
         /// <returns>The FieldTraitement Instance</returns>
         public static IFieldTraitements CreateInstance(ConfigProperty configProperty)
         {
-            
+
             // Get TypeFieldTraitement
             string field_nature = configProperty.FieldNature.ToString();
             Assembly assembly = typeof(StringFieldTraitement).Assembly;

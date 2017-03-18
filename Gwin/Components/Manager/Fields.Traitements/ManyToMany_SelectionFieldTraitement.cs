@@ -124,7 +124,7 @@ namespace App.Gwin.FieldsTraitements
             throw new GwinException("Create Field ManyToMany not yet implemented in Filter");
         }
 
-        public void GetEntityValues_To_EntryForm(WriteEntity_To_EntryForm_Param param)
+        public void ShowEntity_To_EntryForm(WriteEntity_To_EntryForm_Param param)
         {
             IList v_ls_object = param.Entity.GetType().GetProperty(param.ConfigProperty.PropertyInfo.Name).GetValue(param.Entity) as IList;
             if (v_ls_object == null) return;
