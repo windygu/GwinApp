@@ -1,5 +1,5 @@
 ﻿namespace App.Gwin { 
-    partial class EntityDataGridControl
+    partial class GwinDataGridComponent
     {
         /// <summary> 
         /// Variable nécessaire au concepteur.

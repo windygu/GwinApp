@@ -12,7 +12,7 @@ namespace App.Gwin.Entities.Secrurity.Autorizations
 
 {
     [GwinEntity(DisplayMember = nameof(Authorization.Name), Localizable = true)]
-    [Menu(Group = "Admin")]
+    [Menu(Group = "Root")]
     public class Authorization : BaseEntity
     {
         [Filter]
@@ -29,10 +29,9 @@ namespace App.Gwin.Entities.Secrurity.Autorizations
         [Filter(WidthControl = 400, isValeurFiltreVide = true)]
         [EntryForm(WidthControl = 400)]
         [DataGrid(WidthColonne = 400)]
-        [DataSource(TypeObject = typeof(GwinBusinessEntitiesManager),
-            MethodeName = nameof(GwinBusinessEntitiesManager.GetAll),
-            Param1 =typeof(AuthorizeAttribute),
-            DisplayName ="Name")]
+        [DataSource(TypeObject = typeof(GwinEntitiesManager),
+            MethodeName = nameof(GwinEntitiesManager.GetAll_Reference),
+            Param1 =typeof(AuthorizeAttribute))]
         public String BusinessEntity { set; get; }
 
         /// <summary>
@@ -48,11 +47,18 @@ namespace App.Gwin.Entities.Secrurity.Autorizations
         /// </summary>
         public string ActionsNamesAsString
         {
-            get { return string.Join(",", ActionsNames); }
-            set { ActionsNames = value.Split(',').ToList(); }
+            get {
+                if (this.ActionsNames == null)
+                    this.ActionsNames = new List<string>();
+                return string.Join(",", ActionsNames);
+            }
+            set {
+                if(value != null)
+                ActionsNames = value.Split(',').ToList();
+            }
         }
 
-
+        [EntryForm]
         [Relationship(Relation = RelationshipAttribute.Relations.ManyToMany_Selection)]
         public List<Role> Roles { set; get; }
     }

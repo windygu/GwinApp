@@ -42,7 +42,7 @@ namespace App.Gwin.Application.BAL.Tests
         {
             int Expected = 1;
             Role role = new Role();
-            role.Name = "Role1";
+            role.Name = new Entities.MultiLanguage.LocalizedString() { French = "Role1" };
             IGwinBaseBLO service = new BaseBLO<Role>();
             int Actuel = service.Save(role);
             Assert.AreEqual(Expected, Actuel);
@@ -54,12 +54,12 @@ namespace App.Gwin.Application.BAL.Tests
             string Expected = "ROLE1";
 
             Role role = new Role();
-            role.Name = "Role1";
+            role.Name = new Entities.MultiLanguage.LocalizedString() { Current = "Role1"};
             GwinBaseBLO<Role> roleBAO = new RoleBAO();
             // Polymorphism not working for a call from a generic class in C#
              roleBAO.ApplyBusinessRolesAfterValuesChanged(nameof(role.Name), role);
 
-            string Actuel = role.Name;
+            string Actuel = role.Name.Current;
             Assert.AreEqual(Expected, Actuel);
         }
 
@@ -68,7 +68,7 @@ namespace App.Gwin.Application.BAL.Tests
         {
             int Expected = 1;
             Role role = new Role();
-            role.Name = "Role1";
+            role.Name = new Entities.MultiLanguage.LocalizedString() { Current = "Role1" };
             IGwinBaseBLO service = new BaseBLO<Role>();
             int Actuel = service.Save(role);
             Assert.AreEqual(Expected, Actuel);
@@ -79,7 +79,7 @@ namespace App.Gwin.Application.BAL.Tests
         {
             int Expected = 1;
             Role role = new Role();
-            role.Name = "Role1";
+            role.Name = new Entities.MultiLanguage.LocalizedString() { Current = "Role1" };
             IGwinBaseBLO service = new BaseBLO<Role>();
             service.Save(role);
             int Actuel = service.Delete(role);
@@ -99,7 +99,7 @@ namespace App.Gwin.Application.BAL.Tests
         public void GetByIDTest()
         {
             Role role = new Role();
-            role.Name = "Role1";
+            role.Name = new Entities.MultiLanguage.LocalizedString() { Current = "Role1" };
             GwinBaseBLO<Role> service = new BaseBLO<Role>();
             service.Save(role);
             Role Actuel = service.GetByID(role.Id)  ;
@@ -111,7 +111,7 @@ namespace App.Gwin.Application.BAL.Tests
         public void GetBaseEntityByIDTest()
         {
             Role role = new Role();
-            role.Name = "Role1";
+            role.Name = new Entities.MultiLanguage.LocalizedString() { Current = "Role1" };
             IGwinBaseBLO service = new BaseBLO<Role>();
             service.Save(role);
             Role Actuel = service.GetBaseEntityByID(role.Id) as Role;

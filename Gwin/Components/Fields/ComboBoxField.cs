@@ -51,6 +51,9 @@ namespace App.Gwin.Fields
             }
         }
 
-
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            onValueChanged(this, e);
+        }
     }
 }

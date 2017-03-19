@@ -18,7 +18,7 @@ using App.Gwin.DataModel.Helpers;
 namespace App.Gwin.Attributes
 {
     /// <summary>
-    /// Read Entity configuration
+    /// Entity schema configuration
     /// </summary>
     public class ConfigEntity
     {

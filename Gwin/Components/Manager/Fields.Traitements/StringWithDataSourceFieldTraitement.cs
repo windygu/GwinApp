@@ -13,9 +13,19 @@ using System.Windows.Forms;
 
 namespace App.Gwin.FieldsTraitements
 {
-    
+
     class StringWithDataSourceFieldTraitement : BaseFieldTraitement, IFieldTraitements
     {
+
+        public override object ConvertValue(BaseFieldTraitementParam param)
+        {
+            object value = null;
+
+               
+                value = param.BaseField.Value;
+             
+            return value;
+        }
 
         public object GetTestValue(PropertyInfo propertyInfo)
         {
@@ -50,7 +60,7 @@ namespace App.Gwin.FieldsTraitements
             comboBoxField.OrientationField = param.OrientationField;
             comboBoxField.SizeLabel = param.SizeLabel;
             comboBoxField.SizeControl = param.SizeControl;
-            
+
             comboBoxField.TabIndex = param.TabIndex;
             comboBoxField.Text_Label = param.ConfigProperty.DisplayProperty.Titre;
             comboBoxField.ConfigSizeField();
@@ -59,9 +69,10 @@ namespace App.Gwin.FieldsTraitements
             //var DataObject = Activator.CreateInstance(param.ConfigProperty.DataSource.TypeObject);
             //IList ls_data = (IList)DataObject.GetType().GetMethod(param.ConfigProperty.DataSource.MethodeName).Invoke(DataObject, null);
             IList ls_data = param.ConfigProperty.DataSource.GetData();
-            List<string> ls_data_string = ls_data.Cast<Object>().Select(o => o.ToString()).ToList<string>();
-            comboBoxField.DataSource = ls_data_string.ToList<object>();
-
+            List<object> ls_data_object = ls_data.Cast<object>().ToList<object>();
+           
+         
+            comboBoxField.DataSource = ls_data_object;
 
             // Insertion à l'interface
             param.ConteneurFormulaire.Controls.Add(comboBoxField);
@@ -116,7 +127,7 @@ namespace App.Gwin.FieldsTraitements
         public object GetFieldValue_From_Filter(Control FilterContainer, ConfigProperty ConfigProperty)
         {
             ComboBoxField stringFiled = (ComboBoxField)FilterContainer.Controls.Find(ConfigProperty.PropertyInfo.Name, true).First();
-            if (stringFiled.Value.ToString() != "")
+            if (stringFiled.Value?.ToString() != "")
                 return stringFiled.Value;
             else
                 return null;

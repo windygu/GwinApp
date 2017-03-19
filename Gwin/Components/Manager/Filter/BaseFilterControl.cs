@@ -38,7 +38,7 @@ namespace App.Gwin.EntityManagement
         /// String : the name of entity property
         /// Object : the value of field
         /// </summary>
-        protected Dictionary<string, object> DefaultFilterValues { set; get; }
+        public Dictionary<string, object> DefaultFilterValues { set; get; }
 
         /// <summary>
         /// BLO Object   

@@ -39,9 +39,9 @@ namespace App.Gwin.Tests
             {
                 foreach (var item in new GwinEntitiesManager().GetAll_Entities_Type())
                 {
-                    EntityManagementCreator AfficherFormulaire = new EntityManagementCreator(typeof(ModelContext), MdiForm);
-                    EntityManagementForm emform = AfficherFormulaire.ShowManagementForm(item);
-                    emform.EntityManagementControl.bt_Ajouter_Click(new Button(), null);
+                    CreateAndShowManagerFormHelper AfficherFormulaire = new CreateAndShowManagerFormHelper(typeof(ModelContext), MdiForm);
+                    ManagerForm emform = AfficherFormulaire.ShowManagerForm(item);
+                    emform.managerFormControl.AddEntity_Click(new Button(), null);
                 }
             }
         }

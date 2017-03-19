@@ -61,6 +61,16 @@
     <Compile Include="BAL\TaskProjectBLO.cs" />
     <Compile Include="DAL\Configuration.cs" />
     <Compile Include="DAL\ModelContext.cs" />
+    <Compile Include="Entities\Resources\TaskProject\TaskProject.ar.Designer.cs">
+      <DependentUpon>TaskProject.ar.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Entities\Resources\TaskProject\TaskProject.fr.Designer.cs">
+      <DependentUpon>TaskProject.fr.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Entities\TaskCategory.cs" />
     <Compile Include="Entities\TaskProject.cs" />
     <Compile Include="Entities\Individual.cs" />
@@ -111,8 +121,28 @@
     <Compile Include="Migrations\201703171057412_Update6.Designer.cs">
       <DependentUpon>201703171057412_Update6.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703191702538_Update7.cs" />
+    <Compile Include="Migrations\201703191702538_Update7.Designer.cs">
+      <DependentUpon>201703191702538_Update7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703191808339_Update8.cs" />
+    <Compile Include="Migrations\201703191808339_Update8.Designer.cs">
+      <DependentUpon>201703191808339_Update8.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703191819514_Update9.cs" />
+    <Compile Include="Migrations\201703191819514_Update9.Designer.cs">
+      <DependentUpon>201703191819514_Update9.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Entities\Resources\TaskProject\TaskProject.ar.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>TaskProject.ar.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Entities\Resources\TaskProject\TaskProject.fr.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>TaskProject.fr.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Entities\Resources\TaskProject\TaskProject.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>TaskProject.Designer.cs</LastGenOutput>
@@ -143,6 +173,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703171057412_Update6.resx">
       <DependentUpon>201703171057412_Update6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703191702538_Update7.resx">
+      <DependentUpon>201703191702538_Update7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703191808339_Update8.resx">
+      <DependentUpon>201703191808339_Update8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703191819514_Update9.resx">
+      <DependentUpon>201703191819514_Update9.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

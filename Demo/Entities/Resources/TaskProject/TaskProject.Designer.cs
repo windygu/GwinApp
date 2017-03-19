@@ -59,5 +59,23 @@ namespace GenericWinForm.Demo.Entities.Resources.TaskProject {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Tasks.
+        /// </summary>
+        internal static string PluralName {
+            get {
+                return ResourceManager.GetString("PluralName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Task.
+        /// </summary>
+        internal static string SingularName {
+            get {
+                return ResourceManager.GetString("SingularName", resourceCulture);
+            }
+        }
     }
 }

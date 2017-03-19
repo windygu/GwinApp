@@ -50,10 +50,10 @@ namespace App.Gwin.Tests
        
         public void Ctrate_Instance_With_Null_FilterValues_Vlaues_EntityDataGridControlTest1()
         {
-            EntityDataGridControl entityDataGridControl = new EntityDataGridControl(entityMiniConfigBLO, null);
+            GwinDataGridComponent entityDataGridControl = new GwinDataGridComponent(entityMiniConfigBLO, null);
 
             // Check Columns
-            foreach (PropertyInfo propertyInfo in entityDataGridControl.ListeProprieteDataGrid)
+            foreach (PropertyInfo propertyInfo in entityDataGridControl.ShownEntityProperties)
             {
                 Assert.AreEqual(entityDataGridControl.GetDataGridViewInstance().Columns.Contains(propertyInfo.Name), true);
             }

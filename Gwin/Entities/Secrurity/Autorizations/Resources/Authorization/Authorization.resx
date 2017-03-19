@@ -120,11 +120,26 @@
   <data name="Action" xml:space="preserve">
     <value>Action</value>
   </data>
+  <data name="ActionsNames" xml:space="preserve">
+    <value>ActionsNames</value>
+  </data>
+  <data name="BusinessEntity" xml:space="preserve">
+    <value>BusinessEntity</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
   <data name="EntityName" xml:space="preserve">
     <value>Entity Name</value>
   </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
   <data name="PluralName" xml:space="preserve">
     <value>Authorizations</value>
+  </data>
+  <data name="Roles" xml:space="preserve">
+    <value>Roles</value>
   </data>
   <data name="SingularName" xml:space="preserve">
     <value>Authorization</value>

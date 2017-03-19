@@ -117,19 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Authorizations" xml:space="preserve">
-    <value>أذون</value>
-  </data>
-  <data name="Description" xml:space="preserve">
-    <value>شرح الدور</value>
-  </data>
-  <data name="Name" xml:space="preserve">
-    <value>إسم الدور</value>
-  </data>
   <data name="PluralName" xml:space="preserve">
-    <value>الأدوار</value>
+    <value>Tâches</value>
   </data>
   <data name="SingularName" xml:space="preserve">
-    <value>دور</value>
+    <value>Tâche</value>
   </data>
 </root>

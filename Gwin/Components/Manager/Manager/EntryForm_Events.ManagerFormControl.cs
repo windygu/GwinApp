@@ -8,9 +8,11 @@ using System.Windows.Forms;
 
 namespace App.Gwin
 {
-    public partial class EntityManagementControl
+    /// <summary>
+    /// EntryForm Events
+    /// </summary>
+    public partial class ManagerFormControl
     {
-        #region Formulaire de mise à jour
         /// <summary>
         /// Exécuter aprés un click sur le button éditer sur le formulaire de mise à jour
         /// </summary>
@@ -24,7 +26,7 @@ namespace App.Gwin
             TabPage tabEditer = this.tabControl_MainManager.TabPages[tabEditerName];
             // Suppression de la page Editer
             this.tabControl_MainManager.TabPages.Remove(tabEditer);
-            this.Actualiser();
+            this.RefreshData();
         }
 
         /// <summary>
@@ -38,6 +40,5 @@ namespace App.Gwin
             TabPage tabEditer = this.tabControl_MainManager.TabPages[tabEditerName];
             tabControl_MainManager.TabPages.Remove(tabEditer);
         }
-        #endregion
     }
 }

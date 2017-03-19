@@ -1,5 +1,6 @@
 ﻿using App.Gwin.Attributes;
 using App.Gwin.Entities;
+using App.Gwin.GwinApplication.Security.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace GenericWinForm.Demo.Entities
     /// Entity Exemple to be used in ManyToOne RelationShip
     /// </summary>
     [GwinEntity(DisplayMember = "Title")]
+    [Authorize]
     public class Project:BaseEntity
     {
         [EntryForm]

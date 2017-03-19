@@ -1,6 +1,6 @@
 ﻿namespace App.Gwin
 {
-    partial class EntityManagementControl
+    partial class ManagerFormControl
     {
         /// <summary> 
         /// Variable nécessaire au concepteur.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EntityManagementControl));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManagerFormControl));
             this.panelDataGrid = new System.Windows.Forms.Panel();
             this.tabControlManagers = new System.Windows.Forms.TabControl();
             this.main = new System.Windows.Forms.TabPage();
@@ -165,14 +165,14 @@
             this.panel_Filtre.TabIndex = 16;
             this.panel_Filtre.Tag = "";
             // 
-            // EntityManagementControl
+            // ManagerFormControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.splitContainer1);
-            this.Name = "EntityManagementControl";
+            this.Name = "ManagerFormControl";
             this.Size = new System.Drawing.Size(1089, 439);
-            this.Load += new System.EventHandler(this.EntityManagementForm_Load);
+            this.Load += new System.EventHandler(this.ManagerFormControl_Load);
             this.panelDataGrid.ResumeLayout(false);
             this.tabControlManagers.ResumeLayout(false);
             this.tabControl_MainManager.ResumeLayout(false);

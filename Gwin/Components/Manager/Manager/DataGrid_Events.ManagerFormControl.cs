@@ -9,35 +9,41 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using App.Gwin.Application.BAL;
+using System.ComponentModel;
+using System.Diagnostics;
 
 namespace App.Gwin
 {
-    public partial class EntityManagementControl
+    /// <summary>
+    /// DataGridControl Events
+    /// </summary>
+    public partial class ManagerFormControl
     {
-        #region DataGrid
+
         /// <summary>
-        /// Exécuter aprés un click sur le button editer dans DataGrid
+        /// DataGridControl_EditClick event
         /// </summary>
-        private void EntityDataGridControl_EditClick(object sender, EventArgs e)
+        private void DataGridControl_EditClick(object sender, EventArgs e)
         {
-            BaseEntity entity = (BaseEntity)this.DataGridControl.SelectedEntity;
+            BaseEntity entity = (BaseEntity)this.DataGridControl_Instance.SelectedEntity;
             string tabEditerName = "TabEditer-" + entity.Id;
 
             if (tabControl_MainManager.TabPages.IndexOfKey(tabEditerName) == -1)
             {
-                // Création de Tab
+                // Creation of Edit Tab page
                 TabPage tabEditer = new TabPage();
                 tabEditer.Text = entity.ToString();
                 tabEditer.Name = tabEditerName;
                 tabControl_MainManager.TabPages.Add(tabEditer);
                 tabControl_MainManager.CausesValidation = false;
-                // Insertion du formulaire de mise à jour
-                BaseEntryForm form = Formulaire.CreateInstance(this.Service, entity, null);
+                // Creation of EntryForm
+                BaseEntryForm form = EntryForm_Instance.CreateInstance(this.BLO_Instance, entity, null);
                 form.Name = "EntityForm";
                 form.Dock = DockStyle.Fill;
                 this.tabControl_MainManager.TabPages[tabEditerName].Controls.Add(form);
                 tabControl_MainManager.SelectedTab = tabEditer;
-                form.ShowEntity(this.FilterControl.GetFilterValues());
+                form.ShowEntity(this.Filter_Instance.GetFilterValues());
+                // Entry Form Events
                 form.EnregistrerClick += Form_EditerClick;
                 form.AnnulerClick += Form_AnnulerEditerClick;
 
@@ -50,31 +56,40 @@ namespace App.Gwin
         }
 
         /// <summary>
-        /// Edit the collection OneToMany
+        /// Edit the collection ManyToMany_Creation
+        /// Create Instead Manager form of ManyToMany_Creation collection
         /// </summary>
         private void DataGridControl_EditManyToOneCollection(object sender, EventArgs e)
         {
-            // Params
-            BaseEntity obj = this.DataGridControl.SelectedEntity;
-            PropertyInfo item = this.DataGridControl.SelectedProperty;
+            // Init Params
+            BaseEntity obj = this.DataGridControl_Instance.SelectedEntity;
+            PropertyInfo propertyInfo = this.DataGridControl_Instance.SelectedProperty;
 
-            // Annuler si la collection en Edition
-            if (tabControlManagers.TabPages.ContainsKey(obj + item.Name))
+            // Cancel if allready in edition
+            if (tabControlManagers.TabPages.ContainsKey(obj + propertyInfo.Name))
             {
-                tabControlManagers.SelectedTab = tabControlManagers.TabPages[obj + item.Name];
+                tabControlManagers.SelectedTab = tabControlManagers.TabPages[obj + propertyInfo.Name];
                 return;
             }
 
-            // Obient le Service de l'objet de Collection<Objet>
-            Type type_objet_of_collection = item.PropertyType.GetGenericArguments()[0];
-            IGwinBaseBLO service_objet_of_collection = this.Service.CreateServiceBLOInstanceByTypeEntity(type_objet_of_collection);
-            // Valeur Initial du Filtre
+            // Create Business object of the collection
+            Type type_objet_of_collection = propertyInfo.PropertyType.GetGenericArguments()[0];
+            IGwinBaseBLO service_objet_of_collection = this.BLO_Instance.CreateServiceBLOInstanceByTypeEntity(type_objet_of_collection);
+
+            // Default filter values
             Dictionary<string, object> ValeursFiltre = new Dictionary<string, object>();
-            ValeursFiltre[item.DeclaringType.Name] = obj.Id;
-            EntityManagementControl form = new EntityManagementControl(service_objet_of_collection, ValeursFiltre, this.MdiParent);
-            form.ShowFilter(false);
+            ValeursFiltre[propertyInfo.DeclaringType.Name] = obj.Id;
+
+            // Create ManagerFormControl Instance
+            ManagerFormControl form = new ManagerFormControl(service_objet_of_collection, ValeursFiltre, this.MdiParent);
+
+            // Not Show In RunTume Mode
+            if (!Debugger.IsAttached)
+                form.ShowFilter(false);
+
+
             // Insertion de la gestion à l'interface
-            this.AddManyToOneManager(form, item, obj);
+            this.AddManyToOneManager(form, propertyInfo, obj);
 
         }
 
@@ -82,11 +97,11 @@ namespace App.Gwin
         /// Ajouter une gestion ManyToOne à l'interface
         /// </summary>
         /// <param name="form"></param>
-        private void AddManyToOneManager(EntityManagementControl form, PropertyInfo item, BaseEntity obj)
+        private void AddManyToOneManager(ManagerFormControl form, PropertyInfo item, BaseEntity obj)
         {
 
             // Annotation de l'propriété
-            DisplayPropertyAttribute affichageProperty = new ConfigProperty(item, this.ConfigEntity)
+            DisplayPropertyAttribute affichageProperty = new ConfigProperty(item, this.BLO_Instance.ConfigEntity)
                 .DisplayProperty;
 
 
@@ -95,7 +110,7 @@ namespace App.Gwin
             {
                 this.tabControlManagers.Visible = true;
                 this.tabControl_MainManager.Dock = DockStyle.Fill;
-                this.tabControlManagers.TabPages["main"].Text = this.ConfigEntity.ManagementForm.FormTitle;
+                this.tabControlManagers.TabPages["main"].Text = this.BLO_Instance.ConfigEntity.ManagementForm.FormTitle;
                 this.tabControlManagers.TabPages["main"].Controls.Add(this.tabControl_MainManager);
                 this.tabControlManagers.Dock = DockStyle.Fill;
                 this.panelDataGrid.Controls.Add(this.tabControlManagers);
@@ -115,12 +130,9 @@ namespace App.Gwin
 
         }
 
-        private void DataGridControl_EditManyToManyCollection(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
 
 
-        #endregion
+
+
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace App.Gwin.Application.Presentation.EntityManagement
 {
-    partial class EntityManagementForm
+    partial class ManagerForm
     {
         /// <summary>
         /// Required designer variable.

@@ -120,8 +120,20 @@
   <data name="Action" xml:space="preserve">
     <value>عمل</value>
   </data>
+  <data name="ActionsNames" xml:space="preserve">
+    <value>الأعمال المأذون عليها</value>
+  </data>
+  <data name="BusinessEntity" xml:space="preserve">
+    <value>الكيان الحرفي</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>شرح الإذن</value>
+  </data>
   <data name="EntityName" xml:space="preserve">
     <value>اسم الكيان</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>إسم الإذن</value>
   </data>
   <data name="PluralName" xml:space="preserve">
     <value>أذون</value>

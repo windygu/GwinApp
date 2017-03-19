@@ -10,12 +10,11 @@ namespace App.Gwin
     /// <summary>
     /// Ajouter un nouveau Entité 
     /// </summary>
-    public partial class EntityManagementControl
+    public partial class ManagerFormControl
     {
-        #region Filtre
         private void BaseFilterControl_RefreshEvent(object sender, EventArgs e)
         {
-            this.Actualiser();
+            this.RefreshData();
         }
         /// <summary>
         /// Afficher ou désafficher le filtre
@@ -23,8 +22,6 @@ namespace App.Gwin
         /// <param name="v"></param>
         private void ShowFilter(bool visible)
         {
-
-
             if (visible == true) throw new NotImplementedException("Cette méthode n'est pas implémenter pour la valeur True");
 
             this.Controls.Add(panelDataGrid);
@@ -36,6 +33,5 @@ namespace App.Gwin
             //| System.Windows.Forms.AnchorStyles.Right)));
             this.splitContainer1.Visible = visible;
         }
-        #endregion
     }
 }
