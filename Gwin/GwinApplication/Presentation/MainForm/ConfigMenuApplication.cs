@@ -19,7 +19,7 @@ namespace App.Gwin.Application.Presentation.MainForm
     {
         #region Params
         private IApplicationMenu formMenu;
-        private EntityManagementCreator ShowManagementForm { set; get; }
+        private CreateAndShowManagerFormHelper ShowManagementForm { set; get; }
         #endregion
         #region Variables
         private MenuStrip menuStrip;
@@ -36,7 +36,7 @@ namespace App.Gwin.Application.Presentation.MainForm
             this.formMenu = FormMenu;
             this.menuStrip = FormMenu.getMenuStrip();
             MenuItems = new Dictionary<string, Type>();
-            this.ShowManagementForm = new EntityManagementCreator(GwinApp.Instance.TypeDBContext,FormMenu);
+            this.ShowManagementForm = new CreateAndShowManagerFormHelper(GwinApp.Instance.TypeDBContext,FormMenu);
             this.Service = GwinBaseBLO<BaseEntity>
                 .CreateBLO_Instance(typeof(MenuItemApplication),GwinApp.Instance.TypeBaseBLO);
             this.CreateMenu();
@@ -114,7 +114,7 @@ namespace App.Gwin.Application.Presentation.MainForm
         private void ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem item = sender as ToolStripMenuItem;
-            this.ShowManagementForm.ShowManagementForm(MenuItems[item.Name]);
+            this.ShowManagementForm.ShowManagerForm(MenuItems[item.Name]);
         }
     }
 }

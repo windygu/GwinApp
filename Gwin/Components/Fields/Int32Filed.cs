@@ -49,7 +49,7 @@ namespace App.Gwin.Fields
 
         private void textBoxFiled_TextChanged(object sender, EventArgs e)
         {
-            onFieldChanged(this, e);
+            onValueChanged(this, e);
         }
     }
 }

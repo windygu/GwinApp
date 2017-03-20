@@ -164,7 +164,7 @@ namespace App.Gwin.Fields
         #region evénements
         private void comboBoxManyToOne_SelectedIndexChanged(object sender, EventArgs e)
         {
-            onFieldChanged(this, e);
+            onValueChanged(this, e);
         }
         #endregion
 

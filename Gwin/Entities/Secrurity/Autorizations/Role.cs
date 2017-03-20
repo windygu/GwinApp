@@ -1,5 +1,6 @@
 ﻿using App.Gwin.Attributes;
 using App.Gwin.Entities.Application;
+using App.Gwin.Entities.MultiLanguage;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -14,21 +15,25 @@ namespace App.Gwin.Entities.Secrurity.Autorizations
     /// BaseBAO
     /// </summary>
     [GwinEntity(DisplayMember = "Name",Localizable =true)]
-    [Menu(Group = "The Configuration")]
+    [Menu(Group = "Root")]
     public class Role : BaseEntity
     {
-        [DisplayProperty(Titre ="Name",isInGlossary =true)]
+        public Role()
+        {
+            this.Name = new LocalizedString();
+            this.Description = new LocalizedString();
+        }
+
         [EntryForm(Ordre = 1)]
         [Filter]
         [DataGrid]
         [Required]
-        public string Name { set; get; }
+        public LocalizedString Name { set; get; }
 
-        [DisplayProperty(Titre = "Description",isInGlossary =true)]
         [EntryForm(Ordre = 2,MultiLine = true)]
         [Filter]
         [DataGrid]
-        public string Description { set; get; }
+        public LocalizedString Description { set; get; }
 
         /// <summary>
         /// indicate that the role is hidden
@@ -36,7 +41,8 @@ namespace App.Gwin.Entities.Secrurity.Autorizations
         public bool Hidden { set; get; }
 
         [DataGrid]
-        [Relationship(Relation = RelationshipAttribute.Relations.ManyToMany_Creation)]
+        [EntryForm]
+        [Relationship(Relation = RelationshipAttribute.Relations.ManyToMany_Selection)]
         public virtual List<Authorization> Authorizations { set; get; }
 
         public  List<MenuItemApplication> MenuItemApplications { set; get; }

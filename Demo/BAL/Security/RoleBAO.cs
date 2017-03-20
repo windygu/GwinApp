@@ -28,7 +28,7 @@ namespace App.Gwin.Application.BAL.Security
                 // Business Role : the role name mut be UperCase
                 case nameof(role.Name): 
                     {
-                        role.Name = role.Name.ToUpper();
+                        role.Name.Current = role.Name.Current.ToUpper();
                     }
                     break;
             }

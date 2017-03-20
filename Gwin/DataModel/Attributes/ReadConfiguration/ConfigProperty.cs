@@ -173,7 +173,8 @@ namespace App.Shared.AttributesManager
         /// </summary>
         private void DetermineFieldNature()
         {
-            
+            this.FieldNature = FieldsNatures.Default;
+
             if (this.PropertyInfo.PropertyType.Name == "String" && this.DataSource == null)
             {
                 this.FieldNature = FieldsNatures.String;

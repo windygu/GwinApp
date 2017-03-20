@@ -3,6 +3,7 @@ using App.Gwin.Entities.Secrurity.Authentication;
 using App.Gwin.Exceptions.Gwin;
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity.Core.Objects;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
@@ -12,7 +13,7 @@ namespace App.Gwin.Entities
     /// <summary>
     /// La classe de Base de toutes les entity
     /// </summary>
-    public  class BaseEntity : IBaseEntity
+    public class BaseEntity : IBaseEntity
     {
 
         #region constructor
@@ -28,8 +29,13 @@ namespace App.Gwin.Entities
         [Key]
         public Int64 Id { get; set; }
 
+        /// <summary>
+        /// Unique reference of Entity
+        /// </summary>
+        public string Reference { get; set; }
+
         [DisplayProperty(isInGlossary = true)]
-       
+
         public int Ordre { set; get; }
 
         public DateTime DateCreation { get; set; }
@@ -52,10 +58,10 @@ namespace App.Gwin.Entities
             if (obj == DBNull.Value) return false;
             if (obj == null) return false;
             BaseEntity objet = (BaseEntity)obj;
-            
+
             if (this.Id == objet.Id) return true;
             else return false;
-           
+
         }
 
         /// <summary>
@@ -65,19 +71,32 @@ namespace App.Gwin.Entities
         public override string ToString()
         {
             string Titre = "";
-            GwinEntityAttribute AffichageClasse = (GwinEntityAttribute)this.GetType().GetCustomAttributes(typeof(GwinEntityAttribute), true)[0];
+            Type EntityType = ObjectContext.GetObjectType(this.GetType());
+
+            ConfigEntity configEntity = ConfigEntity.CreateConfigEntity(EntityType);
 
             // Test if the object has the memeber AffichageClasse.DisplayMember
-            if (this.GetType().GetProperty(AffichageClasse.DisplayMember) == null)
-                throw new GwinException("The Entity " + this.GetType() + "does not have the membe  : " + AffichageClasse.DisplayMember);
+            if (this.GetType().GetProperty(configEntity.DisplayEntity.DisplayMember) == null)
+                throw new GwinException("The Entity " + this.GetType() + "does not have the membe  : " + configEntity.DisplayEntity.DisplayMember);
 
-            object value = this.GetType().GetProperty(AffichageClasse.DisplayMember).GetValue(this);
-            if (value != null)  Titre = value.ToString();
-            if (Titre == string.Empty) return AffichageClasse.SingularName;
+            object value = this.GetType().GetProperty(configEntity.DisplayEntity.DisplayMember).GetValue(this);
+            if (value != null) Titre = value.ToString();
+            if (Titre == string.Empty)
+
+                if (configEntity.DisplayEntity.SingularName != null)
+                    return configEntity.DisplayEntity.SingularName;
+                else
+                {
+                    string msg = String.Format("Property {0} of the classe {1} must not be null", nameof(GwinEntityAttribute.SingularName), nameof(GwinEntityAttribute));
+                    throw new GwinException(msg);
+                }
+
+
+
             else return Titre;
         }
         #endregion
 
-       
+
     }
 }

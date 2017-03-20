@@ -88,13 +88,21 @@
     <Compile Include="Components\Fields\Int32Filed.Designer.cs">
       <DependentUpon>Int32Filed.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\Fields\DefaultField.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\Fields\DefaultField.Designer.cs">
+      <DependentUpon>DefaultField.cs</DependentUpon>
+    </Compile>
     <Compile Include="Components\Fields\StringField.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Components\Fields\StringField.Designer.cs">
       <DependentUpon>StringField.cs</DependentUpon>
     </Compile>
-    <Compile Include="Components\Manager\Fields.Traitements\Int64Traitements.cs" />
+    <Compile Include="Components\Manager\Fields.Traitements\Int64FieldTraitement.cs" />
+    <Compile Include="Components\Manager\Fields.Traitements\Params\Base\BaseFieldTraitementParam.cs" />
+    <Compile Include="Components\Manager\Fields.Traitements\StringFieldTraitement.cs" />
     <Compile Include="DataModel\Exceptions\Class1.cs" />
     <Compile Include="DataModel\Helpers\GwinIdentifierManager.cs" />
     <Compile Include="DataModel\ModelInfo\GwinAssembliesManager.cs" />
@@ -146,29 +154,28 @@
     <Compile Include="GwinInstance\Exception\GwinAppImplementedException.cs" />
     <Compile Include="GwinInstance\Exception\GwinNullParameterException.cs" />
     <Compile Include="GwinInstance\Helpers\ParamsValidationg.cs" />
-    <Compile Include="Components\Manager\Fields.Traitements\ManyToMany_CreationTraitements.cs" />
+    <Compile Include="Components\Manager\Fields.Traitements\ManyToMany_CreationFieldTraitement.cs" />
     <Compile Include="Components\Manager\Fields.Traitements\Params\CreateFieldColumns_In_EntityDataGrid.cs" />
     <Compile Include="Components\Manager\Fields.Traitements\Params\CreateField_In_Filter_Params.cs" />
     <Compile Include="Components\Manager\Fields.Traitements\Params\WriteEntity_To_EntryForm_Param.cs" />
-    <Compile Include="Components\Manager\Fields.Traitements\DefaultFieldTraitements.cs" />
+    <Compile Include="Components\Manager\Fields.Traitements\DefaultFieldTraitement.cs" />
     <Compile Include="Components\Fields\ComboBoxField.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Components\Fields\ComboBoxField.Designer.cs">
       <DependentUpon>ComboBoxField.cs</DependentUpon>
     </Compile>
-    <Compile Include="Components\Manager\Fields.Traitements\DateTimeTraitements.cs" />
+    <Compile Include="Components\Manager\Fields.Traitements\DateTimeFieldTraitement.cs" />
     <Compile Include="Components\Manager\Fields.Traitements\FieldNature\FieldsNatures.cs" />
-    <Compile Include="Components\Manager\Fields.Traitements\EnumerationTraitements.cs" />
-    <Compile Include="Components\Manager\Fields.Traitements\Interface\FieldTraitement.cs" />
+    <Compile Include="Components\Manager\Fields.Traitements\EnumerationFieldTraitement.cs" />
+    <Compile Include="Components\Manager\Fields.Traitements\Base\FieldTraitement.cs" />
     <Compile Include="Components\Manager\Fields.Traitements\Interface\IFieldTraitements.cs" />
-    <Compile Include="Components\Manager\Fields.Traitements\ManyToMany_SelectionTraitements.cs" />
-    <Compile Include="Components\Manager\Fields.Traitements\ManyToOneTraitements.cs" />
-    <Compile Include="Components\Manager\Fields.Traitements\Int32Traitements.cs" />
+    <Compile Include="Components\Manager\Fields.Traitements\ManyToMany_SelectionFieldTraitement.cs" />
+    <Compile Include="Components\Manager\Fields.Traitements\ManyToOneFieldTraitement.cs" />
+    <Compile Include="Components\Manager\Fields.Traitements\Int32FieldTraitement.cs" />
     <Compile Include="Components\Manager\Fields.Traitements\Params\CreateFieldParams.cs" />
-    <Compile Include="Components\Manager\Fields.Traitements\LocalizedStringTraitements.cs" />
-    <Compile Include="Components\Manager\Fields.Traitements\StringWithDataSourceTraitements.cs" />
-    <Compile Include="Components\Manager\Fields.Traitements\StringTraitements.cs" />
+    <Compile Include="Components\Manager\Fields.Traitements\LocalizedStringFieldTraitement.cs" />
+    <Compile Include="Components\Manager\Fields.Traitements\StringWithDataSourceFieldTraitement.cs" />
     <Compile Include="GwinInstance\GwinApp_Install_Update.cs" />
     <Compile Include="GwinInstance\GwinApp_Language.cs" />
     <Compile Include="GwinInstance\GwinApp_Start.cs" />
@@ -192,7 +199,6 @@
     <Compile Include="GwinInstance\Exception\GwinException.cs" />
     <Compile Include="GwinInstance\Install\InstallApplicationGwinBLO.cs" />
     <Compile Include="GwinApplication\Presentation\Class1.cs" />
-    <Compile Include="GwinApplication\Presentation\EntityManagement\Class1.cs" />
     <Compile Include="GwinApplication\Presentation\MainForm\Class1.cs" />
     <Compile Include="GwinApplication\Presentation\MainForm\FormApplication.cs">
       <SubType>Form</SubType>
@@ -406,18 +412,18 @@
     <Compile Include="Components\Fields\ManyToOneField.Filter.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\Manager\DataGrid\EntityDataGridControl.cs">
+    <Compile Include="Components\Manager\DataGrid\GwinDataGridComponent.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\Manager\DataGrid\EntityDataGridControl.Designer.cs">
-      <DependentUpon>EntityDataGridControl.cs</DependentUpon>
+    <Compile Include="Components\Manager\DataGrid\GwinDataGridComponent.Designer.cs">
+      <DependentUpon>GwinDataGridComponent.cs</DependentUpon>
     </Compile>
     <Compile Include="Components\Manager\DataGrid\IEntityDataGrideControl.cs" />
-    <Compile Include="GwinApplication\Presentation\EntityManagement\EntityManagementForm.cs">
+    <Compile Include="Components\Manager\ManagerForm\ManagerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GwinApplication\Presentation\EntityManagement\EntityManagementForm.Designer.cs">
-      <DependentUpon>EntityManagementForm.cs</DependentUpon>
+    <Compile Include="Components\Manager\ManagerForm\ManagerForm.Designer.cs">
+      <DependentUpon>ManagerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Components\Manager\EntryForms\BaseEntryForm.cs">
       <SubType>UserControl</SubType>
@@ -430,13 +436,10 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Components\Manager\EntryForms\IBaseEntryForm.cs" />
-    <Compile Include="Components\Manager\EntryForms\Read.BaseEntryForm.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Include="Components\Manager\EntryForms\Save.BaseEntyForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\Manager\EntryForms\Write.cs">
+    <Compile Include="Components\Manager\EntryForms\ShowRead.BaseEntryForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Components\Manager\Filter\BaseFilterControl.cs">
@@ -450,34 +453,25 @@
     <Compile Include="Entities\Secrurity\Authentication\User.cs" />
     <Compile Include="DataModel\Exceptions\PropertyDoesNotExistException.cs" />
     <Compile Include="Lib\Extensions\Linq\LinqExtension.cs" />
-    <Compile Include="Components\Manager\Manager\AddForm.EntityManagementControl.cs">
+    <Compile Include="Components\Manager\Manager\AddEntity_Event.ManagerFormControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\Manager\Manager\DataGrid.EntityManagementControl.cs">
+    <Compile Include="Components\Manager\Manager\DataGrid_Events.ManagerFormControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\Manager\Manager\EntityManagementControl.cs">
+    <Compile Include="Components\Manager\Manager\ManagerFormControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\Manager\Manager\EntityManagementControl.Designer.cs">
-      <DependentUpon>EntityManagementControl.cs</DependentUpon>
+    <Compile Include="Components\Manager\Manager\ManagerFormControl.Designer.cs">
+      <DependentUpon>ManagerFormControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Components\Manager\Manager\Filter.EntityManagementControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\Manager\Manager\Init_Load.EntityManagementControl.cs">
+    <Compile Include="Components\Manager\Manager\EntryForm_Events.ManagerFormControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\Manager\Manager\TabControl.EntityManagementControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Components\Manager\Manager\UpdateForm.EntityManagementControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Components\Manager\Manager\Vide.EntityManagementControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="GwinApplication\Presentation\EntityManagement\EntityManagementCreator.cs" />
+    <Compile Include="Components\Manager\ManagerForm\CreateAndShowManagerFormHelper.cs" />
     <Compile Include="Components\Manager\TabPanel\BaseEntityTabControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -535,6 +529,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Components\Fields\Int32Filed.resx">
       <DependentUpon>Int32Filed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Fields\DefaultField.resx">
+      <DependentUpon>DefaultField.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\Fields\StringField.resx">
       <DependentUpon>StringField.cs</DependentUpon>
@@ -709,11 +706,11 @@
     <EmbeddedResource Include="Components\Fields\ManyToOneField.resx">
       <DependentUpon>ManyToOneField.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Components\Manager\DataGrid\EntityDataGridControl.resx">
-      <DependentUpon>EntityDataGridControl.cs</DependentUpon>
+    <EmbeddedResource Include="Components\Manager\DataGrid\GwinDataGridComponent.resx">
+      <DependentUpon>GwinDataGridComponent.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GwinApplication\Presentation\EntityManagement\EntityManagementForm.resx">
-      <DependentUpon>EntityManagementForm.cs</DependentUpon>
+    <EmbeddedResource Include="Components\Manager\ManagerForm\ManagerForm.resx">
+      <DependentUpon>ManagerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\Manager\EntryForms\BaseEntryForm.resx">
       <DependentUpon>BaseEntryForm.cs</DependentUpon>
@@ -721,8 +718,8 @@
     <EmbeddedResource Include="Components\Manager\Filter\BaseFilterControl.resx">
       <DependentUpon>BaseFilterControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Components\Manager\Manager\EntityManagementControl.resx">
-      <DependentUpon>EntityManagementControl.cs</DependentUpon>
+    <EmbeddedResource Include="Components\Manager\Manager\ManagerFormControl.resx">
+      <DependentUpon>ManagerFormControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\Manager\TabPanel\BaseEntityTabControl.resx">
       <DependentUpon>BaseEntityTabControl.cs</DependentUpon>

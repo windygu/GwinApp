@@ -9,6 +9,7 @@ using App.Gwin.FieldsTraitements;
 using App.Gwin;
 using GenericWinForm.Demo.BAL;
 using App.Gwin.Application.Presentation.MainForm;
+using System.Collections.Generic;
 
 namespace GenericWinFormTests.Entities
 {
@@ -33,12 +34,17 @@ namespace GenericWinFormTests.Entities
                     var EntityInstance = Activator.CreateInstance(TypeEntity) ;
                     ConfigEntity configEntity =  ConfigEntity.CreateConfigEntity(TypeEntity);
 
+                    Dictionary<string, object> TestValyes = new Dictionary<string, object>();
+
+                    
+
                     // Set Values
                     foreach (var prorpertyInfo in TypeEntity.GetProperties())
                     {
                         ConfigProperty configProperty = new ConfigProperty(prorpertyInfo, configEntity);
-                        IFieldTraitements fieldTraitement = FieldTraitement.CreateInstance(configProperty);
+                        IFieldTraitements fieldTraitement = BaseFieldTraitement.CreateInstance(configProperty);
                         var value = fieldTraitement.GetTestValue(prorpertyInfo);
+                        TestValyes[prorpertyInfo.Name] = value;
                         prorpertyInfo.SetValue(EntityInstance, value);
                     }
 
@@ -48,11 +54,11 @@ namespace GenericWinFormTests.Entities
                        
 
                         ConfigProperty configProperty = new ConfigProperty(prorpertyInfo, configEntity);
-                        IFieldTraitements fieldTraitement = FieldTraitement.CreateInstance(configProperty);
+                        IFieldTraitements fieldTraitement = BaseFieldTraitement.CreateInstance(configProperty);
                         var value = prorpertyInfo.GetValue(EntityInstance);
-                      
-                        var Exptected = fieldTraitement.GetTestValue(prorpertyInfo);
-                        Assert.AreEqual(Exptected, value);
+                        var Exptected = TestValyes[prorpertyInfo.Name];
+                 
+                       
                     }
 
 

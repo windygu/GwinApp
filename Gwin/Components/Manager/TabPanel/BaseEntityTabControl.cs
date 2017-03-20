@@ -94,34 +94,5 @@ namespace App.Gwin.EntityManagement
 
         #endregion
 
-
-
-        #region Editer une liste OneToMany
-
-
-        /// <summary>
-        /// Editer la collection OneToMany
-        /// </summary>
-        /// <param name="item">PropertyInfo de de la collection</param>
-        /// <param name="obj">L'objet qui contient la collection</param>
-        [Obsolete]
-        protected void EditerCollection(PropertyInfo item, BaseEntity obj)
-        {
-            // Obient le Service de l'objet de Collection<Objet>
-            Type type_objet_of_collection = item.PropertyType.GetGenericArguments()[0];
-            IGwinBaseBLO service_objet_of_collection = this.Service.CreateServiceBLOInstanceByTypeEntity(type_objet_of_collection);
-
-            // Valeur Initial du Filtre
-            Dictionary<string, object> ValeursFiltre = new Dictionary<string, object>();
-            ValeursFiltre[item.DeclaringType.Name] = obj.Id;
-            EntityManagementForm form = new EntityManagementForm(service_objet_of_collection,null, ValeursFiltre, this.MdiParent);
-
-            // Affichage de Fomulaire de gestion de la collection ManytoOne
-            EntityManagementCreator Menu = new EntityManagementCreator(this.Service.Context.GetType(), (IBaseForm) this.MdiParent);
-            Menu.ShwoForm(form);
-        }
-        #endregion
- 
-
     }
 }

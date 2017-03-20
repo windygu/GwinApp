@@ -27,6 +27,37 @@ namespace App.Gwin.DataModel.ModelInfo
             return Liste_All_Entities_types;
         }
 
+        /// <summary>
+        /// Get All Entites By Attribute
+        /// </summary>
+        /// <param name="Attribute"></param>
+        /// <returns></returns>
+        public List<Type> GetAll(Type AttributeType)
+        {
+            List<Type> Liste_All = (from type in this.GetAll_Entities_Type()
+                                   let attributes = type.GetCustomAttributes(AttributeType, false)
+                                   where attributes != null && attributes.Length > 0
+                                   select type).ToList<Type>();
+            return Liste_All;
+        }
+        /// <summary>
+        /// Get All Entites as List of Reference : FullNames
+        /// </summary>
+        /// <param name="AttributeType"></param>
+        /// <returns></returns>
+        public List<String> GetAll_Reference(Type AttributeType)
+        {
+            List<Type> Liste_All = this.GetAll(AttributeType);
+            List<String> ls = new List<string>();
+            foreach (var item in Liste_All)
+            {
+                ls.Add(item.FullName);
+            }
+                        
+            return ls;
+        }
+        
+
 
         /// <summary>
         /// Get All Entity Type in Project

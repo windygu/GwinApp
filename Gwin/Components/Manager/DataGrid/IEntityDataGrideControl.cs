@@ -10,7 +10,7 @@ namespace App.Gwin
     /// <summary>
     /// Interface of Composant : EntityDataGrid to show and edit list of entities
     /// </summary>
-    public interface IEntityDataGrideControl
+    public interface IGwinDataGridComponent
     {
         #region Events
         /// <summary>
@@ -21,12 +21,7 @@ namespace App.Gwin
         /// <summary>
         /// Edit ManyToOneCollection Click
         /// </summary>
-        event EventHandler EditManyToOneCollection;
-
-        /// <summary>
-        /// Edit ManyToOneCollection Click
-        /// </summary>
-        event EventHandler EditManyToManyCollection;
+        event EventHandler EditManyToMany_Creation;
         #endregion
 
         /// <summary>

@@ -61,6 +61,33 @@ namespace App.Gwin.Entities.Secrurity.Autorizations.Resources.Role {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Authorizations.
+        /// </summary>
+        internal static string Authorizations {
+            get {
+                return ResourceManager.GetString("Authorizations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Description.
+        /// </summary>
+        internal static string Description {
+            get {
+                return ResourceManager.GetString("Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Name.
+        /// </summary>
+        internal static string Name {
+            get {
+                return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Roles.
         /// </summary>
         internal static string PluralName {

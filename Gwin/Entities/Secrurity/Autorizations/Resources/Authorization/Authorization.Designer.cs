@@ -70,6 +70,33 @@ namespace App.Gwin.Entities.Secrurity.Autorizations.Resources.Authorization {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à ActionsNames.
+        /// </summary>
+        internal static string ActionsNames {
+            get {
+                return ResourceManager.GetString("ActionsNames", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à BusinessEntity.
+        /// </summary>
+        internal static string BusinessEntity {
+            get {
+                return ResourceManager.GetString("BusinessEntity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Description.
+        /// </summary>
+        internal static string Description {
+            get {
+                return ResourceManager.GetString("Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Entity Name.
         /// </summary>
         internal static string EntityName {
@@ -79,11 +106,29 @@ namespace App.Gwin.Entities.Secrurity.Autorizations.Resources.Authorization {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Name.
+        /// </summary>
+        internal static string Name {
+            get {
+                return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Authorizations.
         /// </summary>
         internal static string PluralName {
             get {
                 return ResourceManager.GetString("PluralName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Roles.
+        /// </summary>
+        internal static string Roles {
+            get {
+                return ResourceManager.GetString("Roles", resourceCulture);
             }
         }
         

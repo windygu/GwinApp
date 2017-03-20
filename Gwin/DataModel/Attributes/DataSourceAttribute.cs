@@ -27,6 +27,7 @@ namespace App.Gwin.Attributes
         /// First Parameter of Methode
         /// </summary>
         public object Param1 { get; set; }
+        public object Param2 { get; set; }
 
 
         #region Create Instance
@@ -53,11 +54,16 @@ namespace App.Gwin.Attributes
             if (Param1 == null)
             {
                 ls_data = (IList)this.TypeObject.GetMethod(this.MethodeName).Invoke(DataObject, null);
-            } else
-            {
-                ls_data = (IList)this.TypeObject.GetMethod(this.MethodeName).Invoke(DataObject, new object[] { Param1 });
             }
-          
+            else
+            {
+                if (Param2 == null)
+                    ls_data = (IList)this.TypeObject.GetMethod(this.MethodeName).Invoke(DataObject, new object[] { Param1 });
+                else
+                    ls_data = (IList)this.TypeObject.GetMethod(this.MethodeName).Invoke(DataObject, new object[] { Param1, Param2 });
+
+            }
+
             return ls_data;
         }
 

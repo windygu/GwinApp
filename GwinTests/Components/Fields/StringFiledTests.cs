@@ -24,7 +24,7 @@ namespace App.Gwin.Fields.Tests
             stringField_Horizontal.SizeLabel = SizeLabel;
             stringField_Horizontal.SizeControl = SizeControl;
 
-            stringField_Horizontal.FieldChanged += StringField_FieldChanged;
+            stringField_Horizontal.ValueChanged += StringField_FieldChanged;
             stringField_Horizontal.Value = "Hello";
 
           
@@ -38,7 +38,7 @@ namespace App.Gwin.Fields.Tests
             stringField_Horizontal_MultiLigne.ConfigSizeField();
 
 
-            stringField_Horizontal_MultiLigne.FieldChanged += StringField_FieldChanged;
+            stringField_Horizontal_MultiLigne.ValueChanged += StringField_FieldChanged;
             stringField_Horizontal_MultiLigne.Value = "Hello";
 
 

@@ -96,11 +96,15 @@ namespace App.Gwin.Fields
             this.SizeControl = SizeControl;
             this.ConfigEntity = ConfigEntity;
             this.EntityBAO = Service;
+            
+            // Test Label
+            
 
             // Create Instance of PropertyInfo
             if (PropertyInfo != null)
                 this.configProperty = new ConfigProperty(PropertyInfo, this.ConfigEntity);
 
+            this.Text_Label = this.configProperty.DisplayProperty.Titre;
 
             // Create Instance of PrivateFilter
             this.SelectionFilterManager = new SelectionFilterManager(this.EntityBAO,

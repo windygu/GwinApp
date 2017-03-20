@@ -46,14 +46,14 @@
             this.textBoxField.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxField.Location = new System.Drawing.Point(0, 0);
             this.textBoxField.Name = "textBoxField";
-            this.textBoxField.Size = new System.Drawing.Size(50, 20);
+            this.textBoxField.Size = new System.Drawing.Size(518, 20);
             this.textBoxField.TabIndex = 0;
             this.textBoxField.TextChanged += new System.EventHandler(this.textBoxField_TextChanged);
             // 
-            // StringFiled
+            // StringField
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.Name = "StringFiled";
+            this.Name = "StringField";
             this.splitContainer.Panel2.ResumeLayout(false);
             this.splitContainer.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).EndInit();

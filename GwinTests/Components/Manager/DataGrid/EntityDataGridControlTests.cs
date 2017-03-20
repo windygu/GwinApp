@@ -32,28 +32,28 @@ namespace App.Gwin.Tests
         }
 
 
-        [TestMethod()]
-        [ExpectedException(typeof(GwinUsageModeException))]
-        public void Launch_GwinUsageModeException_When_Invok_EntityDataGridControl_Default_CostrucotorTest()
-        {
-            EntityDataGridControl EntityDataGridControl = new EntityDataGridControl();
-        }
+        //[TestMethod()]
+        //[ExpectedException(typeof(GwinUsageModeException))]
+        //public void Launch_GwinUsageModeException_When_Invok_EntityDataGridControl_Default_CostrucotorTest()
+        //{
+        //    EntityDataGridControl EntityDataGridControl = new EntityDataGridControl();
+        //}
 
-        [TestMethod()]
-        [ExpectedException(typeof(GwinNullParameterException))]
-        public void Ctrate_Instance_With_NULL_Vlaues_EntityDataGridControlTest1()
-        {
-            EntityDataGridControl EntityDataGridControl = new EntityDataGridControl(null,null);
-        }
+        //[TestMethod()]
+        //[ExpectedException(typeof(GwinNullParameterException))]
+        //public void Ctrate_Instance_With_NULL_Vlaues_EntityDataGridControlTest1()
+        //{
+        //    EntityDataGridControl EntityDataGridControl = new EntityDataGridControl(null,null);
+        //}
 
         [TestMethod()]
        
         public void Ctrate_Instance_With_Null_FilterValues_Vlaues_EntityDataGridControlTest1()
         {
-            EntityDataGridControl entityDataGridControl = new EntityDataGridControl(entityMiniConfigBLO, null);
+            GwinDataGridComponent entityDataGridControl = new GwinDataGridComponent(entityMiniConfigBLO, null);
 
             // Check Columns
-            foreach (PropertyInfo propertyInfo in entityDataGridControl.ListeProprieteDataGrid)
+            foreach (PropertyInfo propertyInfo in entityDataGridControl.ShownEntityProperties)
             {
                 Assert.AreEqual(entityDataGridControl.GetDataGridViewInstance().Columns.Contains(propertyInfo.Name), true);
             }

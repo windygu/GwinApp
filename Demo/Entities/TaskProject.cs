@@ -16,6 +16,7 @@ namespace GenericWinForm.Demo.Entities
     /// </summary>
     [GwinEntity(Localizable =true,DisplayMember = nameof(TaskProject.Title))]
     [Menu]
+    [Authorize]
     public class TaskProject : BaseEntity
     {
 

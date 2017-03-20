@@ -7,13 +7,12 @@ using System.Windows.Forms;
 using App.Gwin.Entities;
 using App.Shared.AttributesManager;
 
-namespace App.Gwin.Fields.Traitements.Params
+namespace App.Gwin.Components.Manager.Fields.Traitements.Params
 {
-    public class WriteEntity_To_EntryForm_Param
+    public class WriteEntity_To_EntryForm_Param : BaseFieldTraitementParam
     {
-        public ConfigProperty ConfigProperty { get;  set; }
         public Control FromContainer { get;  set; }
         public Dictionary<string, object> CritereRechercheFiltre { get;  set; }
-        public BaseEntity Entity { get;  set; }
+
     }
 }

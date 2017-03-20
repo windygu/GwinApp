@@ -11,15 +11,15 @@ using System.Windows.Forms;
 using App.Gwin.Entities;
 using App.Gwin.Application.BAL;
 
-namespace App.Gwin.FieldsTraitements.Params
+namespace App.Gwin.Components.Manager.Fields.Traitements.Params
 {
     /// <summary>
     /// Params of CreateField Traitement in EntryForm
     /// </summary>
-    public class CreateFieldParams
+    public class CreateFieldParams : BaseFieldTraitementParam
     {
-        public ConfigProperty ConfigProperty { get; set; }
         public Control ConteneurFormulaire { get; set; }
+
         public delegate void ControlPropriete_ValueChanged(object sender1, EventArgs e1);
         public Point Location { get; set; }
         public Orientation OrientationField { get; set; }
@@ -30,12 +30,12 @@ namespace App.Gwin.FieldsTraitements.Params
         /// <summary>
         /// used per ManyToOne Field
         /// </summary>
-        public IGwinBaseBLO EntityBLO { get;  set; }
+        
 
         /// <summary>
         /// used per ManyToMany Field
         /// </summary>
         public TabControl TabControlForm { get;  set; }
-        public BaseEntity Entity { get;  set; }
+       
     }
 }

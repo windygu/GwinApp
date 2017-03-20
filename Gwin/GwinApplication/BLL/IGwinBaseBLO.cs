@@ -7,7 +7,7 @@ using System.Data.Entity;
 namespace App.Gwin.Application.BAL
 {
     /// <summary>
-    ///  BaseBAO Interface
+    ///  Business Object Interface
     /// </summary>
     public interface IGwinBaseBLO 
     {

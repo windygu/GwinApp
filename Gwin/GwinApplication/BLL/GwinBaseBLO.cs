@@ -105,6 +105,8 @@ namespace App.Gwin.Application.BAL
             // Calculate Order
             CalculateOrder(item);
 
+
+
             // Save
             try
             {
@@ -132,7 +134,21 @@ namespace App.Gwin.Application.BAL
             this.DbSet.Add(item);
             string state = this.Context.Entry(item).State.ToString();
 
-            return this.Context.SaveChanges();
+
+
+
+            int returnValue = this.Context.SaveChanges();
+
+            // Calculate Reference 
+            // [Role] reference = id + EntityName + DateCreation
+            if (item.Reference == null || item.Reference == String.Empty)
+            {
+                item.Reference = item.Id +"-"+ typeof(T).Name +"-" + item.DateCreation.ToString();
+                this.Update(item);
+            }
+
+            return returnValue;
+
         }
         protected virtual int Update(T item)
         {
@@ -389,7 +405,7 @@ namespace App.Gwin.Application.BAL
         }
 
         #region Static Method
- 
+
         /// <summary>
         ///  Creating an instance of the BLO
         ///  From EtityBLO if Exist
@@ -400,13 +416,13 @@ namespace App.Gwin.Application.BAL
         /// <returns>BLO Instance</returns>
         public static IGwinBaseBLO CreateBLO_Instance(Type TypeEntity, Type TypeBaseBLO)
         {
- 
+
             // Load TypeEntityBLO
             Type TypeEntityBLO = Detemine_Type_EntityBLO(TypeEntity, TypeBaseBLO);
 
             // EntityBLO = (IGwinBaseBLO)Activator.CreateInstance(TypeEntityBLO);
             IGwinBaseBLO EntityBLO = DependencyResolver.For(TypeEntityBLO) as IGwinBaseBLO;
- 
+
             return EntityBLO;
         }
 
@@ -443,7 +459,7 @@ namespace App.Gwin.Application.BAL
         /// <returns></returns>
         public Type GetUnProxyType()
         {
-          return  ProxyUtil.GetUnproxiedType(this);
+            return ProxyUtil.GetUnproxiedType(this);
         }
         #endregion
     }

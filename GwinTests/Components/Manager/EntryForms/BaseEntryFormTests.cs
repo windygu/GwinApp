@@ -13,6 +13,8 @@ using App.Gwin.Application.Presentation.MainForm;
 using App.Gwin.Entities;
 using App.Gwin.Exceptions.Gwin;
 using App.Gwin.DataModel.ModelInfo;
+using App.Shared.AttributesManager;
+using App.Gwin.FieldsTraitements;
 
 namespace App.Gwin.Tests
 {
@@ -21,42 +23,42 @@ namespace App.Gwin.Tests
     {
         ConfigEntity configEntity = null;
         TaskProject Entity = null;
-        IGwinBaseBLO entityMiniConfigBLO = null;
+        IGwinBaseBLO TaskProjectBLO = null;
         [TestInitialize]
         public void GwinAppStart()
         {
             GwinApp.Start(typeof(ModelContext), typeof(BaseBLO<>), new FormApplication(), null);
             configEntity = ConfigEntity.CreateConfigEntity(typeof(TaskProject));
             Entity = new TaskProject();
-            entityMiniConfigBLO = GwinBaseBLO<BaseEntity>.CreateBLO_Instance(typeof(TaskProject), typeof(BaseBLO<>));
+            TaskProjectBLO = GwinBaseBLO<BaseEntity>.CreateBLO_Instance(typeof(TaskProject), typeof(BaseBLO<>));
         }
 
         #region Static Test
-        [TestMethod()]
-        [ExpectedException(typeof(GwinUsageModeException))]
-        public void DefaultConstructor_BaseEntryFormTest()
-        {
-            BaseEntryForm BaseEntryForm = new BaseEntryForm();
-        }
+        //[TestMethod()]
+        //[ExpectedException(typeof(GwinUsageModeException))]
+        //public void DefaultConstructor_BaseEntryFormTest()
+        //{
+        //    BaseEntryForm BaseEntryForm = new BaseEntryForm();
+        //}
 
-        [TestMethod()]
-        [ExpectedException(typeof(GwinNullParameterException))]
-        public void Create_BaseEntryForm_with_null_parameterTest()
-        {
-            BaseEntryForm BaseEntryForm = new BaseEntryForm(null);
+        //[TestMethod()]
+        //[ExpectedException(typeof(GwinNullParameterException))]
+        //public void Create_BaseEntryForm_with_null_parameterTest()
+        //{
+        //    BaseEntryForm BaseEntryForm = new BaseEntryForm(null);
 
-        }
+        //}
 
         [TestMethod()]
         public void Create_With_EntityBLO_Instance_BaseEntryFormTest()
         {
-            BaseEntryForm BaseEntryForm = new BaseEntryForm(this.entityMiniConfigBLO);
+            BaseEntryForm BaseEntryForm = new BaseEntryForm(this.TaskProjectBLO);
         }
 
         [TestMethod()]
         public void Create_With_FilterValues_Instance_BaseEntryFormTest()
         {
-           // [ToDo]
+            // [ToDo]
         }
         #endregion
 
@@ -85,6 +87,26 @@ namespace App.Gwin.Tests
         {
             // [ToDo]
         }
- 
+
+        [TestMethod()]
+        public void Show_and_Read_Entity_In_EntryFormTest()
+        {
+            BaseEntryForm baseEntryForm = new BaseEntryForm(this.TaskProjectBLO);
+
+            TaskProject taskProject = new TaskProject();
+            // Set Default Values
+            // Set Values
+            foreach (var prorpertyInfo in taskProject.GetType().GetProperties())
+            {
+                ConfigProperty configProperty = new ConfigProperty(prorpertyInfo, configEntity);
+                IFieldTraitements fieldTraitement = BaseFieldTraitement.CreateInstance(configProperty);
+                var value = fieldTraitement.GetTestValue(prorpertyInfo);
+                prorpertyInfo.SetValue(taskProject, value);
+            }
+            baseEntryForm.Entity = taskProject;
+
+            baseEntryForm.ShowEntity();
+            baseEntryForm.ReadEntity();
+        }
     }
 }

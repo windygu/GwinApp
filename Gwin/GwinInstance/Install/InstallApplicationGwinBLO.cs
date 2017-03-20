@@ -20,12 +20,12 @@ namespace App.Gwin.Application.BAL
         /// ModelContext type,
         /// it used to create EF DBContext instance
         /// </summary>
-        private Type TypeModelContext { get;  set; }
+        private Type TypeModelContext { get; set; }
 
         public InstallApplicationGwinBLO(Type type_model_context)
         {
             this.TypeModelContext = type_model_context;
-           
+
 
         }
 
@@ -49,9 +49,9 @@ namespace App.Gwin.Application.BAL
 
             // Create MenuItemApplicationBLO Instance
             var ModelContext = Activator.CreateInstance(TypeModelContext);
-            IGwinBaseBLO menuItemApplicationBLO = new GwinBaseBLO<MenuItemApplication>((DbContext)ModelContext);
+            GwinBaseBLO<MenuItemApplication> menuItemApplicationBLO = new GwinBaseBLO<MenuItemApplication>((DbContext)ModelContext);
 
-            DbSet<MenuItemApplication> MenuItemApplicationSet =(DbSet < MenuItemApplication >) this.TypeModelContext.GetProperty("MenuItemApplications").GetValue(ModelContext);
+            DbSet<MenuItemApplication> MenuItemApplicationSet = (DbSet<MenuItemApplication>)this.TypeModelContext.GetProperty("MenuItemApplications").GetValue(ModelContext);
 
             ModelConfiguration entitiesModel = new ModelConfiguration();
 
@@ -59,9 +59,11 @@ namespace App.Gwin.Application.BAL
             Dictionary<Type, MenuAttribute> Dictionary_Type_MenyAttribute = entitiesModel.Get_All_Type_And_MenuAttributes();
             foreach (var item in Dictionary_Type_MenyAttribute.Values)
             {
-             if (item.Group == null) continue;
-                if (menuItemApplicationBLO.Recherche(new Dictionary<string, object> { { nameof(MenuItemApplication.Code), item.Group } }).Count == 0)
-                    menuItemApplicationBLO.Save(new MenuItemApplication { Code = item.Group,Title = new Entities.MultiLanguage.LocalizedString(),Description = new Entities.MultiLanguage.LocalizedString() });
+                if (item.Group == null) continue;
+
+
+                if (menuItemApplicationBLO.GetAll(0, 0, m => m.Code == item.Group).Count == 0)
+                    menuItemApplicationBLO.Save(new MenuItemApplication { Code = item.Group, Title = new Entities.MultiLanguage.LocalizedString(), Description = new Entities.MultiLanguage.LocalizedString() });
             }
 
 

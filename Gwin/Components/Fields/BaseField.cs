@@ -1,47 +1,52 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Drawing;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace App.Gwin.Fields
 {
+    /// <summary>
+    /// Base Field 
+    /// </summary>
     public partial class BaseField : UserControl, IBaseField
     {
 
-        #region Enumeration
-        #endregion
-
         #region Events
         /// <summary>
-        /// Executed when the value is changed
+        /// Value is changed
         /// </summary>
-        public event EventHandler FieldChanged;
-        protected void onFieldChanged(object sender, EventArgs e)
+        public event EventHandler ValueChanged;
+        protected void onValueChanged(object sender, EventArgs e)
         {
-            if (FieldChanged != null)
-                FieldChanged(sender, e);
+            if (ValueChanged != null)
+                ValueChanged(sender, e);
         }
         /// <summary>
-        /// Executed when the validating of value is fired
+        /// Validating
         /// </summary>
-        public event EventHandler<CancelEventArgs> ValidatingFiled;
-        protected void onValidatingFiled(object sender, CancelEventArgs e)
+        public event EventHandler<CancelEventArgs> ValidatingField;
+        protected void onValidatingField(object sender, CancelEventArgs e)
         {
-            if (ValidatingFiled != null)
-                ValidatingFiled(sender, e);
+            if (ValidatingField != null)
+                ValidatingField(sender, e);
         }
         #endregion
 
-      
+
 
         #region Properties
+        /// <summary>
+        /// PropertyInfo
+        /// </summary>
+        public PropertyInfo PropertyInfo { set; get; }
         /// <summary>
         /// The value of field
         /// </summary>
         public virtual object Value { get; set; }
 
         /// <summary>
-        /// The display direction, it is either vertical or horizontal
+        /// Direction, it is either vertical or horizontal
         /// </summary>
         protected Orientation orientationField;
         public Orientation OrientationField
@@ -61,7 +66,7 @@ namespace App.Gwin.Fields
         }
 
         /// <summary>
-        /// Définire le texte du label 
+        /// Text Label
         /// </summary>
         public string Text_Label
         {
@@ -152,7 +157,6 @@ namespace App.Gwin.Fields
             this.splitContainer.IsSplitterFixed = true;
             this.splitContainer.TabStop = false;
 
-
             if (OrientationField == Orientation.Vertical)
             {
                 this.splitContainer.Orientation = Orientation.Vertical;
@@ -162,11 +166,7 @@ namespace App.Gwin.Fields
                 this.Size = new Size(width_field, height_field);
 
                 // Containner
-                // this.splitContainer.Size = new Size(width_field, height_field);, Dock is Fill
-               
-                
                 this.splitContainer.SplitterDistance = this.SizeLabel.Width;
-                 
             }
             else
             {
@@ -178,10 +178,7 @@ namespace App.Gwin.Fields
                 this.splitContainer.SplitterDistance = this.SizeLabel.Height;
                 this.splitContainer.Orientation = Orientation.Horizontal;
                 
-                
-
                 // Containner
-                //this.splitContainer.Size = new Size(width_field, height_field);
                 this.splitContainer.SplitterDistance = this.SizeLabel.Height;
             }
         }
