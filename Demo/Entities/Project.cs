@@ -14,11 +14,24 @@ namespace GenericWinForm.Demo.Entities
     /// </summary>
     [GwinEntity(DisplayMember = "Title")]
     [Authorize]
+    [Menu]
     public class Project:BaseEntity
     {
         [EntryForm]
         [Filter]
         [DataGrid]
         public string Title { set; get; }
+
+
+        [EntryForm]
+        [Filter]
+        [DataGrid]
+        public string Description { set; get; }
+
+
+        [Relationship(Relation = RelationshipAttribute.Relations.ManyToMany_Creation)]
+        public List<TaskProject> TaskProjects { set; get; }
+
+
     }
 }

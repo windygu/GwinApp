@@ -126,6 +126,7 @@ namespace GenericWinForm.Demo.Entities
         [DataSource(TypeObject = typeof(GwinBusinessEntitiesManager),
             MethodeName = nameof(GwinBusinessEntitiesManager.GetAll),
             Param1 = typeof(AuthorizeAttribute),
+            Param2 = true,
             DisplayName = "Name")]
         public string BusinessEntity { set; get; }
 
