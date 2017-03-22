@@ -115,7 +115,7 @@ namespace GenericWinForm.Demo.Entities
         [EntryForm]
         [Filter]
         [DataGrid]
-        [DataSource(TypeObject = typeof(ModelConfiguration),
+        [ReferencesDataSource(TypeObject = typeof(ModelConfiguration),
             MethodeName = nameof(ModelConfiguration.GetAll_Entities_Type),
             DisplayName = "Name")]
         public string EntityToManimulate { set; get; }
@@ -123,7 +123,7 @@ namespace GenericWinForm.Demo.Entities
         [Filter(WidthControl = 400, isValeurFiltreVide = true)]
         [EntryForm(WidthControl = 400)]
         [DataGrid(WidthColonne = 400)]
-        [DataSource(TypeObject = typeof(GwinBusinessEntitiesManager),
+        [ReferencesDataSource(TypeObject = typeof(GwinBusinessEntitiesManager),
             MethodeName = nameof(GwinBusinessEntitiesManager.GetAll),
             Param1 = typeof(AuthorizeAttribute),
             Param2 = true,

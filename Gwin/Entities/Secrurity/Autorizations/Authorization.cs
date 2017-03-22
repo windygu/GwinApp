@@ -29,7 +29,7 @@ namespace App.Gwin.Entities.Secrurity.Autorizations
         [Filter(WidthControl = 400, isValeurFiltreVide = true)]
         [EntryForm(WidthControl = 400)]
         [DataGrid(WidthColonne = 400)]
-        [DataSource(TypeObject = typeof(GwinEntitiesManager),
+        [ReferencesDataSource(TypeObject = typeof(GwinEntitiesManager),
             MethodeName = nameof(GwinEntitiesManager.GetAll_Reference),
             Param1 =typeof(AuthorizeAttribute))]
         public String BusinessEntity { set; get; }

@@ -7,7 +7,7 @@ namespace App.Gwin.Attributes
     /// <summary>
     /// Set DataSource to Fill ComboBox
     /// </summary>
-    public class DataSourceAttribute : Attribute
+    public class ReferencesDataSourceAttribute : Attribute
     {
         /// <summary>
         /// Type of Object that containt Data
@@ -47,7 +47,7 @@ namespace App.Gwin.Attributes
         /// Get Data from DataSource
         /// </summary>
         /// <returns></returns>
-        public IList GetData()
+        public List<String> GetData()
         {
             object DataObject = this.CreateInstance();
             IList ls_data = null;
@@ -64,7 +64,15 @@ namespace App.Gwin.Attributes
 
             }
 
-            return ls_data;
+            // Read by Disply Name
+            List<String> returnedList = new List<string>();
+            foreach (var item in ls_data)
+            {
+                returnedList.Add(item.ToString());
+            }
+
+
+            return returnedList;
         }
 
         #endregion

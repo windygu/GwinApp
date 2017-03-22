@@ -11,6 +11,7 @@ namespace App.Gwin.FieldsTraitements
 
         public virtual object ConvertValue(BaseFieldTraitementParam param)
         {
+
             object value = null;
             if (param.ConfigProperty.PropertyInfo.PropertyType.IsPrimitive)
             {

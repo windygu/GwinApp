@@ -93,6 +93,6 @@
         protected System.Windows.Forms.ToolStripMenuItem frenchToolStripMenuItem1;
         protected System.Windows.Forms.ToolStripMenuItem englishToolStripMenuItem;
         protected System.Windows.Forms.ToolStripMenuItem arabToolStripMenuItem;
-        protected System.Windows.Forms.MenuStrip menuStrip1;
+        public System.Windows.Forms.MenuStrip menuStrip1;
     }
 }

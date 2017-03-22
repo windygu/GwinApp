@@ -69,7 +69,8 @@ namespace App.Gwin.FieldsTraitements
             //var DataObject = Activator.CreateInstance(param.ConfigProperty.DataSource.TypeObject);
             //IList ls_data = (IList)DataObject.GetType().GetMethod(param.ConfigProperty.DataSource.MethodeName).Invoke(DataObject, null);
             IList ls_data = param.ConfigProperty.DataSource.GetData();
-            List<object> ls_data_object = ls_data.Cast<object>().ToList<object>();
+
+            List<object> ls_data_object = ls_data.Cast<string>().ToList<object>();
            
          
             comboBoxField.DataSource = ls_data_object;

@@ -30,7 +30,7 @@ namespace App.Shared.AttributesManager
         public EntryFormAttribute EntryForm { set; get; }
         public FilterAttribute Filter { set; get; }
         public DataGridAttribute DataGrid { set; get; }
-        public DataSourceAttribute DataSource { set; get; }
+        public ReferencesDataSourceAttribute DataSource { set; get; }
         public FieldsNatures FieldNature { set; get; }
         public PropertyInfo PropertyInfo { get; set; }
         public ConfigEntity ConfigEntity { get; set; }
@@ -160,8 +160,8 @@ namespace App.Shared.AttributesManager
             //
             // DataSource
             //
-            Attribute dataSource = propertyInfo.GetCustomAttribute(typeof(DataSourceAttribute));
-            this.DataSource = dataSource as DataSourceAttribute;
+            Attribute dataSource = propertyInfo.GetCustomAttribute(typeof(ReferencesDataSourceAttribute));
+            this.DataSource = dataSource as ReferencesDataSourceAttribute;
 
             // Determine FieldNautre
             this.DetermineFieldNature();

@@ -2,5 +2,8 @@
 {
     public interface IBaseForm
     {
+        void Reload();
     }
+
+
 }
