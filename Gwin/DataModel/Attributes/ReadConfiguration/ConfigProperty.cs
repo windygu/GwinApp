@@ -36,9 +36,10 @@ namespace App.Shared.AttributesManager
         public PropertyInfo PropertyInfo { get; set; }
         public ConfigEntity ConfigEntity { get; set; }
         public Type TypeOfEntity { set; get; }
-        public bool Localizable { get;   set; }
-        public CultureInfo CultureInfo { get;   set; }
-       
+        public bool Localizable { get; set; }
+        public CultureInfo CultureInfo { get; set; }
+        public BusinesRoleAttribute BusinesRole { get; set; }
+
         /// <summary>
         ///  Resource Manager of the Entity and its BaseType
         /// </summary>
@@ -68,13 +69,13 @@ namespace App.Shared.AttributesManager
             //
             Attribute Relationship = propertyInfo.GetCustomAttribute(typeof(RelationshipAttribute));
             this.Relationship = Relationship as RelationshipAttribute;
-            if(this.Relationship != null)
+            if (this.Relationship != null)
             {
                 // Check if Type of Memeber is valide Generic List
                 if (
                     (this.Relationship.Relation == RelationshipAttribute.Relations.ManyToMany_Creation
                     || this.Relationship.Relation == RelationshipAttribute.Relations.ManyToMany_Selection
-                    || this.Relationship.Relation == RelationshipAttribute.Relations.OneToMany) 
+                    || this.Relationship.Relation == RelationshipAttribute.Relations.OneToMany)
                     &&
                     this.PropertyInfo.PropertyType.GetGenericArguments().Count() == 0)
                 {
@@ -100,11 +101,11 @@ namespace App.Shared.AttributesManager
                 {
                     string message = String.Format("The Attribute : {0} not exist", nameof(DisplayPropertyAttribute));
                     message += " with Property :" + propertyInfo.ToString();
-                    message += " in Entity " + propertyInfo.ReflectedType.Name; 
+                    message += " in Entity " + propertyInfo.ReflectedType.Name;
                     message += " \n Bacause the Entity is not configured as Localazible";
                     throw new AnnotationNotExistException(message);
                 }
-                  
+
                 this.DisplayProperty = new DisplayPropertyAttribute();
             }
             if (this.DisplayProperty.isInGlossary)
@@ -125,8 +126,8 @@ namespace App.Shared.AttributesManager
                 //
                 if (this.DisplayProperty.Titre == null)
                 {
-                    
-                    if ( this.PropertyInfo.PropertyType.IsSubclassOf(typeof(BaseEntity)))
+
+                    if (this.PropertyInfo.PropertyType.IsSubclassOf(typeof(BaseEntity)))
                         this.DisplayProperty.Titre = ConfigEntity.CreateConfigEntity(this.PropertyInfo.PropertyType).DisplayEntity.SingularName;
                     else
                         this.DisplayProperty.Titre = GetStringFromRessource(propertyInfo.Name);
@@ -164,12 +165,20 @@ namespace App.Shared.AttributesManager
             Attribute dataSource = propertyInfo.GetCustomAttribute(typeof(ReferencesDataSourceAttribute));
             this.DataSource = dataSource as ReferencesDataSourceAttribute;
 
+            //
+            //BusinesRoleAttribute
+            //
+
+            Attribute aBusinesRole = propertyInfo.GetCustomAttribute(typeof(BusinesRoleAttribute));
+            this.BusinesRole = aBusinesRole as BusinesRoleAttribute;
+
+
             // Determine FieldNautre
             this.FieldNature = BaseFieldTraitement.DetermineFieldNature(this);
 
         }
 
-        
+
 
 
         private string GetStringFromRessource(string key, bool return_null_if_nat_exist = false)

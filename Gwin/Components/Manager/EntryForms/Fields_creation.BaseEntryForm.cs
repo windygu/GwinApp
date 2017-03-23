@@ -107,8 +107,9 @@ namespace App.Gwin
                 // Invok Create Field Method
                 baseField = fieldTraitement.CreateField_In_EntryForm(param);
 
-                // Create Value Changed
-                baseField.ValueChanged += ControlPropriete_ValueChanged;
+                // Create Value Changed to Apply Business Role
+                if (configProperty.BusinesRole != null)
+                    baseField.ValueChanged += ControlPropriete_ValueChanged;
 
                 // [Bug] Validation per FieldNature
                 if (configProperty.EntryForm?.isOblegatoir == true)

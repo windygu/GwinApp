@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using App.Gwin.Entities;
 using App.Gwin.GwinApplication.Security.Attributes;
+using App.Gwin.FieldsTraitements;
+using App.Shared.AttributesManager;
 
 namespace GenericWinForm.Demo.BAL
 {
@@ -34,6 +36,28 @@ namespace GenericWinForm.Demo.BAL
                     }
                     break;
             }
+        }
+
+        /// <summary>
+        /// Create Instance with Test Data
+        /// </summary>
+        /// <returns>Instance of TaskProject with TestData</returns>
+        public TaskProject CreateTestInstance()
+        {
+            TaskProject instance = new TaskProject();
+
+               
+
+
+            foreach (var item in instance.GetType().GetProperties())
+            {
+                ConfigProperty configProperty = new ConfigProperty(item, this.ConfigEntity );
+                IFieldTraitements fieldTraitement = BaseFieldTraitement.CreateInstance(configProperty);
+                item.SetValue(instance, fieldTraitement.GetTestValue(item));
+            }
+
+            return instance;
+
         }
     }
 }

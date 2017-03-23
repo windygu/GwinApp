@@ -8,6 +8,7 @@ using System.Reflection;
 
 namespace App.Gwin.FieldsTraitements
 {
+
     public class BaseFieldTraitement
     {
 
@@ -36,7 +37,7 @@ namespace App.Gwin.FieldsTraitements
 
             // Get TypeFieldTraitement
             string field_nature = configProperty.FieldNature.ToString();
-            Assembly assembly = typeof(StringFieldTraitement).Assembly;
+            Assembly assembly = typeof(DefaultFieldTraitement).Assembly;
             string TypeFieldTraitement_Name = nameof(App) + "." + nameof(App.Gwin) + "." + nameof(App.Gwin.FieldsTraitements) + "." + field_nature + "FieldTraitement";
             Type TypeFieldTraitement = assembly.GetType(TypeFieldTraitement_Name);
             if (TypeFieldTraitement == null) throw new GwinException("The class " + TypeFieldTraitement_Name + " not exist ");
@@ -57,7 +58,7 @@ namespace App.Gwin.FieldsTraitements
 
             if (configProperty.PropertyInfo.PropertyType.Name == "String" && configProperty.DataSource == null)
             {
-                fieldNature = FieldsNatures.String;
+                fieldNature = FieldsNatures.Default;
 
             }
             if (configProperty.PropertyInfo.PropertyType.Name == "String" && configProperty.DataSource != null)
@@ -88,8 +89,6 @@ namespace App.Gwin.FieldsTraitements
             if (configProperty.PropertyInfo.PropertyType.Name == "DateTime")
             {
                 fieldNature = FieldsNatures.DateTime;
-
-
             }
             if (configProperty.PropertyInfo.PropertyType.IsEnum)
             {

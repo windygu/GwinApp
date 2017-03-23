@@ -100,9 +100,8 @@
     <Compile Include="Components\Fields\StringField.Designer.cs">
       <DependentUpon>StringField.cs</DependentUpon>
     </Compile>
-    <Compile Include="Components\Manager\Fields.Traitements\Int64FieldTraitement.cs" />
     <Compile Include="Components\Manager\Fields.Traitements\Params\Base\BaseFieldTraitementParam.cs" />
-    <Compile Include="Components\Manager\Fields.Traitements\StringFieldTraitement.cs" />
+    <Compile Include="DataModel\Attributes\BusinesRole.cs" />
     <Compile Include="DataModel\Exceptions\Class1.cs" />
     <Compile Include="DataModel\Helpers\GwinIdentifierManager.cs" />
     <Compile Include="DataModel\ModelInfo\GwinAssembliesManager.cs" />
@@ -168,11 +167,10 @@
     <Compile Include="Components\Manager\Fields.Traitements\DateTimeFieldTraitement.cs" />
     <Compile Include="Components\Manager\Fields.Traitements\FieldNature\FieldsNatures.cs" />
     <Compile Include="Components\Manager\Fields.Traitements\EnumerationFieldTraitement.cs" />
-    <Compile Include="Components\Manager\Fields.Traitements\Base\FieldTraitement.cs" />
+    <Compile Include="Components\Manager\Fields.Traitements\Base\BaseFieldTraitement.cs" />
     <Compile Include="Components\Manager\Fields.Traitements\Interface\IFieldTraitements.cs" />
     <Compile Include="Components\Manager\Fields.Traitements\ManyToMany_SelectionFieldTraitement.cs" />
     <Compile Include="Components\Manager\Fields.Traitements\ManyToOneFieldTraitement.cs" />
-    <Compile Include="Components\Manager\Fields.Traitements\Int32FieldTraitement.cs" />
     <Compile Include="Components\Manager\Fields.Traitements\Params\CreateFieldParams.cs" />
     <Compile Include="Components\Manager\Fields.Traitements\LocalizedStringFieldTraitement.cs" />
     <Compile Include="Components\Manager\Fields.Traitements\StringWithDataSourceFieldTraitement.cs" />

@@ -13,6 +13,7 @@ using System.Windows.Forms;
 namespace App.Gwin.FieldsTraitements
 {
     /// <summary>
+    /// Primitive and Nullable Field Traitement
     /// This class is Dynamicly loaded
     /// You Can not change Traitement suffix, it used to load this Type
     /// </summary>
@@ -42,7 +43,20 @@ namespace App.Gwin.FieldsTraitements
 
         public object GetTestValue(PropertyInfo propertyInfo)
         {
+       
+            if (propertyInfo.PropertyType == typeof(string)) return "String Value";
             var value = Activator.CreateInstance(propertyInfo.PropertyType);
+
+           
+
+            if (propertyInfo.PropertyType == typeof(int))
+                value = 5;
+            if (propertyInfo.PropertyType == typeof(Int64))
+                value = (Int64) 5.5;
+            if (propertyInfo.PropertyType == typeof(float))
+                value = (float) 5.5;
+
+
             return value;
         }
 

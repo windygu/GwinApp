@@ -88,12 +88,15 @@ namespace App.Gwin.Tests
             // [ToDo]
         }
 
+        /// <summary>
+        /// Show and Read Entity with All Field Natures in Entryform
+        /// </summary>
         [TestMethod()]
         public void Show_and_Read_Entity_In_EntryFormTest()
         {
             BaseEntryForm baseEntryForm = new BaseEntryForm(this.TaskProjectBLO);
 
-            TaskProject taskProject = new TaskProject();
+            TaskProject taskProject = new TaskProjectBLO().CreateTestInstance();
             // Set Default Values
             // Set Values
             foreach (var prorpertyInfo in taskProject.GetType().GetProperties())
@@ -101,11 +104,23 @@ namespace App.Gwin.Tests
                 ConfigProperty configProperty = new ConfigProperty(prorpertyInfo, configEntity);
                 IFieldTraitements fieldTraitement = BaseFieldTraitement.CreateInstance(configProperty);
                 var value = fieldTraitement.GetTestValue(prorpertyInfo);
+                // Set Value
                 prorpertyInfo.SetValue(taskProject, value);
             }
+
+            
+
+
             baseEntryForm.Entity = taskProject;
 
+          
+
+
+            // Show Entity to View
             baseEntryForm.ShowEntity();
+
+
+            // Read Entity from View
             baseEntryForm.ReadEntity();
         }
     }

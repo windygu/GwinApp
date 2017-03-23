@@ -20,6 +20,7 @@ namespace GenericWinForm.Demo.Entities
         [EntryForm]
         [Filter]
         [DataGrid]
+        [BusinesRole]
         public string Title { set; get; }
 
 
