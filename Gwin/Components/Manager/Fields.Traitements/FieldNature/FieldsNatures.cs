@@ -16,12 +16,12 @@ namespace App.Gwin.FieldsTraitements.Enumerations
 
         Default,
         String,
+        Int32,
+        Int64,
         StringWithDataSource,
         LocalizedString,
         DateTime,
         Enumeration,
-        Int32,
-        Int64,
         ManyToMany_Creation,
         ManyToMany_Selection,
         ManyToOne

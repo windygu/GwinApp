@@ -26,17 +26,19 @@ namespace App.Gwin.Fields
                 {
                     try
                     {
-                        return Convert.ChangeType(textBoxField.Text, this.PropertyInfo.PropertyType);
+                        ItemValue = Convert.ChangeType(textBoxField.Text, this.PropertyInfo.PropertyType);
+                        return ItemValue;
                     }
                     catch (FormatException e)
                     {
                         string msg = string.Format("Can not convert {0} to {1} ", textBoxField.Text, this.PropertyInfo.PropertyType.Name);
-                        MessageToUser.AddMessage(MessageToUser.Category.Convert, msg);
+                        return null;
+                    }
+                    catch(OverflowException e)
+                    {
                         return ItemValue;
                     }
                 }
-                   
-                   
                return ItemValue;
             }
             set

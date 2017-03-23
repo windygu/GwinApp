@@ -1,5 +1,7 @@
-﻿using App.Gwin.Components.Manager.Fields.Traitements.Params;
+﻿using App.Gwin.Attributes;
+using App.Gwin.Components.Manager.Fields.Traitements.Params;
 using App.Gwin.Exceptions.Gwin;
+using App.Gwin.FieldsTraitements.Enumerations;
 using App.Shared.AttributesManager;
 using System;
 using System.Reflection;
@@ -44,6 +46,70 @@ namespace App.Gwin.FieldsTraitements
             return fieldTraitement;
 
         }
+
+        /// <summary>
+        /// Determine FieldNature in ConfigProperty
+        /// </summary>
+        public static FieldsNatures DetermineFieldNature(ConfigProperty configProperty)
+        {
+            // Default Value of FieldNature is Default
+            FieldsNatures fieldNature = FieldsNatures.Default;
+
+            if (configProperty.PropertyInfo.PropertyType.Name == "String" && configProperty.DataSource == null)
+            {
+                fieldNature = FieldsNatures.String;
+
+            }
+            if (configProperty.PropertyInfo.PropertyType.Name == "String" && configProperty.DataSource != null)
+            {
+                fieldNature = FieldsNatures.StringWithDataSource;
+
+            }
+            if (configProperty.PropertyInfo.PropertyType.Name == "LocalizedString")
+            {
+                fieldNature = FieldsNatures.LocalizedString;
+
+            }
+
+            // 
+            // Use Default Field
+            //
+            //if (configProperty.PropertyInfo.PropertyType.Name == "Int32")
+            //{
+            //    fieldNature = FieldsNatures.Int32;
+
+            //}
+            //if (configProperty.PropertyInfo.PropertyType.Name == "Int64")
+            //{
+            //    fieldNature = FieldsNatures.Int64;
+
+            //}
+
+            if (configProperty.PropertyInfo.PropertyType.Name == "DateTime")
+            {
+                fieldNature = FieldsNatures.DateTime;
+
+
+            }
+            if (configProperty.PropertyInfo.PropertyType.IsEnum)
+            {
+                fieldNature = FieldsNatures.Enumeration;
+
+            }
+            if (configProperty.Relationship?.Relation == RelationshipAttribute.Relations.ManyToOne)
+            {
+                fieldNature = FieldsNatures.ManyToOne;
+
+            }
+            if (configProperty.Relationship?.Relation == RelationshipAttribute.Relations.ManyToMany_Selection)
+            {
+                fieldNature = FieldsNatures.ManyToMany_Selection;
+
+            }
+
+            return fieldNature;
+        }
+
 
 
     }

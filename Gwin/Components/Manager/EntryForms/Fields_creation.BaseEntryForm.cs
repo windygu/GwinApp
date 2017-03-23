@@ -107,7 +107,7 @@ namespace App.Gwin
                 // Invok Create Field Method
                 baseField = fieldTraitement.CreateField_In_EntryForm(param);
 
-                // Chang Event
+                // Create Value Changed
                 baseField.ValueChanged += ControlPropriete_ValueChanged;
 
                 // [Bug] Validation per FieldNature

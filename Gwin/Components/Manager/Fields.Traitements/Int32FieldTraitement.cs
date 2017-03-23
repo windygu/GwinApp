@@ -12,6 +12,7 @@ using System.Windows.Forms;
 
 namespace App.Gwin.FieldsTraitements
 {
+    [Obsolete("Replaced with Default Field")]
     public class Int32FieldTraitement : BaseFieldTraitement, IFieldTraitements
     {
 

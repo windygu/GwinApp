@@ -13,6 +13,7 @@ using System.Windows.Forms;
 namespace App.Gwin.FieldsTraitements
 {
     /// <summary>
+    /// This class is Dynamicly loaded
     /// You Can not change Traitement suffix, it used to load this Type
     /// </summary>
     public class DefaultFieldTraitement : BaseFieldTraitement, IFieldTraitements
@@ -27,7 +28,8 @@ namespace App.Gwin.FieldsTraitements
             object value = null;
             if (param.ConfigProperty.PropertyInfo.PropertyType.IsPrimitive)
             {
-                value = Convert.ChangeType(param.BaseField.Value, param.ConfigProperty.PropertyInfo.PropertyType);
+                if (param.BaseField.Value != null)
+                    value = Convert.ChangeType(param.BaseField.Value, param.ConfigProperty.PropertyInfo.PropertyType);
             }
             else
             {
@@ -36,7 +38,7 @@ namespace App.Gwin.FieldsTraitements
             return value;
         }
 
-       
+
 
         public object GetTestValue(PropertyInfo propertyInfo)
         {
@@ -47,8 +49,7 @@ namespace App.Gwin.FieldsTraitements
 
         #region EntryForm
         /// <summary>
-        /// CreateField in EntryForm
-        /// 
+        /// Step1 : CreateField in EntryForm
         /// </summary>
         /// <param name="param">
         /// </param>
@@ -72,7 +73,7 @@ namespace App.Gwin.FieldsTraitements
             // Can not modifier Not supported Type , can Just read value
             if (!param.ConfigProperty.PropertyInfo.PropertyType.IsPrimitive)
                 defaultField.Enabled = false;
-           
+
 
             // Insertion à l'interface
             param.ConteneurFormulaire.Controls.Add(defaultField);
@@ -80,7 +81,7 @@ namespace App.Gwin.FieldsTraitements
         }
 
         /// <summary>
-        /// Show Entity to EntryForm
+        /// Step2 : Show Entity to EntryForm
         /// </summary>
         /// <param name="param">Parameters</param>
         public void ShowEntity_To_EntryForm(WriteEntity_To_EntryForm_Param param)
@@ -156,7 +157,7 @@ namespace App.Gwin.FieldsTraitements
         /// <param name="param"></param>
         public void ConfigFieldColumn_In_EntityDataGrid(CreateFieldColumns_In_EntityDataGrid param)
         {
-            param.Column.ValueType = param.ConfigProperty.PropertyInfo.PropertyType ;
+            param.Column.ValueType = param.ConfigProperty.PropertyInfo.PropertyType;
             param.Column.DataPropertyName = param.ConfigProperty.PropertyInfo.Name;
             param.Column.HeaderText = param.ConfigProperty.DisplayProperty.Titre;
             param.Column.Name = param.ConfigProperty.PropertyInfo.Name;
