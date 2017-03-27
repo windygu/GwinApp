@@ -84,8 +84,12 @@ namespace App.Gwin.FieldsTraitements
             // Type of Property
             defaultField.PropertyInfo = param.ConfigProperty.PropertyInfo;
 
-            // Can not modifier Not supported Type , can Just read value
-            if (!param.ConfigProperty.PropertyInfo.PropertyType.IsPrimitive)
+            // Can not Update Not supported Type , you can Just read it value
+            // NB : String is not a primitve type
+            if (
+                !param.ConfigProperty.PropertyInfo.PropertyType.IsPrimitive 
+                && ! (param.ConfigProperty.PropertyInfo.PropertyType == typeof(string))
+                )
                 defaultField.Enabled = false;
 
 

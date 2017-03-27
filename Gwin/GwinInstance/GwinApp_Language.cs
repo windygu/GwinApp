@@ -1,4 +1,5 @@
 ﻿
+using App.Gwin.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -35,6 +36,9 @@ namespace App.Gwin
         {
             GwinApp.TestIf_Gwin_isStart();
 
+            // Must Delete All Entity Configuration, bacause it demande with language
+            ConfigEntity.Despose();
+
             // Change Gwin CultureInfo Instance
             GwinApp.Instance.CultureInfo = cultureInfo;
             GwinApp.instance.user.Language = Convert_CultureInfo_Language(cultureInfo);
@@ -59,7 +63,12 @@ namespace App.Gwin
         /// <param name="cultureInfo">CultureInfo Instance</param>
         public static void SetLanguage(CultureInfo cultureInfo)
         {
+            
+
             GwinApp.TestIf_Gwin_isStart();
+
+            // Must Delete All Entity Configuration, bacause it demande with language
+            ConfigEntity.Despose();
 
             // Change Gwin CultureInfo Instance
             GwinApp.Instance.CultureInfo = cultureInfo;
