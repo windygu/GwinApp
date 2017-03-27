@@ -105,6 +105,7 @@
     <Compile Include="Form_EntryFromDemo.Designer.cs">
       <DependentUpon>Form_EntryFromDemo.cs</DependentUpon>
     </Compile>
+    <Compile Include="GwinAccessException.cs" />
     <Compile Include="Migrations\201703101123300_Init_DataBase.cs" />
     <Compile Include="Migrations\201703101123300_Init_DataBase.Designer.cs">
       <DependentUpon>201703101123300_Init_DataBase.cs</DependentUpon>

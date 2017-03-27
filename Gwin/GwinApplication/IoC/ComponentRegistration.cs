@@ -15,9 +15,11 @@ namespace App.Gwin.GwinApplication.IoC
     {
         public void Register(IKernelInternal kernel)
         {
+           
+
             kernel.Register(
-                Component.For<LoggingInterceptor>()
-                    .ImplementedBy<LoggingInterceptor>());
+                Component.For<SecurityInterceptor>()
+                    .ImplementedBy<SecurityInterceptor>());
 
             // Registrer All BLO Objects
             foreach (Type EntityType in new GwinEntitiesManager().GetAll_Entities_Type())
@@ -25,11 +27,12 @@ namespace App.Gwin.GwinApplication.IoC
 
                 Type BLOEntity_Type = GwinBaseBLO<BaseEntity>.Detemine_Type_EntityBLO(EntityType, GwinApp.Instance.TypeBaseBLO);
 
+
                 kernel.Register(
-              Component.For(BLOEntity_Type).ImplementedBy(BLOEntity_Type)
-                       .Interceptors(InterceptorReference.ForType<LoggingInterceptor>()).Anywhere);
+             Component.For(BLOEntity_Type).ImplementedBy(BLOEntity_Type)
+                      .Interceptors(InterceptorReference.ForType<SecurityInterceptor>()).Anywhere);
             }
-          
+
         }
     }
 }

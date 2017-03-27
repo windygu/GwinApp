@@ -16,9 +16,12 @@ namespace GenericWinFormApplication
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormMenuApplication());
+            
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new FormMenuApplication());
+           
+           
             // Application.Run(new ProjectFormMenu());
         }
     }

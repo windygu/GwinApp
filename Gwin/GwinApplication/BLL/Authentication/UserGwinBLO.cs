@@ -11,9 +11,11 @@ namespace App.Gwin.Application.BAL.Authentication
     /// <summary>
     /// User Gwin Business Logic
     /// </summary>
-    internal class UserGwinBLO
+    public class UserGwinBLO
     {
- 
+
+        User UserInstance = null;
+
         /// <summary>
         /// Create Guest User
         /// </summary>
@@ -24,5 +26,8 @@ namespace App.Gwin.Application.BAL.Authentication
             user.Name = "Guest";
             return user;
         }
+
+      
+        
     }
 }

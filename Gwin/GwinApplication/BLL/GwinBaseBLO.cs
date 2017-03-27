@@ -2,6 +2,7 @@
 using App.Gwin.Attributes;
 using App.Gwin.Entities;
 using App.Gwin.GwinApplication.IoC;
+using App.Gwin.GwinApplication.Security.Attributes;
 using Castle.DynamicProxy;
 using LinqExtension;
 using System;
@@ -96,10 +97,14 @@ namespace App.Gwin.Application.BAL
         #endregion
 
         #region Save
+
+        [Authorize]
         public virtual int Save(BaseEntity item)
         {
             return this.Save((T)item);
         }
+
+        [Authorize]
         public virtual int Save(T item)
         {
             // Calculate Order
@@ -125,6 +130,8 @@ namespace App.Gwin.Application.BAL
             }
 
         }
+
+
         protected virtual int Insert(T item)
         {
             // Business rule: The creation date equals the system date when saving
@@ -168,10 +175,12 @@ namespace App.Gwin.Application.BAL
         #endregion
 
         #region Delete
+        [Authorize]
         public virtual int Delete(BaseEntity obj)
         {
             return this.Delete(obj.Id);
         }
+        [Authorize]
         public virtual int Delete(Int64 Id)
         {
             var original = DbSet.Find(Id);
@@ -208,6 +217,7 @@ namespace App.Gwin.Application.BAL
         /// <param name="order"></param>
         /// <param name="includeProperties"></param>
         /// <returns></returns>
+        [Authorize]
         public virtual List<T> GetAll(int startPage = 0, int itemsPerPage = 0, Expression<Func<T, bool>> filter = null,
             Func<IQueryable<T>, IOrderedQueryable<T>> order = null, string includeProperties = "")
         {
@@ -234,6 +244,7 @@ namespace App.Gwin.Application.BAL
             }
             return query.ToList<T>();
         }
+        [Authorize]
         public virtual List<object> Recherche(Dictionary<string, object> rechercheInfos, int startPage = 0, int itemsPerPage = 0)
         {
             IQueryable<T> query = DbSet;
@@ -249,12 +260,13 @@ namespace App.Gwin.Application.BAL
             List<object> ls = query.ToList<object>();
             return ls;
         }
-
+        [Authorize]
         public List<object> GetAll()
         {
             List<T> ls = this.GetAll(0, 0).ToList<T>();
             return ls.ToList<Object>();
         }
+        [Authorize]
         public List<Object> GetAllDetached()
         {
 
@@ -266,6 +278,7 @@ namespace App.Gwin.Application.BAL
             return ls;
         }
 
+        [Authorize]
         public virtual T GetByID(Int64 id)
         {
             return DbSet.Find(id);

@@ -36,6 +36,7 @@ namespace App.Gwin.Entities.Secrurity.Autorizations
 
         /// <summary>
         /// Mathods Authorized Names
+        /// if ActionsNames is null or empty the the Access is All
         /// </summary>
         [EntryForm]
         [DataGrid]

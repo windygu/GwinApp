@@ -12,16 +12,16 @@ using System.Threading.Tasks;
 
 namespace App.Gwin.Entities.Secrurity.Authentication
 {
-    [GwinEntity(Localizable =true,isMaleName =true, DisplayMember = "Login")]
+    [GwinEntity(Localizable = true, isMaleName = true, DisplayMember = "Login")]
     [Menu]
-    public class User: Person
+    public class User : Person
     {
 
         public User() : base()
         {
 
         }
- 
+
         // Authentification
         // La création d'un index dans la classe Utilisateur
         // créer un index pour chaque classe fille comme 
@@ -31,10 +31,10 @@ namespace App.Gwin.Entities.Secrurity.Authentication
         // parceque les tous les index des tables prend le même nom
         // comme solution il faut nommer l'index selon le type de la classe
         // [Index("LoginIndex"  , IsUnique = true)]
-         //[StringLength(450)]
+        //[StringLength(450)]
 
-        [DisplayProperty(isInGlossary =true)]
-        [EntryForm(GroupeBox ="authentication")]
+        [DisplayProperty(isInGlossary = true)]
+        [EntryForm(GroupeBox = "authentication")]
         public string Login { set; get; }
 
         [DisplayProperty(isInGlossary = true)]
@@ -42,9 +42,36 @@ namespace App.Gwin.Entities.Secrurity.Authentication
         public string Password { set; get; }
 
 
-        public List<Role> Roles { set; get; }
+        public virtual List<Role> Roles { set; get; }
 
         public GwinApp.Languages Language { set; get; }
+
+
+
+        public Boolean HasAccess(string BusinessEntity, string action)
+        {
+            if(this.Roles == null) return false;
+            foreach (Role role in this.Roles)
+            {
+                foreach (Authorization authorization in role.Authorizations)
+                {
+                    if (authorization.BusinessEntity == BusinessEntity)
+                        if (authorization.ActionsNames != null && authorization.ActionsNames.Count > 0)
+                        {
+                            if (authorization.ActionsNames.Contains(action))
+                                return true;
+                        }
+                        else // Has All Actions 
+                        {
+                            
+                            return true;
+                        }
+                           
+
+                }
+            }
+            return false;
+        }
 
 
     }
