@@ -21,38 +21,38 @@ namespace App.Gwin.Logging
         {
             var methodName = invocation.Method.Name;
 
-          
+            invocation.Proceed();
 
-            // Check autorization attribute
-            AuthorizeAttribute authorize = null;
-            object[] AuthorizeAttributes = invocation.Method.GetCustomAttributes(typeof(AuthorizeAttribute), true);
-            if (AuthorizeAttributes != null && AuthorizeAttributes.Count() > 0)
-            {
-                authorize = (AuthorizeAttribute)AuthorizeAttributes[0];
-            }
+            //// Check autorization attribute
+            //AuthorizeAttribute authorize = null;
+            //object[] AuthorizeAttributes = invocation.Method.GetCustomAttributes(typeof(AuthorizeAttribute), true);
+            //if (AuthorizeAttributes != null && AuthorizeAttributes.Count() > 0)
+            //{
+            //    authorize = (AuthorizeAttribute)AuthorizeAttributes[0];
+            //}
 
-            if(authorize == null)
-            {
-                // Execution witout autorization
-                invocation.Proceed();
-                return;
-            }
-            else
-            {
-                IGwinBaseBLO blo = (IGwinBaseBLO)Activator.CreateInstance(invocation.Method.DeclaringType, GwinApp.Instance.TypeDBContext);
-                String EntityReference = blo.ConfigEntity.TypeOfEntity.FullName;
+            //if(authorize == null)
+            //{
+            //    // Execution witout autorization
+            //    invocation.Proceed();
+            //    return;
+            //}
+            //else
+            //{
+            //    IGwinBaseBLO blo = (IGwinBaseBLO)Activator.CreateInstance(invocation.Method.DeclaringType, GwinApp.Instance.TypeDBContext);
+            //    String EntityReference = blo.ConfigEntity.TypeOfEntity.FullName;
 
-                // Check autorization
-                if (GwinApp.Instance.user.HasAccess(EntityReference, invocation.Method.Name))
-                    invocation.Proceed();
-                else
-                {
-                    string msg = String.Format("You d'ont have permission to execute the action {0} in business object {1}",
-                        invocation.Method.Name, EntityReference);
-                    // throw new GwinAccessException();
-                    MessageToUser.AddMessage(MessageToUser.Category.BusinessRule, msg);
-                }
-            }
+            //    // Check autorization
+            //    if (GwinApp.Instance.user.HasAccess(EntityReference, invocation.Method.Name))
+            //        invocation.Proceed();
+            //    else
+            //    {
+            //        string msg = String.Format("You d'ont have permission to execute the action {0} in business object {1}",
+            //            invocation.Method.Name, EntityReference);
+            //        // throw new GwinAccessException();
+            //        MessageToUser.AddMessage(MessageToUser.Category.BusinessRule, msg);
+            //    }
+            //}
 
            
 
