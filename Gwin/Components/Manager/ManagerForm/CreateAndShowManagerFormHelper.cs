@@ -1,6 +1,7 @@
 ﻿using App;
 using App.Gwin.Application.BAL;
 using App.Gwin.Entities;
+using App.Gwin.GwinApplication.Security.Exception;
 using System;
 using System.Data.Entity;
 using System.Linq;
@@ -107,22 +108,32 @@ namespace App.Gwin.Application.Presentation.EntityManagement
         /// <param name="addForm">Entity Management Form instance  </param>
         public void ShwoForm(Form addForm)
         {
-            Cursor.Current = Cursors.WaitCursor;
-            Form form = ((BaseForm)MdiForm).MdiChildren.Where(f => f.Name == addForm.Name).FirstOrDefault();
-            if (form == null)
+            try
             {
-                addForm.MdiParent = (Form)MdiForm;
-                addForm.StartPosition = FormStartPosition.WindowsDefaultLocation;
-                addForm.WindowState = FormWindowState.Normal;
-                addForm.Show();
+                Cursor.Current = Cursors.WaitCursor;
+                Form form = ((BaseForm)MdiForm).MdiChildren.Where(f => f.Name == addForm.Name).FirstOrDefault();
+                if (form == null)
+                {
+                    addForm.MdiParent = (Form)MdiForm;
+                    addForm.StartPosition = FormStartPosition.WindowsDefaultLocation;
+                    addForm.WindowState = FormWindowState.Normal;
+                    addForm.Show();
+                }
+                else
+                {
+                    form.WindowState = FormWindowState.Normal;
+
+                }
+
+                Cursor.Current = Cursors.Default;
             }
-            else
+            catch (Exception e )
             {
-                form.WindowState = FormWindowState.Normal;
-
+                MessageBox.Show(e.Message);
+             
             }
 
-            Cursor.Current = Cursors.Default;
+           
         }
     }
 }

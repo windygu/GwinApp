@@ -22,15 +22,18 @@ namespace App.Gwin.Security
         public override void ProcessInvocation(IInvocation invocation)
         {
 
-            if (AttributeExistsOnMethod<DoNotPerformPermissionCheck>(invocation))
+            // Create Business Instance 
+            IGwinBaseBLO blo = (IGwinBaseBLO)Activator.CreateInstance(invocation.Method.DeclaringType, GwinApp.Instance.TypeDBContext);
+            String EntityReference = blo.ConfigEntity.TypeOfEntity.FullName;
+
+
+
+            if (AttributeExistsOnMethodOrEntity<DoNotPerformPermissionCheck>(invocation, blo.TypeEntity))
             {
                 // Run the intercepted method as normal.
                 invocation.Proceed();
+                return;
             }
-            //invocation.Proceed();
-
-            IGwinBaseBLO blo = (IGwinBaseBLO)Activator.CreateInstance(invocation.Method.DeclaringType, GwinApp.Instance.TypeDBContext);
-            String EntityReference = blo.ConfigEntity.TypeOfEntity.FullName;
 
             // Check autorization
             if (GwinApp.Instance.user.HasAccess(EntityReference, invocation.Method.Name))
@@ -78,7 +81,7 @@ namespace App.Gwin.Security
         //            invocation.Proceed();
         //        else
         //        {
-                     
+
         //            string msg = String.Format("You d'ont have permission to execute the action {0} in business object {1}",
         //                invocation.Method.Name, EntityReference);
         //            // throw new GwinAccessException();
@@ -90,7 +93,19 @@ namespace App.Gwin.Security
 
         //}
 
+        private static bool AttributeExistsOnMethodOrEntity<AttributeToCheck>(IInvocation invocation, Type TypeEntity)
+        {
+
+            var EntityAttributeExist = TypeEntity.GetCustomAttributes(true).Any(a => a.GetType() == typeof(AttributeToCheck));
        
+            var MethodeAttribute = Attribute.GetCustomAttribute(
+                                invocation.Method,
+                                typeof(AttributeToCheck),
+                                true);
+
+            return MethodeAttribute != null || EntityAttributeExist;
+        }
+
     }
 }
 

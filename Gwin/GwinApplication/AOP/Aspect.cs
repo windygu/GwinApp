@@ -30,7 +30,12 @@ namespace App.Gwin.GwinApplication.AOP
                 invocation.Proceed();
                 return;
             }
-            ProcessInvocation(invocation);
+
+            
+             ProcessInvocation(invocation);
+            
+             
+            
         }
 
         /// <summary>
