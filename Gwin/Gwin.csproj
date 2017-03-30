@@ -108,6 +108,7 @@
     <Compile Include="DataModel\ModelInfo\GwinBusinessEntitiesManager.cs" />
     <Compile Include="DataModel\ModelInfo\GwinEntitiesManager.cs" />
     <Compile Include="Entities\Logging\GwinActivity.cs" />
+    <Compile Include="GwinApplication\AOP\Aspect.cs" />
     <Compile Include="GwinApplication\BLL\Application\ApplicationNameBLO.cs" />
     <Compile Include="GwinApplication\BLL\Authentication\UserGwinBLO.cs" />
     <Compile Include="GwinApplication\BLL\GwinBaseBLO.cs" />
@@ -116,6 +117,7 @@
     <Compile Include="GwinApplication\IoC\ComponentRegistration.cs" />
     <Compile Include="GwinApplication\IoC\DependencyResolver.cs" />
     <Compile Include="GwinApplication\Security\Attributes\AuthorizeAttribute.cs" />
+    <Compile Include="GwinApplication\Security\Attributes\DoNotPerformPermissionCheck.cs" />
     <Compile Include="GwinApplication\Security\Exception\GwinException.cs" />
     <Compile Include="GwinApplication\Security\SecurityInterceptor.cs" />
     <Compile Include="GwinInstance\Exception\GwinUsageModeException.cs" />

@@ -9,5 +9,8 @@ namespace App.Gwin.GwinApplication.Security.Exception
 {
     class GwinAccessException : GwinException
     {
+        public GwinAccessException(string message) : base(message)
+        {
+        }
     }
 }

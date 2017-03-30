@@ -4,6 +4,7 @@ using App.Gwin.Entities;
 using App.Gwin.Entities.ContactInformations;
 using App.Gwin.Logging;
 using App.Gwin.ModelData;
+using App.Gwin.Security;
 using Castle.Core;
 using Castle.MicroKernel;
 using Castle.MicroKernel.Registration;
@@ -17,9 +18,14 @@ namespace App.Gwin.GwinApplication.IoC
         {
            
 
-            kernel.Register(
-                Component.For<SecurityInterceptor>()
-                    .ImplementedBy<SecurityInterceptor>());
+            //kernel.Register(
+            //    Component.For<SecurityInterceptor>()
+            //        .ImplementedBy<SecurityInterceptor>());
+
+            kernel.Register(Component.For<SecurityAspect>());
+            kernel.Register(Component.For<LoggingAspect>());
+
+          
 
             // Registrer All BLO Objects
             foreach (Type EntityType in new GwinEntitiesManager().GetAll_Entities_Type())
@@ -28,9 +34,17 @@ namespace App.Gwin.GwinApplication.IoC
                 Type BLOEntity_Type = GwinBaseBLO<BaseEntity>.Detemine_Type_EntityBLO(EntityType, GwinApp.Instance.TypeBaseBLO);
 
 
+                //   kernel.Register(
+                //Component.For(BLOEntity_Type).ImplementedBy(BLOEntity_Type)
+                //         .Interceptors(
+                //    InterceptorReference.ForType<SecurityInterceptor>()).Anywhere);
+
                 kernel.Register(
-             Component.For(BLOEntity_Type).ImplementedBy(BLOEntity_Type)
-                      .Interceptors(InterceptorReference.ForType<SecurityInterceptor>()).Anywhere);
+              Component.For(BLOEntity_Type).ImplementedBy(BLOEntity_Type)
+              .Interceptors(
+                  typeof(SecurityAspect),
+                  typeof(LoggingAspect)));
+
             }
 
         }

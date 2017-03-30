@@ -1,4 +1,5 @@
-﻿using Castle.DynamicProxy;
+﻿using App.Gwin.GwinApplication.AOP;
+using Castle.DynamicProxy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +11,10 @@ namespace App.Gwin.Logging
     /// <summary>
     /// Loggin Exemple Usign Castel.WinSor Library
     /// </summary>
-    public class LoggingInterceptor : IInterceptor
+    public class LoggingAspect : Aspect
     {
-        public void Intercept(IInvocation invocation)
+
+        public override void ProcessInvocation(IInvocation invocation)
         {
             var methodName = invocation.Method.Name;
 

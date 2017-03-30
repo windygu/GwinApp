@@ -15,7 +15,7 @@ namespace App.Gwin.Entities.Application
 {
     [GwinEntity(Localizable =true, DisplayMember = nameof(Code),isMaleName =true)]
     [Menu(Group ="Admin")]
-    [Authorize]
+    [DoNotPerformPermissionCheck]
     public class MenuItemApplication : BaseEntity
     {
         public MenuItemApplication()
