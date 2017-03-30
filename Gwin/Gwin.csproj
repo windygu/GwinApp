@@ -391,7 +391,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BaseEntity.resx</DependentUpon>
     </Compile>
-    <Compile Include="GwinApplication\Presentation\MainForm\ConfigMenuApplication.cs" />
+    <Compile Include="GwinApplication\Presentation\Menu\ConfigMenuApplication.cs" />
     <Compile Include="GwinApplication\Presentation\MainForm\IApplicationMenu.cs" />
     <Compile Include="GwinApplication\Presentation\IBaseForm.cs" />
     <Compile Include="DataModel\Exceptions\AffichageClasseAttributeNotExitException.cs" />

@@ -51,6 +51,7 @@ namespace App.Gwin.Entities.Secrurity.Authentication
         public Boolean HasAccess(string BusinessEntity, string action)
         {
             if(this.Roles == null) return false;
+            if (this.Roles.Any(r => r.Reference == "root")) return true;
             foreach (Role role in this.Roles)
             {
                 foreach (Authorization authorization in role.Authorizations)

@@ -5,6 +5,7 @@ using App.Gwin.Application.Presentation.MainForm;
 using App.Gwin.Entities;
 using App.Gwin.Entities.Application;
 using App.Gwin.Entities.Secrurity.Authentication;
+using App.Gwin.Entities.Secrurity.Autorizations;
 using GenericWinForm.Demo.BAL;
 using SplashScreen;
 using System;
@@ -26,6 +27,11 @@ namespace GenericWinForm.Demo
             // Application User
             User user = new User();
             user.Language = GwinApp.Languages.ar;
+
+            Role roleRoot = new Role();
+            roleRoot.Reference = "root";
+            user.Roles = new System.Collections.Generic.List<Role>();
+            user.Roles.Add(roleRoot);
 
             // Start Gwin Application
             GwinApp.Start(typeof(ModelContext), typeof(BaseBLO<>),this, user);
