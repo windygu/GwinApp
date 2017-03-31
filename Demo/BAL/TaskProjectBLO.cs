@@ -9,6 +9,8 @@ using App.Gwin.Entities;
 using App.Gwin.GwinApplication.Security.Attributes;
 using App.Gwin.FieldsTraitements;
 using App.Shared.AttributesManager;
+using App.Gwin.Logging;
+using App.Gwin.Security;
 
 namespace GenericWinForm.Demo.BAL
 {
@@ -18,6 +20,7 @@ namespace GenericWinForm.Demo.BAL
     /// because it is loaded dynamicly to executed Business Role in Gwin Application
     /// </summary>
     [Authorize]
+   
     public class TaskProjectBLO : BaseBLO<TaskProject>
     {
 
