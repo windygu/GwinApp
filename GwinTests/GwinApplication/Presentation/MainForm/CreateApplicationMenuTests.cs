@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GenericWinForm.Demo.BAL;
+using GenericWinForm.Demo.DAL;
 
 namespace App.Gwin.Application.Presentation.MainForm.Tests
 {

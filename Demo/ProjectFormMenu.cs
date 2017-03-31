@@ -4,6 +4,7 @@ using App.Gwin.Application.Presentation;
 using App.Gwin.Application.Presentation.EntityManagement;
 using App.Gwin.Entities.Secrurity.Authentication;
 using GenericWinForm.Demo.BAL;
+using GenericWinForm.Demo.DAL;
 using GenericWinForm.Demo.Entities;
 using System;
 using System.Collections.Generic;

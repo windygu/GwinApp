@@ -44,7 +44,7 @@ namespace App.Gwin.Security
                 string msg = String.Format("You d'ont have permission to execute the action {0} in business object {1}",
                     invocation.Method.Name, EntityReference);
                 throw new GwinAccessException(msg);
-               // MessageToUser.AddMessage(MessageToUser.Category.BusinessRule, msg);
+                // MessageToUser.AddMessage(MessageToUser.Category.BusinessRule, msg);
             }
         }
 
@@ -97,7 +97,7 @@ namespace App.Gwin.Security
         {
 
             var EntityAttributeExist = TypeEntity.GetCustomAttributes(true).Any(a => a.GetType() == typeof(AttributeToCheck));
-       
+
             var MethodeAttribute = Attribute.GetCustomAttribute(
                                 invocation.Method,
                                 typeof(AttributeToCheck),

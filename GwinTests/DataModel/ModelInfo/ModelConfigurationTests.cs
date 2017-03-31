@@ -9,6 +9,7 @@ using System.Reflection;
 using App.Gwin.Application.BAL.GwinApplication;
 using App.Gwin.Application.BAL;
 using App.Gwin.Application.Presentation.MainForm;
+using GenericWinForm.Demo.DAL;
 
 namespace App.Gwin.ModelData.Tests
 {

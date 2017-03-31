@@ -15,6 +15,7 @@ using App.Gwin.Exceptions.Gwin;
 using App.Gwin.DataModel.ModelInfo;
 using App.Shared.AttributesManager;
 using App.Gwin.FieldsTraitements;
+using GenericWinForm.Demo.DAL;
 
 namespace App.Gwin.Tests
 {

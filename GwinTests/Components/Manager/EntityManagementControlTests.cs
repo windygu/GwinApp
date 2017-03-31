@@ -11,6 +11,7 @@ using App.Gwin.Application.Presentation;
 using App.Gwin.Application.Presentation.EntityManagement;
 using System.Windows.Forms;
 using App.Gwin.DataModel.ModelInfo;
+using GenericWinForm.Demo.DAL;
 
 namespace App.Gwin.Tests
 {

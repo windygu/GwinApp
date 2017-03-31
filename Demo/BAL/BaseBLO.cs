@@ -17,6 +17,7 @@ using App.Gwin.Entities;
 using App.Gwin.Application.Presentation.Messages;
 using App.Gwin.Application.BAL;
 using App;
+using GenericWinForm.Demo.DAL;
 
 namespace GenericWinForm.Demo.BAL
 {
