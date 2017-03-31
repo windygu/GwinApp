@@ -107,9 +107,14 @@
     <Compile Include="DataModel\ModelInfo\GwinAssembliesManager.cs" />
     <Compile Include="DataModel\ModelInfo\GwinBusinessEntitiesManager.cs" />
     <Compile Include="DataModel\ModelInfo\GwinEntitiesManager.cs" />
+    <Compile Include="Entities\Configuration\ConfigDB.cs" />
     <Compile Include="Entities\Logging\GwinActivity.cs" />
+    <Compile Include="Enumerations\Configuration\SupportedDataBaseCategories.cs" />
+    <Compile Include="Enumerations\Configuration\SupportedServerDataBases.cs" />
+    <Compile Include="Enumerations\Configuration\SupportedLocalDataBases.cs" />
     <Compile Include="GwinApplication\BLL\Application\ApplicationNameBLO.cs" />
     <Compile Include="GwinApplication\BLL\Authentication\UserGwinBLO.cs" />
+    <Compile Include="GwinApplication\BLL\Configuration\ConfigDbBLO.cs" />
     <Compile Include="GwinApplication\BLL\GwinBaseBLO.cs" />
     <Compile Include="GwinApplication\DAL\GwinBaseDAO.cs" />
     <Compile Include="GwinApplication\DAL\IGwinBaseDAO.cs" />

@@ -16,6 +16,7 @@ using App.Gwin.Entities;
 using App.Gwin.Fields;
 using GenericWinForm.Demo.BAL;
 using App.Gwin.EntityManagement;
+using GenericWinForm.Demo.DAL;
 
 namespace App.Gwin.FieldsTraitements.Tests
 {

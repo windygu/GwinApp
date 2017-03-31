@@ -51,6 +51,7 @@ namespace App.Gwin.Logging
                         invocation.Method.Name, EntityReference);
                     // throw new GwinAccessException();
                     MessageToUser.AddMessage(MessageToUser.Category.BusinessRule, msg);
+                    invocation.Proceed();
                 }
             }
 

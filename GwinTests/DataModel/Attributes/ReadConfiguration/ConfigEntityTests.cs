@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using App.Gwin.ModelData;
 using GenericWinForm.Demo.BAL;
 using App.Gwin.Entities.Secrurity.Autorizations;
+using GenericWinForm.Demo.DAL;
 
 namespace App.Gwin.Attributes.Tests
 {

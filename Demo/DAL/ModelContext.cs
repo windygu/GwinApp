@@ -1,11 +1,12 @@
-﻿namespace App
+﻿namespace GenericWinForm.Demo.DAL
 {
+    using App.Gwin.Entities.Application;
+    using App.Gwin.Entities.ContactInformations;
+    using App.Gwin.Entities.Logging;
+    using App.Gwin.Entities.Secrurity.Authentication;
+    using App.Gwin.Entities.Secrurity.Autorizations;
+    using App.Gwin.GwinApplication.BLL.Configuration;
     using GenericWinForm.Demo.Entities;
-    using Gwin.Entities.Application;
-    using Gwin.Entities.ContactInformations;
-    using Gwin.Entities.Logging;
-    using Gwin.Entities.Secrurity.Authentication;
-    using Gwin.Entities.Secrurity.Autorizations;
     using System;
     using System.Collections.Generic;
     using System.Data.Entity;
@@ -14,12 +15,17 @@
     public class ModelContext : DbContext
     {
 
-        public ModelContext() : base(@"data source =.\SQLEXPRESS; initial catalog = gwin-demo2; user = sa; password = admintp4; MultipleActiveResultSets = True; App = EntityFramework")
-        {
+        //public ModelContext() : base(@"data source =.\SQLEXPRESS; initial catalog = gwin-demo2; user = sa; password = admintp4; MultipleActiveResultSets = True; App = EntityFramework")
+        //{
           
-        }
+        //}
 
-        public ModelContext(string connectionString):base(connectionString)
+        //public ModelContext()
+        //  : base("name=GwinDB")
+        //{
+        //}
+
+        public ModelContext() : base(new ConfigDbBLO().getConnectionString())
         {
 
         }

@@ -1,5 +1,6 @@
 ﻿namespace App.Migrations
 {
+    using GenericWinForm.Demo.DAL;
     using GenericWinForm.Demo.Entities;
     using Gwin;
     using Gwin.Application.BAL;
@@ -17,23 +18,25 @@
             ContextKey = "GwinApp";
         }
 
-        protected override void Seed(App.ModelContext context)
+        protected override void Seed(ModelContext context)
         {
             //Gin Application Name
             context.ApplicationNames.AddOrUpdate(
                            r => r.Reference
                         ,
-                        new App.Gwin.Entities.Application.ApplicationName { Reference = "Demo",
-                            Name = new Gwin.Entities.MultiLanguage.LocalizedString { Arab = "تجريب برنامج الكوين", English = "Gwin Application Demo", French = "Démonstration de l'application Gwin" } 
+                        new App.Gwin.Entities.Application.ApplicationName
+                        {
+                            Reference = "Demo",
+                            Name = new Gwin.Entities.MultiLanguage.LocalizedString { Arab = "تجريب برنامج الكوين", English = "Gwin Application Demo", French = "Démonstration de l'application Gwin" }
                         }
-                            
+
                       );
 
             // Gwin Default Rols
             context.Roles.AddOrUpdate(
                  r => r.Reference
                         ,
-              new Role { Id = 1,Reference = "Root", Name = new Gwin.Entities.MultiLanguage.LocalizedString() { Current = "Root" }, Hidden = true },
+              new Role { Id = 1, Reference = "Root", Name = new Gwin.Entities.MultiLanguage.LocalizedString() { Current = "Root" }, Hidden = true },
               new Role { Id = 2, Reference = "Admin", Name = new Gwin.Entities.MultiLanguage.LocalizedString() { Current = "Admin" } },
               new Role { Id = 3, Reference = "User", Name = new Gwin.Entities.MultiLanguage.LocalizedString() { Current = "User" } }
             );

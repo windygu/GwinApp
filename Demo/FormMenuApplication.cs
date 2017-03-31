@@ -6,6 +6,7 @@ using App.Gwin.Entities;
 using App.Gwin.Entities.Application;
 using App.Gwin.Entities.Secrurity.Authentication;
 using GenericWinForm.Demo.BAL;
+using GenericWinForm.Demo.DAL;
 using SplashScreen;
 using System;
 using System.Windows.Forms;

@@ -11,6 +11,7 @@ using App.Gwin.Application.BAL.GwinApplication;
 using App;
 using GenericWinForm.Demo.BAL;
 using App.Gwin.Entities.Secrurity.Autorizations;
+using GenericWinForm.Demo.DAL;
 
 namespace App.Gwin.Application.BAL.Tests
 {

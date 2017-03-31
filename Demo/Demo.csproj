@@ -47,6 +47,8 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity.Design" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -92,7 +94,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TaskProject.resx</DependentUpon>
     </Compile>
-    <Compile Include="EntryFormTest.cs" />
     <Compile Include="FormMenuApplication.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,49 +107,9 @@
       <DependentUpon>Form_EntryFromDemo.cs</DependentUpon>
     </Compile>
     <Compile Include="GwinAccessException.cs" />
-    <Compile Include="Migrations\201703101123300_Init_DataBase.cs" />
-    <Compile Include="Migrations\201703101123300_Init_DataBase.Designer.cs">
-      <DependentUpon>201703101123300_Init_DataBase.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703101131397_Update1.cs" />
-    <Compile Include="Migrations\201703101131397_Update1.Designer.cs">
-      <DependentUpon>201703101131397_Update1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703101201529_Update2.cs" />
-    <Compile Include="Migrations\201703101201529_Update2.Designer.cs">
-      <DependentUpon>201703101201529_Update2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703112059197_Update3.cs" />
-    <Compile Include="Migrations\201703112059197_Update3.Designer.cs">
-      <DependentUpon>201703112059197_Update3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703170930469_Update4.cs" />
-    <Compile Include="Migrations\201703170930469_Update4.Designer.cs">
-      <DependentUpon>201703170930469_Update4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703170952416_Update5.cs" />
-    <Compile Include="Migrations\201703170952416_Update5.Designer.cs">
-      <DependentUpon>201703170952416_Update5.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703171057412_Update6.cs" />
-    <Compile Include="Migrations\201703171057412_Update6.Designer.cs">
-      <DependentUpon>201703171057412_Update6.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703191702538_Update7.cs" />
-    <Compile Include="Migrations\201703191702538_Update7.Designer.cs">
-      <DependentUpon>201703191702538_Update7.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703191808339_Update8.cs" />
-    <Compile Include="Migrations\201703191808339_Update8.Designer.cs">
-      <DependentUpon>201703191808339_Update8.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703191819514_Update9.cs" />
-    <Compile Include="Migrations\201703191819514_Update9.Designer.cs">
-      <DependentUpon>201703191819514_Update9.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703211400541_Update10.cs" />
-    <Compile Include="Migrations\201703211400541_Update10.Designer.cs">
-      <DependentUpon>201703211400541_Update10.cs</DependentUpon>
+    <Compile Include="Migrations\201703280736478_CreateDataBase.cs" />
+    <Compile Include="Migrations\201703280736478_CreateDataBase.Designer.cs">
+      <DependentUpon>201703280736478_CreateDataBase.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentation\Project\ProjetView.cs">
       <SubType>UserControl</SubType>
@@ -190,38 +151,8 @@
     <EmbeddedResource Include="Form_EntryFromDemo.resx">
       <DependentUpon>Form_EntryFromDemo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703101123300_Init_DataBase.resx">
-      <DependentUpon>201703101123300_Init_DataBase.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703101131397_Update1.resx">
-      <DependentUpon>201703101131397_Update1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703101201529_Update2.resx">
-      <DependentUpon>201703101201529_Update2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703112059197_Update3.resx">
-      <DependentUpon>201703112059197_Update3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703170930469_Update4.resx">
-      <DependentUpon>201703170930469_Update4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703170952416_Update5.resx">
-      <DependentUpon>201703170952416_Update5.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703171057412_Update6.resx">
-      <DependentUpon>201703171057412_Update6.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703191702538_Update7.resx">
-      <DependentUpon>201703191702538_Update7.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703191808339_Update8.resx">
-      <DependentUpon>201703191808339_Update8.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703191819514_Update9.resx">
-      <DependentUpon>201703191819514_Update9.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703211400541_Update10.resx">
-      <DependentUpon>201703211400541_Update10.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201703280736478_CreateDataBase.resx">
+      <DependentUpon>201703280736478_CreateDataBase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\Project\ProjetView.resx">
       <DependentUpon>ProjetView.cs</DependentUpon>

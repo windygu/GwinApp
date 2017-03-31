@@ -10,6 +10,7 @@ using App.Gwin;
 using GenericWinForm.Demo.BAL;
 using App.Gwin.Application.Presentation.MainForm;
 using System.Collections.Generic;
+using GenericWinForm.Demo.DAL;
 
 namespace GenericWinFormTests.Entities
 {

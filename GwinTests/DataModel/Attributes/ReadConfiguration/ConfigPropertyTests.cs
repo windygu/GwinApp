@@ -12,6 +12,7 @@ using App.Gwin.Application.BAL.GwinApplication;
 using App.Gwin.Application.Presentation.MainForm;
 using App.Gwin;
 using GenericWinForm.Demo.BAL;
+using GenericWinForm.Demo.DAL;
 
 namespace App.Shared.AttributesManager.Tests
 {

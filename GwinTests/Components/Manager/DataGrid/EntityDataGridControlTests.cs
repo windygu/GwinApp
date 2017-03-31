@@ -13,6 +13,7 @@ using App.Gwin.Application.BAL;
 using App.Gwin.Entities;
 using App.Gwin.Exceptions.Gwin;
 using System.Reflection;
+using GenericWinForm.Demo.DAL;
 
 namespace App.Gwin.Tests
 {
