@@ -7,6 +7,7 @@ using App.Gwin.Entities.Application;
 using App.Gwin.Entities.Secrurity.Authentication;
 using App.Gwin.Exceptions.Gwin;
 using App.Gwin.GwinApplication.IoC;
+using App.Gwin.GwinApplication.Presentation.Authentication;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -54,6 +55,8 @@ namespace App.Gwin
         /// </param>
         public static void Start(Type TypeDbContext, Type TypeBaseBLO, FormApplication AppMenu, User user)
         {
+            
+
             // Lunch Loading Interface
             GwinApp.Loading_Start();
             GwinApp.Loading_Status("Start Gwin Applicaton ...");
@@ -63,7 +66,13 @@ namespace App.Gwin
             {
                 if (user == null)
                 {
-                    user = new UserGwinBLO().CreateGuestUser();
+                    // Guest User
+                    User GuestUser = new UserGwinBLO().CreateGuestUser();
+                    GwinApp.Instance = new GwinApp(TypeDbContext, TypeBaseBLO, AppMenu, GuestUser);
+
+                    // Authentification
+                    LoginForm loginForm = new LoginForm();
+                    loginForm.ShowDialog();
                 }
                 GwinApp.Instance = new GwinApp(TypeDbContext, TypeBaseBLO, AppMenu, user);
             }

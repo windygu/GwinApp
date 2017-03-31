@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.bt_Login = new System.Windows.Forms.Button();
             this.bt_cancel = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.RememberMeCheckBox = new System.Windows.Forms.CheckBox();
-            this.LoginTextBox = new System.Windows.Forms.TextBox();
             this.PasswordTextBox = new System.Windows.Forms.TextBox();
+            this.bt_Login = new System.Windows.Forms.Button();
+            this.LoginTextBox = new System.Windows.Forms.TextBox();
+            this.RememberMeCheckBox = new System.Windows.Forms.CheckBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,16 +56,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "User";
             // 
-            // bt_Login
-            // 
-            this.bt_Login.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.bt_Login.Location = new System.Drawing.Point(64, 101);
-            this.bt_Login.Name = "bt_Login";
-            this.bt_Login.Size = new System.Drawing.Size(72, 23);
-            this.bt_Login.TabIndex = 1;
-            this.bt_Login.Text = "Connection";
-            this.bt_Login.UseVisualStyleBackColor = true;
-            // 
             // bt_cancel
             // 
             this.bt_cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -76,23 +66,35 @@
             this.bt_cancel.Text = "Cancel";
             this.bt_cancel.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // PasswordTextBox
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 29);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(33, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Login";
+            this.PasswordTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.PasswordTextBox.Location = new System.Drawing.Point(65, 52);
+            this.PasswordTextBox.Name = "PasswordTextBox";
+            this.PasswordTextBox.Size = new System.Drawing.Size(206, 20);
+            this.PasswordTextBox.TabIndex = 4;
+            this.PasswordTextBox.UseSystemPasswordChar = true;
             // 
-            // label2
+            // bt_Login
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 52);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Password";
+            this.bt_Login.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.bt_Login.Location = new System.Drawing.Point(64, 101);
+            this.bt_Login.Name = "bt_Login";
+            this.bt_Login.Size = new System.Drawing.Size(72, 23);
+            this.bt_Login.TabIndex = 1;
+            this.bt_Login.Text = "Connection";
+            this.bt_Login.UseVisualStyleBackColor = true;
+            this.bt_Login.Click += new System.EventHandler(this.bt_Login_Click);
+            // 
+            // LoginTextBox
+            // 
+            this.LoginTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.LoginTextBox.Location = new System.Drawing.Point(66, 26);
+            this.LoginTextBox.Name = "LoginTextBox";
+            this.LoginTextBox.Size = new System.Drawing.Size(205, 20);
+            this.LoginTextBox.TabIndex = 3;
             // 
             // RememberMeCheckBox
             // 
@@ -104,24 +106,23 @@
             this.RememberMeCheckBox.Text = "Remember me";
             this.RememberMeCheckBox.UseVisualStyleBackColor = true;
             // 
-            // LoginTextBox
+            // label2
             // 
-            this.LoginTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.LoginTextBox.Location = new System.Drawing.Point(66, 26);
-            this.LoginTextBox.Name = "LoginTextBox";
-            this.LoginTextBox.Size = new System.Drawing.Size(205, 20);
-            this.LoginTextBox.TabIndex = 3;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 52);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(53, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Password";
             // 
-            // PasswordTextBox
+            // label1
             // 
-            this.PasswordTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.PasswordTextBox.Location = new System.Drawing.Point(65, 52);
-            this.PasswordTextBox.Name = "PasswordTextBox";
-            this.PasswordTextBox.Size = new System.Drawing.Size(206, 20);
-            this.PasswordTextBox.TabIndex = 4;
-            this.PasswordTextBox.UseSystemPasswordChar = true;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 29);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(33, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Login";
             // 
             // LoginControl
             // 

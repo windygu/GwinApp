@@ -28,6 +28,8 @@ namespace GenericWinForm.Demo
             User user = new User();
             user.Language = GwinApp.Languages.ar;
 
+            
+
             // Start Gwin Application
             GwinApp.Start(typeof(ModelContext), typeof(BaseBLO<>),this, user);
             

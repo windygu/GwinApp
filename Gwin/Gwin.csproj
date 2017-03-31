@@ -114,6 +114,7 @@
     <Compile Include="Enumerations\Configuration\SupportedLocalDataBases.cs" />
     <Compile Include="GwinApplication\AOP\Aspect.cs" />
     <Compile Include="GwinApplication\BLL\Application\ApplicationNameBLO.cs" />
+    <Compile Include="GwinApplication\BLL\Authentication\AuthenticationBLO.cs" />
     <Compile Include="GwinApplication\BLL\Authentication\UserGwinBLO.cs" />
     <Compile Include="GwinApplication\BLL\Configuration\ConfigDbBLO.cs" />
     <Compile Include="GwinApplication\BLL\GwinBaseBLO.cs" />
@@ -121,6 +122,12 @@
     <Compile Include="GwinApplication\DAL\IGwinBaseDAO.cs" />
     <Compile Include="GwinApplication\IoC\ComponentRegistration.cs" />
     <Compile Include="GwinApplication\IoC\DependencyResolver.cs" />
+    <Compile Include="GwinApplication\Presentation\Authentication\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GwinApplication\Presentation\Authentication\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GwinApplication\Security\Attributes\AuthorizeAttribute.cs" />
     <Compile Include="GwinApplication\Security\Attributes\DoNotPerformPermissionCheck.cs" />
     <Compile Include="GwinApplication\Security\Exception\GwinException.cs" />
@@ -541,6 +548,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Components\Fields\StringField.resx">
       <DependentUpon>StringField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GwinApplication\Presentation\Authentication\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GwinApplication\Presentation\MainForm\FormApplication.ar.resx">
       <DependentUpon>FormApplication.cs</DependentUpon>

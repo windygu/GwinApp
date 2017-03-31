@@ -1,4 +1,5 @@
 ﻿using App;
+using App.Gwin.GwinApplication.Presentation.Authentication;
 using GenericWinForm.Demo;
 using System;
 using System.Collections.Generic;
@@ -20,9 +21,7 @@ namespace GenericWinFormApplication
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new FormMenuApplication());
-           
-           
-            // Application.Run(new ProjectFormMenu());
+
         }
     }
 }

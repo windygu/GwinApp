@@ -1,5 +1,6 @@
 ﻿namespace App.Migrations
 {
+    using App.Gwin.Entities.Secrurity.Authentication;
     using GenericWinForm.Demo.DAL;
     using GenericWinForm.Demo.Entities;
     using Gwin;
@@ -49,6 +50,14 @@
                          new MenuItemApplication { Id = 2, Code = "Admin", Title = new Gwin.Entities.MultiLanguage.LocalizedString { Arab = "تدبير البرنامج", English = "Admin", French = "Administration" } },
                          new MenuItemApplication { Id = 3, Code = "Root", Title = new Gwin.Entities.MultiLanguage.LocalizedString { Arab = "مصمم اليرنامج", English = "Application Constructor", French = "Rélisateur de l'application" } }
                        );
+
+
+            // Giwn Degfaul User
+            context.Users.AddOrUpdate(
+                u => u.Reference,
+                new User() { Reference = "root", Login = "root", Password = "root", Name = "root" }
+                );
+
 
             // Gwin Test Default Values
             context.EntityMiniConfigs.AddOrUpdate(
