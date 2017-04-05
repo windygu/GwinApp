@@ -18,6 +18,15 @@ namespace App.Gwin.Entities.Secrurity.Autorizations
     [Menu(Group = "Root")]
     public class Role : BaseEntity
     {
+
+        public enum Roles
+        {
+            Guest,
+            User,
+            Admin,
+            Root
+        }
+
         public Role()
         {
             this.Name = new LocalizedString();

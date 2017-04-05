@@ -1,4 +1,5 @@
 ﻿using App.Gwin.Application;
+using App.Gwin.Application.BAL;
 using App.Gwin.Attributes;
 using App.Gwin.Entities.Persons;
 using App.Gwin.Entities.Secrurity.Autorizations;
@@ -16,10 +17,45 @@ namespace App.Gwin.Entities.Secrurity.Authentication
     [Menu]
     public class User : Person
     {
+        public enum Users
+        {
+            Guest,
+            Root,
+            Admin,
+            User
+        }
 
         public User() : base()
         {
 
+        }
+
+        /// <summary>
+        ///  Create Guest User
+        /// </summary>
+        /// <returns></returns>
+        public static User CreateGuestUSer()
+        {
+            User guest = new User();
+            guest.Name = nameof(User.Users.Guest);
+            guest.Reference = nameof(User.Users.Guest);
+            guest.Roles = new List<Role>();
+
+            Role RoleGuest = new Role() ;
+            RoleGuest.Reference = nameof(Role.Roles.Guest);
+            RoleGuest.Authorizations = new List<Authorization>();
+
+            // Add Autorization of UserBLO to GuestUser
+            Authorization UserAutorization = new Authorization();
+            RoleGuest.Authorizations.Add(UserAutorization);
+            UserAutorization.BusinessEntity = typeof(User).FullName;
+            UserAutorization.ActionsNames = new List<string>();
+            UserAutorization.ActionsNames.Add(nameof(IGwinBaseBLO.Recherche));
+            
+
+            guest.Roles.Add(RoleGuest);
+
+            return guest;
         }
 
         // Authentification
@@ -72,6 +108,7 @@ namespace App.Gwin.Entities.Secrurity.Authentication
             }
             return false;
         }
+ 
 
 
     }

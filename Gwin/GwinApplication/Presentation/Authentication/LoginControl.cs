@@ -24,11 +24,21 @@ namespace App.Gwin.Components.Authentication
         {
 
             if (new AuthenticationBLO().Authentication(LoginTextBox.Text, PasswordTextBox.Text))
-                this.Dispose();
+            {
+               
+                this.Parent.Dispose();
+               
+            }
+               
             else
             {
                 MessageBox.Show("Login or Password is incorrect");
             }
+        }
+
+        private void bt_cancel_Click(object sender, EventArgs e)
+        {
+            GwinApp.CloseApplication();
         }
     }
 }

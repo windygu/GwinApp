@@ -6,11 +6,13 @@ using App.Gwin.Attributes;
 using App.Gwin.Entities.Application;
 using App.Gwin.Entities.Secrurity.Authentication;
 using App.Gwin.Exceptions.Gwin;
+using App.Gwin.Exceptions.Helpers;
 using App.Gwin.GwinApplication.IoC;
 using App.Gwin.GwinApplication.Presentation.Authentication;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,6 +38,14 @@ namespace App.Gwin
                 instance = value;
             }
         }
+
+        /// <summary>
+        /// Close Application
+        /// </summary>
+        public static void CloseApplication()
+        {
+            GwinApp.instance.FormApplication.Dispose();
+        }
         #endregion
 
         #region Start Application
@@ -55,31 +65,36 @@ namespace App.Gwin
         /// </param>
         public static void Start(Type TypeDbContext, Type TypeBaseBLO, FormApplication AppMenu, User user)
         {
-            
+            // User must not be null
+            CheckPramIsNull.CheckParam_is_NotNull(user, nameof(GwinApp), nameof(user));
 
             // Lunch Loading Interface
             GwinApp.Loading_Start();
             GwinApp.Loading_Status("Start Gwin Applicaton ...");
-            
-            // Create Gwin Instance
-            if (GwinApp.instance == null)
-            {
-                if (user == null)
-                {
-                    // Guest User
-                    User GuestUser = new UserGwinBLO().CreateGuestUser();
-                    GwinApp.Instance = new GwinApp(TypeDbContext, TypeBaseBLO, AppMenu, GuestUser);
 
-                    // Authentification
-                    LoginForm loginForm = new LoginForm();
-                    loginForm.ShowDialog();
-                }
-                GwinApp.Instance = new GwinApp(TypeDbContext, TypeBaseBLO, AppMenu, user);
-            }
-
+            // Create GwinInstance to Authenticate
+            GwinApp.Instance = new GwinApp(TypeDbContext, TypeBaseBLO, AppMenu, user);
             //AOP : Initialize the dependency resolver
             DependencyResolver.Initialize();
 
+ 
+            // Authentication fo Guest User
+            // Change GuestUser by Current User
+            if (user.Reference == nameof(User.Users.Guest))
+            {
+                do
+                {
+                    // Authentification
+                    LoginForm loginForm = new LoginForm();
+                    loginForm.ShowDialog();
+                } while (GwinApp.Instance.user == null);
+
+            }
+
+            // Change Culture
+            GwinApp.instance.CultureInfo = new CultureInfo(user.Language.ToString());
+            
+            
             // Update GwinApplicatio, after  ModelConfiguration changes
             //[Update]
             // Must be befor Language Change, because SetLanguge Use MenuTable
@@ -92,7 +107,7 @@ namespace App.Gwin
                 GwinApp.SetLanguage(GwinApp.Instance.CultureInfo);
             }
 
-            
+
 
             // Load ApplicationName Instance
             IGwinBaseBLO ApplicationNameBLO = new GwinBaseBLO<ApplicationName>((DbContext)Activator.CreateInstance(instance.TypeDBContext));
@@ -132,7 +147,7 @@ namespace App.Gwin
         /// </summary>
         public static void Restart()
         {
-           
+
             GwinApp old_instance = GwinApp.instance;
             GwinApp.End();
             GwinApp.Start(old_instance.TypeDBContext, old_instance.TypeBaseBLO, old_instance.FormApplication, old_instance.user);

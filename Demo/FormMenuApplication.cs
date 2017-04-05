@@ -1,5 +1,6 @@
 ﻿using App;
 using App.Gwin;
+using App.Gwin.Application.BAL;
 using App.Gwin.Application.Presentation.EntityManagement;
 using App.Gwin.Application.Presentation.MainForm;
 using App.Gwin.Entities;
@@ -24,14 +25,11 @@ namespace GenericWinForm.Demo
 
         private void FormMenuApplication_Load(object sender, EventArgs e)
         {
-            // Application User
-            User user = new User();
-            user.Language = GwinApp.Languages.ar;
 
-            
-
-            // Start Gwin Application
-            GwinApp.Start(typeof(ModelContext), typeof(BaseBLO<>),this, user);
+            User GuestUser = User.CreateGuestUSer();
+ 
+            // Start Gwin Application with Authentification
+            GwinApp.Start(typeof(ModelContext), typeof(BaseBLO<>),this, GuestUser);
             
         }
 

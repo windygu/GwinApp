@@ -78,6 +78,7 @@ namespace App.Gwin.Application.BAL
         List<Object> GetAll();
 
         BaseEntity GetBaseEntityByID(Int64 id);
+        BaseEntity GetBaseEntityByReference(String reference);
 
         #endregion
 

@@ -33,16 +33,28 @@
 
                       );
 
-            // Gwin Default Rols
+            // Gwin  Roles
+            Role RoleGuest = null;
+            Role RoleRoot = null;
             context.Roles.AddOrUpdate(
                  r => r.Reference
                         ,
-              new Role { Id = 1, Reference = "Root", Name = new Gwin.Entities.MultiLanguage.LocalizedString() { Current = "Root" }, Hidden = true },
-              new Role { Id = 2, Reference = "Admin", Name = new Gwin.Entities.MultiLanguage.LocalizedString() { Current = "Admin" } },
-              new Role { Id = 3, Reference = "User", Name = new Gwin.Entities.MultiLanguage.LocalizedString() { Current = "User" } }
+              RoleGuest = new Role { Reference = nameof(Role.Roles.Guest), Name = new Gwin.Entities.MultiLanguage.LocalizedString() { Current = nameof(Role.Roles.Guest) } },
+              new Role { Reference = nameof(Role.Roles.User), Name = new Gwin.Entities.MultiLanguage.LocalizedString() { Current = nameof(Role.Roles.User) } },
+              new Role { Reference = nameof(Role.Roles.Admin), Name = new Gwin.Entities.MultiLanguage.LocalizedString() { Current = nameof(Role.Roles.Admin) } },
+              RoleRoot = new Role { Reference = nameof(Role.Roles.Root), Name = new Gwin.Entities.MultiLanguage.LocalizedString() { Current = nameof(Role.Roles.Root) }, Hidden = true }
             );
 
-            // Gwin Default Menu
+            // Giwn Users
+            context.Users.AddOrUpdate(
+                u => u.Reference,
+                new User() { Reference =  nameof(User.Users.Root), Login = "root", Password = "root", Name = "root" ,Roles = new List<Role>() { RoleRoot } },
+                  new User() { Reference = nameof(User.Users.Guest), Login = nameof(User.Users.Guest), Password = nameof(User.Users.Guest), Name = nameof(User.Users.Guest), Roles = new List<Role>() { RoleGuest } }
+                );
+
+            
+
+            // Gwin  Menu
             context.MenuItemApplications.AddOrUpdate(
                             r => r.Code
                          ,
@@ -52,11 +64,7 @@
                        );
 
 
-            // Giwn Degfaul User
-            context.Users.AddOrUpdate(
-                u => u.Reference,
-                new User() { Reference = "root", Login = "root", Password = "root", Name = "root" }
-                );
+           
 
 
             // Gwin Test Default Values

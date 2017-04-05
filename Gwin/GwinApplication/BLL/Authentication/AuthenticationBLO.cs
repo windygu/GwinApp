@@ -17,11 +17,11 @@ namespace App.Gwin.GwinApplication.BLL.Authentication
             User user = CheckUser(login, password);
 
             if (user == null) return false;
-
-            // Create Gwin Application Instance
-
-                 
-            return false;
+            else
+            {
+                GwinApp.Instance.user = user;
+                return true;
+            }
         }
 
         /// <summary>

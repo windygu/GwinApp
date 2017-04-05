@@ -1,5 +1,6 @@
 ﻿using App.Gwin.Application.BAL;
 using App.Gwin.Application.Presentation.Messages;
+using App.Gwin.Entities.Secrurity.Authentication;
 using App.Gwin.Exceptions.Gwin;
 using App.Gwin.GwinApplication.AOP;
 using App.Gwin.GwinApplication.Security.Attributes;
@@ -36,7 +37,7 @@ namespace App.Gwin.Security
             }
 
             // Check autorization
-            if (GwinApp.Instance.user.HasAccess(EntityReference, invocation.Method.Name))
+            if (GwinApp.Instance.user.Reference == nameof(User.Users.Root) || GwinApp.Instance.user.HasAccess(EntityReference, invocation.Method.Name))
                 invocation.Proceed();
             else
             {

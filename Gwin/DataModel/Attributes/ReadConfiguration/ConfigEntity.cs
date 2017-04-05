@@ -230,6 +230,7 @@ namespace App.Gwin.Attributes
         /// </summary>
         internal static void Despose()
         {
+            if(ConfigurationOfEntities != null)
             ConfigurationOfEntities.Clear();
         }
     }

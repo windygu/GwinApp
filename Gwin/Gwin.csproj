@@ -132,6 +132,7 @@
     <Compile Include="GwinApplication\Security\Attributes\DoNotPerformPermissionCheck.cs" />
     <Compile Include="GwinApplication\Security\Exception\GwinException.cs" />
     <Compile Include="GwinApplication\Security\SecurityInterceptor.cs" />
+    <Compile Include="GwinInstance\BaseBLO.cs" />
     <Compile Include="GwinInstance\Exception\GwinUsageModeException.cs" />
     <Compile Include="Components\Manager\EntryForms\Resources\ResourceEntryForm.ar.Designer.cs">
       <DependentUpon>ResourceEntryForm.ar.resx</DependentUpon>

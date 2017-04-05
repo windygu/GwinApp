@@ -295,6 +295,10 @@ namespace App.Gwin.Application.BAL
         {
             return DbSet.Find(id);
         }
+        public BaseEntity GetBaseEntityByReference(string reference)
+        {
+            return DbSet.Where(e => e.Reference == reference).FirstOrDefault();
+        }
         #endregion
 
         #region  Treatment of EF excretion
@@ -425,7 +429,7 @@ namespace App.Gwin.Application.BAL
                 this.ConfigEntity.Dispose();
         }
 
-        #region Static Method
+        #region Static Create Instance
 
         /// <summary>
         ///  Creating an instance of the BLO
@@ -440,6 +444,27 @@ namespace App.Gwin.Application.BAL
 
             // Load TypeEntityBLO
             Type TypeEntityBLO = Detemine_Type_EntityBLO(TypeEntity, TypeBaseBLO);
+
+            // EntityBLO = (IGwinBaseBLO)Activator.CreateInstance(TypeEntityBLO);
+            IGwinBaseBLO EntityBLO = DependencyResolver.For(TypeEntityBLO) as IGwinBaseBLO;
+
+            return EntityBLO;
+        }
+
+        /// <summary>
+        ///  Create Instance of Business Logic Object of Entity Params
+        ///  It instance BLO Class if exist
+        ///  in else case it use generic BaseBLO
+        /// </summary>
+        /// <param name="TypeEntity">The entity type</param>
+        /// <param name="TypeBaseBLO">Type of Base BLO object</param>
+        /// <returns>BLO Instance</returns>
+        public static IGwinBaseBLO Create_Instance(Type TypeBaseBLO)
+        {
+            
+
+            // Load TypeEntityBLO
+            Type TypeEntityBLO = Detemine_Type_EntityBLO(typeof(T), TypeBaseBLO);
 
             // EntityBLO = (IGwinBaseBLO)Activator.CreateInstance(TypeEntityBLO);
             IGwinBaseBLO EntityBLO = DependencyResolver.For(TypeEntityBLO) as IGwinBaseBLO;
@@ -482,6 +507,8 @@ namespace App.Gwin.Application.BAL
         {
             return ProxyUtil.GetUnproxiedType(this);
         }
+
+      
         #endregion
     }
 }

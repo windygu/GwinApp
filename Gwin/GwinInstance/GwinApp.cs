@@ -52,7 +52,7 @@ namespace App.Gwin
         public User user { set; get; }
         #endregion
 
-     
+
 
         #region Constructor
         /// <summary>
@@ -70,7 +70,7 @@ namespace App.Gwin
             this.TypeBaseBLO = TypeBaseBLO;
             this.FormApplication = applicationMenuInstance;
             this.user = user;
-            this.CultureInfo = new CultureInfo(user.Language.ToString());
+           
         }
         #endregion
     }
