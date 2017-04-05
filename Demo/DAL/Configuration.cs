@@ -6,6 +6,7 @@
     using Gwin;
     using Gwin.Application.BAL;
     using Gwin.Entities.Application;
+    using Gwin.Entities.MultiLanguage;
     using Gwin.Entities.Secrurity.Autorizations;
     using System;
     using System.Collections.Generic;
@@ -48,8 +49,8 @@
             // Giwn Users
             context.Users.AddOrUpdate(
                 u => u.Reference,
-                new User() { Reference =  nameof(User.Users.Root), Login = "root", Password = "root", Name = "root" ,Roles = new List<Role>() { RoleRoot } },
-                  new User() { Reference = nameof(User.Users.Guest), Login = nameof(User.Users.Guest), Password = nameof(User.Users.Guest), Name = nameof(User.Users.Guest), Roles = new List<Role>() { RoleGuest } }
+                new User() { Reference =  nameof(User.Users.Root), Login = "root", Password = "root", LastName = new LocalizedString() { Current = nameof(User.Users.Root) } ,Roles = new List<Role>() { RoleRoot } },
+                  new User() { Reference = nameof(User.Users.Guest), Login = nameof(User.Users.Guest), Password = nameof(User.Users.Guest), LastName = new LocalizedString() { Current = nameof(User.Users.Guest) } , Roles = new List<Role>() { RoleGuest } }
                 );
 
             
@@ -82,12 +83,12 @@
                   Description = "Create UML Uses Cases Diagrams for Club Management system",
                   LocalizedTitle = new Gwin.Entities.MultiLanguage.LocalizedString() { Arab = "تحليل وظيفي", French = "Analyse fonctionnelle" },
                   Peoples = new List<Individual>() {
-                      new Individual() { Name = "Mouad",FirstName = "Madani"},
-                      new Individual() { Name = "Mouad",FirstName = "Kamal"}
+                      new Individual() { LastName = new LocalizedString() {Current = "Mouad" },FirstName = new LocalizedString() {Current = "Madani"} }, 
+                      new Individual() { LastName = new LocalizedString() {Current = "Mouad" }  ,FirstName = new LocalizedString() {Current = "Kamal" } }
                   },
                   Responsibles = new List<Individual>() {
-                      new Individual() { Name = "Mouana", FirstName = "Chami" },
-                      new Individual() { Name = "Kamal", FirstName = "Chami" }
+                      new Individual() { LastName = new LocalizedString() {Current = "Mouana"} , FirstName =new LocalizedString() {Current = "Chami"}  },
+                      new Individual() { LastName = new LocalizedString() {Current = "Kamal"}, FirstName =new LocalizedString() {Current = "Chami"}  }
                   },
               }
 

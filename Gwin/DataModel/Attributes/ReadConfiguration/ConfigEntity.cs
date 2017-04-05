@@ -221,6 +221,17 @@ namespace App.Gwin.Attributes
             return msg;
         }
 
+        /// <summary>
+        /// Translate Msg 
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <returns></returns>
+        public string Translate(string msg)
+        {
+            string translated_msg = this.GetStringFromRessource(msg);
+            return translated_msg;
+        }
+
         public bool Dispose()
         {
            return ConfigEntity.ConfigurationOfEntities.Remove(this.TypeOfEntity);

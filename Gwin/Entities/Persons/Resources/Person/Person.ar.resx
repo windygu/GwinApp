@@ -130,15 +130,21 @@
     <value>تاريخ الميلاد</value>
   </data>
   <data name="FirstName" xml:space="preserve">
-    <value>الاسم الأول</value>
+    <value>الإسم العائلي</value>
   </data>
-  <data name="Name" xml:space="preserve">
-    <value>الاسم</value>
+  <data name="LastName" xml:space="preserve">
+    <value>الإسم الشخصي</value>
   </data>
   <data name="ProfilePhoto" xml:space="preserve">
     <value>الصور الشخصية</value>
   </data>
   <data name="ContactInformation" xml:space="preserve">
     <value>معلومات الاتصال</value>
+  </data>
+  <data name="Civil status" xml:space="preserve">
+    <value>الحالة العائلية</value>
+  </data>
+  <data name="Contact Information" xml:space="preserve">
+    <value>معلومات الأتصال</value>
   </data>
 </root>

@@ -108,8 +108,7 @@ namespace App.Gwin.EntityManagement
             int width_label = 100;
             int height_label = 25;
             int width_control = 100;
-            int height_control = 20;
-            int TabIndex = 0;
+            int height_control = 25;
 
             // List of Properties must be shown in filter
             var propertyListFilter = from i in BLO.TypeEntity.GetProperties()

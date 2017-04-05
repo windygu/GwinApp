@@ -120,6 +120,12 @@
   <data name="CIN" xml:space="preserve">
     <value>CIN</value>
   </data>
+  <data name="Civil status" xml:space="preserve">
+    <value>Civil status</value>
+  </data>
+  <data name="Contact Information" xml:space="preserve">
+    <value>Contact Information</value>
+  </data>
   <data name="ContactInformation" xml:space="preserve">
     <value>Contact Information</value>
   </data>
@@ -129,8 +135,8 @@
   <data name="FirstName" xml:space="preserve">
     <value>First Name</value>
   </data>
-  <data name="Name" xml:space="preserve">
-    <value>Name</value>
+  <data name="LastName" xml:space="preserve">
+    <value>Last Name</value>
   </data>
   <data name="PluralName" xml:space="preserve">
     <value>Persons</value>

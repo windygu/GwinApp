@@ -111,6 +111,14 @@
     <Compile Include="Migrations\201703280736478_CreateDataBase.Designer.cs">
       <DependentUpon>201703280736478_CreateDataBase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704050902006_Update1.cs" />
+    <Compile Include="Migrations\201704050902006_Update1.Designer.cs">
+      <DependentUpon>201704050902006_Update1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704050921324_Update2.cs" />
+    <Compile Include="Migrations\201704050921324_Update2.Designer.cs">
+      <DependentUpon>201704050921324_Update2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\Project\ProjetView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -153,6 +161,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703280736478_CreateDataBase.resx">
       <DependentUpon>201703280736478_CreateDataBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704050902006_Update1.resx">
+      <DependentUpon>201704050902006_Update1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704050921324_Update2.resx">
+      <DependentUpon>201704050921324_Update2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\Project\ProjetView.resx">
       <DependentUpon>ProjetView.cs</DependentUpon>

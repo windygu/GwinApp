@@ -1,5 +1,6 @@
 ﻿using App.Gwin.Attributes;
 using App.Gwin.Entities.ContactInformations;
+using App.Gwin.Entities.MultiLanguage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,21 +13,28 @@ namespace App.Gwin.Entities.Persons
     public class Person : BaseEntity
     {
 
-        public override string ToString() =>  this.Name + " " + this.FirstName;
+        public override string ToString() =>  this.LastName + " " + this.FirstName;
 
+        public Person()
+        {
+            this.LastName = new LocalizedString();
+            this.FirstName = new LocalizedString();
+            this.DateOfBirth = DateTime.Now.AddYears(-23);
+        }
 
         // Civil status
-        [DisplayProperty(Titre = "Nom")]
-        [EntryForm(Ordre = 1,GroupeBox = "Civil status")]
-        [Filter()]
-        [DataGrid(WidthColonne = 100)]
-        public String Name { set; get; }
-
-        [DisplayProperty(Titre = "Prénom")]
         [EntryForm(Ordre = 2, GroupeBox = "Civil status")]
         [Filter()]
         [DataGrid(WidthColonne = 100)]
-        public String FirstName { set; get; }
+        public LocalizedString FirstName { set; get; }
+
+        [EntryForm(Ordre = 1,GroupeBox = "Civil status")]
+        [Filter()]
+        [DataGrid(WidthColonne = 100)]
+        public LocalizedString LastName { set; get; }
+
+       
+       
 
         [DisplayProperty(Titre = "CIN")]
         [EntryForm(Ordre = 3, GroupeBox = "Civil status")]
@@ -75,9 +83,6 @@ namespace App.Gwin.Entities.Persons
 
 
 
-        public Person()
-        {
-            this.DateOfBirth = DateTime.Now.AddYears(-23);
-        }
+        
     }
 }

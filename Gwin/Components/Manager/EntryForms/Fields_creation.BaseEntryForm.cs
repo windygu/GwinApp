@@ -156,7 +156,7 @@ namespace App.Gwin
                     // CombBox
                     //
                     GroupBox groupeBox = new GroupBox();
-                    groupeBox.Text = item;
+                    groupeBox.Text = ConfigEntity.Translate(item);
                     groupeBox.AutoSize = true;
                     groupeBox.Size = new Size(width, height);
                     this.ConteneurFormulaire.Controls.Add(groupeBox);

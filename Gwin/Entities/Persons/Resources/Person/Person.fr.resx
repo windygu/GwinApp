@@ -130,15 +130,21 @@
     <value>Date de naissance</value>
   </data>
   <data name="FirstName" xml:space="preserve">
-    <value>Prénom</value>
-  </data>
-  <data name="Name" xml:space="preserve">
     <value>Nom</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Prénom</value>
   </data>
   <data name="ProfilePhoto" xml:space="preserve">
     <value>Photo de profil</value>
   </data>
   <data name="ContactInformation" xml:space="preserve">
     <value>Informations de contact</value>
+  </data>
+  <data name="Civil status" xml:space="preserve">
+    <value>Etat civile</value>
+  </data>
+  <data name="Contact Information" xml:space="preserve">
+    <value>Information de contact</value>
   </data>
 </root>

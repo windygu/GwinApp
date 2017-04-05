@@ -70,6 +70,24 @@ namespace App.Gwin.Entities.Persons.Resources.Person {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Civil status.
+        /// </summary>
+        internal static string Civil_status {
+            get {
+                return ResourceManager.GetString("Civil status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Contact Information.
+        /// </summary>
+        internal static string Contact_Information {
+            get {
+                return ResourceManager.GetString("Contact Information", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Contact Information.
         /// </summary>
         internal static string ContactInformation {
@@ -97,11 +115,11 @@ namespace App.Gwin.Entities.Persons.Resources.Person {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Name.
+        ///   Recherche une chaîne localisée semblable à Last Name.
         /// </summary>
-        internal static string Name {
+        internal static string LastName {
             get {
-                return ResourceManager.GetString("Name", resourceCulture);
+                return ResourceManager.GetString("LastName", resourceCulture);
             }
         }
         

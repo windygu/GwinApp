@@ -23,7 +23,7 @@ namespace App.Gwin.Application.BAL.Authentication
         public User CreateGuestUser()
         {
             User user = new User();
-            user.Name = "Guest";
+            user.LastName.Current = "Guest";
             return user;
         }
 

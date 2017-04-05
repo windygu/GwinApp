@@ -17,6 +17,10 @@ namespace App.Gwin.Entities.Secrurity.Authentication
     [Menu]
     public class User : Person
     {
+
+        /// <summary>
+        /// Users Categories
+        /// </summary>
         public enum Users
         {
             Guest,
@@ -30,6 +34,38 @@ namespace App.Gwin.Entities.Secrurity.Authentication
 
         }
 
+        #region BLO
+        /// <summary>
+        /// Check access permition
+        /// </summary>
+        /// <param name="BusinessEntity"></param>
+        /// <param name="action"></param>
+        /// <returns></returns>
+        public Boolean HasAccess(string BusinessEntity, string action)
+        {
+            if (this.Roles == null) return false;
+            if (this.Roles.Any(r => r.Reference == "root")) return true;
+            foreach (Role role in this.Roles)
+            {
+                foreach (Authorization authorization in role.Authorizations)
+                {
+                    if (authorization.BusinessEntity == BusinessEntity)
+                        if (authorization.ActionsNames != null && authorization.ActionsNames.Count > 0)
+                        {
+                            if (authorization.ActionsNames.Contains(action))
+                                return true;
+                        }
+                        else // Has All Actions 
+                        {
+
+                            return true;
+                        }
+
+
+                }
+            }
+            return false;
+        }
         /// <summary>
         ///  Create Guest User
         /// </summary>
@@ -37,7 +73,7 @@ namespace App.Gwin.Entities.Secrurity.Authentication
         public static User CreateGuestUser()
         {
             User guest = new User();
-            guest.Name = nameof(User.Users.Guest);
+            guest.LastName.Current = nameof(User.Users.Guest);
             guest.Reference = nameof(User.Users.Guest);
             guest.Roles = new List<Role>();
 
@@ -65,12 +101,13 @@ namespace App.Gwin.Entities.Secrurity.Authentication
         public static User CreateRootUser()
         {
             User root = new User();
-            root.Name = nameof(User.Users.Root);
+            root.LastName.Current = nameof(User.Users.Root);
             root.Reference = nameof(User.Users.Root);
             root.Roles = new List<Role>();
  
             return root;
         }
+        #endregion
 
         // Authentification
         // La création d'un index dans la classe Utilisateur
@@ -83,47 +120,21 @@ namespace App.Gwin.Entities.Secrurity.Authentication
         // [Index("LoginIndex"  , IsUnique = true)]
         //[StringLength(450)]
 
-        [DisplayProperty(isInGlossary = true)]
+        [DisplayProperty]
         [EntryForm(GroupeBox = "authentication")]
         public string Login { set; get; }
 
-        [DisplayProperty(isInGlossary = true)]
+        [DisplayProperty]
         [EntryForm(GroupeBox = "authentication")]
         public string Password { set; get; }
 
 
         public virtual List<Role> Roles { set; get; }
 
+
+        [EntryForm(GroupeBox = "authentication")]
         public GwinApp.Languages Language { set; get; }
 
-
-
-        public Boolean HasAccess(string BusinessEntity, string action)
-        {
-            if(this.Roles == null) return false;
-            if (this.Roles.Any(r => r.Reference == "root")) return true;
-            foreach (Role role in this.Roles)
-            {
-                foreach (Authorization authorization in role.Authorizations)
-                {
-                    if (authorization.BusinessEntity == BusinessEntity)
-                        if (authorization.ActionsNames != null && authorization.ActionsNames.Count > 0)
-                        {
-                            if (authorization.ActionsNames.Contains(action))
-                                return true;
-                        }
-                        else // Has All Actions 
-                        {
-                            
-                            return true;
-                        }
-                           
-
-                }
-            }
-            return false;
-        }
- 
 
 
     }
