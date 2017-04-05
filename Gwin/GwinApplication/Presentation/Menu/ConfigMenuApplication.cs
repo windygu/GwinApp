@@ -21,6 +21,7 @@ namespace App.Gwin.Application.Presentation.MainForm
         private IApplicationMenu formMenu;
         private CreateAndShowManagerFormHelper ShowManagementForm { set; get; }
         #endregion
+
         #region Variables
         private MenuStrip menuStrip;
         private Dictionary<string, Type> MenuItems { set; get; }
@@ -51,6 +52,7 @@ namespace App.Gwin.Application.Presentation.MainForm
             // Create Parent Menu from ManuItemApplication Table
             foreach (MenuItemApplication menuItemApplication in this.Service.GetAll())
             {
+
                 // ToolStripMenu
                 ToolStripMenuItem toolStripMenuItem = new ToolStripMenuItem();
                 toolStripMenuItem.Name = "toolStripMenuItem" + menuItemApplication.Code;
