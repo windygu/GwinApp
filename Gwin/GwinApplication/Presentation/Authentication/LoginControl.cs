@@ -39,6 +39,8 @@ namespace App.Gwin.Components.Authentication
         private void bt_cancel_Click(object sender, EventArgs e)
         {
             GwinApp.CloseApplication();
+            return;
+            
         }
     }
 }

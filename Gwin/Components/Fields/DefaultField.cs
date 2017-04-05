@@ -22,7 +22,7 @@ namespace App.Gwin.Fields
         {
             get
             {
-                if (this.PropertyInfo?.PropertyType.IsPrimitive == true)
+                if (this.PropertyInfo?.PropertyType.IsPrimitive == true || this.PropertyInfo?.PropertyType == typeof(string))
                 {
                     try
                     {

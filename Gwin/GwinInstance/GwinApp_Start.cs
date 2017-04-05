@@ -44,7 +44,7 @@ namespace App.Gwin
         /// </summary>
         public static void CloseApplication()
         {
-            GwinApp.instance.FormApplication.Dispose();
+            Environment.Exit(0);
         }
         #endregion
 
@@ -74,22 +74,12 @@ namespace App.Gwin
 
             // Create GwinInstance to Authenticate
             GwinApp.Instance = new GwinApp(TypeDbContext, TypeBaseBLO, AppMenu, user);
-            //AOP : Initialize the dependency resolver
+
+            //Layer configuration : Initialize the dependency resolver
             DependencyResolver.Initialize();
 
  
-            // Authentication fo Guest User
-            // Change GuestUser by Current User
-            if (user.Reference == nameof(User.Users.Guest))
-            {
-                do
-                {
-                    // Authentification
-                    LoginForm loginForm = new LoginForm();
-                    loginForm.ShowDialog();
-                } while (GwinApp.Instance.user == null);
-
-            }
+          
 
             // Change Culture
             GwinApp.instance.CultureInfo = new CultureInfo(user.Language.ToString());
@@ -131,6 +121,33 @@ namespace App.Gwin
             // Close Loading Interface
             GwinApp.Loading_Close();
 
+            // Authentification
+            Login();
+
+
+
+
+        }
+
+        /// <summary>
+        /// Authentification
+        /// </summary>
+        private static void Login()
+        {
+            // Authentication fo Guest User
+            // Change GuestUser by Current User
+            if (GwinApp.Instance.user.Reference == nameof(User.Users.Guest))
+            {
+                do
+                {
+                    // Authentification
+                    LoginForm loginForm = new LoginForm();
+                    loginForm.ShowDialog();
+                } while (GwinApp.Instance.user.Reference == nameof(User.Users.Guest));
+                GwinApp.Restart();
+            }
+
+            
         }
         /// <summary>
         /// Test id the Gwin Application is Started

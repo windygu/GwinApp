@@ -34,7 +34,7 @@ namespace App.Gwin.Entities.Secrurity.Authentication
         ///  Create Guest User
         /// </summary>
         /// <returns></returns>
-        public static User CreateGuestUSer()
+        public static User CreateGuestUser()
         {
             User guest = new User();
             guest.Name = nameof(User.Users.Guest);
@@ -56,6 +56,20 @@ namespace App.Gwin.Entities.Secrurity.Authentication
             guest.Roles.Add(RoleGuest);
 
             return guest;
+        }
+
+        /// <summary>
+        ///  Create Guest User
+        /// </summary>
+        /// <returns></returns>
+        public static User CreateRootUser()
+        {
+            User root = new User();
+            root.Name = nameof(User.Users.Root);
+            root.Reference = nameof(User.Users.Root);
+            root.Roles = new List<Role>();
+ 
+            return root;
         }
 
         // Authentification

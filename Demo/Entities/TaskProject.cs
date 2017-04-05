@@ -41,7 +41,8 @@ namespace GenericWinForm.Demo.Entities
         /// Type : DateTime
         /// </summary>
         [EntryForm]
-        [Filter]
+        // [Filter] not yet implemented, Bug : cant show Data, msut eliminate second 
+        // from search data
         [DataGrid]
         public System.DateTime StartDate { set; get; }
 
