@@ -34,6 +34,12 @@ namespace App.Gwin.Entities.Secrurity.Autorizations
         }
 
         [EntryForm(Ordre = 1)]
+        [DataGrid]
+        public string Reference { get; set; }
+
+
+
+        [EntryForm(Ordre = 1)]
         [Filter]
         [DataGrid]
         [Required]

@@ -119,6 +119,7 @@ namespace App.Gwin.FieldsTraitements
         public void ConfigFieldColumn_In_EntityDataGrid(CreateFieldColumns_In_EntityDataGrid param)
         {
             param.Column.ValueType = typeof(DateTime);
+             
             param.Column.DataPropertyName = param.ConfigProperty.PropertyInfo.Name;
             param.Column.HeaderText = param.ConfigProperty.DisplayProperty.Titre;
             param.Column.Name = param.ConfigProperty.PropertyInfo.Name;

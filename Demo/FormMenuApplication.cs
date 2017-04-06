@@ -27,7 +27,7 @@ namespace GenericWinForm.Demo
         {
             User user = null;
             user  = User.CreateGuestUser();
-            user = User.CreateRootUser();
+            //user = User.CreateRootUser();
             user.Language = GwinApp.Languages.ar;
 
             // Start Gwin Application with Authentification

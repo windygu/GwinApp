@@ -97,6 +97,15 @@ namespace App.Gwin.Entities.Secrurity.Autorizations.Resources.Role {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Reference.
+        /// </summary>
+        internal static string Reference {
+            get {
+                return ResourceManager.GetString("Reference", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Role.
         /// </summary>
         internal static string SingularName {

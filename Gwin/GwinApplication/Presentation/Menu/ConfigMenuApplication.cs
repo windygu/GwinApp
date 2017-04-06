@@ -53,7 +53,7 @@ namespace App.Gwin.Application.Presentation.MainForm
             foreach (MenuItemApplication menuItemApplication in this.Service.GetAll())
             {
 
-                // ToolStripMenu
+                // Create Menu Item
                 ToolStripMenuItem toolStripMenuItem = new ToolStripMenuItem();
                 toolStripMenuItem.Name = "toolStripMenuItem" + menuItemApplication.Code;
                 toolStripMenuItem.Size = new System.Drawing.Size(82, 20);

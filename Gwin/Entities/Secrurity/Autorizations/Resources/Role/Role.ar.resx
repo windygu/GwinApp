@@ -129,6 +129,9 @@
   <data name="PluralName" xml:space="preserve">
     <value>الأدوار</value>
   </data>
+  <data name="Reference" xml:space="preserve">
+    <value>رمز</value>
+  </data>
   <data name="SingularName" xml:space="preserve">
     <value>دور</value>
   </data>
