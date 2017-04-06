@@ -4,7 +4,7 @@
  * The source code is issued under a permissive free license, which means you can modify it as you like, and incorporate it into your own commercial or non-commercial software.
  * Enjoy!
  */
- 
+
 /*
  * @author  Ben Heddia Khalil    benhddia-khalil@live.fr
  * @version 1.0, 01/03/2014 
@@ -19,11 +19,11 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using LinqKit;
-
+using System.Threading;
 
 namespace LinqExtension
 {
-    public static class Extensions 
+    public static class Extensions
     {
         private static Type GetTypeFromString(string type)
         {
@@ -68,15 +68,15 @@ namespace LinqExtension
                         else
                         {
                             if (property.PropertyType.ToString().Contains("Int32"))
-                             {
-                                    PropertyTypeName = "Int32";
-                                    PropertyType = GetTypeFromString(PropertyTypeName);
-                             }
-                             else
-                             {
+                            {
+                                PropertyTypeName = "Int32";
+                                PropertyType = GetTypeFromString(PropertyTypeName);
+                            }
+                            else
+                            {
                                 PropertyTypeName = "Double";
                                 PropertyType = GetTypeFromString(PropertyTypeName);
-                             }
+                            }
                         }
                     }
                     else
@@ -171,6 +171,58 @@ namespace LinqExtension
 
                             return Expression.Lambda<Func<T, bool>>(Out, p);
 
+                            #endregion
+                        }
+                    case "LocalizedString":
+                        {
+                            #region traitement des LocalizedString
+
+                            // Chose Current value in body Linq expression
+                            // we can not use Cuurent , because it is not mapped property
+                            switch (Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName.ToUpperInvariant())
+                            {
+                                case "FR":
+                                    body = Expression.PropertyOrField(body, "French");
+                                    break;
+                                case "EN":
+                                    body = Expression.PropertyOrField(body, "English");
+                                    break;
+                                case "AR":
+                                    body = Expression.PropertyOrField(body, "Arab");
+                                    break;
+                            }
+
+                   
+
+                            string operation = "Contains";
+                            if (value.ToString().StartsWith("%") && !value.ToString().EndsWith("%"))
+                            {
+                                operation = "StartsWith";
+                            }
+                            else
+                            {
+                                if (!value.ToString().StartsWith("%") && value.ToString().EndsWith("%"))
+                                {
+                                    operation = "EndsWith";
+                                }
+                                else
+                                {
+                                    if (value.ToString().StartsWith("="))
+                                    {
+                                        value = value.ToString().Replace("=", "").TrimStart();
+                                    }
+                                }
+                            }
+                            value = value.ToString().Replace("%", "").Trim();
+
+                            Expression Out = Expression.Call(
+                                                Expression.Call( // <=== this one is new
+                                                    body,
+                                                    "ToUpper", null),
+                                                operation, null,   //  Param_0 => Param_0.FirstName.ToUpper().Contains("MYVALUE")
+                                                Expression.Constant(value.ToString().ToUpper()));
+
+                            return Expression.Lambda<Func<T, bool>>(Out, p);
                             #endregion
                         }
                     case "Decimal":
@@ -322,8 +374,8 @@ namespace LinqExtension
                             ConstantExpression value_id = Expression.Constant(value, typeof(Int64));
 
                             BinaryExpression EqualId = Expression.Equal(body, value_id);
-                          
-                           return   Expression.Lambda<Func<T, bool>>( EqualId,  new ParameterExpression[] { p });
+
+                            return Expression.Lambda<Func<T, bool>>(EqualId, new ParameterExpression[] { p });
                         }
                 }
             }
@@ -362,9 +414,9 @@ namespace LinqExtension
             return t;
         }
         //** For IQueryable
-        public  static IQueryable<T> CollectionToQuery<T>(this IQueryable<T> entity, Dictionary<string, List<string>> dictionary)
+        public static IQueryable<T> CollectionToQuery<T>(this IQueryable<T> entity, Dictionary<string, List<string>> dictionary)
         {
-         //**  IQueryable implementation
+            //**  IQueryable implementation
             ParameterExpression pe = Expression.Parameter(typeof(string), "entity");
             var predicate = PredicateBuilder.True<T>();
             foreach (var data in dictionary)
@@ -401,6 +453,6 @@ namespace LinqExtension
         }
 
 
-       
+
     }
 }

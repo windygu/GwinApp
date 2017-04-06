@@ -16,13 +16,13 @@ namespace App.Gwin.Entities.ContactInformations
         [EntryForm]
         [Filter]
         [DataGrid]
-        public LocalizedString Name { set; get; }
+        public  LocalizedString Name { set; get; }
 
         [EntryForm(MultiLine =true)]
         [DataGrid]
         public LocalizedString Description { set; get; }
 
-        [DataGrid]
+     
         [Relationship(Relation = RelationshipAttribute.Relations.OneToMany)]
         public virtual List<City> Citys { set; get; }
     }
