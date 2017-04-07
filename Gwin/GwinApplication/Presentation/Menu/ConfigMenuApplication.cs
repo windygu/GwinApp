@@ -72,7 +72,7 @@ namespace App.Gwin.Application.Presentation.MainForm
             foreach (MenuItemApplication menuItemApplication in this.MenuItemApplicationService.GetAll())
             {
                 //Continue if user don't have a role required by menuItemApplication roles
-                if (menuItemApplication.Roles != null)
+                if (menuItemApplication.Roles != null && menuItemApplication.Roles.Count > 0)
                     if (!GwinApp.Instance.user.HasOneOfRoles(menuItemApplication.Roles))
                         continue;
 
@@ -107,7 +107,7 @@ namespace App.Gwin.Application.Presentation.MainForm
                 SubMenuItem.ToolStripMenuItem.Size = new System.Drawing.Size(82, 20);
                 SubMenuItem.ToolStripMenuItem.Text = configEntity.Menu.Title;
                 SubMenuItem.ToolStripMenuItem.Click += ToolStripMenuItem_Click;
-
+                SubMenuItem.TypeOfEntity = menuAttributes_And_Types.Key;
 
                 // Find Parent if Exist
                 Structures.MenuItem ParentMenuItem = null;
@@ -120,7 +120,7 @@ namespace App.Gwin.Application.Presentation.MainForm
                     if (ParentMenuItem != null)
                         ParentMenuItem.Add(SubMenuItem);
                     else
-                        throw new GwinException(String.Format("the Parent {0] of {1} not exist ", configEntity.Menu.Group, toolStripMenuItem_key));
+                        throw new GwinException(String.Format("the Parent {0} of {1} not exist ", configEntity.Menu.Group, toolStripMenuItem_key));
                 }
                 else
                 {
@@ -138,7 +138,7 @@ namespace App.Gwin.Application.Presentation.MainForm
             foreach (Structures.MenuItem ParentMenuItem in this.MenuStruct.ParentMenuItems)
             {
                 // don't show Empty Parent Menu that not have Click event
-                if (ParentMenuItem.ChildsMenuItems?.Count == 0 && ParentMenuItem.isGroup) continue;
+                if ((ParentMenuItem.ChildsMenuItems == null || ParentMenuItem.ChildsMenuItems.Count == 0) && ParentMenuItem.isGroup) continue;
 
                 // Add or Update Parent-MenuItem to Menu of Application
                 // Update? is performed after Langauge change
@@ -155,11 +155,11 @@ namespace App.Gwin.Application.Presentation.MainForm
                 }
 
                 // Add Sub Menu
-                if(ParentMenuItem.ChildsMenuItems != null)
-                foreach (Structures.MenuItem SubMenuItem in ParentMenuItem.ChildsMenuItems)
-                {
-                   ParentMenuItem.ToolStripMenuItem.DropDownItems.Add(SubMenuItem.ToolStripMenuItem);
-                }
+                if (ParentMenuItem.ChildsMenuItems != null)
+                    foreach (Structures.MenuItem SubMenuItem in ParentMenuItem.ChildsMenuItems)
+                    {
+                        ParentMenuItem.ToolStripMenuItem.DropDownItems.Add(SubMenuItem.ToolStripMenuItem);
+                    }
 
             }
         }
@@ -167,8 +167,11 @@ namespace App.Gwin.Application.Presentation.MainForm
         private void ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem item = sender as ToolStripMenuItem;
-            MenuStruct.FinMenuItemByToolStripMenuItem(item);
-            this.ShowManagementForm.ShowManagerForm(MenuItems[item.Name]);
+            Structures.MenuItem menuitem = MenuStruct.FindMenuItemByToolStripMenuItem(item);
+            if (menuitem.TypeOfEntity != null)
+                this.ShowManagementForm.ShowManagerForm(menuitem.TypeOfEntity);
+            else
+                throw new GwinException(String.Format("Type of entity of MenuItem is null"));
         }
     }
 }

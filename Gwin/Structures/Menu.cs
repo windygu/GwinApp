@@ -13,22 +13,30 @@ namespace App.Gwin.Structures
     public class MenuStruct
     {
         public List<MenuItem> ParentMenuItems { set; get; }
-        
+
 
         public MenuStruct()
         {
             ParentMenuItems = new List<MenuItem>();
         }
 
-        public MenuItem FinMenuItemByToolStripMenuItem(ToolStripMenuItem item)
+        public MenuItem FindMenuItemByToolStripMenuItem(ToolStripMenuItem toolStripMenuItem)
         {
-            MenuItem ParentmenuItem = ParentMenuItems.Where(p => p.ToolStripMenuItem == item).SingleOrDefault();
-            if (ParentmenuItem != null) return ParentmenuItem;
+            
 
             foreach (MenuItem menuItem in ParentMenuItems)
             {
-                if(menu)
+                if (menuItem.ToolStripMenuItem == toolStripMenuItem)
+                    return menuItem;
+
+                if (menuItem.ChildsMenuItems != null)
+                    foreach (var item in menuItem.ChildsMenuItems)
+                    {
+                        if (item.ToolStripMenuItem == toolStripMenuItem)
+                            return item;
+                    }
             }
+            return null;
         }
     }
 }

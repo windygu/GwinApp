@@ -16,6 +16,8 @@ namespace App.Gwin.Structures
         /// is Group or Menuitem
         /// </summary>
         public bool isGroup { set; get; }
+
+        public Type TypeOfEntity { set; get; }
         /// <summary>
         /// Child Menu ITems
         /// it Value can be null 
