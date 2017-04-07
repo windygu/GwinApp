@@ -503,6 +503,8 @@
     </Compile>
     <Compile Include="GwinInstance\GwinApp.cs" />
     <Compile Include="Lib\Resources\RessoucesManagerHelper.cs" />
+    <Compile Include="Structures\Menu.cs" />
+    <Compile Include="Structures\MenuItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Entities\ClassDiagramGenericWinForm.cd" />

@@ -44,7 +44,7 @@ namespace App.Gwin.Entities.Secrurity.Authentication
         public Boolean HasAccess(string BusinessEntity, string action)
         {
             if (this.Roles == null) return false;
-            if (this.Roles.Any(r => r.Reference == "root")) return true;
+            if (this.Roles.Any(r => r.Reference == nameof(Role.Roles.Root))) return true;
             foreach (Role role in this.Roles)
             {
                 foreach (Authorization authorization in role.Authorizations)
@@ -52,6 +52,7 @@ namespace App.Gwin.Entities.Secrurity.Authentication
                     if (authorization.BusinessEntity == BusinessEntity)
                         if (authorization.ActionsNames != null && authorization.ActionsNames.Count > 0)
                         {
+                            if(action == "Any") return true;
                             if (authorization.ActionsNames.Contains(action))
                                 return true;
                         }
@@ -66,6 +67,27 @@ namespace App.Gwin.Entities.Secrurity.Authentication
             }
             return false;
         }
+
+        /// <summary>
+        /// Check if user have acces to Entity
+        /// </summary>
+        /// <param name="TypeOfEntity">Type of Entity</param>
+        /// <returns>Persmission </returns>
+        public Boolean HasAccess(Type TypeOfEntity)
+        {
+           return this.HasAccess(TypeOfEntity.FullName, "Any");
+        }
+
+        /// <summary>
+        /// Check user if have one of Roles list
+        /// </summary>
+        /// <param name="roles">List of Role to check</param>
+        public bool HasOneOfRoles(List<Role> roles)
+        {
+            if (roles == null || this.Roles == null) return false;
+            return roles.Any(r => this.Roles.Contains(r));
+        }
+
         /// <summary>
         ///  Create Guest User
         /// </summary>

@@ -1,6 +1,7 @@
 ﻿using App.Gwin.Attributes;
 using App.Gwin.Entities.Application;
 using App.Gwin.Entities.MultiLanguage;
+using App.Gwin.Entities.Secrurity.Authentication;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -61,6 +62,7 @@ namespace App.Gwin.Entities.Secrurity.Autorizations
         public virtual List<Authorization> Authorizations { set; get; }
 
         public  List<MenuItemApplication> MenuItemApplications { set; get; }
+        public List<User> Users { set; get; }
 
     }
 }

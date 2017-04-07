@@ -5,6 +5,7 @@ using App.Gwin.Entities;
 using App.Gwin.Entities.Application;
 using App.Gwin.Exceptions.Gwin;
 using App.Gwin.ModelData;
+using App.Gwin.Structures;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,109 +14,160 @@ using System.Windows.Forms;
 namespace App.Gwin.Application.Presentation.MainForm
 {
     /// <summary>
-    /// Application Menu Configuration
+    /// Create Menu of Application
     /// </summary>
     public class CreateApplicationMenu
     {
-        #region Params
-        private IApplicationMenu formMenu;
+        #region Properites and Params
+        /// <summary>
+        /// MDI Form that cotrain Menu of Application
+        /// </summary>
+        private IApplicationMenu MdiFormWithMenu;
+        /// <summary>
+        /// Helper to Show Management Form
+        /// </summary>
         private CreateAndShowManagerFormHelper ShowManagementForm { set; get; }
-        #endregion
-
-        #region Variables
+        /// <summary>
+        /// Menu Instance of MDI Form
+        /// </summary>
         private MenuStrip menuStrip;
+
+        private MenuStruct MenuStruct { set; get; }
+
+        /// <summary>
+        /// Dictionary : MenuItems Structure
+        /// </summary>
         private Dictionary<string, Type> MenuItems { set; get; }
-        private IGwinBaseBLO Service { get;  set; }
+
+        private IGwinBaseBLO MenuItemApplicationService { get; set; }
         #endregion
 
         /// <summary>
-        /// Create Application Menu
+        /// Constructori : Create Application Menu
         /// </summary>
         /// <param name="FormMenu">MDI Form that cotrain Menu of Application</param>
         public CreateApplicationMenu(IApplicationMenu FormMenu)
         {
-            this.formMenu = FormMenu;
+            this.MdiFormWithMenu = FormMenu;
             this.menuStrip = FormMenu.getMenuStrip();
+            // MenuStruct
             MenuItems = new Dictionary<string, Type>();
-            this.ShowManagementForm = new CreateAndShowManagerFormHelper(GwinApp.Instance.TypeDBContext,FormMenu);
-            this.Service = GwinBaseBLO<BaseEntity>
-                .CreateBLO_Instance(typeof(MenuItemApplication),GwinApp.Instance.TypeBaseBLO);
-            this.CreateMenu();
+            MenuStruct = new MenuStruct();
+
+            this.ShowManagementForm = new CreateAndShowManagerFormHelper(GwinApp.Instance.TypeDBContext, FormMenu);
+            this.MenuItemApplicationService = GwinBaseBLO<BaseEntity>
+                .CreateBLO_Instance(typeof(MenuItemApplication), GwinApp.Instance.TypeBaseBLO);
+
+            this.CalculateMenuItems();
+            this.ShowMenuItems();
         }
 
 
         /// <summary>
-        /// Create Menu from ModelConfig
+        /// Calculate MenuItmes from DataBase and Model Config
         /// </summary>
-        private void CreateMenu()
+        private void CalculateMenuItems()
         {
-            // Create Parent Menu from ManuItemApplication Table
-            foreach (MenuItemApplication menuItemApplication in this.Service.GetAll())
+            // Create Parent groups Menu from ManuItemApplication Table
+            foreach (MenuItemApplication menuItemApplication in this.MenuItemApplicationService.GetAll())
             {
+                //Continue if user don't have a role required by menuItemApplication roles
+                if (menuItemApplication.Roles != null)
+                    if (!GwinApp.Instance.user.HasOneOfRoles(menuItemApplication.Roles))
+                        continue;
 
-                // Create Menu Item
-                ToolStripMenuItem toolStripMenuItem = new ToolStripMenuItem();
-                toolStripMenuItem.Name = "toolStripMenuItem" + menuItemApplication.Code;
-                toolStripMenuItem.Size = new System.Drawing.Size(82, 20);
-                if(menuItemApplication.Title.Current != string.Empty)
-                {
-                    toolStripMenuItem.Text = menuItemApplication.Title.Current;
-                }
-               
-                else
-                {
-                    toolStripMenuItem.Text = menuItemApplication.Code;
-                }
-                // Add or Update Item in Menu after Langauge change
-               if( this.menuStrip.Items.Find(toolStripMenuItem.Name, true).Count() == 0)
-                {
-                    // new
-                    this.menuStrip.Items.Add(toolStripMenuItem);
-                }else
-                {
-                    // Update
-                    ToolStripItem toolStripItem =  this.menuStrip.Items.Find(toolStripMenuItem.Name, true).First();
-                    toolStripItem.Text = toolStripMenuItem.Text;
-                }
-               
+                // Create Parent Menu Item
+                Structures.MenuItem menuItem = new Structures.MenuItem(true);
+
+                menuItem.ToolStripMenuItem.Name = "toolStripMenuItem" + menuItemApplication.Code;
+                menuItem.ToolStripMenuItem.Size = new System.Drawing.Size(82, 20);
+                // Title
+                menuItem.ToolStripMenuItem.Text = (menuItemApplication.Title.Current != string.Empty)
+                    ? menuItemApplication.Title.Current
+                    : menuItem.ToolStripMenuItem.Text = menuItemApplication.Code;
+
+                MenuStruct.ParentMenuItems.Add(menuItem);
+
             }
 
 
-            // Create MenuItems from ModelCondiguration Entities
+            // Create SubMenu MenuItems from ModelCondiguration Entities
             Dictionary<Type, MenuAttribute> MenuAttributes_And_Types = new ModelConfiguration().Get_All_Type_And_MenuAttributes();
             foreach (var menuAttributes_And_Types in MenuAttributes_And_Types)
             {
+                // Continue if User dont have persmission
+                if (!GwinApp.Instance.user.HasAccess(menuAttributes_And_Types.Key)) continue;
 
                 ConfigEntity configEntity = ConfigEntity.CreateConfigEntity(menuAttributes_And_Types.Key);
 
-                // ToolStripMenu
-                ToolStripMenuItem toolStripMenuItem = new ToolStripMenuItem();
-                toolStripMenuItem.Name = configEntity.TypeOfEntity.FullName;
-                toolStripMenuItem.Size = new System.Drawing.Size(82, 20);
-                toolStripMenuItem.Text = configEntity.Menu.Title;
-                toolStripMenuItem.Click += ToolStripMenuItem_Click;
-                MenuItems.Add(toolStripMenuItem.Name, menuAttributes_And_Types.Key);
+                // Create MenuItem and Save to Dictionary MenyItem
+                Structures.MenuItem SubMenuItem = new Structures.MenuItem(false);
 
-                // Find Parent
-                if (configEntity.Menu.Group != null) {
+                SubMenuItem.ToolStripMenuItem.Name = configEntity.TypeOfEntity.FullName;
+                SubMenuItem.ToolStripMenuItem.Size = new System.Drawing.Size(82, 20);
+                SubMenuItem.ToolStripMenuItem.Text = configEntity.Menu.Title;
+                SubMenuItem.ToolStripMenuItem.Click += ToolStripMenuItem_Click;
+
+
+                // Find Parent if Exist
+                Structures.MenuItem ParentMenuItem = null;
+                if (configEntity.Menu.Group != null)
+                {
                     string toolStripMenuItem_key = "toolStripMenuItem" + configEntity.Menu.Group;
-                    ToolStripItem GroupeToolStripItem = this.menuStrip.Items.Find(toolStripMenuItem_key, true).SingleOrDefault();
-                    ToolStripMenuItem GroupeToolStripMenuItem = GroupeToolStripItem as ToolStripMenuItem;
-                    if (GroupeToolStripMenuItem != null)
-                        GroupeToolStripMenuItem.DropDownItems.Add(toolStripMenuItem);
+                    ParentMenuItem = MenuStruct.ParentMenuItems.Where(m => m.ToolStripMenuItem.Name == toolStripMenuItem_key).SingleOrDefault();
+
+                    // If parrent exist
+                    if (ParentMenuItem != null)
+                        ParentMenuItem.Add(SubMenuItem);
                     else
-                        throw new GwinException(toolStripMenuItem_key + " not exist in Menu of Application");
+                        throw new GwinException(String.Format("the Parent {0] of {1} not exist ", configEntity.Menu.Group, toolStripMenuItem_key));
                 }
                 else
                 {
-                    this.menuStrip.Items.Add(toolStripMenuItem);
+                    this.MenuStruct.ParentMenuItems.Add(SubMenuItem);
                 }
+            }
+        }
+
+        /// <summary>
+        /// Show Menu Items from MenuStruct
+        /// </summary>
+        private void ShowMenuItems()
+        {
+            // Create Parent Menu in Menu Of Application  
+            foreach (Structures.MenuItem ParentMenuItem in this.MenuStruct.ParentMenuItems)
+            {
+                // don't show Empty Parent Menu that not have Click event
+                if (ParentMenuItem.ChildsMenuItems?.Count == 0 && ParentMenuItem.isGroup) continue;
+
+                // Add or Update Parent-MenuItem to Menu of Application
+                // Update? is performed after Langauge change
+                if (this.menuStrip.Items.Find(ParentMenuItem.ToolStripMenuItem.Name, true).Count() == 0)
+                {
+                    // new
+                    this.menuStrip.Items.Add(ParentMenuItem.ToolStripMenuItem);
+                }
+                else
+                {
+                    // Update
+                    ToolStripItem toolStripItem = this.menuStrip.Items.Find(ParentMenuItem.ToolStripMenuItem.Name, true).First();
+                    toolStripItem.Text = ParentMenuItem.ToolStripMenuItem.Text;
+                }
+
+                // Add Sub Menu
+                if(ParentMenuItem.ChildsMenuItems != null)
+                foreach (Structures.MenuItem SubMenuItem in ParentMenuItem.ChildsMenuItems)
+                {
+                   ParentMenuItem.ToolStripMenuItem.DropDownItems.Add(SubMenuItem.ToolStripMenuItem);
+                }
+
             }
         }
 
         private void ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem item = sender as ToolStripMenuItem;
+            MenuStruct.FinMenuItemByToolStripMenuItem(item);
             this.ShowManagementForm.ShowManagerForm(MenuItems[item.Name]);
         }
     }
