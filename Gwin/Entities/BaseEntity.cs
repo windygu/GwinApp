@@ -3,6 +3,7 @@ using App.Gwin.Entities.Secrurity.Authentication;
 using App.Gwin.Exceptions.Gwin;
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.Core.Objects;
 using System.Linq;
 using System.Reflection;
@@ -32,6 +33,8 @@ namespace App.Gwin.Entities
         /// <summary>
         /// Unique reference of Entity
         /// </summary>
+        /// 
+      
         public string Reference { get; set; }
 
         [DisplayProperty(isInGlossary = true)]

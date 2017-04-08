@@ -13,11 +13,25 @@ namespace App.Gwin.Components.Authentication
 {
     public partial class LoginControl : UserControl
     {
+        /// <summary>
+        /// Indicate if authentication is valide
+        /// </summary>
+        public bool LoginValide { get;  set; }
+
         public LoginControl()
         {
             InitializeComponent();
             RememberMeCheckBox.Enabled = false;
-           
+            
+
+
+
+
+        }
+
+        public IButtonControl GetConnexionButton()
+        {
+            return bt_Login;
         }
 
         private void bt_Login_Click(object sender, EventArgs e)
@@ -25,7 +39,8 @@ namespace App.Gwin.Components.Authentication
 
             if (new AuthenticationBLO().Authentication(LoginTextBox.Text, PasswordTextBox.Text))
             {
-               
+
+                this.LoginValide = true;
                 this.Parent.Dispose();
                
             }

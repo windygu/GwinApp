@@ -140,8 +140,12 @@ namespace LinqExtension
                     case "String":
                         {
                             #region traitement des string
+                            MethodInfo equalsMethod = null; 
+                           
+
 
                             string operation = "Contains";
+                            
                             if (value.ToString().StartsWith("%") && !value.ToString().EndsWith("%"))
                             {
                                 operation = "StartsWith";
@@ -157,18 +161,36 @@ namespace LinqExtension
                                     if (value.ToString().StartsWith("="))
                                     {
                                         value = value.ToString().Replace("=", "").TrimStart();
+                                       //  operation = "Equals" ; not work
+                                        equalsMethod = typeof(string).GetMethod("Equals", new[] { typeof(string) });
+
                                     }
                                 }
                             }
                             value = value.ToString().Replace("%", "").Trim();
 
-                            Expression Out = Expression.Call(
-                                                Expression.Call( // <=== this one is new
-                                                    body,
-                                                    "ToUpper", null),
-                                                operation, null,   //  Param_0 => Param_0.FirstName.ToUpper().Contains("MYVALUE")
-                                                Expression.Constant(value.ToString().ToUpper()));
+                            Expression Out = null;
+                            if (equalsMethod == null)
+                            {
+                                 Out = Expression.Call(
+                                               Expression.Call( // <=== this one is new
+                                                   body,
+                                                   "ToUpper", null),
+                                               operation, null,   //  Param_0 => Param_0.FirstName.ToUpper().Contains("MYVALUE")
+                                               Expression.Constant(value.ToString().ToUpper()));
 
+                            }
+                            else
+                            {
+                                 Out = Expression.Call(
+                                               Expression.Call( // <=== this one is new
+                                                   body,
+                                                   "ToUpper", null),
+                                               equalsMethod,   //  Param_0 => Param_0.FirstName.ToUpper().Contains("MYVALUE")
+                                               Expression.Constant(value.ToString().ToUpper()));
+
+
+                            }
                             return Expression.Lambda<Func<T, bool>>(Out, p);
 
                             #endregion

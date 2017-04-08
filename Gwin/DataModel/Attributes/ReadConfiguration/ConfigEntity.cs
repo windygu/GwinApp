@@ -239,7 +239,7 @@ namespace App.Gwin.Attributes
         /// <summary>
         /// Delete all ConfigEntity object
         /// </summary>
-        internal static void Despose()
+        public static void Despose()
         {
             if(ConfigurationOfEntities != null)
             ConfigurationOfEntities.Clear();

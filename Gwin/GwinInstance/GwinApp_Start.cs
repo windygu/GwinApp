@@ -142,6 +142,8 @@ namespace App.Gwin
                 {
                     // Authentification
                     LoginForm loginForm = new LoginForm();
+                 
+                    loginForm.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
                     loginForm.ShowDialog();
                 } while (GwinApp.Instance.user.Reference == nameof(User.Users.Guest));
                 GwinApp.Restart();

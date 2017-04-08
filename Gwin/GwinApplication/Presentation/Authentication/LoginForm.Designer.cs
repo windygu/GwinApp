@@ -28,24 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.loginControl1 = new App.Gwin.Components.Authentication.LoginControl();
             this.SuspendLayout();
             // 
             // loginControl1
             // 
-            this.loginControl1.Location = new System.Drawing.Point(12, 12);
+            resources.ApplyResources(this.loginControl1, "loginControl1");
             this.loginControl1.Name = "loginControl1";
-            this.loginControl1.Size = new System.Drawing.Size(298, 137);
-            this.loginControl1.TabIndex = 0;
             // 
             // LoginForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(318, 158);
             this.Controls.Add(this.loginControl1);
             this.Name = "LoginForm";
-            this.Text = "LoginForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.LoginForm_FormClosed);
             this.ResumeLayout(false);
 
         }

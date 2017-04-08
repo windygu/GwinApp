@@ -36,8 +36,8 @@ namespace App.Gwin.GwinApplication.BLL.Authentication
             IGwinBaseBLO userBLO = GwinBaseBLO<User>.CreateBLO_Instance(typeof(User), GwinApp.Instance.TypeBaseBLO);
 
             Dictionary<string, object> rechercheInfos = new Dictionary<string, object>();
-            rechercheInfos.Add(nameof(User.Login), login);
-            rechercheInfos.Add(nameof(User.Password), password);
+            rechercheInfos.Add(nameof(User.Login), "="+login);
+            rechercheInfos.Add(nameof(User.Password), "="+password);
 
             List<object> resultat = userBLO.Recherche(rechercheInfos);
             if (resultat != null && resultat.Count > 0)

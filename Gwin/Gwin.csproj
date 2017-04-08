@@ -552,6 +552,15 @@
     <EmbeddedResource Include="Components\Fields\StringField.resx">
       <DependentUpon>StringField.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GwinApplication\Presentation\Authentication\LoginControl.ar.resx">
+      <DependentUpon>LoginControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GwinApplication\Presentation\Authentication\LoginForm.ar.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GwinApplication\Presentation\Authentication\LoginForm.fr.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GwinApplication\Presentation\Authentication\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>

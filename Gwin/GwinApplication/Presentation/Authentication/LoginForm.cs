@@ -15,6 +15,25 @@ namespace App.Gwin.GwinApplication.Presentation.Authentication
         public LoginForm()
         {
             InitializeComponent();
+
+            this.AcceptButton = loginControl1.GetConnexionButton();
+            // Change Form Direction  - When  Languauge is changed
+            if (GwinApp.Instance.CultureInfo.TwoLetterISOLanguageName == "fr" || GwinApp.Instance.CultureInfo.TwoLetterISOLanguageName == "en")
+            {
+                this.RightToLeftLayout = false;
+                this.RightToLeft = RightToLeft.No;
+            }
+            else
+            {
+                this.RightToLeftLayout = true;
+                this.RightToLeft = RightToLeft.Yes;
+            }
+        }
+
+        private void LoginForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (!loginControl1.LoginValide)
+                GwinApp.CloseApplication();
         }
     }
 }
