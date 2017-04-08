@@ -1,5 +1,6 @@
 ﻿using App.Gwin.Attributes;
 using App.Gwin.Entities;
+using App.Gwin.Entities.Application;
 using App.Gwin.Entities.MultiLanguage;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 namespace App.Gwin.Entities.ContactInformations
 {
     [GwinEntity(Localizable =true, isMaleName = false,DisplayMember = "Name")]
-    [Menu(Group = "Configuration")]
+    [Menu(Group = nameof(MenuItemApplication.ParentsMenuItem.Configuration))]
     [SelectionCriteria(typeof(Country))]
     public class City : BaseEntity
     {

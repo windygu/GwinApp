@@ -16,7 +16,7 @@ namespace App.Gwin.Entities.Secrurity.Autorizations
     /// BaseBAO
     /// </summary>
     [GwinEntity(DisplayMember = "Name",Localizable =true)]
-    [Menu(Group = "Root")]
+    [Menu(Group = nameof(MenuItemApplication.ParentsMenuItem.Root))]
     public class Role : BaseEntity
     {
 

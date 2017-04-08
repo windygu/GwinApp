@@ -1,5 +1,6 @@
 ﻿using App.Gwin.Attributes;
 using App.Gwin.DataModel.ModelInfo;
+using App.Gwin.Entities.Application;
 using App.Gwin.GwinApplication.Security.Attributes;
 using App.Gwin.ModelData;
 using System;
@@ -12,7 +13,7 @@ namespace App.Gwin.Entities.Secrurity.Autorizations
 
 {
     [GwinEntity(DisplayMember = nameof(Authorization.Name), Localizable = true)]
-    [Menu(Group = "Root")]
+    [Menu(Group = nameof(MenuItemApplication.ParentsMenuItem.Root))]
     public class Authorization : BaseEntity
     {
         [Filter]
@@ -61,6 +62,6 @@ namespace App.Gwin.Entities.Secrurity.Autorizations
 
         [EntryForm]
         [Relationship(Relation = RelationshipAttribute.Relations.ManyToMany_Selection)]
-        public List<Role> Roles { set; get; }
+        public virtual List<Role> Roles { set; get; }
     }
 }

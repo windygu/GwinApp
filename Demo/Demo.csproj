@@ -123,6 +123,10 @@
     <Compile Include="Migrations\201704071152598_Update3.Designer.cs">
       <DependentUpon>201704071152598_Update3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704080937142_Update_Login_Unique.cs" />
+    <Compile Include="Migrations\201704080937142_Update_Login_Unique.Designer.cs">
+      <DependentUpon>201704080937142_Update_Login_Unique.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\Project\ProjetView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -174,6 +178,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704071152598_Update3.resx">
       <DependentUpon>201704071152598_Update3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704080937142_Update_Login_Unique.resx">
+      <DependentUpon>201704080937142_Update_Login_Unique.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\Project\ProjetView.resx">
       <DependentUpon>ProjetView.cs</DependentUpon>

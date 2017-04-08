@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace App.Gwin.Entities.Application
 {
     [GwinEntity(Localizable =true,isMaleName =false,DisplayMember ="Name",PluralName ="Applications",SingularName = "Application")]
-    [Menu(Group ="Root")]
+    [Menu(Group =nameof(MenuItemApplication.ParentsMenuItem.Root))]
     [Authorize]
     public class ApplicationName : BaseEntity
     {

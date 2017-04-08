@@ -1,6 +1,7 @@
 ﻿using App.Gwin.Application;
 using App.Gwin.Application.BAL;
 using App.Gwin.Attributes;
+using App.Gwin.Entities.Application;
 using App.Gwin.Entities.Persons;
 using App.Gwin.Entities.Secrurity.Autorizations;
 using System;
@@ -14,7 +15,7 @@ using System.Threading.Tasks;
 namespace App.Gwin.Entities.Secrurity.Authentication
 {
     [GwinEntity(Localizable = true, isMaleName = true, DisplayMember = "Login")]
-    [Menu]
+    [Menu(Group = nameof(MenuItemApplication.ParentsMenuItem.Configuration))]
     public class User : Person
     {
 
@@ -144,18 +145,23 @@ namespace App.Gwin.Entities.Secrurity.Authentication
 
         [DisplayProperty]
         [EntryForm(GroupeBox = "authentication")]
+        [StringLength(255)]
+        [Index("IX_Login", 1, IsUnique = true)]
         public string Login { set; get; }
 
         [DisplayProperty]
         [EntryForm(GroupeBox = "authentication")]
         public string Password { set; get; }
 
-
-        public virtual List<Role> Roles { set; get; }
+        
 
 
         [EntryForm(GroupeBox = "authentication")]
         public GwinApp.Languages Language { set; get; }
+
+        [EntryForm(GroupeBox = "authentication")]
+        [Relationship(Relation = RelationshipAttribute.Relations.ManyToMany_Selection)]
+        public virtual List<Role> Roles { set; get; }
 
 
 

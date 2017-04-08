@@ -14,10 +14,18 @@ using System.Threading.Tasks;
 namespace App.Gwin.Entities.Application
 {
     [GwinEntity(Localizable =true, DisplayMember = nameof(Code),isMaleName =true)]
-    [Menu(Group ="Admin")]
+    [Menu(Group = nameof(MenuItemApplication.ParentsMenuItem.Admin))]
     [DoNotPerformPermissionCheck]
     public class MenuItemApplication : BaseEntity
     {
+
+        public enum ParentsMenuItem
+        {
+            Admin,
+            Root,
+            Configuration
+        }
+
         public MenuItemApplication()
         {
             this.Title = new LocalizedString();
