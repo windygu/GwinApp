@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -93,41 +94,46 @@ namespace App.Gwin.Entities.Secrurity.Authentication
         ///  Create Guest User
         /// </summary>
         /// <returns></returns>
-        public static User CreateGuestUser()
+        public static User CreateGuestUser(DbContext dbContext)
         {
-            User guest = new User();
-            guest.LastName.Current = nameof(User.Users.Guest);
-            guest.Reference = nameof(User.Users.Guest);
-            guest.Roles = new List<Role>();
 
-            Role RoleGuest = new Role() ;
-            RoleGuest.Reference = nameof(Role.Roles.Guest);
-            RoleGuest.Authorizations = new List<Authorization>();
+            // Load Root User from DataBase
+            // Create BLO Instance
 
-            // Add Autorization of UserBLO to GuestUser
-            Authorization UserAutorization = new Authorization();
-            RoleGuest.Authorizations.Add(UserAutorization);
-            UserAutorization.BusinessEntity = typeof(User).FullName;
-            UserAutorization.ActionsNames = new List<string>();
-            UserAutorization.ActionsNames.Add(nameof(IGwinBaseBLO.Recherche));
-            
 
-            guest.Roles.Add(RoleGuest);
 
+            User guest = dbContext.Set<User>().Where(u => u.Reference == nameof(User.Users.Guest)).FirstOrDefault();
             return guest;
+
+            //User guest = new User();
+            //guest.LastName.Current = nameof(User.Users.Guest);
+            //guest.Reference = nameof(User.Users.Guest);
+            //guest.Roles = new List<Role>();
+
+            //Role RoleGuest = new Role() ;
+            //RoleGuest.Reference = nameof(Role.Roles.Guest);
+            //RoleGuest.Authorizations = new List<Authorization>();
+
+            //// Add Autorization of UserBLO to GuestUser
+            //Authorization UserAutorization = new Authorization();
+            //RoleGuest.Authorizations.Add(UserAutorization);
+            //UserAutorization.BusinessEntity = typeof(User).FullName;
+            //UserAutorization.ActionsNames = new List<string>();
+            //UserAutorization.ActionsNames.Add(nameof(IGwinBaseBLO.Recherche));
+
+
+            //guest.Roles.Add(RoleGuest);
+
+            //return guest;
         }
 
         /// <summary>
         ///  Create Guest User
         /// </summary>
         /// <returns></returns>
-        public static User CreateRootUser()
+        public static User CreateRootUser(DbContext dbContext)
         {
-            User root = new User();
-            root.LastName.Current = nameof(User.Users.Root);
-            root.Reference = nameof(User.Users.Root);
-            root.Roles = new List<Role>();
- 
+            User root = dbContext.Set<User>().Where(u => u.Reference == nameof(User.Users.Root)).FirstOrDefault();
             return root;
         }
         #endregion

@@ -1,2 +1,2 @@
-1 + Form - Loading avec Exception
-2 - Chang Langauge with showen ManagerForm not work
+Defaukt User Creation : in First Update-DataBase Root user dont take root Role
+            // When I remove Root user, after Update-DataBase the user root take root role 

@@ -1,6 +1,6 @@
 ﻿namespace GenericWinForm.Demo
 {
-    partial class ProjectFormMenu
+    partial class PrivateApplicationMenu
     {
         /// <summary>
         /// Required designer variable.

@@ -452,6 +452,25 @@ namespace App.Gwin.Application.BAL
         }
 
         /// <summary>
+        ///  Creating an instance of the BLO
+        ///  Without Proxy
+        /// </summary>
+        /// <param name="TypeEntity">The entity type</param>
+        /// <param name="TypeBaseBLO">Type of Base BLO object</param>
+        /// <returns>BLO Instance</returns>
+        public static IGwinBaseBLO CreateBLO_Instance_WithoutProxy(Type TypeEntity, Type TypeBaseBLO)
+        {
+
+            // Load TypeEntityBLO
+            Type TypeEntityBLO = Detemine_Type_EntityBLO(TypeEntity, TypeBaseBLO);
+
+            IGwinBaseBLO EntityBLO = (IGwinBaseBLO)Activator.CreateInstance(TypeEntityBLO);
+            
+
+            return EntityBLO;
+        }
+
+        /// <summary>
         ///  Create Instance of Business Logic Object of Entity Params
         ///  It instance BLO Class if exist
         ///  in else case it use generic BaseBLO

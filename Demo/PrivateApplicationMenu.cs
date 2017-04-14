@@ -18,9 +18,9 @@ using System.Windows.Forms;
 
 namespace GenericWinForm.Demo
 {
-    public partial class ProjectFormMenu : BaseForm
+    public partial class PrivateApplicationMenu : BaseForm
     {
-        public ProjectFormMenu()
+        public PrivateApplicationMenu()
         {
             InitializeComponent();
         }
@@ -41,7 +41,7 @@ namespace GenericWinForm.Demo
             user.Language = GwinApp.Languages.ar;
 
             // Start Gwin Application
-            GwinApp.Start(typeof(ModelContext), typeof(BaseBLO<>), null, user);
+            GwinApp.Start(typeof(ModelContext), typeof(BaseBLO<>),null, user);
         }
 
         public void Reload()

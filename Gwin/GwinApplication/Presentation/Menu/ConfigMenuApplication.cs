@@ -120,7 +120,10 @@ namespace App.Gwin.Application.Presentation.MainForm
                     if (ParentMenuItem != null)
                         ParentMenuItem.Add(SubMenuItem);
                     else
-                        throw new GwinException(String.Format("the Parent {0} of {1} not exist ", configEntity.Menu.Group, toolStripMenuItem_key));
+                    {
+                        // throw new GwinException(String.Format("the Parent {0} of {1} not exist ", configEntity.Menu.Group, toolStripMenuItem_key));
+                        // Patent not exist bevause user not have permission required by Parent Menu
+                    }
                 }
                 else
                 {

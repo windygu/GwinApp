@@ -106,25 +106,24 @@
     <Compile Include="Form_EntryFromDemo.Designer.cs">
       <DependentUpon>Form_EntryFromDemo.cs</DependentUpon>
     </Compile>
-    <Compile Include="GwinAccessException.cs" />
-    <Compile Include="Migrations\201703280736478_CreateDataBase.cs" />
-    <Compile Include="Migrations\201703280736478_CreateDataBase.Designer.cs">
+    <Compile Include="DAL\Migrations\201703280736478_CreateDataBase.cs" />
+    <Compile Include="DAL\Migrations\201703280736478_CreateDataBase.Designer.cs">
       <DependentUpon>201703280736478_CreateDataBase.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201704050902006_Update1.cs" />
-    <Compile Include="Migrations\201704050902006_Update1.Designer.cs">
+    <Compile Include="DAL\Migrations\201704050902006_Update1.cs" />
+    <Compile Include="DAL\Migrations\201704050902006_Update1.Designer.cs">
       <DependentUpon>201704050902006_Update1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201704050921324_Update2.cs" />
-    <Compile Include="Migrations\201704050921324_Update2.Designer.cs">
+    <Compile Include="DAL\Migrations\201704050921324_Update2.cs" />
+    <Compile Include="DAL\Migrations\201704050921324_Update2.Designer.cs">
       <DependentUpon>201704050921324_Update2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201704071152598_Update3.cs" />
-    <Compile Include="Migrations\201704071152598_Update3.Designer.cs">
+    <Compile Include="DAL\Migrations\201704071152598_Update3.cs" />
+    <Compile Include="DAL\Migrations\201704071152598_Update3.Designer.cs">
       <DependentUpon>201704071152598_Update3.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201704080937142_Update_Login_Unique.cs" />
-    <Compile Include="Migrations\201704080937142_Update_Login_Unique.Designer.cs">
+    <Compile Include="DAL\Migrations\201704080937142_Update_Login_Unique.cs" />
+    <Compile Include="DAL\Migrations\201704080937142_Update_Login_Unique.Designer.cs">
       <DependentUpon>201704080937142_Update_Login_Unique.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentation\Project\ProjetView.cs">
@@ -134,11 +133,11 @@
       <DependentUpon>ProjetView.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
-    <Compile Include="ProjectFormMenu.cs">
+    <Compile Include="PrivateApplicationMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProjectFormMenu.Designer.cs">
-      <DependentUpon>ProjectFormMenu.cs</DependentUpon>
+    <Compile Include="PrivateApplicationMenu.Designer.cs">
+      <DependentUpon>PrivateApplicationMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Entities\Resources\Project\Project.ar.resx">
@@ -167,26 +166,26 @@
     <EmbeddedResource Include="Form_EntryFromDemo.resx">
       <DependentUpon>Form_EntryFromDemo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703280736478_CreateDataBase.resx">
+    <EmbeddedResource Include="DAL\Migrations\201703280736478_CreateDataBase.resx">
       <DependentUpon>201703280736478_CreateDataBase.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704050902006_Update1.resx">
+    <EmbeddedResource Include="DAL\Migrations\201704050902006_Update1.resx">
       <DependentUpon>201704050902006_Update1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704050921324_Update2.resx">
+    <EmbeddedResource Include="DAL\Migrations\201704050921324_Update2.resx">
       <DependentUpon>201704050921324_Update2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704071152598_Update3.resx">
+    <EmbeddedResource Include="DAL\Migrations\201704071152598_Update3.resx">
       <DependentUpon>201704071152598_Update3.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704080937142_Update_Login_Unique.resx">
+    <EmbeddedResource Include="DAL\Migrations\201704080937142_Update_Login_Unique.resx">
       <DependentUpon>201704080937142_Update_Login_Unique.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\Project\ProjetView.resx">
       <DependentUpon>ProjetView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProjectFormMenu.resx">
-      <DependentUpon>ProjectFormMenu.cs</DependentUpon>
+    <EmbeddedResource Include="PrivateApplicationMenu.resx">
+      <DependentUpon>PrivateApplicationMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -23,7 +23,7 @@
 
         protected override void Seed(ModelContext context)
         {
-            //Gin Application Name
+            //Gwin Application Name
             context.ApplicationNames.AddOrUpdate(
                            r => r.Reference
                         ,
@@ -47,7 +47,8 @@
               new Role { Reference = nameof(Role.Roles.Root), Name = new Gwin.Entities.MultiLanguage.LocalizedString() { Current = nameof(Role.Roles.Root) }, Hidden = true }
             );
 
-
+            // in First Update-DataBase Root user dont take root Role
+            // When I remove Root user, after Update-DataBase the user root take root role 
             RoleRoot = context.Set<Role>().Where(r => r.Reference == nameof(Role.Roles.Root)).SingleOrDefault();
             RoleGuest = context.Set<Role>().Where(r => r.Reference == nameof(Role.Roles.Guest)).SingleOrDefault();
             // Giwn Users
