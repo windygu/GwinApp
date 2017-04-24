@@ -64,6 +64,7 @@
     <Compile Include="BAL\Security\RoleBAO.cs" />
     <Compile Include="BAL\TaskProjectBLO.cs" />
     <Compile Include="DAL\Configuration.cs" />
+    <Compile Include="DAL\LocalDB.cs" />
     <Compile Include="DAL\ModelContext.cs" />
     <Compile Include="Entities\Resources\Project\Project.ar.Designer.cs">
       <DependentUpon>Project.ar.resx</DependentUpon>
@@ -99,12 +100,6 @@
     </Compile>
     <Compile Include="FormMenuApplication.Designer.cs">
       <DependentUpon>FormMenuApplication.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Form_EntryFromDemo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form_EntryFromDemo.Designer.cs">
-      <DependentUpon>Form_EntryFromDemo.cs</DependentUpon>
     </Compile>
     <Compile Include="DAL\Migrations\201703280736478_CreateDataBase.cs" />
     <Compile Include="DAL\Migrations\201703280736478_CreateDataBase.Designer.cs">
@@ -162,9 +157,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMenuApplication.resx">
       <DependentUpon>FormMenuApplication.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form_EntryFromDemo.resx">
-      <DependentUpon>Form_EntryFromDemo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DAL\Migrations\201703280736478_CreateDataBase.resx">
       <DependentUpon>201703280736478_CreateDataBase.cs</DependentUpon>

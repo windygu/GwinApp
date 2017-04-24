@@ -18,21 +18,20 @@ namespace GenericWinForm.Demo
     {
         public FormMenuApplication()
         {
-           // GwinApp.Loading_Status("Creating Application Menu...");
             InitializeComponent();
-         
         }
 
         private void FormMenuApplication_Load(object sender, EventArgs e)
         {
             User user = null;
-            user  = User.CreateGuestUser(new ModelContext());
-            user = User.CreateRootUser(new ModelContext());
+            user = User.CreateGuestUser(new ModelContext());
+            // user = User.CreateRootUser(new ModelContext());
             user.Language = GwinApp.Languages.ar;
 
             // Start Gwin Application with Authentification
-            GwinApp.Start(typeof(ModelContext), typeof(BaseBLO<>),this, user);
-            
+            GwinApp.Start(typeof(ModelContext), typeof(BaseBLO<>), this, user);
+
+
         }
 
         ///// <summary>

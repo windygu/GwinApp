@@ -1,5 +1,6 @@
 ﻿namespace GenericWinForm.Demo.DAL
 {
+    using App.DAL;
     using App.Gwin.Entities.Application;
     using App.Gwin.Entities.ContactInformations;
     using App.Gwin.Entities.Logging;
@@ -25,8 +26,14 @@
         //{
         //}
 
-        public ModelContext() : base(new ConfigDbBLO().getConnectionString())
+        //public ModelContext() : base(new ConfigDbBLO().getConnectionString())
+        //{
+
+        //}
+
+        public ModelContext() : base(LocalDB.GetLocalDBConnectionString("GwinDemo"))
         {
+            // Database.SetInitializer<ModelContext>(new CreateDatabaseIfNotExists<ModelContext>());
 
         }
 

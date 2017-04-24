@@ -67,7 +67,7 @@ namespace App.Gwin.Entities.Persons
         public String Address { set; get; }
 
         [EntryForm(Ordre = 13, GroupeBox = "Contact Information")]
-        [Filter]
+        [Filter(isValeurFiltreVide = true)]
         [Relationship(Relation = RelationshipAttribute.Relations.ManyToOne)]
         public City City { set; get; }
 
