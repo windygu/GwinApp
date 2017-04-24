@@ -136,6 +136,16 @@ namespace App.Gwin.Entities.Secrurity.Authentication
             User root = dbContext.Set<User>().Where(u => u.Reference == nameof(User.Users.Root)).FirstOrDefault();
             return root;
         }
+
+        /// <summary>
+        ///  Create Admin User
+        /// </summary>
+        /// <returns></returns>
+        public static User CreateAdminUser(DbContext dbContext)
+        {
+            User root = dbContext.Set<User>().Where(u => u.Reference == nameof(User.Users.Admin)).FirstOrDefault();
+            return root;
+        }
         #endregion
 
         // Authentification

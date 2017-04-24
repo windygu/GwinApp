@@ -108,6 +108,7 @@
     <Compile Include="DataModel\ModelInfo\GwinBusinessEntitiesManager.cs" />
     <Compile Include="DataModel\ModelInfo\GwinEntitiesManager.cs" />
     <Compile Include="Entities\Configuration\ConfigDB.cs" />
+    <Compile Include="Entities\EmptyEntity.cs" />
     <Compile Include="Entities\Logging\GwinActivity.cs" />
     <Compile Include="Enumerations\Configuration\SupportedDataBaseCategories.cs" />
     <Compile Include="Enumerations\Configuration\SupportedServerDataBases.cs" />

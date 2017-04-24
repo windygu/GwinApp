@@ -58,7 +58,7 @@ namespace App.Gwin.Fields
                     SelectionCriteriaAttribute MetaSelectionCriteria =
                       (SelectionCriteriaAttribute)metaSelectionCriteriaAttribute;
 
-                #endregion
+                    #endregion
 
 
                     int index = 10;
@@ -121,13 +121,13 @@ namespace App.Gwin.Fields
             }
             this.ValueChanged += Value_SelectedIndexChanged;
 
-          
-             
-              
 
-          
 
-          
+
+
+
+
+
 
         }
 
@@ -147,11 +147,11 @@ namespace App.Gwin.Fields
             /// 
 
             // Initialisation de la liste des valeurs par défaux
-            if(ListeValeursInitiaux.Count() < this.LsiteTypeObjetCritere.Count())
-            for (int i = 0; i < this.LsiteTypeObjetCritere.Count() ; i++)
-            {
-                ListeValeursInitiaux.Add(ListeComboBox.Keys.ElementAt(i), 0);
-            }
+            if (ListeValeursInitiaux.Count() < this.LsiteTypeObjetCritere.Count())
+                for (int i = 0; i < this.LsiteTypeObjetCritere.Count(); i++)
+                {
+                    ListeValeursInitiaux.Add(ListeComboBox.Keys.ElementAt(i), 0);
+                }
             // Init la de la vlaeur de comboBox Actuel
             ListeValeursInitiaux[ListeValeursInitiaux.Last().Key] = Value;
 
@@ -164,7 +164,7 @@ namespace App.Gwin.Fields
             {
 
                 string curentKey = LsiteTypeObjetCritere.Keys.ElementAt(i);
-                string Previouskey = ListeComboBox.Keys.ElementAt(i-1);
+                string Previouskey = ListeComboBox.Keys.ElementAt(i - 1);
 
                 PropertyInfo PropertyPrevious = curentEntity.GetType()
                                                 .GetProperties()
@@ -195,6 +195,9 @@ namespace App.Gwin.Fields
         /// </summary>
         private void Value_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // if the selected comboBox is Blank
+            bool isBlank = false;
+
             // n'exécuter pas cette événement, si nous somme à l'étape d'initialisation 
             // des chmpas de critères
             if (this.StopEventSelectedIndexChange) return;
@@ -202,6 +205,11 @@ namespace App.Gwin.Fields
 
             // Initialisation de ComboBox, Service, Entite qui a ête changé
             ManyToOneField comboBoxChanged = (ManyToOneField)sender;
+
+            // if Blank Value dont do anything
+            if (Convert.ToInt64(comboBoxChanged.SelectedValue) == 0) isBlank = true;
+
+
             comboBoxChanged.CreateControl();
             int indexComboBoxChanged = ListeComboBox.Values.ToList<ManyToOneField>().IndexOf(comboBoxChanged);
             string keyComboBoxCanged = ListeComboBox.Keys.ElementAt(indexComboBoxChanged);
@@ -222,15 +230,23 @@ namespace App.Gwin.Fields
 
                 // ComboBox suivant 
                 ManyToOneField nextComboBox = ListeComboBox.Values.ElementAt(indexComboBoxChanged + 1);
+
                 string keyNexComboBox = ListeComboBox.Keys.ElementAt(indexComboBoxChanged + 1);
 
-                PropertyInfo PropertyContenantValeursComboSuivant = EntiteActuel.GetType()
-                                                .GetProperties()
-                                                .Where(p => p.Name == keyNexComboBox + "s")
-                                                .SingleOrDefault();
-                if (PropertyContenantValeursComboSuivant == null)
-                    throw new PropertyNotExistInEntityException(keyNexComboBox + "s");
-
+                PropertyInfo PropertyContenantValeursComboSuivant = null;
+                if (!isBlank)
+                {
+                    PropertyContenantValeursComboSuivant = EntiteActuel.GetType()
+                                                    .GetProperties()
+                                                    .Where(p => p.Name == keyNexComboBox + "s")
+                                                    .SingleOrDefault();
+                    if (PropertyContenantValeursComboSuivant == null)
+                        throw new PropertyNotExistInEntityException(keyNexComboBox + "s");
+                }
+                else
+                {
+                    nextComboBox.DataSource = null;
+                }
                 // Affectation des valeurs au ComboBox suivant
                 IList ls_source = null;
                 if (PropertyContenantValeursComboSuivant != null)
@@ -253,8 +269,9 @@ namespace App.Gwin.Fields
                     }
 
 
-                   
+
                 }
+               
 
                 // Si ce Combo n'a pas d'information alors vider les combBobx suivant 
                 if (ls_source == null || ls_source.Count == 0)
@@ -281,21 +298,36 @@ namespace App.Gwin.Fields
             string key = ListeComboBox.Keys.ElementAt(0);
             IGwinBaseBLO service = this.Service
                 .CreateServiceBLOInstanceByTypeEntity(LsiteTypeObjetCritere[key]);
-            
+
+
+
 
             // Initalisation avec la valeur par défaux s'il existe
             if (this.ListeValeursInitiaux != null && this.ListeValeursInitiaux.Keys.Contains(key))
             {
                 this.StopEventSelectedIndexChange = true;
-                comboBox.DataSource = service.GetAll();
+
+                // Add Black Value
+                List<Object> ls = service.GetAll();
+                if (configProperty != null)
+                    if (configProperty.Filter.isValeurFiltreVide)
+                        ls.Insert(0, new EmptyEntity());
+                comboBox.DataSource = ls;
                 this.StopEventSelectedIndexChange = false;
                 comboBox.SelectedValue = this.ListeValeursInitiaux[key];
             }
             else
             {
-                comboBox.DataSource = service.GetAll();
+                // Add Black Value
+                List<Object> ls = service.GetAll();
+                if (configProperty != null)
+                    if (configProperty.Filter.isValeurFiltreVide)
+                        ls.Insert(0, new EmptyEntity());
+                comboBox.DataSource = ls;
+
+
             }
-                
+
         }
         #endregion
 

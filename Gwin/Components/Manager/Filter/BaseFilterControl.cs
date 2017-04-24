@@ -128,7 +128,7 @@ namespace App.Gwin.EntityManagement
                 if (configProperty.Filter?.WidthControl != 0)
                     item_width_control = configProperty.Filter.WidthControl;
 
-                // Params to Creat Fields
+                // Params to Create Fields
                 CreateField_In_Filter_Params param = new CreateField_In_Filter_Params();
                 param.ConfigProperty = configProperty;
                 param.SizeLabel = new Size(width_label, height_label);
