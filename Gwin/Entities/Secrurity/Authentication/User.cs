@@ -55,7 +55,7 @@ namespace App.Gwin.Entities.Secrurity.Authentication
                         if (authorization.ActionsNames != null && authorization.ActionsNames.Count > 0)
                         {
                             if(action == "Any") return true;
-                            if (authorization.ActionsNames.Contains(action))
+                            if (authorization.ActionsNames.Contains(action) || authorization.ActionsNames.Contains(""))
                                 return true;
                         }
                         else // Has All Actions 
