@@ -47,7 +47,7 @@
             this.comboBoxManyToOne.FormattingEnabled = true;
             this.comboBoxManyToOne.Location = new System.Drawing.Point(0, 0);
             this.comboBoxManyToOne.Name = "comboBoxManyToOne";
-            this.comboBoxManyToOne.Size = new System.Drawing.Size(150, 21);
+            this.comboBoxManyToOne.Size = new System.Drawing.Size(518, 21);
             this.comboBoxManyToOne.TabIndex = 0;
             this.comboBoxManyToOne.SelectedIndexChanged += new System.EventHandler(this.comboBoxManyToOne_SelectedIndexChanged);
             // 

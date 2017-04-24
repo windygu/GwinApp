@@ -32,7 +32,7 @@ namespace App.Gwin.Entities.Secrurity.Autorizations
         [DataGrid(WidthColonne = 400)]
         [ReferencesDataSource(TypeObject = typeof(GwinEntitiesManager),
             MethodeName = nameof(GwinEntitiesManager.GetAll_Reference),
-            Param1 =typeof(AuthorizeAttribute))]
+            Param1 =typeof(GwinEntityAttribute))]
         public String BusinessEntity { set; get; }
 
         /// <summary>

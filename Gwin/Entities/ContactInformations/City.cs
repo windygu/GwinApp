@@ -27,7 +27,7 @@ namespace App.Gwin.Entities.ContactInformations
 
         [DisplayProperty(isInGlossary = true)]
         [EntryForm]
-        [Filter]
+        [Filter(isValeurFiltreVide =true)]
         [DataGrid]
         [Relationship(Relation = RelationshipAttribute.Relations.ManyToOne)]
         public virtual Country Country { set; get; }

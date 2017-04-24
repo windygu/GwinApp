@@ -58,7 +58,7 @@ namespace App.Gwin.Fields
                     SelectionCriteriaAttribute MetaSelectionCriteria =
                       (SelectionCriteriaAttribute)metaSelectionCriteriaAttribute;
 
-                    #endregion
+                #endregion
 
 
                     int index = 10;
