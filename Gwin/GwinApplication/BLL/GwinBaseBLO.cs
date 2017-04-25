@@ -50,7 +50,13 @@ namespace App.Gwin.Application.BAL
 
 
         #region Constructor
-        public GwinBaseBLO(DbContext context, Type TypeDBContext)
+        /// <summary>
+        /// Create BLO by Existance Contex or TypeDbContext
+        /// One of Context or TypeDBContex is null
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="TypeDBContext"></param>
+        protected GwinBaseBLO(DbContext context, Type TypeDBContext)
         {
             // Params
             this.Context = context;
@@ -59,11 +65,26 @@ namespace App.Gwin.Application.BAL
 
             // Create Context instance
             if (TypeDBContext != null)
+            {
                 this.Context = Activator.CreateInstance(TypeDBContext) as DbContext;
-            if (this.Context != null)
                 this.DbSet = this.Context.Set<T>();
+            }
+               
+            if (this.Context != null)
+            {
+                this.DbSet = this.Context.Set<T>();
+            }
+                
         }
+        /// <summary>
+        /// Create BLO Object by Type of DBContext
+        /// </summary>
+        /// <param name="TypeDBContext"></param>
         public GwinBaseBLO(Type TypeDBContext) : this(null, TypeDBContext) { }
+        /// <summary>
+        /// Create BLO Object by Existance Context
+        /// </summary>
+        /// <param name="context"></param>
         public GwinBaseBLO(DbContext context) : this(context, null) { }
         #endregion
 

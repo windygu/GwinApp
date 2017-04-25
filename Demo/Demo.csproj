@@ -63,6 +63,7 @@
     <Compile Include="BAL\BaseBLO.cs" />
     <Compile Include="BAL\Security\RoleBAO.cs" />
     <Compile Include="BAL\TaskProjectBLO.cs" />
+    <Compile Include="BAL\UserBLO.cs" />
     <Compile Include="DAL\Configuration.cs" />
     <Compile Include="DAL\LocalDB.cs" />
     <Compile Include="DAL\ModelContext.cs" />

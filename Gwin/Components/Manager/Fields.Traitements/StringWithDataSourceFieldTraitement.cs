@@ -10,6 +10,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using App.Gwin.Entities;
 
 namespace App.Gwin.FieldsTraitements
 {
@@ -116,6 +117,10 @@ namespace App.Gwin.FieldsTraitements
             // DataSource
             IList ls_data = param.ConfigProperty.DataSource.GetData();
             List<string> ls_data_string = ls_data.Cast<Object>().Select(o => o.ToString()).ToList<string>();
+
+            // Add Blank Data 
+            if (param.ConfigProperty.Filter.isValeurFiltreVide)
+                ls_data_string.Insert(0, "");
             stringFiled.DataSource = ls_data_string.ToList<object>();
 
 
