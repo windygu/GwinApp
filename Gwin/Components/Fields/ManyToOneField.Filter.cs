@@ -271,7 +271,7 @@ namespace App.Gwin.Fields
 
 
                 }
-               
+
 
                 // Si ce Combo n'a pas d'information alors vider les combBobx suivant 
                 if (ls_source == null || ls_source.Count == 0)
@@ -320,9 +320,9 @@ namespace App.Gwin.Fields
             {
                 // Add Black Value
                 List<Object> ls = service.GetAll();
-                if (configProperty != null)
-                    if (configProperty.Filter.isValeurFiltreVide)
-                        ls.Insert(0, new EmptyEntity());
+
+                if (configProperty?.Filter?.isValeurFiltreVide == true)
+                    ls.Insert(0, new EmptyEntity());
                 comboBox.DataSource = ls;
 
 
