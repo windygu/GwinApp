@@ -16,5 +16,12 @@ namespace App.Gwin.Attributes
         /// The item name
         /// </summary>
         public string Title { get; set; }
+
+        public Type EntityType { get; set; }
+
+        /// <summary>
+        /// Order
+        /// </summary>
+        public int Order { get; set; }
     }
 }

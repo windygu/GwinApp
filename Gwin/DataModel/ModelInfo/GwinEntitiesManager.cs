@@ -60,7 +60,8 @@ namespace App.Gwin.DataModel.ModelInfo
 
 
         /// <summary>
-        /// Get All Entity Type in Project
+        /// Get All Entity Type in Project with MenuAttribute
+        /// And All Form With MenuAttribute
         /// </summary>
         /// <returns> Dictionary : Type, MenuAttributes </returns>
         public Dictionary<Type, MenuAttribute> Get_All_Type_And_MenuAttributes()
@@ -70,7 +71,9 @@ namespace App.Gwin.DataModel.ModelInfo
                                          from type in assembly.GetTypes()
                                          let attributes = type.GetCustomAttributes(typeof(MenuAttribute), true)
                                          where attributes != null && attributes.Length > 0
+                                         orderby attributes.Cast<MenuAttribute>().First().Order
                                          select new { Type = type, ApplicationMenu = attributes.Cast<MenuAttribute>().First() }
+                                         
            ).ToList();
 
             foreach (var item in ls_Type_MenyAttribute)

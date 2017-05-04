@@ -60,7 +60,8 @@ namespace App.Gwin.ModelData
         }
 
         /// <summary>
-        /// Get All Entity Type in Project
+        /// Get All Entity Type in Project with MenuAttribute
+        /// And All Form With MenuAttribute
         /// </summary>
         /// <returns> Dictionary : Type, MenuAttributes </returns>
         [Obsolete]

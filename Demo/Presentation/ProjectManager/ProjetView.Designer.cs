@@ -1,4 +1,4 @@
-﻿namespace GenericWinForm.Demo.Presentation.Project
+﻿namespace GenericWinForm.Demo.Presentation.ProjectManager
 {
     partial class ProjetView
     {

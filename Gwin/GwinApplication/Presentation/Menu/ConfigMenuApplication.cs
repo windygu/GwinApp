@@ -1,6 +1,7 @@
 ﻿using App.Gwin.Application.BAL;
 using App.Gwin.Application.Presentation.EntityManagement;
 using App.Gwin.Attributes;
+using App.Gwin.DataModel.ModelInfo;
 using App.Gwin.Entities;
 using App.Gwin.Entities.Application;
 using App.Gwin.Exceptions.Gwin;
@@ -43,21 +44,22 @@ namespace App.Gwin.Application.Presentation.MainForm
         #endregion
 
         /// <summary>
-        /// Constructori : Create Application Menu
+        /// Constructor : Create Application Menu
         /// </summary>
-        /// <param name="FormMenu">MDI Form that cotrain Menu of Application</param>
+        /// <param name="FormMenu">MDI Form that cotain Menu of Application</param>
         public CreateApplicationMenu(IApplicationMenu FormMenu)
         {
+            // Params
             this.MdiFormWithMenu = FormMenu;
             this.menuStrip = FormMenu.getMenuStrip();
-            // MenuStruct
+            // MenuStruct Instance
             MenuItems = new Dictionary<string, Type>();
             MenuStruct = new MenuStruct();
-
+            // Properties
             this.ShowManagementForm = new CreateAndShowManagerFormHelper(GwinApp.Instance.TypeDBContext, FormMenu);
             this.MenuItemApplicationService = GwinBaseBLO<BaseEntity>
                 .CreateBLO_Instance(typeof(MenuItemApplication), GwinApp.Instance.TypeBaseBLO);
-
+            // Create Menu
             this.CalculateMenuItems();
             this.ShowMenuItems();
         }
@@ -92,28 +94,61 @@ namespace App.Gwin.Application.Presentation.MainForm
 
 
             // Create SubMenu MenuItems from ModelCondiguration Entities
-            Dictionary<Type, MenuAttribute> MenuAttributes_And_Types = new ModelConfiguration().Get_All_Type_And_MenuAttributes();
+            Dictionary<Type, MenuAttribute> MenuAttributes_And_Types = new GwinEntitiesManager().Get_All_Type_And_MenuAttributes();
             foreach (var menuAttributes_And_Types in MenuAttributes_And_Types)
             {
-                // Continue if User dont have persmission
-                if (!GwinApp.Instance.user.HasAccess(menuAttributes_And_Types.Key)) continue;
+                Type EntityType = null;
+                string Title = null;
+                string Group = null;
 
-                ConfigEntity configEntity = ConfigEntity.CreateConfigEntity(menuAttributes_And_Types.Key);
+                // Determine Category of Type : Entity or Form
+                if (menuAttributes_And_Types.Key.IsSubclassOf(typeof(Form)))
+                {
+                    if (menuAttributes_And_Types.Value.EntityType == null)
+                        throw new GwinException(String.Format("The property EntityType of MenuAttribute of the Form {0} is null \n it can not be null we use it to check security permission", menuAttributes_And_Types.Key));
+                    EntityType = menuAttributes_And_Types.Value.EntityType;
+                    ConfigEntity configEntity = ConfigEntity.CreateConfigEntity(EntityType);
+                    Group = menuAttributes_And_Types.Value.Group;
+                    if (menuAttributes_And_Types.Value.Title != null)
+                        Title = configEntity.Translate(menuAttributes_And_Types.Value.Title);
+                   
+                }
+                else
+                {
+                    if (menuAttributes_And_Types.Key.IsSubclassOf(typeof(BaseEntity)))
+                    {
+                        EntityType = menuAttributes_And_Types.Key;
+                        ConfigEntity configEntity = ConfigEntity.CreateConfigEntity(EntityType);
+                        Group = configEntity.Menu.Group;
+                        Title = configEntity.Menu.Title;
+                    }
+                    else
+                    {
+                        throw new GwinException(String.Format("The Type {0} does not inherit from BaseEntity or Form ", menuAttributes_And_Types.Key));
+                    }
+                }
+               
+
+
+                // Security : Continue if User dont have persmission
+                if (!GwinApp.Instance.user.HasAccess(EntityType)) continue;
+
+
 
                 // Create MenuItem and Save to Dictionary MenyItem
                 Structures.MenuItem SubMenuItem = new Structures.MenuItem(false);
 
-                SubMenuItem.ToolStripMenuItem.Name = configEntity.TypeOfEntity.FullName;
+                SubMenuItem.ToolStripMenuItem.Name = menuAttributes_And_Types.Key.FullName;
                 SubMenuItem.ToolStripMenuItem.Size = new System.Drawing.Size(82, 20);
-                SubMenuItem.ToolStripMenuItem.Text = configEntity.Menu.Title;
+                SubMenuItem.ToolStripMenuItem.Text = Title;
                 SubMenuItem.ToolStripMenuItem.Click += ToolStripMenuItem_Click;
                 SubMenuItem.TypeOfEntity = menuAttributes_And_Types.Key;
 
                 // Find Parent if Exist
                 Structures.MenuItem ParentMenuItem = null;
-                if (configEntity.Menu.Group != null)
+                if (Group != null)
                 {
-                    string toolStripMenuItem_key = "toolStripMenuItem" + configEntity.Menu.Group;
+                    string toolStripMenuItem_key = "toolStripMenuItem" + Group;
                     ParentMenuItem = MenuStruct.ParentMenuItems.Where(m => m.ToolStripMenuItem.Name == toolStripMenuItem_key).SingleOrDefault();
 
                     // If parrent exist
@@ -172,7 +207,24 @@ namespace App.Gwin.Application.Presentation.MainForm
             ToolStripMenuItem item = sender as ToolStripMenuItem;
             Structures.MenuItem menuitem = MenuStruct.FindMenuItemByToolStripMenuItem(item);
             if (menuitem.TypeOfEntity != null)
-                this.ShowManagementForm.ShowManagerForm(menuitem.TypeOfEntity);
+            {
+                if (menuitem.TypeOfEntity.IsSubclassOf(typeof(BaseEntity)))
+                {
+                    this.ShowManagementForm.ShowManagerForm(menuitem.TypeOfEntity);
+                }
+                else
+                {
+                    if(menuitem.TypeOfEntity.IsSubclassOf(typeof(Form)))
+                    {
+                        this.ShowManagementForm.ShwoForm(menuitem.TypeOfEntity);
+                    }
+                    else
+                    {
+                        throw new GwinException(String.Format("The type '{0}' does not inherit from BaseEntity or Form", menuitem.TypeOfEntity));
+                    }
+                }
+            }
+               
             else
                 throw new GwinException(String.Format("Type of entity of MenuItem is null"));
         }

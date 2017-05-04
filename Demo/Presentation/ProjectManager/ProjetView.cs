@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace GenericWinForm.Demo.Presentation.Project
+namespace GenericWinForm.Demo.Presentation.ProjectManager
 {
     public partial class ProjetView : App.Gwin.BaseEntryForm
     {

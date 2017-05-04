@@ -122,10 +122,16 @@
     <Compile Include="DAL\Migrations\201704080937142_Update_Login_Unique.Designer.cs">
       <DependentUpon>201704080937142_Update_Login_Unique.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentation\Project\ProjetView.cs">
+    <Compile Include="Presentation\ProjectManager\ProjectManagerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\ProjectManager\ProjectManagerForm.Designer.cs">
+      <DependentUpon>ProjectManagerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\ProjectManager\ProjetView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Presentation\Project\ProjetView.Designer.cs">
+    <Compile Include="Presentation\ProjectManager\ProjetView.Designer.cs">
       <DependentUpon>ProjetView.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -174,7 +180,10 @@
     <EmbeddedResource Include="DAL\Migrations\201704080937142_Update_Login_Unique.resx">
       <DependentUpon>201704080937142_Update_Login_Unique.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentation\Project\ProjetView.resx">
+    <EmbeddedResource Include="Presentation\ProjectManager\ProjectManagerForm.resx">
+      <DependentUpon>ProjectManagerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\ProjectManager\ProjetView.resx">
       <DependentUpon>ProjetView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PrivateApplicationMenu.resx">

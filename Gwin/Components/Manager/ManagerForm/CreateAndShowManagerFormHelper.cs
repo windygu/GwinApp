@@ -54,6 +54,8 @@ namespace App.Gwin.Application.Presentation.EntityManagement
             return form;
         }
 
+
+
         /// <summary>
         /// Create an Show ManagerForm
         /// </summary>
@@ -101,6 +103,15 @@ namespace App.Gwin.Application.Presentation.EntityManagement
 
 
 
+        /// <summary>
+        /// Show Form bay Type
+        /// </summary>
+        /// <param name="TypeOfForm">Type of Form</param>
+        public void ShwoForm(Type TypeOfForm)
+        {
+            Form FormInstance = Activator.CreateInstance(TypeOfForm) as Form;
+            this.ShwoForm(FormInstance);
+        }
 
         /// <summary>
         /// Create an Show ManagerForm
