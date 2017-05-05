@@ -18,7 +18,7 @@
 
         //public ModelContext() : base(@"data source =.\SQLEXPRESS; initial catalog = gwin-demo2; user = sa; password = admintp4; MultipleActiveResultSets = True; App = EntityFramework")
         //{
-          
+
         //}
 
         //public ModelContext()
@@ -26,16 +26,16 @@
         //{
         //}
 
-        //public ModelContext() : base(new ConfigDbBLO().getConnectionString())
-        //{
-
-        //}
-
-        public ModelContext() : base(LocalDB.GetLocalDBConnectionString("GwinDemo"))
+        public ModelContext() : base(new ConfigDbBLO().getConnectionString())
         {
-            // Database.SetInitializer<ModelContext>(new CreateDatabaseIfNotExists<ModelContext>());
 
         }
+
+        //public ModelContext() : base(LocalDB.GetLocalDBConnectionString("GwinDemo"))
+        //{
+        //    // Database.SetInitializer<ModelContext>(new CreateDatabaseIfNotExists<ModelContext>());
+
+        //}
 
         //
         // Gwin : Entites

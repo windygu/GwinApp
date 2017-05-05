@@ -102,25 +102,9 @@
     <Compile Include="FormMenuApplication.Designer.cs">
       <DependentUpon>FormMenuApplication.cs</DependentUpon>
     </Compile>
-    <Compile Include="DAL\Migrations\201703280736478_CreateDataBase.cs" />
-    <Compile Include="DAL\Migrations\201703280736478_CreateDataBase.Designer.cs">
-      <DependentUpon>201703280736478_CreateDataBase.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DAL\Migrations\201704050902006_Update1.cs" />
-    <Compile Include="DAL\Migrations\201704050902006_Update1.Designer.cs">
-      <DependentUpon>201704050902006_Update1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DAL\Migrations\201704050921324_Update2.cs" />
-    <Compile Include="DAL\Migrations\201704050921324_Update2.Designer.cs">
-      <DependentUpon>201704050921324_Update2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DAL\Migrations\201704071152598_Update3.cs" />
-    <Compile Include="DAL\Migrations\201704071152598_Update3.Designer.cs">
-      <DependentUpon>201704071152598_Update3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DAL\Migrations\201704080937142_Update_Login_Unique.cs" />
-    <Compile Include="DAL\Migrations\201704080937142_Update_Login_Unique.Designer.cs">
-      <DependentUpon>201704080937142_Update_Login_Unique.cs</DependentUpon>
+    <Compile Include="Migrations\201705050732505_InitData.cs" />
+    <Compile Include="Migrations\201705050732505_InitData.Designer.cs">
+      <DependentUpon>201705050732505_InitData.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentation\ProjectManager\ProjectManagerForm.cs">
       <SubType>Form</SubType>
@@ -165,20 +149,8 @@
     <EmbeddedResource Include="FormMenuApplication.resx">
       <DependentUpon>FormMenuApplication.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DAL\Migrations\201703280736478_CreateDataBase.resx">
-      <DependentUpon>201703280736478_CreateDataBase.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DAL\Migrations\201704050902006_Update1.resx">
-      <DependentUpon>201704050902006_Update1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DAL\Migrations\201704050921324_Update2.resx">
-      <DependentUpon>201704050921324_Update2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DAL\Migrations\201704071152598_Update3.resx">
-      <DependentUpon>201704071152598_Update3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DAL\Migrations\201704080937142_Update_Login_Unique.resx">
-      <DependentUpon>201704080937142_Update_Login_Unique.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201705050732505_InitData.resx">
+      <DependentUpon>201705050732505_InitData.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\ProjectManager\ProjectManagerForm.resx">
       <DependentUpon>ProjectManagerForm.cs</DependentUpon>
@@ -218,7 +190,9 @@
       <Name>Gwin</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="DAL\Migrations\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

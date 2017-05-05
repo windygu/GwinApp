@@ -12,7 +12,7 @@ namespace App.Gwin.FieldsTraitements.Enumerations
     /// </summary>
     public enum FieldsNatures
     {
-        // Must add Test into  DetermineFieldNature() methode in ConfigProperty
+        // Must add Test into  DetermineFieldNature() methode in BaseFieldTraitement
 
         Default,
         String,

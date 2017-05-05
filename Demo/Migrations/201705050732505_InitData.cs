@@ -3,7 +3,7 @@ namespace App.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class CreateDataBase : DbMigration
+    public partial class InitData : DbMigration
     {
         public override void Up()
         {
@@ -46,6 +46,7 @@ namespace App.Migrations
                 c => new
                     {
                         Id = c.Long(nullable: false, identity: true),
+                        Reference = c.String(),
                         Name_French = c.String(),
                         Name_English = c.String(),
                         Name_Arab = c.String(),
@@ -53,15 +54,11 @@ namespace App.Migrations
                         Description_English = c.String(),
                         Description_Arab = c.String(),
                         Hidden = c.Boolean(nullable: false),
-                        Reference = c.String(),
                         Ordre = c.Int(nullable: false),
                         DateCreation = c.DateTime(nullable: false),
                         DateModification = c.DateTime(nullable: false),
-                        User_Id = c.Long(),
                     })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Users", t => t.User_Id)
-                .Index(t => t.User_Id);
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.MenuItemApplications",
@@ -82,6 +79,41 @@ namespace App.Migrations
                     })
                 .PrimaryKey(t => t.Id)
                 .Index(t => t.Code, unique: true);
+            
+            CreateTable(
+                "dbo.Users",
+                c => new
+                    {
+                        Id = c.Long(nullable: false, identity: true),
+                        Login = c.String(maxLength: 255),
+                        Password = c.String(),
+                        Language = c.Int(nullable: false),
+                        FirstName_French = c.String(),
+                        FirstName_English = c.String(),
+                        FirstName_Arab = c.String(),
+                        LastName_French = c.String(),
+                        LastName_English = c.String(),
+                        LastName_Arab = c.String(),
+                        CIN = c.String(),
+                        DateOfBirth = c.DateTime(nullable: false),
+                        Sex = c.Boolean(nullable: false),
+                        ProfilePhoto = c.String(),
+                        Email = c.String(),
+                        PhoneNumber = c.String(),
+                        Address = c.String(),
+                        Cellphone = c.String(),
+                        FaceBook = c.String(),
+                        WebSite = c.String(),
+                        Reference = c.String(),
+                        Ordre = c.Int(nullable: false),
+                        DateCreation = c.DateTime(nullable: false),
+                        DateModification = c.DateTime(nullable: false),
+                        City_Id = c.Long(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Cities", t => t.City_Id)
+                .Index(t => t.Login, unique: true)
+                .Index(t => t.City_Id);
             
             CreateTable(
                 "dbo.Cities",
@@ -178,8 +210,12 @@ namespace App.Migrations
                 c => new
                     {
                         Id = c.Long(nullable: false, identity: true),
-                        Name = c.String(),
-                        FirstName = c.String(),
+                        FirstName_French = c.String(),
+                        FirstName_English = c.String(),
+                        FirstName_Arab = c.String(),
+                        LastName_French = c.String(),
+                        LastName_English = c.String(),
+                        LastName_Arab = c.String(),
                         CIN = c.String(),
                         DateOfBirth = c.DateTime(nullable: false),
                         Sex = c.Boolean(nullable: false),
@@ -206,7 +242,9 @@ namespace App.Migrations
                     {
                         Id = c.Long(nullable: false, identity: true),
                         Title = c.String(),
-                        Description = c.String(),
+                        Description_French = c.String(),
+                        Description_English = c.String(),
+                        Description_Arab = c.String(),
                         Reference = c.String(),
                         Ordre = c.Int(nullable: false),
                         DateCreation = c.DateTime(nullable: false),
@@ -225,36 +263,6 @@ namespace App.Migrations
                         DateModification = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
-            
-            CreateTable(
-                "dbo.Users",
-                c => new
-                    {
-                        Id = c.Long(nullable: false, identity: true),
-                        Login = c.String(),
-                        Password = c.String(),
-                        Language = c.Int(nullable: false),
-                        Name = c.String(),
-                        FirstName = c.String(),
-                        CIN = c.String(),
-                        DateOfBirth = c.DateTime(nullable: false),
-                        Sex = c.Boolean(nullable: false),
-                        ProfilePhoto = c.String(),
-                        Email = c.String(),
-                        PhoneNumber = c.String(),
-                        Address = c.String(),
-                        Cellphone = c.String(),
-                        FaceBook = c.String(),
-                        WebSite = c.String(),
-                        Reference = c.String(),
-                        Ordre = c.Int(nullable: false),
-                        DateCreation = c.DateTime(nullable: false),
-                        DateModification = c.DateTime(nullable: false),
-                        City_Id = c.Long(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Cities", t => t.City_Id)
-                .Index(t => t.City_Id);
             
             CreateTable(
                 "dbo.RoleAuthorizations",
@@ -280,6 +288,19 @@ namespace App.Migrations
                 .ForeignKey("dbo.MenuItemApplications", t => t.MenuItemApplication_Id, cascadeDelete: true)
                 .ForeignKey("dbo.Roles", t => t.Role_Id, cascadeDelete: true)
                 .Index(t => t.MenuItemApplication_Id)
+                .Index(t => t.Role_Id);
+            
+            CreateTable(
+                "dbo.UserRoles",
+                c => new
+                    {
+                        User_Id = c.Long(nullable: false),
+                        Role_Id = c.Long(nullable: false),
+                    })
+                .PrimaryKey(t => new { t.User_Id, t.Role_Id })
+                .ForeignKey("dbo.Users", t => t.User_Id, cascadeDelete: true)
+                .ForeignKey("dbo.Roles", t => t.Role_Id, cascadeDelete: true)
+                .Index(t => t.User_Id)
                 .Index(t => t.Role_Id);
             
             CreateTable(
@@ -312,8 +333,6 @@ namespace App.Migrations
         
         public override void Down()
         {
-            DropForeignKey("dbo.Roles", "User_Id", "dbo.Users");
-            DropForeignKey("dbo.Users", "City_Id", "dbo.Cities");
             DropForeignKey("dbo.TaskProjectIndividual1", "Individual_Id", "dbo.Individuals");
             DropForeignKey("dbo.TaskProjectIndividual1", "TaskProject_Id", "dbo.TaskProjects");
             DropForeignKey("dbo.TaskProjects", "Project_Id", "dbo.Projects");
@@ -321,6 +340,9 @@ namespace App.Migrations
             DropForeignKey("dbo.TaskProjectIndividuals", "TaskProject_Id", "dbo.TaskProjects");
             DropForeignKey("dbo.Individuals", "City_Id", "dbo.Cities");
             DropForeignKey("dbo.ContactInformations", "City_Id", "dbo.Cities");
+            DropForeignKey("dbo.UserRoles", "Role_Id", "dbo.Roles");
+            DropForeignKey("dbo.UserRoles", "User_Id", "dbo.Users");
+            DropForeignKey("dbo.Users", "City_Id", "dbo.Cities");
             DropForeignKey("dbo.Cities", "Country_Id", "dbo.Countries");
             DropForeignKey("dbo.MenuItemApplicationRoles", "Role_Id", "dbo.Roles");
             DropForeignKey("dbo.MenuItemApplicationRoles", "MenuItemApplication_Id", "dbo.MenuItemApplications");
@@ -330,22 +352,24 @@ namespace App.Migrations
             DropIndex("dbo.TaskProjectIndividual1", new[] { "TaskProject_Id" });
             DropIndex("dbo.TaskProjectIndividuals", new[] { "Individual_Id" });
             DropIndex("dbo.TaskProjectIndividuals", new[] { "TaskProject_Id" });
+            DropIndex("dbo.UserRoles", new[] { "Role_Id" });
+            DropIndex("dbo.UserRoles", new[] { "User_Id" });
             DropIndex("dbo.MenuItemApplicationRoles", new[] { "Role_Id" });
             DropIndex("dbo.MenuItemApplicationRoles", new[] { "MenuItemApplication_Id" });
             DropIndex("dbo.RoleAuthorizations", new[] { "Authorization_Id" });
             DropIndex("dbo.RoleAuthorizations", new[] { "Role_Id" });
-            DropIndex("dbo.Users", new[] { "City_Id" });
             DropIndex("dbo.Individuals", new[] { "City_Id" });
             DropIndex("dbo.TaskProjects", new[] { "Project_Id" });
             DropIndex("dbo.ContactInformations", new[] { "City_Id" });
             DropIndex("dbo.Cities", new[] { "Country_Id" });
+            DropIndex("dbo.Users", new[] { "City_Id" });
+            DropIndex("dbo.Users", new[] { "Login" });
             DropIndex("dbo.MenuItemApplications", new[] { "Code" });
-            DropIndex("dbo.Roles", new[] { "User_Id" });
             DropTable("dbo.TaskProjectIndividual1");
             DropTable("dbo.TaskProjectIndividuals");
+            DropTable("dbo.UserRoles");
             DropTable("dbo.MenuItemApplicationRoles");
             DropTable("dbo.RoleAuthorizations");
-            DropTable("dbo.Users");
             DropTable("dbo.GwinActivities");
             DropTable("dbo.Projects");
             DropTable("dbo.Individuals");
@@ -353,6 +377,7 @@ namespace App.Migrations
             DropTable("dbo.ContactInformations");
             DropTable("dbo.Countries");
             DropTable("dbo.Cities");
+            DropTable("dbo.Users");
             DropTable("dbo.MenuItemApplications");
             DropTable("dbo.Roles");
             DropTable("dbo.Authorizations");

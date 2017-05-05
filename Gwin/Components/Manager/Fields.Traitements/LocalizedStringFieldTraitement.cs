@@ -69,7 +69,11 @@ namespace App.Gwin.FieldsTraitements
             stringField.OrientationField = param.OrientationField;
             stringField.SizeLabel = param.SizeLabel;
             stringField.SizeControl = param.SizeControl;
-            
+            stringField.IsMultiline = param.ConfigProperty.EntryForm.MultiLine;
+            stringField.NombreLigne = param.ConfigProperty.EntryForm.NumberLine;
+            if(param.ConfigProperty.EntryForm.WidthControl != 0)
+            stringField.Width = param.ConfigProperty.EntryForm.WidthControl;
+
             stringField.TabIndex = param.TabIndex;
             stringField.Text_Label = param.ConfigProperty.DisplayProperty.Titre;
             stringField.ConfigSizeField();

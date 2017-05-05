@@ -1,5 +1,6 @@
 ﻿using App.Gwin.Attributes;
 using App.Gwin.Entities;
+using App.Gwin.Entities.MultiLanguage;
 using App.Gwin.GwinApplication.Security.Attributes;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,12 @@ namespace GenericWinForm.Demo.Entities
     [Menu]
     public class Project:BaseEntity
     {
+
+        public Project()
+        {
+            this.Description = new LocalizedString();
+        }
+
         [EntryForm]
         [Filter]
         [DataGrid]
@@ -24,10 +31,10 @@ namespace GenericWinForm.Demo.Entities
         public string Title { set; get; }
 
 
-        [EntryForm]
+        [EntryForm(MultiLine = true,WidthControl =300)]
         [Filter]
         [DataGrid]
-        public string Description { set; get; }
+        public LocalizedString Description { set; get; }
 
 
         [Relationship(Relation = RelationshipAttribute.Relations.ManyToMany_Creation)]
