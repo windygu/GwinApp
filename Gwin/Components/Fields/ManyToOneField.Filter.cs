@@ -309,7 +309,7 @@ namespace App.Gwin.Fields
 
                 // Add Black Value
                 List<Object> ls = service.GetAll();
-                if (configProperty != null)
+                if (configProperty != null && configProperty.Filter != null)
                     if (configProperty.Filter.isValeurFiltreVide)
                         ls.Insert(0, new EmptyEntity());
                 comboBox.DataSource = ls;
