@@ -127,7 +127,7 @@ namespace App.Gwin.Application.Presentation.EntityManagement
                 {
                     addForm.MdiParent = (Form)MdiForm;
                     addForm.StartPosition = FormStartPosition.WindowsDefaultLocation;
-                    addForm.WindowState = FormWindowState.Normal;
+                    addForm.WindowState = FormWindowState.Maximized;
                     addForm.Show();
                 }
                 else

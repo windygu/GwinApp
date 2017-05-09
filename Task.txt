@@ -5,6 +5,7 @@ Right to Lift in Filter not work for Arabe Langauge
 Validateur : Type Int dont work
 
 
+Add GroupBox Order in EntryForm
 
 Update : 
 Add Configuration to Disply Date in Arabe Langauge : Show Arabe Date or Latin Date
