@@ -195,6 +195,12 @@ namespace LinqExtension
 
                             #endregion
                         }
+                    case "Boolean":
+                        {
+                            #region traitement des entiers
+                            return Expression.Lambda<Func<T, bool>>(Expression.Equal(body, Expression.Constant(Convert.ToBoolean(value), body.Type)), p);
+                            #endregion
+                        }
                     case "LocalizedString":
                         {
                             #region traitement des LocalizedString

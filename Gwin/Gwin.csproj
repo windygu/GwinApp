@@ -81,6 +81,12 @@
     <Compile Include="Components\Fields\DateTimeField.Designer.cs">
       <DependentUpon>DateTimeField.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\Fields\BooleanField.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\Fields\BooleanField.Designer.cs">
+      <DependentUpon>BooleanField.cs</DependentUpon>
+    </Compile>
     <Compile Include="Components\Fields\IBaseField.cs" />
     <Compile Include="Components\Fields\Int32Filed.cs">
       <SubType>UserControl</SubType>
@@ -100,6 +106,7 @@
     <Compile Include="Components\Fields\StringField.Designer.cs">
       <DependentUpon>StringField.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\Manager\Fields.Traitements\BoolFieldTraitement.cs" />
     <Compile Include="Components\Manager\Fields.Traitements\Params\Base\BaseFieldTraitementParam.cs" />
     <Compile Include="DataModel\Attributes\BusinesRole.cs" />
     <Compile Include="DataModel\Exceptions\Class1.cs" />
@@ -543,6 +550,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Components\Fields\DateTimeField.resx">
       <DependentUpon>DateTimeField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Fields\BooleanField.resx">
+      <DependentUpon>BooleanField.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\Fields\Int32Filed.resx">
       <DependentUpon>Int32Filed.cs</DependentUpon>

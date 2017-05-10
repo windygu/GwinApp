@@ -23,12 +23,12 @@ namespace App.Gwin.Entities.Persons
         }
 
         // Civil status
-        [EntryForm(Ordre = 2, GroupeBox = "Civil status")]
+        [EntryForm(Ordre = 2, GroupeBox = "Civil status", GroupeBoxOrder =100)]
         [Filter()]
         [DataGrid(WidthColonne = 100)]
         public LocalizedString FirstName { set; get; }
 
-        [EntryForm(Ordre = 1,GroupeBox = "Civil status")]
+        [EntryForm(Ordre = 1,GroupeBox = "Civil status", GroupeBoxOrder = 100)]
         [Filter()]
         [DataGrid(WidthColonne = 100)]
         public LocalizedString LastName { set; get; }
@@ -37,17 +37,17 @@ namespace App.Gwin.Entities.Persons
        
 
         [DisplayProperty(Titre = "CIN")]
-        [EntryForm(Ordre = 3, GroupeBox = "Civil status")]
+        [EntryForm(Ordre = 3, GroupeBox = "Civil status", GroupeBoxOrder = 100)]
         [Filter()]
         [DataGrid(WidthColonne = 50)]
         public String CIN { set; get; }
 
         [DisplayProperty(Titre = "Date de naissance" )]
-        [EntryForm(Ordre = 3, GroupeBox = "Civil status")]
+        [EntryForm(Ordre = 3, GroupeBox = "Civil status", GroupeBoxOrder = 100)]
         public DateTime DateOfBirth { set; get; }
 
         [DisplayProperty(Titre = "Sexe")]
-        [EntryForm(Ordre = 3, GroupeBox = "Civil status")]
+        [EntryForm(Ordre = 3, GroupeBox = "Civil status", GroupeBoxOrder = 100)]
         public bool Sex { set; get; }
        
         public String ProfilePhoto { set; get; }
@@ -55,29 +55,29 @@ namespace App.Gwin.Entities.Persons
  
         #region Contact Information
 
-        [EntryForm(Ordre = 10,GroupeBox = "Contact Information")]
+        [EntryForm(Ordre = 10,GroupeBox = "Contact Information", GroupeBoxOrder = 101)]
         public String Email { set; get; }
 
 
-        [EntryForm(Ordre = 11,GroupeBox = "Contact Information")]
+        [EntryForm(Ordre = 11,GroupeBox = "Contact Information", GroupeBoxOrder = 101)]
         public String PhoneNumber { set; get; }
 
 
-        [EntryForm(Ordre = 12, MultiLine = true, GroupeBox = "Contact Information")]
+        [EntryForm(Ordre = 12, MultiLine = true, GroupeBox = "Contact Information", GroupeBoxOrder = 101)]
         public String Address { set; get; }
 
-        [EntryForm(Ordre = 13, GroupeBox = "Contact Information")]
+        [EntryForm(Ordre = 13, GroupeBox = "Contact Information", GroupeBoxOrder = 101)]
         [Filter(isValeurFiltreVide = true)]
         [Relationship(Relation = RelationshipAttribute.Relations.ManyToOne)]
         public City City { set; get; }
 
-        [EntryForm(Ordre = 14, GroupeBox = "Contact Information")]
+        [EntryForm(Ordre = 14, GroupeBox = "Contact Information", GroupeBoxOrder = 101)]
         public string Cellphone { set; get; }
 
-        [EntryForm(Ordre = 15, GroupeBox = "Contact Information")]
+        [EntryForm(Ordre = 15, GroupeBox = "Contact Information", GroupeBoxOrder = 101)]
         public string FaceBook { set; get; }
 
-        [EntryForm(Ordre = 16, GroupeBox = "Contact Information")]
+        [EntryForm(Ordre = 16, GroupeBox = "Contact Information", GroupeBoxOrder = 101)]
         public string WebSite { set; get; }
         #endregion
 

@@ -18,6 +18,7 @@ namespace App.Gwin.FieldsTraitements.Enumerations
         String,
         Int32,
         Int64,
+        Bool,
         StringWithDataSource,
         LocalizedString,
         DateTime,

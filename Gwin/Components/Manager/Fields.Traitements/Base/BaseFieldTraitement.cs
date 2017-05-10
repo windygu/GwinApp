@@ -90,6 +90,10 @@ namespace App.Gwin.FieldsTraitements
             {
                 fieldNature = FieldsNatures.DateTime;
             }
+            if (configProperty.PropertyInfo.PropertyType.Name == "bool" || configProperty.PropertyInfo.PropertyType.Name == "Boolean")
+            {
+                fieldNature = FieldsNatures.Bool;
+            }
             if (configProperty.PropertyInfo.PropertyType.IsEnum)
             {
                 fieldNature = FieldsNatures.Enumeration;

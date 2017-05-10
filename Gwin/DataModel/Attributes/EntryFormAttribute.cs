@@ -63,6 +63,11 @@ namespace App.Gwin.Attributes
         /// </summary>
         public bool TabPage { get; set; }
 
+        /// <summary>
+        /// GroupeBox Order
+        /// </summary>
+        public int GroupeBoxOrder { get; set; }
+
         #endregion
 
         public EntryFormAttribute()

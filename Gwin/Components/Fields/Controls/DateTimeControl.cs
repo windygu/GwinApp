@@ -37,6 +37,7 @@ namespace App.Gwin.Fields.Controls
             }
             set
             {
+             
                 this.dateTimePicker.Value = value;
             }
         }

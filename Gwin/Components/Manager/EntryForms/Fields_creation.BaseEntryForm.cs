@@ -136,18 +136,20 @@ namespace App.Gwin
 
 
         /// <summary>
-        /// Création des groupes Box
+        /// Create Group Box
         /// </summary>
         /// <param name="groupesBoxMainContainers"></param>
         private void CreateGroupesBoxes(Dictionary<string, Control> groupesBoxMainContainers, int width, int height)
         {
-            // trouver la liste des groupes box
+            // Determine a list of groupe box
             var listeProprite = from i in this.EntityBLO.TypeEntity.GetProperties()
                                 where i.GetCustomAttribute(typeof(EntryFormAttribute)) != null
                                 && ((EntryFormAttribute)i.GetCustomAttribute(typeof(EntryFormAttribute))).GroupeBox != string.Empty
                                  && ((EntryFormAttribute)i.GetCustomAttribute(typeof(EntryFormAttribute))).GroupeBox != null
-
+                                 orderby ((EntryFormAttribute)i.GetCustomAttribute(typeof(EntryFormAttribute))).GroupeBoxOrder
                                 select ((EntryFormAttribute)i.GetCustomAttribute(typeof(EntryFormAttribute))).GroupeBox;
+
+
             if (listeProprite.Distinct().Count() > 0)
             {
                 foreach (var item in listeProprite.Distinct())

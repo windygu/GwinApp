@@ -160,22 +160,22 @@ namespace App.Gwin.Entities.Secrurity.Authentication
         //[StringLength(450)]
 
         [DisplayProperty]
-        [EntryForm(GroupeBox = "authentication")]
+        [EntryForm(GroupeBox = "authentication", GroupeBoxOrder = 1)]
         [StringLength(255)]
         [Index("IX_Login", 1, IsUnique = true)]
         public string Login { set; get; }
 
         [DisplayProperty]
-        [EntryForm(GroupeBox = "authentication")]
+        [EntryForm(GroupeBox = "authentication", GroupeBoxOrder = 1)]
         public string Password { set; get; }
 
         
 
 
-        [EntryForm(GroupeBox = "authentication")]
+        [EntryForm(GroupeBox = "authentication", GroupeBoxOrder = 1)]
         public GwinApp.Languages Language { set; get; }
 
-        [EntryForm(GroupeBox = "authentication")]
+        [EntryForm(GroupeBox = "authentication", GroupeBoxOrder = 1)]
         [Relationship(Relation = RelationshipAttribute.Relations.ManyToMany_Selection)]
         public virtual List<Role> Roles { set; get; }
 

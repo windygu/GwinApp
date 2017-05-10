@@ -7,5 +7,7 @@ Validateur : Type Int dont work
 
 Add GroupBox Order in EntryForm
 
+DateTimePiker with Arabe Value dont work
+
 Update : 
 Add Configuration to Disply Date in Arabe Langauge : Show Arabe Date or Latin Date
