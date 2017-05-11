@@ -124,6 +124,15 @@ namespace App.Gwin.Entities.Resources.Glossary {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à for.
+        /// </summary>
+        internal static string For {
+            get {
+                return ResourceManager.GetString("For", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Name.
         /// </summary>
         internal static string Name {

@@ -86,8 +86,15 @@ namespace App.Gwin
             // Create ManagerFormControl Instance
             ManagerFormControl form = new ManagerFormControl(service_objet_of_collection, ValeursFiltre, this.MdiParent);
 
+            ConfigEntity configEntity = ConfigEntity.CreateConfigEntity(propertyInfo.DeclaringType);
+
+            string formTitle = Glossary.Update + " : ";
+            formTitle += new ConfigProperty(propertyInfo, configEntity).DisplayProperty.Titre; // Entity
+            formTitle += " " + Glossary.For + " ";
+            formTitle += obj;
+            form.ChangeTabGridTitle(formTitle);
             // Not Show In RunTume Mode
-            if (!Debugger.IsAttached)
+            //if (!Debugger.IsAttached)
                 form.ShowFilter(false);
 
 

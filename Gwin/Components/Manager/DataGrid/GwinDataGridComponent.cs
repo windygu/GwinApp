@@ -152,7 +152,7 @@ namespace App.Gwin
                 fieldTraitement.ConfigFieldColumn_In_EntityDataGrid(param);
 
                 // Insert Column in DataGriView
-                this.dataGridView.Columns.Insert(index_colonne, colonne);
+                this.dataGridView.Columns.Insert(index_colonne, param.Column);
             }
 
             // Create SelectedAction Columns in Last of columns

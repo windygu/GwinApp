@@ -168,4 +168,7 @@
   <data name="Update" xml:space="preserve">
     <value>Mettre à jour</value>
   </data>
+  <data name="For" xml:space="preserve">
+    <value>pour</value>
+  </data>
 </root>

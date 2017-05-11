@@ -18,7 +18,7 @@ namespace GenericWinForm.Demo.Entities
     [GwinEntity(Localizable =true,DisplayMember = nameof(TaskProject.Title))]
     [Menu]
     [ManagementForm(FormTitle = "form_title")]
-    [DataGridSelectedAction(Title ="Print",Description ="Print_Task",TypeOfForm = typeof(FormPrintTaskProject))]
+   
     public class TaskProject : BaseEntity
     {
 
@@ -35,7 +35,7 @@ namespace GenericWinForm.Demo.Entities
         /// Type : String with MultiLine
         /// </summary>
         [EntryForm(MultiLine =true)]
-        [Filter]
+        //[Filter]
         [DataGrid]
         public string Description { set; get; }
 
@@ -70,7 +70,7 @@ namespace GenericWinForm.Demo.Entities
         /// Type : Int16
         /// </summary>
         [EntryForm]
-        [Filter]
+       // [Filter]
         [DataGrid]
         public System.Int16 var_Int16 { set; get; }
 
@@ -78,7 +78,7 @@ namespace GenericWinForm.Demo.Entities
         /// Type : Int64
         /// </summary>
         [EntryForm]
-        [Filter]
+        //[Filter]
         [DataGrid]
         public System.Int64 var_Int64 { set; get; }
 
@@ -86,7 +86,7 @@ namespace GenericWinForm.Demo.Entities
         /// Type : var_float
         /// </summary>
         [EntryForm]
-        [Filter]
+       // [Filter]
         [DataGrid]
         public float var_float { set; get; }
 
@@ -94,7 +94,7 @@ namespace GenericWinForm.Demo.Entities
         /// Type : double
         /// </summary>
         [EntryForm]
-        [Filter]
+       // [Filter]
         [DataGrid]
         public double var_double { set; get; }
         #endregion
@@ -151,7 +151,7 @@ namespace GenericWinForm.Demo.Entities
         /// Type : ManyToOne
         /// </summary>
         [EntryForm]
-        [Filter]
+        [Filter(isValeurFiltreVide = true)]
         [DataGrid]
         [Relationship(Relation = RelationshipAttribute.Relations.ManyToOne)]
         public Project Project { set; get; }
@@ -160,7 +160,6 @@ namespace GenericWinForm.Demo.Entities
         /// Type : ManyToManu_Creation
         /// Filter : NotImplemented yet
         /// </summary>
-        [EntryForm]
         [DataGrid]
         [Relationship(Relation = RelationshipAttribute.Relations.ManyToMany_Creation)]
         public virtual List<Individual> Responsibles { set; get; }

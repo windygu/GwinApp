@@ -15,7 +15,7 @@ namespace GenericWinForm.Demo.Presentation.TaskProjectManager
 {
     public partial class FormPrintTaskProject : Form, IFormSelectedEntityAction
     {
-        TaskProject taskProject = null;
+        Project project = null;
         public FormPrintTaskProject()
         {
             InitializeComponent();
@@ -23,13 +23,13 @@ namespace GenericWinForm.Demo.Presentation.TaskProjectManager
 
         public void SetEntity(BaseEntity entity)
         {
-            taskProject = entity as TaskProject;
+            project = entity as Project;
         }
 
         private void FormPrintTaskProject_Load(object sender, EventArgs e)
         {
-            if (taskProject != null)
-                MessageBox.Show(taskProject.Title);
+            if (project != null)
+                MessageBox.Show(project.Title);
         }
     }
 }

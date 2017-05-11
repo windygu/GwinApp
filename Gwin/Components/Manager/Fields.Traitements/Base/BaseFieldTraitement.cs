@@ -109,6 +109,11 @@ namespace App.Gwin.FieldsTraitements
                 fieldNature = FieldsNatures.ManyToMany_Selection;
 
             }
+            if (configProperty.Relationship?.Relation == RelationshipAttribute.Relations.ManyToMany_Creation)
+            {
+                fieldNature = FieldsNatures.ManyToMany_Creation;
+
+            }
 
             return fieldNature;
         }

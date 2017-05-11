@@ -138,6 +138,9 @@
   <data name="EndDate" xml:space="preserve">
     <value>End Date</value>
   </data>
+  <data name="For" xml:space="preserve">
+    <value>for</value>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>Name</value>
   </data>

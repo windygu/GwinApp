@@ -155,5 +155,10 @@ namespace App.Gwin
         {
 
         }
+
+        public void ChangeTabGridTitle(string Title)
+        {
+            this.tabControl_MainManager.TabPages["TabGrid"].Text = Title;
+        }
     }
 }
