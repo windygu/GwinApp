@@ -4,6 +4,7 @@ using App.Gwin.Entities;
 using App.Gwin.Entities.MultiLanguage;
 using App.Gwin.GwinApplication.Security.Attributes;
 using App.Gwin.ModelData;
+using GenericWinForm.Demo.Presentation.TaskProjectManager;
 using System.Collections.Generic;
 
 namespace GenericWinForm.Demo.Entities
@@ -16,7 +17,7 @@ namespace GenericWinForm.Demo.Entities
     /// </summary>
     [GwinEntity(Localizable =true,DisplayMember = nameof(TaskProject.Title))]
     [Menu]
-    [Authorize]
+    [DataGridSelectedAction(Title ="Print",Description ="Print_Task",TypeOfForm = typeof(FormPrintTaskProject))]
     public class TaskProject : BaseEntity
     {
 
@@ -114,7 +115,7 @@ namespace GenericWinForm.Demo.Entities
         /// Type : String Wtih DataSource
         /// </summary>
         [EntryForm]
-        [Filter]
+        [Filter ( isValeurFiltreVide = true)]
         [DataGrid]
         [ReferencesDataSource(TypeObject = typeof(ModelConfiguration),
             MethodeName = nameof(ModelConfiguration.GetAll_Entities_Type),

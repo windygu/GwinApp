@@ -76,9 +76,10 @@ namespace App.Gwin.FieldsTraitements
                 BaseField baseField = (BaseField)recherche.First();
                 if (baseField == null) throw new GwinException("The field " + param.ConfigProperty.PropertyInfo.Name + "not exit in EntryForm");
 
+
                 if (value.Year == 1)
                     // [DataBase] Imcompatiblite with other DataBase
-                    baseField.Value = System.Data.SqlTypes.SqlDateTime.MinValue.Value;
+                    baseField.Value =( DateTime)  System.Data.SqlTypes.SqlDateTime.MinValue    ;
                 else
                     baseField.Value = value;
             }

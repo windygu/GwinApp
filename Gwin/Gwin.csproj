@@ -106,8 +106,10 @@
     <Compile Include="Components\Fields\StringField.Designer.cs">
       <DependentUpon>StringField.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\Manager\DataGrid\IFormSelectedEntityAction.cs" />
     <Compile Include="Components\Manager\Fields.Traitements\BoolFieldTraitement.cs" />
     <Compile Include="Components\Manager\Fields.Traitements\Params\Base\BaseFieldTraitementParam.cs" />
+    <Compile Include="DataModel\Attributes\ActionLineAttribute.cs" />
     <Compile Include="DataModel\Attributes\BusinesRole.cs" />
     <Compile Include="DataModel\Exceptions\Class1.cs" />
     <Compile Include="DataModel\Helpers\GwinIdentifierManager.cs" />

@@ -118,6 +118,12 @@
     <Compile Include="Presentation\ProjectManager\ProjetView.Designer.cs">
       <DependentUpon>ProjetView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\TaskProjectManager\FormPrintTaskProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\TaskProjectManager\FormPrintTaskProject.Designer.cs">
+      <DependentUpon>FormPrintTaskProject.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="PrivateApplicationMenu.cs">
       <SubType>Form</SubType>
@@ -157,6 +163,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\ProjectManager\ProjetView.resx">
       <DependentUpon>ProjetView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\TaskProjectManager\FormPrintTaskProject.resx">
+      <DependentUpon>FormPrintTaskProject.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PrivateApplicationMenu.resx">
       <DependentUpon>PrivateApplicationMenu.cs</DependentUpon>
