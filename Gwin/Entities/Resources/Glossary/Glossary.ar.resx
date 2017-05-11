@@ -165,4 +165,7 @@
   <data name="TitleFrench" xml:space="preserve">
     <value>العنوان الفرنسي</value>
   </data>
+  <data name="Update" xml:space="preserve">
+    <value>تحديث</value>
+  </data>
 </root>

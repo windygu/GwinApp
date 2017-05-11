@@ -17,6 +17,7 @@ namespace GenericWinForm.Demo.Entities
     /// </summary>
     [GwinEntity(Localizable =true,DisplayMember = nameof(TaskProject.Title))]
     [Menu]
+    [ManagementForm(FormTitle = "form_title")]
     [DataGridSelectedAction(Title ="Print",Description ="Print_Task",TypeOfForm = typeof(FormPrintTaskProject))]
     public class TaskProject : BaseEntity
     {

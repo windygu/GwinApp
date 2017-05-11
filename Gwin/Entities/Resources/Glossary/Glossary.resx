@@ -162,4 +162,7 @@
   <data name="TitleFrench" xml:space="preserve">
     <value>French Title</value>
   </data>
+  <data name="Update" xml:space="preserve">
+    <value>Update</value>
+  </data>
 </root>

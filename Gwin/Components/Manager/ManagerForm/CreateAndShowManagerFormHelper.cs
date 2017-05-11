@@ -26,7 +26,7 @@ namespace App.Gwin.Application.Presentation.EntityManagement
         /// <summary>
         /// Type of BaseBLO classe
         /// </summary>
-        public Type BaseBLOType { get;  set; }
+        public Type BaseBLOType { get; set; }
         #endregion
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace App.Gwin.Application.Presentation.EntityManagement
         /// <returns></returns>
         public ManagerForm ShowManagerForm(Type EntityType)
         {
-            IGwinBaseBLO baseRepository = GwinBaseBLO<BaseEntity>.CreateBLO_Instance(EntityType,GwinApp.Instance.TypeBaseBLO);
+            IGwinBaseBLO baseRepository = GwinBaseBLO<BaseEntity>.CreateBLO_Instance(EntityType, GwinApp.Instance.TypeBaseBLO);
             ManagerForm form = new ManagerForm(baseRepository, null, null, (Form)this.MdiForm);
             this.ShwoForm(form);
             return form;
@@ -122,7 +122,7 @@ namespace App.Gwin.Application.Presentation.EntityManagement
             try
             {
                 Cursor.Current = Cursors.WaitCursor;
-                Form form = ((BaseForm)MdiForm).MdiChildren.Where(f => f.Name == addForm.Name).FirstOrDefault();
+                Form form = ((BaseForm)MdiForm).MdiChildren.Where(f => f.Text == addForm.Text).FirstOrDefault();
                 if (form == null)
                 {
                     addForm.MdiParent = (Form)MdiForm;
@@ -132,19 +132,21 @@ namespace App.Gwin.Application.Presentation.EntityManagement
                 }
                 else
                 {
-                    form.WindowState = FormWindowState.Normal;
-
+                    if (form.WindowState == FormWindowState.Maximized)
+                        form.WindowState = FormWindowState.Normal;
+                    else
+                        form.WindowState = FormWindowState.Maximized;
                 }
 
                 Cursor.Current = Cursors.Default;
             }
-            catch (Exception e )
+            catch (Exception e)
             {
                 MessageBox.Show(e.Message);
-             
+
             }
 
-           
+
         }
     }
 }

@@ -194,5 +194,14 @@ namespace App.Gwin.Entities.Resources.Glossary {
                 return ResourceManager.GetString("TitleFrench", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Update.
+        /// </summary>
+        internal static string Update {
+            get {
+                return ResourceManager.GetString("Update", resourceCulture);
+            }
+        }
     }
 }

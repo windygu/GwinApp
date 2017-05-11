@@ -351,11 +351,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Entities\ContactInformations\Resources\Country\Country.fr-FR.Designer.cs">
-      <DependentUpon>Country.fr-FR.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Entities\ContactInformations\Resources\Country\Country.Designer.cs">
       <DependentUpon>Country.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -363,11 +358,6 @@
     </Compile>
     <Compile Include="Entities\Resources\Glossary\Glossary.ar.Designer.cs">
       <DependentUpon>Glossary.ar.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Entities\Resources\Glossary\Glossary.fr-FR.Designer.cs">
-      <DependentUpon>Glossary.fr-FR.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -565,6 +555,12 @@
     <EmbeddedResource Include="Components\Fields\StringField.resx">
       <DependentUpon>StringField.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Components\Manager\Filter\BaseFilterControl.ar.resx">
+      <DependentUpon>BaseFilterControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Manager\Filter\BaseFilterControl.fr.resx">
+      <DependentUpon>BaseFilterControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GwinApplication\Presentation\Authentication\LoginControl.ar.resx">
       <DependentUpon>LoginControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -693,10 +689,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Country.ar.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Entities\ContactInformations\Resources\Country\Country.fr-FR.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Country.fr-FR.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Entities\ContactInformations\Resources\Country\Country.fr.resx" />
     <EmbeddedResource Include="Entities\ContactInformations\Resources\Country\Country.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -710,10 +702,6 @@
     <EmbeddedResource Include="Entities\Resources\Glossary\Glossary.ar.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Glossary.ar.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Entities\Resources\Glossary\Glossary.fr-FR.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Glossary.fr-FR.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Entities\Resources\Glossary\Glossary.fr.resx" />
     <EmbeddedResource Include="Entities\Resources\Glossary\Glossary.resx">
