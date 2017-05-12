@@ -125,10 +125,15 @@ namespace App.Gwin.Application.Presentation.EntityManagement
                 Form form = ((BaseForm)MdiForm).MdiChildren.Where(f => f.Text == addForm.Text).FirstOrDefault();
                 if (form == null)
                 {
-                    addForm.MdiParent = (Form)MdiForm;
-                    addForm.StartPosition = FormStartPosition.WindowsDefaultLocation;
-                    addForm.WindowState = FormWindowState.Maximized;
+
+                    GwinApp.SkinEngine.SkinAllForm = true;
+
+
+                    
+                    //addForm.StartPosition = FormStartPosition.WindowsDefaultLocation;
+                    //addForm.WindowState = FormWindowState.Maximized;
                     addForm.Show();
+                   //  addForm.MdiParent = (Form)MdiForm;
                 }
                 else
                 {

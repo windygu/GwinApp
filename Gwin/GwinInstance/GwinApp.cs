@@ -8,6 +8,7 @@ using App.Gwin.Entities.Secrurity.Authentication;
 using App.Gwin.Exceptions.Gwin;
 using App.Gwin.GwinApplication.Themes;
 using SplashScreen;
+using Sunisoft.IrisSkin;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -53,6 +54,8 @@ namespace App.Gwin
         public User user { set; get; }
 
         public IGwinTheme Theme { get;  set; }
+        public static SkinEngine SkinEngine = new SkinEngine();
+      
         #endregion
 
 
@@ -75,6 +78,7 @@ namespace App.Gwin
             this.FormApplication = applicationMenuInstance;
             this.user = user;
            
+
         }
         #endregion
     }
