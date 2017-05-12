@@ -45,7 +45,7 @@ namespace App.Gwin
 
                 this.tabControl_MainManager.TabPages[tabEditerName].Controls.Add(form);
                 tabControl_MainManager.SelectedTab = tabEditer;
-                form.ShowEntity(this.Filter_Instance.GetFilterValues());
+                form.ShowEntity(this.Filter_Instance.GetFilterValues(), BaseEntryForm.EntityActions.Update);
                 // Entry Form Events
                 form.EnregistrerClick += Form_EditerClick;
                 form.AnnulerClick += Form_AnnulerEditerClick;

@@ -43,6 +43,9 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="LinqKit, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bc217f8844052a91, processorArchitecture=MSIL" />
+    <Reference Include="MaterialSkin">
+      <HintPath>..\packages\MaterialSkin.0.2.1\lib\MaterialSkin.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -106,6 +109,10 @@
     <Compile Include="Migrations\201705050732505_InitData.Designer.cs">
       <DependentUpon>201705050732505_InitData.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705120935128_Update1.cs" />
+    <Compile Include="Migrations\201705120935128_Update1.Designer.cs">
+      <DependentUpon>201705120935128_Update1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\ProjectManager\ProjectManagerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,6 +164,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705050732505_InitData.resx">
       <DependentUpon>201705050732505_InitData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705120935128_Update1.resx">
+      <DependentUpon>201705120935128_Update1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\ProjectManager\ProjectManagerForm.resx">
       <DependentUpon>ProjectManagerForm.cs</DependentUpon>

@@ -48,12 +48,12 @@ namespace App.Gwin
         /// <param name="cultureInfo">CultureInfo Instance</param>
         public static void SetLanguage(CultureInfo cultureInfo)
         {
-            
+
 
             GwinApp.TestIf_Gwin_isStart();
 
 
-           
+
 
 
             // Must Delete All Entity Configuration, bacause it demande with language
@@ -86,7 +86,22 @@ namespace App.Gwin
                 case "FR": return Languages.fr;
                 case "EN": return Languages.en;
                 default: return Languages.en;
-                  
+
+            }
+        }
+
+        /// <summary>
+        /// Ckeck if Contols must be showen as RightToLeft
+        /// </summary>
+        public static bool isRightToLeft
+        {
+            get
+            {
+
+                if (GwinApp.instance.user.Language == Languages.ar)
+                    return true;
+                else
+                    return false;
             }
         }
 

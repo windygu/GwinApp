@@ -171,4 +171,7 @@
   <data name="For" xml:space="preserve">
     <value>pour</value>
   </data>
+  <data name="Entering_this_field_is_mandatory" xml:space="preserve">
+    <value>La saisie de ce champs est obligatoire</value>
+  </data>
 </root>

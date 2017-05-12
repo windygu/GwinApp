@@ -49,6 +49,9 @@
     <Reference Include="LinqKit">
       <HintPath>..\packages\LinqKit.dll</HintPath>
     </Reference>
+    <Reference Include="MaterialSkin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialSkin.0.2.1\lib\MaterialSkin.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -142,6 +145,8 @@
     <Compile Include="GwinApplication\Security\Attributes\DoNotPerformPermissionCheck.cs" />
     <Compile Include="GwinApplication\Security\Exception\GwinException.cs" />
     <Compile Include="GwinApplication\Security\SecurityInterceptor.cs" />
+    <Compile Include="GwinApplication\Themes\GwinTheme.cs" />
+    <Compile Include="GwinApplication\Themes\DefaultTheme\DefaultTheme.cs" />
     <Compile Include="GwinInstance\BaseBLO.cs" />
     <Compile Include="GwinInstance\Exception\GwinUsageModeException.cs" />
     <Compile Include="Components\Manager\EntryForms\Resources\ResourceEntryForm.ar.Designer.cs">

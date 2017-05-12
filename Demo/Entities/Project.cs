@@ -26,14 +26,14 @@ namespace GenericWinForm.Demo.Entities
             this.Description = new LocalizedString();
         }
 
-        [EntryForm]
+        [EntryForm(isRequired = true)]
         [Filter]
         [DataGrid]
         [BusinesRole]
         public string Title { set; get; }
 
 
-        [EntryForm(MultiLine = true,WidthControl =300)]
+        [EntryForm(MultiLine = true,WidthControl =300, isRequired = true)]
         [Filter]
         [DataGrid]
         public LocalizedString Description { set; get; }

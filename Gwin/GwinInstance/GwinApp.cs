@@ -6,6 +6,7 @@ using App.Gwin.Attributes;
 using App.Gwin.Entities.Application;
 using App.Gwin.Entities.Secrurity.Authentication;
 using App.Gwin.Exceptions.Gwin;
+using App.Gwin.GwinApplication.Themes;
 using SplashScreen;
 using System;
 using System.Collections.Generic;
@@ -50,6 +51,8 @@ namespace App.Gwin
         /// Connected user
         /// </summary>
         public User user { set; get; }
+
+        public IGwinTheme Theme { get;  set; }
         #endregion
 
 
@@ -66,6 +69,7 @@ namespace App.Gwin
         /// <param name="user">Connected user</param>
         public GwinApp(Type TypeDbContext, Type TypeBaseBLO, FormApplication applicationMenuInstance, User user)
         {
+            this.Theme = new DefaultTheme();
             this.TypeDBContext = TypeDbContext;
             this.TypeBaseBLO = TypeBaseBLO;
             this.FormApplication = applicationMenuInstance;

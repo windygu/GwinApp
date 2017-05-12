@@ -23,6 +23,8 @@ namespace App.Gwin
     {
         #region GwinApp Instance
         private static GwinApp instance = null;
+       
+
         /// <summary>
         /// Get or Set Gwin Instance
         /// </summary>
@@ -65,6 +67,7 @@ namespace App.Gwin
         /// </param>
         public static void Start(Type TypeDbContext, Type TypeBaseBLO, FormApplication AppMenu, User user)
         {
+
             // User must not be null
             CheckPramIsNull.CheckParam_is_NotNull(user, nameof(GwinApp), nameof(user));
 

@@ -5,12 +5,17 @@ using App.Gwin.FieldsTraitements.Enumerations;
 using App.Shared.AttributesManager;
 using System;
 using System.Reflection;
+using System.Windows.Forms;
 
 namespace App.Gwin.FieldsTraitements
 {
 
     public class BaseFieldTraitement
     {
+        /// <summary>
+        /// ErrorProvider Instance
+        /// </summary>
+        protected ErrorProvider errorProvider { set; get; }
 
         public virtual object ConvertValue(BaseFieldTraitementParam param)
         {

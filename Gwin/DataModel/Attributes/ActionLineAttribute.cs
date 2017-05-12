@@ -17,7 +17,7 @@ namespace App.Gwin.Attributes
         /// Type must be unique ,Entity must not have multiple Action fom the same Form
         /// </summary>
         public Type TypeOfForm {
-            set; // Type must extend Interface : IFormSelectedEntityAction
+            set; 
             get;
         }
 
