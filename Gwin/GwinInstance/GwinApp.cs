@@ -54,8 +54,6 @@ namespace App.Gwin
         public User user { set; get; }
 
         public IGwinTheme Theme { get;  set; }
-        public static SkinEngine SkinEngine = new SkinEngine();
-      
         #endregion
 
 

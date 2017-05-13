@@ -126,14 +126,11 @@ namespace App.Gwin.Application.Presentation.EntityManagement
                 if (form == null)
                 {
 
-                    GwinApp.SkinEngine.SkinAllForm = true;
-
-
-                    
-                    //addForm.StartPosition = FormStartPosition.WindowsDefaultLocation;
-                    //addForm.WindowState = FormWindowState.Maximized;
+                    addForm.MdiParent = (Form)MdiForm;
+                    addForm.StartPosition = FormStartPosition.WindowsDefaultLocation;
+                    addForm.WindowState = FormWindowState.Maximized;
                     addForm.Show();
-                   //  addForm.MdiParent = (Form)MdiForm;
+                   
                 }
                 else
                 {
