@@ -2,6 +2,7 @@
 using App.Gwin.Application.BAL;
 using App.Gwin.Entities;
 using App.Gwin.GwinApplication.Security.Exception;
+using MetroFramework.Forms;
 using System;
 using System.Data.Entity;
 using System.Linq;
@@ -126,10 +127,11 @@ namespace App.Gwin.Application.Presentation.EntityManagement
                 if (form == null)
                 {
 
-                    addForm.MdiParent = (Form)MdiForm;
-                    addForm.StartPosition = FormStartPosition.WindowsDefaultLocation;
-                    addForm.WindowState = FormWindowState.Maximized;
+                   // addForm.MdiParent = (MetroForm) MdiForm;
+                    //addForm.StartPosition = FormStartPosition.WindowsDefaultLocation;
+                    //addForm.WindowState = FormWindowState.Maximized;
                     addForm.Show();
+                   // addForm.ShowDialog((MetroForm) MdiForm);
                    
                 }
                 else

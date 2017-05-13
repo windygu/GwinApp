@@ -8,7 +8,6 @@ using App.Gwin.Entities.Secrurity.Authentication;
 using App.Gwin.Exceptions.Gwin;
 using App.Gwin.GwinApplication.Themes;
 using SplashScreen;
-using Sunisoft.IrisSkin;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;

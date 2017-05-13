@@ -33,7 +33,8 @@
             // FormMenuApplication
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(572, 320);
+            this.ClientSize = new System.Drawing.Size(778, 392);
+            this.IsMdiContainer = false;
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "FormMenuApplication";
             this.Text = "Gwin Application";
