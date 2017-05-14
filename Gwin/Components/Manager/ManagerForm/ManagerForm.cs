@@ -44,6 +44,11 @@ namespace App.Gwin.Application.Presentation.EntityManagement
             this.Text = EntityBLO.ConfigEntity.ManagementForm?.FormTitle;
             this.Controls.Add(managerFormControl);
 
+
+            // Confirm RightToLeft
+            this.RightToLeft = RightToLeft.Yes;
+            this.RightToLeftLayout = GwinApp.isRightToLeft;
+
         }
 
         /// <summary>
