@@ -31,8 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManagerFormControl));
             this.panelDataGrid = new System.Windows.Forms.Panel();
-            this.tabControlManagers = new MetroFramework.Controls.MetroTabControl();
-            this.main = new MetroFramework.Controls.MetroTabPage();
             this.tabControl_MainManager = new MetroFramework.Controls.MetroTabControl();
             this.TabGrid = new MetroFramework.Controls.MetroTabPage();
             this.tabPageAdd = new MetroFramework.Controls.MetroTabPage();
@@ -40,7 +38,6 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel_Filtre = new System.Windows.Forms.Panel();
             this.panelDataGrid.SuspendLayout();
-            this.tabControlManagers.SuspendLayout();
             this.tabControl_MainManager.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -53,7 +50,6 @@
             this.panelDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelDataGrid.Controls.Add(this.tabControlManagers);
             this.panelDataGrid.Controls.Add(this.tabControl_MainManager);
             this.panelDataGrid.Location = new System.Drawing.Point(12, 14);
             this.panelDataGrid.Name = "panelDataGrid";
@@ -62,52 +58,21 @@
             this.panelDataGrid.Tag = "";
             this.panelDataGrid.Paint += new System.Windows.Forms.PaintEventHandler(this.panelDataGrid_Paint);
             // 
-            // tabControlManagers
-            // 
-            this.tabControlManagers.Controls.Add(this.main);
-            this.tabControlManagers.HotTrack = true;
-            this.tabControlManagers.ItemSize = new System.Drawing.Size(100, 30);
-            this.tabControlManagers.Location = new System.Drawing.Point(31, 41);
-            this.tabControlManagers.Multiline = true;
-            this.tabControlManagers.Name = "tabControlManagers";
-            this.tabControlManagers.SelectedIndex = 0;
-            this.tabControlManagers.Size = new System.Drawing.Size(393, 215);
-            this.tabControlManagers.TabIndex = 16;
-            this.tabControlManagers.UseSelectable = true;
-            // 
-            // main
-            // 
-            this.main.AutoScroll = true;
-            this.main.HorizontalScrollbar = true;
-            this.main.HorizontalScrollbarBarColor = true;
-            this.main.HorizontalScrollbarHighlightOnWheel = false;
-            this.main.HorizontalScrollbarSize = 10;
-            this.main.Location = new System.Drawing.Point(4, 34);
-            this.main.Name = "main";
-            this.main.Padding = new System.Windows.Forms.Padding(3);
-            this.main.Size = new System.Drawing.Size(385, 177);
-            this.main.TabIndex = 0;
-            this.main.Text = "Gestion";
-            this.main.UseVisualStyleBackColor = true;
-            this.main.VerticalScrollbar = true;
-            this.main.VerticalScrollbarBarColor = true;
-            this.main.VerticalScrollbarHighlightOnWheel = false;
-            this.main.VerticalScrollbarSize = 10;
-            // 
             // tabControl_MainManager
             // 
             this.tabControl_MainManager.CausesValidation = false;
             this.tabControl_MainManager.Controls.Add(this.TabGrid);
             this.tabControl_MainManager.Controls.Add(this.tabPageAdd);
+            this.tabControl_MainManager.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl_MainManager.HotTrack = true;
             this.tabControl_MainManager.ItemSize = new System.Drawing.Size(20, 28);
-            this.tabControl_MainManager.Location = new System.Drawing.Point(564, 41);
+            this.tabControl_MainManager.Location = new System.Drawing.Point(0, 0);
             this.tabControl_MainManager.Margin = new System.Windows.Forms.Padding(0);
             this.tabControl_MainManager.Multiline = true;
             this.tabControl_MainManager.Name = "tabControl_MainManager";
             this.tabControl_MainManager.SelectedIndex = 0;
             this.tabControl_MainManager.ShowToolTips = true;
-            this.tabControl_MainManager.Size = new System.Drawing.Size(439, 219);
+            this.tabControl_MainManager.Size = new System.Drawing.Size(1021, 340);
             this.tabControl_MainManager.TabIndex = 15;
             this.tabControl_MainManager.TabStop = false;
             this.tabControl_MainManager.UseSelectable = true;
@@ -123,7 +88,7 @@
             this.TabGrid.Location = new System.Drawing.Point(4, 32);
             this.TabGrid.Name = "TabGrid";
             this.TabGrid.Padding = new System.Windows.Forms.Padding(3);
-            this.TabGrid.Size = new System.Drawing.Size(431, 183);
+            this.TabGrid.Size = new System.Drawing.Size(1013, 304);
             this.TabGrid.TabIndex = 0;
             this.TabGrid.Text = "Informations";
             this.TabGrid.UseVisualStyleBackColor = true;
@@ -198,7 +163,6 @@
             this.Size = new System.Drawing.Size(1045, 470);
             this.Load += new System.EventHandler(this.ManagerFormControl_Load);
             this.panelDataGrid.ResumeLayout(false);
-            this.tabControlManagers.ResumeLayout(false);
             this.tabControl_MainManager.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
@@ -216,8 +180,6 @@
         private System.Windows.Forms.Panel panel_Filtre;
         private MetroFramework.Controls.MetroTabControl tabControl_MainManager;
         private MetroFramework.Controls.MetroTabPage TabGrid;
-        private MetroFramework.Controls.MetroTabControl tabControlManagers;
-        private MetroFramework.Controls.MetroTabPage main;
         private MetroFramework.Controls.MetroTabPage tabPageAdd;
         private System.Windows.Forms.ImageList imageList;
     }
