@@ -88,7 +88,8 @@ namespace App.Gwin
             if (this.DataGridControl_Instance == null)
                 this.DataGridControl_Instance = new GwinDataGridComponent(this.BLO_Instance, this.DefaultFilterValues);
             this.DataGridControl_Instance.Dock = DockStyle.Fill;
-            this.tabControl_MainManager.TabPages["TabGrid"].Controls.Add(this.DataGridControl_Instance);
+             panelDataGrid.Controls.Add(this.DataGridControl_Instance);
+            panelDataGrid.CreateControl();
             this.DataGridControl_Instance.EditClick += DataGridControl_EditClick;
             this.DataGridControl_Instance.EditManyToMany_Creation += DataGridControl_ManyToMany_Creation;
 

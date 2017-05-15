@@ -86,6 +86,9 @@ namespace App.Gwin
             // Create ManagerFormControl Instance
             ManagerFormControl form = new ManagerFormControl(service_objet_of_collection, ValeursFiltre, this.FrmParent);
 
+
+            
+
             ConfigEntity configEntity = ConfigEntity.CreateConfigEntity(propertyInfo.DeclaringType);
 
             string formTitle = Glossary.Update + " : ";

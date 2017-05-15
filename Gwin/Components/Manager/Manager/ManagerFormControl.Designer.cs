@@ -33,12 +33,12 @@
             this.panelDataGrid = new System.Windows.Forms.Panel();
             this.tabControl_MainManager = new MetroFramework.Controls.MetroTabControl();
             this.TabGrid = new MetroFramework.Controls.MetroTabPage();
-            this.tabPageAdd = new MetroFramework.Controls.MetroTabPage();
-            this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel_Filtre = new System.Windows.Forms.Panel();
-            this.panelDataGrid.SuspendLayout();
+            this.tabPageAdd = new MetroFramework.Controls.MetroTabPage();
+            this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.tabControl_MainManager.SuspendLayout();
+            this.TabGrid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -50,10 +50,10 @@
             this.panelDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelDataGrid.Controls.Add(this.tabControl_MainManager);
-            this.panelDataGrid.Location = new System.Drawing.Point(12, 14);
+            this.panelDataGrid.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panelDataGrid.Location = new System.Drawing.Point(3, 3);
             this.panelDataGrid.Name = "panelDataGrid";
-            this.panelDataGrid.Size = new System.Drawing.Size(1021, 340);
+            this.panelDataGrid.Size = new System.Drawing.Size(1025, 338);
             this.panelDataGrid.TabIndex = 17;
             this.panelDataGrid.Tag = "";
             this.panelDataGrid.Paint += new System.Windows.Forms.PaintEventHandler(this.panelDataGrid_Paint);
@@ -72,7 +72,7 @@
             this.tabControl_MainManager.Name = "tabControl_MainManager";
             this.tabControl_MainManager.SelectedIndex = 0;
             this.tabControl_MainManager.ShowToolTips = true;
-            this.tabControl_MainManager.Size = new System.Drawing.Size(1021, 340);
+            this.tabControl_MainManager.Size = new System.Drawing.Size(1045, 470);
             this.tabControl_MainManager.TabIndex = 15;
             this.tabControl_MainManager.TabStop = false;
             this.tabControl_MainManager.UseSelectable = true;
@@ -81,6 +81,7 @@
             // TabGrid
             // 
             this.TabGrid.CausesValidation = false;
+            this.TabGrid.Controls.Add(this.splitContainer1);
             this.TabGrid.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TabGrid.HorizontalScrollbarBarColor = true;
             this.TabGrid.HorizontalScrollbarHighlightOnWheel = false;
@@ -88,7 +89,7 @@
             this.TabGrid.Location = new System.Drawing.Point(4, 32);
             this.TabGrid.Name = "TabGrid";
             this.TabGrid.Padding = new System.Windows.Forms.Padding(3);
-            this.TabGrid.Size = new System.Drawing.Size(1013, 304);
+            this.TabGrid.Size = new System.Drawing.Size(1037, 434);
             this.TabGrid.TabIndex = 0;
             this.TabGrid.Text = "Informations";
             this.TabGrid.UseVisualStyleBackColor = true;
@@ -96,6 +97,41 @@
             this.TabGrid.VerticalScrollbarHighlightOnWheel = false;
             this.TabGrid.VerticalScrollbarSize = 10;
             this.TabGrid.Click += new System.EventHandler(this.TabGrid_Click);
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.CausesValidation = false;
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer1.IsSplitterFixed = true;
+            this.splitContainer1.Location = new System.Drawing.Point(3, 3);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.panel_Filtre);
+            this.splitContainer1.Panel1MinSize = 50;
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.CausesValidation = false;
+            this.splitContainer1.Panel2.Controls.Add(this.panelDataGrid);
+            this.splitContainer1.Size = new System.Drawing.Size(1031, 428);
+            this.splitContainer1.SplitterDistance = 80;
+            this.splitContainer1.TabIndex = 15;
+            // 
+            // panel_Filtre
+            // 
+            this.panel_Filtre.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel_Filtre.AutoSize = true;
+            this.panel_Filtre.Location = new System.Drawing.Point(3, 3);
+            this.panel_Filtre.Name = "panel_Filtre";
+            this.panel_Filtre.Size = new System.Drawing.Size(1025, 74);
+            this.panel_Filtre.TabIndex = 16;
+            this.panel_Filtre.Tag = "";
             // 
             // tabPageAdd
             // 
@@ -106,7 +142,7 @@
             this.tabPageAdd.ImageKey = "(aucun)";
             this.tabPageAdd.Location = new System.Drawing.Point(4, 32);
             this.tabPageAdd.Name = "tabPageAdd";
-            this.tabPageAdd.Size = new System.Drawing.Size(431, 183);
+            this.tabPageAdd.Size = new System.Drawing.Size(1037, 434);
             this.tabPageAdd.TabIndex = 1;
             this.tabPageAdd.ToolTipText = "Ajouter";
             this.tabPageAdd.VerticalScrollbarBarColor = true;
@@ -119,51 +155,16 @@
             this.imageList.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList.Images.SetKeyName(0, "add.png");
             // 
-            // splitContainer1
-            // 
-            this.splitContainer1.CausesValidation = false;
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer1.IsSplitterFixed = true;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.panel_Filtre);
-            this.splitContainer1.Panel1MinSize = 100;
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.CausesValidation = false;
-            this.splitContainer1.Panel2.Controls.Add(this.panelDataGrid);
-            this.splitContainer1.Size = new System.Drawing.Size(1045, 470);
-            this.splitContainer1.SplitterDistance = 100;
-            this.splitContainer1.TabIndex = 15;
-            // 
-            // panel_Filtre
-            // 
-            this.panel_Filtre.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel_Filtre.AutoSize = true;
-            this.panel_Filtre.Location = new System.Drawing.Point(12, 3);
-            this.panel_Filtre.Name = "panel_Filtre";
-            this.panel_Filtre.Size = new System.Drawing.Size(1021, 94);
-            this.panel_Filtre.TabIndex = 16;
-            this.panel_Filtre.Tag = "";
-            // 
             // ManagerFormControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.splitContainer1);
+            this.Controls.Add(this.tabControl_MainManager);
             this.Name = "ManagerFormControl";
             this.Size = new System.Drawing.Size(1045, 470);
             this.Load += new System.EventHandler(this.ManagerFormControl_Load);
-            this.panelDataGrid.ResumeLayout(false);
             this.tabControl_MainManager.ResumeLayout(false);
+            this.TabGrid.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
