@@ -167,6 +167,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>TaskProject.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormMenuApplication.ar.resx">
+      <DependentUpon>FormMenuApplication.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMenuApplication.fr.resx">
+      <DependentUpon>FormMenuApplication.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMenuApplication.resx">
       <DependentUpon>FormMenuApplication.cs</DependentUpon>
     </EmbeddedResource>
