@@ -11,6 +11,7 @@ using App.Gwin.Attributes;
 using App.Gwin.EntityManagement;
 using System.Reflection;
 using App.Gwin.Application.BAL;
+using App.Gwin.Entities.Resources.Glossary;
 
 namespace App.Gwin
 {
@@ -76,7 +77,7 @@ namespace App.Gwin
 
             // Create Entry Form Instance
             if (this.EntryForm_Instance == null) this.EntryForm_Instance = new BaseEntryForm(this.BLO_Instance);
-            
+
             // Create and Init filtre Instance
             if (this.Filter_Instance == null)
                 this.Filter_Instance = new BaseFilterControl(this.BLO_Instance, this.DefaultFilterValues);
@@ -97,6 +98,9 @@ namespace App.Gwin
             this.Text = this.BLO_Instance.ConfigEntity.ManagementForm.FormTitle;
             this.tabPageAdd.ToolTipText = this.BLO_Instance.ConfigEntity.AddButton.Title;
             this.tabControl_MainManager.TabPages["TabGrid"].Text = this.BLO_Instance.ConfigEntity.ManagementForm.TitrePageGridView;
+
+            // TagAdd Title
+            this.tabControl_MainManager.TabPages["tabPageAdd"].Text = Glossary.Add;
         }
         /// <summary>
         /// Constructor
