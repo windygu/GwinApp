@@ -61,7 +61,11 @@ namespace App.Gwin
             Dictionary<string, object> DefaultFilterValues,
             Form MdiFormParent)
         {
+
             InitializeComponent();
+
+            
+
             // Init Properties values
             this.BLO_Instance = BLO;
             this.EntryForm_Instance = EntryForm_Instance;
@@ -110,7 +114,7 @@ namespace App.Gwin
         /// <param name="MdiFormParent">Mdi Parent Form</param>
         public ManagerFormControl(IGwinBaseBLO BLO,
             Dictionary<string, object> DefaultFilterValues, Form MdiFormParent)
-            : this(BLO, null,null,null, DefaultFilterValues, MdiFormParent)
+            : this(BLO, null, null, null, DefaultFilterValues, MdiFormParent)
         { }
         /// <summary>
         /// RefreshData with filter information
