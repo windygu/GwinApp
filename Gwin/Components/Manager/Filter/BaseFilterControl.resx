@@ -156,9 +156,6 @@
   <data name="groupBoxFiltrage.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="groupBoxFiltrage.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
-    <value>Yes</value>
-  </data>
   <data name="groupBoxFiltrage.Size" type="System.Drawing.Size, System.Drawing">
     <value>564, 192</value>
   </data>

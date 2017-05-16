@@ -88,9 +88,17 @@ namespace App.Gwin.EntityManagement
 
            
             if (GwinApp.isRightToLeft)
-                this.flowLayoutPanel1.FlowDirection = FlowDirection.LeftToRight;
-            else
+            {
                 this.flowLayoutPanel1.FlowDirection = FlowDirection.RightToLeft;
+                this.groupBoxFiltrage.RightToLeft = RightToLeft.Yes;
+            }
+
+            else
+            {
+                this.flowLayoutPanel1.FlowDirection = FlowDirection.LeftToRight;
+                this.groupBoxFiltrage.RightToLeft = RightToLeft.No;
+            }
+                
 
 
             this.FilterContainer = this.flowLayoutPanel1;
