@@ -141,8 +141,7 @@ namespace App.Gwin.Attributes
             }
             
             if (this.ManagementForm.FormTitle == null)
-                this.ManagementForm.FormTitle = baseEntityResourceManager
-                .GetString("management_of", this.CultureInfo) + " " + this.DisplayEntity.PluralName?.ToLower();
+                this.ManagementForm.FormTitle = Glossary.management_of + " " + this.DisplayEntity.PluralName?.ToLower();
             if (this.ManagementForm.TitrePageGridView == null)
                 this.ManagementForm.TitrePageGridView = this.ManagementForm.FormTitle;
 

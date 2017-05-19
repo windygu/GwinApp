@@ -18,7 +18,7 @@ namespace GenericWinForm.Demo.Entities
     [GwinEntity(Localizable =true,DisplayMember = nameof(TaskProject.Title))]
     [Menu]
     [ManagementForm(Localizable = true, FormTitle = "form_title", Width = 900, Height = 600)]
-    [BusinesRole]
+   
     public class TaskProject : BaseEntity
     {
 
@@ -35,6 +35,7 @@ namespace GenericWinForm.Demo.Entities
         [EntryForm(GroupeBox = "Primitive_Type",GroupeBoxOrder = 4,isRequired = true)]
         [Filter]
         [DataGrid]
+        [BusinesRole]
         public LocalizedString Title { set; get; }
 
         /// <summary>

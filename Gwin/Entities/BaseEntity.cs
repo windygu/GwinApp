@@ -45,7 +45,7 @@ namespace App.Gwin.Entities
 
 
         [DisplayProperty(isInGlossary = true)]
-        [DataGrid(Ordre = 1000, WidthColonne = 110)]
+        [DataGrid(Ordre = 1000, WidthColonne = 120)]
         [DisplayFormat(DataFormatString = "{0,d}")]
         public DateTime DateModification { get; set; }
 
