@@ -2,12 +2,12 @@
 {
     partial class ProjectForm
     {
-        /// <summary>
+        /// <summary> 
         /// Variable nécessaire au concepteur.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
+        /// <summary> 
         /// Nettoyage des ressources utilisées.
         /// </summary>
         /// <param name="disposing">true si les ressources managées doivent être supprimées ; sinon, false.</param>
@@ -20,20 +20,20 @@
             base.Dispose(disposing);
         }
 
-        #region Code généré par le Concepteur Windows Form
+        #region Code généré par le Concepteur de composants
 
-        /// <summary>
-        /// Méthode requise pour la prise en charge du concepteur - ne modifiez pas
+        /// <summary> 
+        /// Méthode requise pour la prise en charge du concepteur - ne modifiez pas 
         /// le contenu de cette méthode avec l'éditeur de code.
         /// </summary>
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProjectForm));
-            this.panel_Project = new System.Windows.Forms.Panel();
-            this.Title = new App.Gwin.Fields.StringField();
-            this.Description = new App.Gwin.Fields.StringField();
+            this.txtText = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.txtDescription = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -46,83 +46,94 @@
             // splitContainer1
             // 
             // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.panel_Project);
-            resources.ApplyResources(this.splitContainer1, "splitContainer1");
-            // 
-            // btEnregistrer
-            // 
-            resources.ApplyResources(this.btEnregistrer, "btEnregistrer");
-            // 
-            // panel_form
-            // 
-            resources.ApplyResources(this.panel_form, "panel_form");
-            this.panel_form.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_form_Paint);
-            // 
             // FlowLayoutContainer
             // 
-   
             this.FlowLayoutContainer.Controls.Add(this.groupBox1);
             resources.ApplyResources(this.FlowLayoutContainer, "FlowLayoutContainer");
             // 
-            // panel_Project
+            // txtText
             // 
-            resources.ApplyResources(this.panel_Project, "panel_Project");
-            this.panel_Project.Name = "panel_Project";
-            this.panel_Project.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_Project_Paint);
             // 
-            // Title
             // 
-            this.Title.AutoSizeConfig = true;
-            this.Title.IsMultiline = false;
-            resources.ApplyResources(this.Title, "Title");
-            this.Title.Name = "Title";
-            this.Title.NombreLigne = 5;
-            this.Title.OrientationField = System.Windows.Forms.Orientation.Vertical;
-            this.Title.PropertyInfo = null;
-            this.Title.SizeControl = new System.Drawing.Size(200, 20);
-            this.Title.SizeLabel = new System.Drawing.Size(100, 20);
-            this.Title.Text_Label = "Nom du projet";
-            this.Title.Value = "";
             // 
-            // Description
+            this.txtText.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            this.txtText.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode")));
+            this.txtText.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location")));
+            this.txtText.CustomButton.Name = "";
+            this.txtText.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size")));
+            this.txtText.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtText.CustomButton.TabIndex = ((int)(resources.GetObject("resource.TabIndex")));
+            this.txtText.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtText.CustomButton.UseSelectable = true;
+            this.txtText.CustomButton.Visible = ((bool)(resources.GetObject("resource.Visible")));
+            this.txtText.Lines = new string[0];
+            resources.ApplyResources(this.txtText, "txtText");
+            this.txtText.MaxLength = 32767;
+            this.txtText.Name = "txtText";
+            this.txtText.PasswordChar = '\0';
+            this.txtText.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtText.SelectedText = "";
+            this.txtText.SelectionLength = 0;
+            this.txtText.SelectionStart = 0;
+            this.txtText.ShortcutsEnabled = true;
+            this.txtText.UseSelectable = true;
+            this.txtText.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtText.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            this.Description.AutoSizeConfig = true;
-            this.Description.IsMultiline = true;
-            resources.ApplyResources(this.Description, "Description");
-            this.Description.Name = "Description";
-            this.Description.NombreLigne = 5;
-            this.Description.OrientationField = System.Windows.Forms.Orientation.Vertical;
-            this.Description.PropertyInfo = null;
-            this.Description.SizeControl = new System.Drawing.Size(300, 20);
-            this.Description.SizeLabel = new System.Drawing.Size(100, 20);
-            this.Description.Text_Label = "شرح المشروع";
-            this.Description.Value = "";
+            // metroLabel1
+            // 
+            resources.ApplyResources(this.metroLabel1, "metroLabel1");
+            this.metroLabel1.Name = "metroLabel1";
+            // 
+            // txtDescription
+            // 
+            // 
+            // 
+            // 
+            this.txtDescription.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
+            this.txtDescription.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode1")));
+            this.txtDescription.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location1")));
+            this.txtDescription.CustomButton.Name = "";
+            this.txtDescription.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size1")));
+            this.txtDescription.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtDescription.CustomButton.TabIndex = ((int)(resources.GetObject("resource.TabIndex1")));
+            this.txtDescription.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtDescription.CustomButton.UseSelectable = true;
+            this.txtDescription.CustomButton.Visible = ((bool)(resources.GetObject("resource.Visible1")));
+            this.txtDescription.Lines = new string[0];
+            resources.ApplyResources(this.txtDescription, "txtDescription");
+            this.txtDescription.MaxLength = 32767;
+            this.txtDescription.Multiline = true;
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.PasswordChar = '\0';
+            this.txtDescription.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtDescription.SelectedText = "";
+            this.txtDescription.SelectionLength = 0;
+            this.txtDescription.SelectionStart = 0;
+            this.txtDescription.ShortcutsEnabled = true;
+            this.txtDescription.UseSelectable = true;
+            this.txtDescription.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtDescription.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroLabel2
+            // 
+            resources.ApplyResources(this.metroLabel2, "metroLabel2");
+            this.metroLabel2.Name = "metroLabel2";
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.Title);
-            this.groupBox1.Controls.Add(this.Description);
+            this.groupBox1.Controls.Add(this.metroLabel1);
+            this.groupBox1.Controls.Add(this.metroLabel2);
+            this.groupBox1.Controls.Add(this.txtText);
+            this.groupBox1.Controls.Add(this.txtDescription);
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
-            // manyToManyField1
-            // 
- 
-            // 
-            // manyToManyField2
-            // 
-      
-            // 
-            // manyToManyField3
-            // 
-        
-            // 
             // ProjectForm
             // 
             resources.ApplyResources(this, "$this");
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Name = "ProjectForm";
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -131,16 +142,17 @@
             this.panel_form.ResumeLayout(false);
             this.FlowLayoutContainer.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel_Project;
-        private App.Gwin.Fields.StringField Description;
-        private App.Gwin.Fields.StringField Title;
+        private MetroFramework.Controls.MetroTextBox txtText;
         private System.Windows.Forms.GroupBox groupBox1;
-
+        private MetroFramework.Controls.MetroLabel metroLabel1;
+        private MetroFramework.Controls.MetroLabel metroLabel2;
+        private MetroFramework.Controls.MetroTextBox txtDescription;
     }
 }

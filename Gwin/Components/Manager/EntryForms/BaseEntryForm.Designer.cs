@@ -91,7 +91,7 @@
             resources.ApplyResources(this.btEnregistrer, "btEnregistrer");
             this.btEnregistrer.Name = "btEnregistrer";
             this.btEnregistrer.UseSelectable = true;
-            this.btEnregistrer.Click += new System.EventHandler(this.btEnregistrer_Click);
+            this.btEnregistrer.Click += new System.EventHandler(this.Save_Click);
             // 
             // btAnnuler
             // 

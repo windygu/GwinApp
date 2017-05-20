@@ -12,13 +12,18 @@ namespace App.Gwin
     public partial class BaseEntryForm
     {
 
+        public void Save()
+        {
+
+        }
+
         #region Save and Cancel
         /// <summary>
         /// Save Button 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        protected virtual void btEnregistrer_Click(object sender, EventArgs e)
+        protected virtual void Save_Click(object sender, EventArgs e)
         {
             // Check is All controls en Form are validate
             if (ValidationManager.hasValidationErrors(this.Controls))

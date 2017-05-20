@@ -638,15 +638,15 @@
       <DependentUpon>BaseEntryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\Manager\EntryForms\Resources\ResourceEntryForm.ar.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ResourceEntryForm.ar.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\Manager\EntryForms\Resources\ResourceEntryForm.fr.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ResourceEntryForm.fr.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\Manager\EntryForms\Resources\ResourceEntryForm.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ResourceEntryForm.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Entities\Application\Resources\ApplicationName\ApplicationName.ar.resx" />
