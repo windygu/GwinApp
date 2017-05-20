@@ -39,15 +39,18 @@ namespace App.Gwin.Fields
 
             set
             {
-                List<BaseEntity> ls_values = value as List<BaseEntity>;
-                // Update Filter selection
-                if (this.SelectionFilterManager.isHasFilter && ls_values != null && ls_values.Count > 0)
-                    this.SelectionFilterManager.Value = ls_values.First().Id;
-
-                // Update Value
-                foreach (var item in ls_values)
+                if (System.ComponentModel.LicenseManager.UsageMode != System.ComponentModel.LicenseUsageMode.Designtime)
                 {
-                    listBoxChoices.SelectedItems.Add(item);
+                     List<BaseEntity> ls_values = value as List<BaseEntity>;
+                    // Update Filter selection
+                    if (this.SelectionFilterManager != null && this.SelectionFilterManager.isHasFilter && ls_values != null && ls_values.Count > 0)
+                        this.SelectionFilterManager.Value = ls_values.First().Id;
+
+                    // Update Value
+                    foreach (var item in ls_values)
+                    {
+                        listBoxChoices.SelectedItems.Add(item);
+                    }
                 }
             }
         }
@@ -89,44 +92,49 @@ namespace App.Gwin.Fields
         {
             InitializeComponent();
 
-            // Params
-            this.PropertyInfo = propertyInfo;
-            this.orientationField = OrientationField;
-            this.SizeLabel = SizeLabel;
-            this.SizeControl = SizeControl;
-            this.ConfigEntity = ConfigEntity;
-            this.EntityBAO = Service;
-            
-            // Test Label
-            
 
-            // Create Instance of PropertyInfo
-            if (PropertyInfo != null)
-                this.configProperty = new ConfigProperty(PropertyInfo, this.ConfigEntity);
 
-            this.Text_Label = this.configProperty.DisplayProperty.Title;
-
-            // Create Instance of PrivateFilter
-            this.SelectionFilterManager = new SelectionFilterManager(this.EntityBAO,
-                this.PropertyInfo,
-                MainContainer,
-                SizeLabel, SizeControl, OrientationField, ConfigEntity);
-
-            // Fill Listbox Data
-            if (this.SelectionFilterManager.isHasFilter)
+            if (System.ComponentModel.LicenseManager.UsageMode != System.ComponentModel.LicenseUsageMode.Designtime)
             {
-                // The filter fill listbox data
-                this.SelectionFilterManager.ValueChanged += SelectionFilterManager_ValueChanged;
-            }else
-            {
-                // Fill the listBox data if the filed not have private filter 
-                Type TypeGenericList = this.PropertyInfo.PropertyType.GetGenericArguments()[0];
-                IGwinBaseBLO ServiceTypeGenericList = this.EntityBAO.CreateServiceBLOInstanceByTypeEntity(TypeGenericList);
-                List<Object> ls_possible_value = ServiceTypeGenericList.GetAll();
-                listBoxChoices.Items.AddRange(ls_possible_value.ToArray());
-                ChangeSizeListBox(listBoxChoices.Items.Count);
+                // Params
+                this.PropertyInfo = propertyInfo;
+                this.orientationField = OrientationField;
+                this.SizeLabel = SizeLabel;
+                this.SizeControl = SizeControl;
+                this.ConfigEntity = ConfigEntity;
+                this.EntityBAO = Service;
+
+                // Test Label
+
+
+                // Create Instance of PropertyInfo
+                if (PropertyInfo != null)
+                    this.configProperty = new ConfigProperty(PropertyInfo, this.ConfigEntity);
+
+                this.Text_Label = this.configProperty.DisplayProperty.Title;
+
+                // Create Instance of PrivateFilter
+                this.SelectionFilterManager = new SelectionFilterManager(this.EntityBAO,
+                    this.PropertyInfo,
+                    MainContainer,
+                    SizeLabel, SizeControl, OrientationField, ConfigEntity);
+
+                // Fill Listbox Data
+                if (this.SelectionFilterManager.isHasFilter)
+                {
+                    // The filter fill listbox data
+                    this.SelectionFilterManager.ValueChanged += SelectionFilterManager_ValueChanged;
+                }
+                else
+                {
+                    // Fill the listBox data if the filed not have private filter 
+                    Type TypeGenericList = this.PropertyInfo.PropertyType.GetGenericArguments()[0];
+                    IGwinBaseBLO ServiceTypeGenericList = this.EntityBAO.CreateServiceBLOInstanceByTypeEntity(TypeGenericList);
+                    List<Object> ls_possible_value = ServiceTypeGenericList.GetAll();
+                    listBoxChoices.Items.AddRange(ls_possible_value.ToArray());
+                    ChangeSizeListBox(listBoxChoices.Items.Count);
+                }
             }
-           
 
         }
 

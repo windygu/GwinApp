@@ -28,9 +28,13 @@ namespace App.Gwin
     /// </summary>
     public partial class BaseEntryForm : MetroUserControl, IBaseEntryForm
     {
+
+
+
+
         #region Variables
 
-
+        public System.Windows.Forms.FlowLayoutPanel flowLayoutPanelForm = null;
 
         /// <summary>
         /// Indique si les champs seront automatiquement générer ou manuellement implémenter 
@@ -113,43 +117,58 @@ namespace App.Gwin
         {
             InitializeComponent();
 
-            CheckPramIsNull.CheckParam_is_NotNull(EtityBLO, this, nameof(EtityBLO));
-
-            // Init 
-            errorProvider.RightToLeft = GwinApp.isRightToLeft;
-
-           
-
-            // Params
-            this.EntityBLO = EtityBLO;
-
-            this.Entity = entity;
-            this.CritereRechercheFiltre = critereRechercheFiltre;
-            this.AutoGenerateField = AutoGenerateField;
-            this.ConfigEntity = ConfigEntity.CreateConfigEntity(this.EntityBLO.TypeEntity);
-
-            // Les valeus par défaux
-            this.isStepInitializingValues = false;
-            this.MessageValidation = new MessageValidation(errorProvider);
-
-
-            // Préparation de l'objet Entity
-            if (this.EntityBLO != null && this.Entity == null)
-                this.Entity = (BaseEntity)EtityBLO.CreateEntityInstance();
-            if ((this.Entity == null || this.Entity.Id == 0) && this.CritereRechercheFiltre != null)
-                this.InitialisationEntityParCritereRechercheFiltre();
-
-            // Conteneurs du formulaire
-            this.ConteneurFormulaire = this.flowLayoutPanelForm;
-
-            // Génération du Formulaire
-            if (this.AutoGenerateField)
+            if (System.ComponentModel.LicenseManager.UsageMode != System.ComponentModel.LicenseUsageMode.Designtime)
             {
-                if (this.ConfigEntity == null)
-                {
-                    this.ConfigEntity = ConfigEntity.CreateConfigEntity(this.EntityBLO.TypeEntity);
-                }
 
+                // 
+                // flowLayoutPanelForm
+                //
+
+
+                this.ConteneurFormulaire = FlowLayoutContainer;
+
+
+
+
+
+
+                CheckPramIsNull.CheckParam_is_NotNull(EtityBLO, this, nameof(EtityBLO));
+
+                // Init 
+                errorProvider.RightToLeft = GwinApp.isRightToLeft;
+
+
+
+                // Params
+                this.EntityBLO = EtityBLO;
+
+                this.Entity = entity;
+                this.CritereRechercheFiltre = critereRechercheFiltre;
+                this.AutoGenerateField = AutoGenerateField;
+                this.ConfigEntity = ConfigEntity.CreateConfigEntity(this.EntityBLO.TypeEntity);
+
+                // Les valeus par défaux
+                this.isStepInitializingValues = false;
+                this.MessageValidation = new MessageValidation(errorProvider);
+
+
+                // Préparation de l'objet Entity
+                if (this.EntityBLO != null && this.Entity == null)
+                    this.Entity = (BaseEntity)EtityBLO.CreateEntityInstance();
+                if ((this.Entity == null || this.Entity.Id == 0) && this.CritereRechercheFiltre != null)
+                    this.InitialisationEntityParCritereRechercheFiltre();
+
+
+
+                // Génération du Formulaire
+                if (this.AutoGenerateField)
+                {
+                    if (this.ConfigEntity == null)
+                    {
+                        this.ConfigEntity = ConfigEntity.CreateConfigEntity(this.EntityBLO.TypeEntity);
+                    }
+
+                }
             }
 
         }
@@ -269,7 +288,7 @@ namespace App.Gwin
             return formilaire;
         }
         /// <summary>
-        /// Création d'une instance comme cette formulaire
+        /// Create Instance as this EntryForm
         /// </summary>
         /// <returns></returns>
         public virtual BaseEntryForm CreateInstance(IGwinBaseBLO Service, BaseEntity entity, Dictionary<string, object> CritereRechercheFiltre)
@@ -333,6 +352,11 @@ namespace App.Gwin
         {
 
             onAnnulerClick(this, e);
+
+        }
+
+        private void panel_form_Paint(object sender, PaintEventArgs e)
+        {
 
         }
     }

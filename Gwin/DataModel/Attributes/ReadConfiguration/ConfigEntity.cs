@@ -30,6 +30,7 @@ namespace App.Gwin.Attributes
         public AddButtonAttribute AddButton { set; get; }
         public MenuAttribute Menu { set; get; }
         public List<DataGridSelectedActionAttribute> ListDataGridSelectedAction { set; get; }
+        public GwinFormAttribute GwinForm { get; set; }
 
         public Type TypeOfEntity { set; get; }
         public bool Localizable { get; set; }
@@ -76,6 +77,8 @@ namespace App.Gwin.Attributes
         /// </summary>
         private void ReadConfiguration()
         {
+
+
             #region Load RessouceManager  
             //Fill RessouceManager
             this.RessourcesManagers = new Dictionary<string, ResourceManager>();
@@ -85,6 +88,12 @@ namespace App.Gwin.Attributes
             string BaseEntityRessouceFullName = typeof(BaseEntity).Namespace + ".Resources." + typeof(BaseEntity).Name + "." + typeof(BaseEntity).Name;
             baseEntityResourceManager = new ResourceManager(BaseEntityRessouceFullName, typeof(BaseEntity).Assembly);
 
+            #endregion
+
+            #region Read GwinForm 
+            Object[] ls_attribut_GwinForm = this.TypeOfEntity.GetCustomAttributes(typeof(GwinFormAttribute), false);
+            if (ls_attribut_GwinForm != null && ls_attribut_GwinForm.Count() > 0)
+                this.GwinForm = (GwinFormAttribute)ls_attribut_GwinForm[0];
             #endregion
 
             #region Read DisplayEntityAttribute
@@ -139,7 +148,7 @@ namespace App.Gwin.Attributes
                 if (this.ManagementForm.FormTitle != null)
                     this.ManagementForm.FormTitle = GetStringFromRessource(this.ManagementForm.FormTitle);
             }
-            
+
             if (this.ManagementForm.FormTitle == null)
                 this.ManagementForm.FormTitle = Glossary.management_of + " " + this.DisplayEntity.PluralName?.ToLower();
             if (this.ManagementForm.TitrePageGridView == null)
@@ -208,12 +217,12 @@ namespace App.Gwin.Attributes
                         item.Description = GetStringFromRessource(item.Description);
                 }
             }
-            
+
             // if Text is null; we use form.Text
             foreach (var item in this.ListDataGridSelectedAction)
             {
                 if (item.TypeOfForm == null)
-                    throw new GwinException(string.Format("The TypeOfFrom of DataGridSelectedAction in Entity :{0} must not be null,it is used to Create Instance of Form to execute traitement action",this.TypeOfEntity.FullName));
+                    throw new GwinException(string.Format("The TypeOfFrom of DataGridSelectedAction in Entity :{0} must not be null,it is used to Create Instance of Form to execute traitement action", this.TypeOfEntity.FullName));
                 if (item.Title == null || item.Title == string.Empty)
                 {
                     Form form = Activator.CreateInstance(item.TypeOfForm) as Form;

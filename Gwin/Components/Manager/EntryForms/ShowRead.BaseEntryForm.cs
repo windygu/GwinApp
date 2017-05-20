@@ -81,11 +81,11 @@ namespace App.Gwin
                 BaseField baseField = null;
                 if (ConfigProperty.EntryForm?.TabPage == true)
                 {
-                    Control[] recherche = this.tabControlForm.Controls.Find(item.Name, true);
-                    if (recherche.Count() > 0)
-                        baseField = (BaseField)recherche.First();
-                    else
-                        throw new FieldNotExistInFormException();
+                    //Control[] recherche = this.tabControlForm.Controls.Find(item.Name, true);
+                    //if (recherche.Count() > 0)
+                    //    baseField = (BaseField)recherche.First();
+                    //else
+                    //    throw new FieldNotExistInFormException();
                 }
                 else
                 {

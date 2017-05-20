@@ -128,11 +128,11 @@
     <Compile Include="Presentation\ProjectManager\ProjectManagerForm.Designer.cs">
       <DependentUpon>ProjectManagerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentation\ProjectManager\ProjetView.cs">
+    <Compile Include="Presentation\ProjectManager\ProjectForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Presentation\ProjectManager\ProjetView.Designer.cs">
-      <DependentUpon>ProjetView.cs</DependentUpon>
+    <Compile Include="Presentation\ProjectManager\ProjectForm.Designer.cs">
+      <DependentUpon>ProjectForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentation\TaskProjectManager\FormPrintTaskProject.cs">
       <SubType>Form</SubType>
@@ -183,11 +183,14 @@
     <EmbeddedResource Include="Migrations\201705120935128_Update1.resx">
       <DependentUpon>201705120935128_Update1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\ProjectManager\ProjectForm.ar.resx">
+      <DependentUpon>ProjectForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentation\ProjectManager\ProjectManagerForm.resx">
       <DependentUpon>ProjectManagerForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentation\ProjectManager\ProjetView.resx">
-      <DependentUpon>ProjetView.cs</DependentUpon>
+    <EmbeddedResource Include="Presentation\ProjectManager\ProjectForm.resx">
+      <DependentUpon>ProjectForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\TaskProjectManager\FormPrintTaskProject.resx">
       <DependentUpon>FormPrintTaskProject.cs</DependentUpon>

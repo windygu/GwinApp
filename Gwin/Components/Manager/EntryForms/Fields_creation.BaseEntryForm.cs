@@ -27,15 +27,29 @@ namespace App.Gwin
     public partial class BaseEntryForm
     {
 
+      
+
+
         /// <summary>
         /// Field Creation
         /// </summary>
         private void CreateFieldIfNotGenerated()
         {
+
+          
+
             // Create Field if not yet Created
             if (!this.AutoGenerateField || this.isGeneratedForm)
                 return;
             this.isGeneratedForm = true;
+
+            // Create FlowLayout
+            this.flowLayoutPanelForm = new FlowLayoutPanel();
+            this.flowLayoutPanelForm.Dock = DockStyle.Fill;
+            this.FlowLayoutContainer.RightToLeft = RightToLeft.Yes;
+            this.FlowLayoutContainer.Controls.Add(this.flowLayoutPanelForm);
+            // Conteneurs du formulaire
+            this.ConteneurFormulaire = this.flowLayoutPanelForm;
 
             #region Default Positions and  Size
             int y_field = 0;
@@ -98,7 +112,7 @@ namespace App.Gwin
                 param.ConfigProperty = configProperty;
                 param.TabIndex = ++TabIndex;
                 param.EntityBLO = this.EntityBLO; //  used per ManyToOne Field
-                param.TabControlForm = this.tabControlForm; //  used per ManyToMany Field
+              //  param.TabControlForm = this.tabControlForm; //  used per ManyToMany Field
                 param.Entity = this.Entity;
                 param.ConteneurFormulaire = FieldContainner;
                 param.errorProvider = errorProvider;
@@ -213,30 +227,30 @@ namespace App.Gwin
         /// </summary>
         private void InitTabPageInterface()
         {
-            var listeProprite = from i in this.EntityBLO.TypeEntity.GetProperties()
-                                where i.GetCustomAttribute(typeof(EntryFormAttribute)) != null
-                                && ((EntryFormAttribute)i.GetCustomAttribute(typeof(EntryFormAttribute))).TabPage
-                                select i;
+            //var listeProprite = from i in this.EntityBLO.TypeEntity.GetProperties()
+            //                    where i.GetCustomAttribute(typeof(EntryFormAttribute)) != null
+            //                    && ((EntryFormAttribute)i.GetCustomAttribute(typeof(EntryFormAttribute))).TabPage
+            //                    select i;
 
-            // Si l'interface contient des Relation ManyToMany avec TabPage = true
-            if (listeProprite.Count() > 0)
-            {
+            //// Si l'interface contient des Relation ManyToMany avec TabPage = true
+            //if (listeProprite.Count() > 0)
+            //{
 
-                flowLayoutPanelForm.Parent.Controls.Remove(flowLayoutPanelForm);
-                flowLayoutPanelForm.Dock = DockStyle.Fill;
-                tabControlForm.TabPages["TabPageForm"].Controls.Add(flowLayoutPanelForm);
-                tabControlForm.Dock = DockStyle.Fill;
-                tabControlForm.TabPages["TabPageForm"].Text = this.ConfigEntity.DisplayEntity.SingularName;
+            //    flowLayoutPanelForm.Parent.Controls.Remove(flowLayoutPanelForm);
+            //    flowLayoutPanelForm.Dock = DockStyle.Fill;
+            //    tabControlForm.TabPages["TabPageForm"].Controls.Add(flowLayoutPanelForm);
+            //    tabControlForm.Dock = DockStyle.Fill;
+            //    tabControlForm.TabPages["TabPageForm"].Text = this.ConfigEntity.DisplayEntity.SingularName;
 
-            }
-            // Si l'interface ne contient pas des relation ManyToMany
-            else
-            {
-                tabControlForm.Parent.Controls.Remove(tabControlForm);
-            }
+            //}
+            //// Si l'interface ne contient pas des relation ManyToMany
+            //else
+            //{
+            //    tabControlForm.Parent.Controls.Remove(tabControlForm);
+            //}
 
-            flowLayoutPanelForm.Dock = DockStyle.Fill;
-            flowLayoutPanelForm.Padding = new Padding(10);
+            //flowLayoutPanelForm.Dock = DockStyle.Fill;
+            //flowLayoutPanelForm.Padding = new Padding(10);
 
         }
 

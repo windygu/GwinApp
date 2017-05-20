@@ -39,6 +39,7 @@ namespace App.Shared.AttributesManager
         public bool Localizable { get; set; }
         public CultureInfo CultureInfo { get; set; }
         public BusinesRoleAttribute BusinesRole { get; set; }
+       
 
         /// <summary>
         ///  Resource Manager of the Entity and its BaseType
@@ -63,6 +64,9 @@ namespace App.Shared.AttributesManager
             // Localizable
             this.TypeOfEntity = propertyInfo.ReflectedType;
             this.Localizable = this.ConfigEntity.DisplayEntity.Localizable;
+
+
+           
 
             //
             // Relationship

@@ -64,7 +64,7 @@ namespace App.Gwin
 
             InitializeComponent();
 
-            
+
 
             // Init Properties values
             this.BLO_Instance = BLO;
@@ -75,7 +75,15 @@ namespace App.Gwin
             this.FrmParent = FrmParent;
 
             // Create Entry Form Instance
-            if (this.EntryForm_Instance == null) this.EntryForm_Instance = new BaseEntryForm(this.BLO_Instance);
+            if (this.EntryForm_Instance == null)
+                if (this.BLO_Instance.ConfigEntity.GwinForm == null)
+                {
+                    this.EntryForm_Instance = new BaseEntryForm(this.BLO_Instance);
+                } 
+                else
+                {
+                    this.EntryForm_Instance =(BaseEntryForm) Activator.CreateInstance(this.BLO_Instance.ConfigEntity.GwinForm.FormType, this.BLO_Instance)  ;
+                }
 
             // Create and Init filtre Instance
             if (this.Filter_Instance == null)
@@ -88,7 +96,7 @@ namespace App.Gwin
             if (this.DataGridControl_Instance == null)
                 this.DataGridControl_Instance = new GwinDataGridComponent(this.BLO_Instance, this.DefaultFilterValues);
             this.DataGridControl_Instance.Dock = DockStyle.Fill;
-             panelDataGrid.Controls.Add(this.DataGridControl_Instance);
+            panelDataGrid.Controls.Add(this.DataGridControl_Instance);
             panelDataGrid.CreateControl();
             this.DataGridControl_Instance.EditClick += DataGridControl_EditClick;
             this.DataGridControl_Instance.EditManyToMany_Creation += DataGridControl_ManyToMany_Creation;
@@ -137,7 +145,7 @@ namespace App.Gwin
             {
                 tabControl_MainManager.RightToLeftLayout = true;
                 tabControl_MainManager.RightToLeft = RightToLeft.Yes;
-               
+
             }
             else
             {

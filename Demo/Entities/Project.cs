@@ -2,6 +2,7 @@
 using App.Gwin.Entities;
 using App.Gwin.Entities.MultiLanguage;
 using App.Gwin.GwinApplication.Security.Attributes;
+using GenericWinForm.Demo.Presentation.ProjectManager;
 using GenericWinForm.Demo.Presentation.TaskProjectManager;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,7 @@ namespace GenericWinForm.Demo.Entities
     [Authorize]
     [Menu]
     [DataGridSelectedAction(Title = "Print", Description = "Print_Task", TypeOfForm = typeof(FormPrintTaskProject))]
+    [GwinForm(FormType = typeof(ProjectForm))]
     public class Project:BaseEntity
     {
 

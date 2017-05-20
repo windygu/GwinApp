@@ -117,10 +117,23 @@
       <DependentUpon>StringField.cs</DependentUpon>
     </Compile>
     <Compile Include="Components\Manager\DataGrid\IFormSelectedEntityAction.cs" />
+    <Compile Include="Components\Manager\EntryForms\TabEntryForm\GwinEntityForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\Manager\EntryForms\TabEntryForm\GwinEntityForm.Designer.cs">
+      <DependentUpon>GwinEntityForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Manager\EntryForms\TabEntryForm\TabEntryForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\Manager\EntryForms\TabEntryForm\TabEntryForm.Designer.cs">
+      <DependentUpon>TabEntryForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Components\Manager\Fields.Traitements\BoolFieldTraitement.cs" />
     <Compile Include="Components\Manager\Fields.Traitements\Params\Base\BaseFieldTraitementParam.cs" />
     <Compile Include="DataModel\Attributes\ActionLineAttribute.cs" />
     <Compile Include="DataModel\Attributes\BusinesRole.cs" />
+    <Compile Include="DataModel\Attributes\GwinFormAttribute.cs" />
     <Compile Include="DataModel\Exceptions\Class1.cs" />
     <Compile Include="DataModel\Helpers\GwinIdentifierManager.cs" />
     <Compile Include="DataModel\ModelInfo\GwinAssembliesManager.cs" />
@@ -566,6 +579,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Components\Fields\StringField.resx">
       <DependentUpon>StringField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Manager\EntryForms\TabEntryForm\GwinEntityForm.resx">
+      <DependentUpon>GwinEntityForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Manager\EntryForms\TabEntryForm\TabEntryForm.resx">
+      <DependentUpon>TabEntryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\Manager\Filter\BaseFilterControl.ar.resx">
       <DependentUpon>BaseFilterControl.cs</DependentUpon>

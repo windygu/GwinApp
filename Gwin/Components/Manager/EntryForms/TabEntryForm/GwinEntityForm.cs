@@ -6,13 +6,15 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace GenericWinForm.Demo.Presentation.ProjectManager
+namespace App.Gwin.Components.Manager.EntryForms.TabEntryForm
 {
-    public partial class ProjetView : App.Gwin.BaseEntryForm
+    public partial class GwinEntityForm : App.Gwin.BaseEntryForm
     {
-        public ProjetView()
+        public GwinEntityForm()
         {
+           
             InitializeComponent();
+            
         }
     }
 }

@@ -28,12 +28,12 @@ namespace App.Gwin.Fields
             {
                 return comboBoxManyToOne.SelectedValue;
             }
-            
+
             set
             {
 
                 this.setAllValuesBySelectedValue((Int64)value);
-                
+
 
                 //comboBoxManyToOne.SelectedValue = value; 
 
@@ -172,64 +172,110 @@ namespace App.Gwin.Fields
 
         public ManyToOneField(IGwinBaseBLO Service,
             Type TypeObjet,
-            PropertyInfo propertyInfo, 
-            Control MainContainner, 
-            Orientation OrientationFiled, 
-            Size SizeLabel, 
+            PropertyInfo propertyInfo,
+            Control MainContainner,
+            Orientation OrientationFiled,
+            Size SizeLabel,
             Size SizeControl,
-            Int64 DefaultValues,ConfigEntity ConfigEntity) 
-            :base()
+            Int64 DefaultValues, ConfigEntity ConfigEntity)
+            : base()
         {
             InitializeComponent();
 
-            this.TypeOfObject = TypeObjet;
-            this.PropertyInfo = propertyInfo;
-            this.orientationField = OrientationFiled;
-            this.SizeLabel = SizeLabel;
-            this.SizeControl = SizeControl;
-            this.ConfigEntity = ConfigEntity;
+
+            if (System.ComponentModel.LicenseManager.UsageMode != System.ComponentModel.LicenseUsageMode.Designtime)
+            {
+
+                this.TypeOfObject = TypeObjet;
+                this.PropertyInfo = propertyInfo;
+                this.orientationField = OrientationFiled;
+                this.SizeLabel = SizeLabel;
+                this.SizeControl = SizeControl;
+                this.ConfigEntity = ConfigEntity;
 
 
-            if (PropertyInfo != null)
-                this.configProperty = new ConfigProperty(PropertyInfo, this.ConfigEntity);
+                if (PropertyInfo != null)
+                    this.configProperty = new ConfigProperty(PropertyInfo, this.ConfigEntity);
 
-            this.MainContainner = MainContainner;
+                this.MainContainner = MainContainner;
 
 
 
-            this.Service = Service;
-            this.ListeComboBox = new Dictionary<string, ManyToOneField>();
-            this.ListeValeursInitiaux = new Dictionary<string, long>();
-            this.LsiteTypeObjetCritere = new Dictionary<string, Type>();
-            this.DefaultValues = DefaultValues;
-            
+                this.Service = Service;
+                this.ListeComboBox = new Dictionary<string, ManyToOneField>();
+                this.ListeValeursInitiaux = new Dictionary<string, long>();
+                this.LsiteTypeObjetCritere = new Dictionary<string, Type>();
+                this.DefaultValues = DefaultValues;
 
-            InitAndLoadData();
-            CalculeValeursInitiaux(DefaultValues);
-            ViewingData();
+
+                InitAndLoadData();
+                CalculeValeursInitiaux(DefaultValues);
+                ViewingData();
+            }
         }
 
-      
-        public ManyToOneField(IGwinBaseBLO Service, 
-            PropertyInfo propertyInfo, 
-            Control MainContainner, 
-            Orientation OrientationFiled, 
-            Size SizeLabel, Size SizeControl, 
+
+        public ManyToOneField(IGwinBaseBLO Service,
+            PropertyInfo propertyInfo,
+            Control MainContainner,
+            Orientation OrientationFiled,
+            Size SizeLabel, Size SizeControl,
             Int64 DefaultFiltreValues,
             ConfigEntity ConfigEntity)
-          : this(Service,null, propertyInfo, MainContainner, OrientationFiled, SizeLabel, SizeControl, DefaultFiltreValues, ConfigEntity)
+          : this(Service, null, propertyInfo, MainContainner, OrientationFiled, SizeLabel, SizeControl, DefaultFiltreValues, ConfigEntity)
         {
 
         }
 
-        public ManyToOneField() : this(null,null, null, Orientation.Horizontal, new Size(50, 20), new Size(50, 20), 0,null)
+        public ManyToOneField()
         {
+            InitializeComponent();
+
+            this.SizeLabel = new Size(50, 20);
+            this.SizeControl = new Size(50, 20);
+            this.orientationField = Orientation.Horizontal;
+
 
         }
 
-        private ManyToOneField(IGwinBaseBLO Service, Type TypeObjet, ConfigEntity ConfigEntity) : this(Service,TypeObjet, null,null, Orientation.Horizontal, new Size(50, 20), new Size(50, 20),0, ConfigEntity)
+        public void LoadData(Type TypeObjet,
+            PropertyInfo propertyInfo,
+            Control MainContainner,
+            Orientation OrientationFiled,
+            Size SizeLabel,
+            Size SizeControl,
+            Int64 DefaultValues, ConfigEntity ConfigEntity)
         {
             
+
+                this.TypeOfObject = TypeObjet;
+                this.PropertyInfo = propertyInfo;
+                this.ConfigEntity = ConfigEntity;
+
+
+                if (PropertyInfo != null)
+                    this.configProperty = new ConfigProperty(PropertyInfo, this.ConfigEntity);
+
+                this.MainContainner = MainContainner;
+
+
+
+                this.Service = Service;
+                this.ListeComboBox = new Dictionary<string, ManyToOneField>();
+                this.ListeValeursInitiaux = new Dictionary<string, long>();
+                this.LsiteTypeObjetCritere = new Dictionary<string, Type>();
+                this.DefaultValues = DefaultValues;
+
+
+                InitAndLoadData();
+                CalculeValeursInitiaux(DefaultValues);
+                ViewingData();
+           
+        }
+
+        private ManyToOneField(IGwinBaseBLO Service, Type TypeObjet, ConfigEntity ConfigEntity) : this(Service, TypeObjet, null, null, Orientation.Horizontal, new Size(50, 20), new Size(50, 20), 0, ConfigEntity)
+        {
+
         }
 
         #endregion

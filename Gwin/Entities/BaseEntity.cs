@@ -14,7 +14,7 @@ namespace App.Gwin.Entities
     /// <summary>
     /// La classe de Base de toutes les entity
     /// </summary>
-    public class BaseEntity : IBaseEntity
+    public class BaseEntity : IBaseEntity, ISerializable
     {
 
         #region constructor
@@ -66,6 +66,11 @@ namespace App.Gwin.Entities
             if (this.Id == objet.Id) return true;
             else return false;
 
+        }
+
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+           // 
         }
 
         /// <summary>
