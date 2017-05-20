@@ -129,47 +129,20 @@
     <value>Horizontal</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="flowLayoutPanelForm.AutoScroll" type="System.Boolean, mscorlib">
+  <data name="splitContainer1.Panel1.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="flowLayoutPanelForm.AutoScrollMargin" type="System.Drawing.Size, System.Drawing">
-    <value>10, 10</value>
-  </data>
-  <data name="flowLayoutPanelForm.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="flowLayoutPanelForm.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="flowLayoutPanelForm.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="flowLayoutPanelForm.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 10, 10, 10</value>
-  </data>
-  <data name="flowLayoutPanelForm.Size" type="System.Drawing.Size, System.Drawing">
-    <value>932, 355</value>
-  </data>
-  <data name="flowLayoutPanelForm.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelForm.Name" xml:space="preserve">
-    <value>flowLayoutPanelForm</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelForm.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelForm.Parent" xml:space="preserve">
-    <value>FlowLayoutContainer</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelForm.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="FlowLayoutContainer.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="FlowLayoutContainer.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
   <data name="FlowLayoutContainer.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
+  </data>
+  <data name="FlowLayoutContainer.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>Yes</value>
   </data>
   <data name="FlowLayoutContainer.Size" type="System.Drawing.Size, System.Drawing">
     <value>932, 355</value>

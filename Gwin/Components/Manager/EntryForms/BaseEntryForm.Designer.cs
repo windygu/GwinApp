@@ -33,7 +33,6 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel_form = new System.Windows.Forms.Panel();
             this.FlowLayoutContainer = new System.Windows.Forms.Panel();
-           
             this.panel1 = new System.Windows.Forms.Panel();
             this.btEnregistrer = new MetroFramework.Controls.MetroButton();
             this.btAnnuler = new MetroFramework.Controls.MetroButton();
@@ -43,7 +42,6 @@
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.panel_form.SuspendLayout();
-            this.FlowLayoutContainer.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
@@ -56,6 +54,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            resources.ApplyResources(this.splitContainer1.Panel1, "splitContainer1.Panel1");
             this.splitContainer1.Panel1.CausesValidation = false;
             this.splitContainer1.Panel1.Controls.Add(this.panel_form);
             // 
@@ -76,7 +75,6 @@
             // 
             resources.ApplyResources(this.FlowLayoutContainer, "FlowLayoutContainer");
             this.FlowLayoutContainer.Name = "FlowLayoutContainer";
-            
             // 
             // panel1
             // 
@@ -120,7 +118,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.panel_form.ResumeLayout(false);
-            this.FlowLayoutContainer.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);

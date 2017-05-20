@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GenericWinForm.Demo.Entities.Resources.Project {
+namespace GenericWinForm.Demo.Entities.ProjectManager.Resources.Project {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace GenericWinForm.Demo.Entities.Resources.Project {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("GenericWinForm.Demo.Entities.Resources.Project.Project", typeof(Project).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("GenericWinForm.Demo.Entities.ProjectManager.Resources.Project.Project", typeof(Project).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

@@ -15,7 +15,7 @@ namespace App.Gwin.Fields
 
         #region Events
         /// <summary>
-        /// Value is changed
+        /// Value changed
         /// </summary>
         public event EventHandler ValueChanged;
         protected void onValueChanged(object sender, EventArgs e)
@@ -39,6 +39,7 @@ namespace App.Gwin.Fields
         /// PropertyInfo
         /// </summary>
         public PropertyInfo PropertyInfo { set; get; }
+
         /// <summary>
         /// The value of field
         /// </summary>
@@ -118,6 +119,10 @@ namespace App.Gwin.Fields
         /// </summary>
         public bool AutoSizeConfig { get; set; }
 
+        /// <summary>
+        /// Shwen order in Container
+        /// </summary>
+        public int Order { set; get; }
         #endregion
 
         #region Constructeurs
@@ -206,5 +211,6 @@ namespace App.Gwin.Fields
         {
           //  throw new NotImplementedException();
         }
+
     }
 }

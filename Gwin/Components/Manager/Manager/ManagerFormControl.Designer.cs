@@ -70,7 +70,7 @@
             this.tabControl_MainManager.Margin = new System.Windows.Forms.Padding(0);
             this.tabControl_MainManager.Multiline = true;
             this.tabControl_MainManager.Name = "tabControl_MainManager";
-            this.tabControl_MainManager.SelectedIndex = 0;
+            this.tabControl_MainManager.SelectedIndex = 1;
             this.tabControl_MainManager.ShowToolTips = true;
             this.tabControl_MainManager.Size = new System.Drawing.Size(1045, 470);
             this.tabControl_MainManager.TabIndex = 15;
@@ -136,6 +136,7 @@
             // tabPageAdd
             // 
             this.tabPageAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabPageAdd.HorizontalScrollbar = true;
             this.tabPageAdd.HorizontalScrollbarBarColor = true;
             this.tabPageAdd.HorizontalScrollbarHighlightOnWheel = false;
             this.tabPageAdd.HorizontalScrollbarSize = 10;
@@ -145,6 +146,7 @@
             this.tabPageAdd.Size = new System.Drawing.Size(1037, 434);
             this.tabPageAdd.TabIndex = 1;
             this.tabPageAdd.ToolTipText = "Ajouter";
+            this.tabPageAdd.VerticalScrollbar = true;
             this.tabPageAdd.VerticalScrollbarBarColor = true;
             this.tabPageAdd.VerticalScrollbarHighlightOnWheel = false;
             this.tabPageAdd.VerticalScrollbarSize = 10;

@@ -109,6 +109,11 @@ namespace App.Gwin
 
             // TagAdd Title
             this.tabControl_MainManager.TabPages["tabPageAdd"].Text = Glossary.Add;
+
+            // Selected Tab
+            this.tabControl_MainManager.SelectedTab = this.tabControl_MainManager.TabPages["TabGrid"];
+
+          
         }
         /// <summary>
         /// Constructor

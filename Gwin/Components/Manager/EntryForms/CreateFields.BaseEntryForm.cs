@@ -27,28 +27,30 @@ namespace App.Gwin
     public partial class BaseEntryForm
     {
 
-      
-
-
         /// <summary>
         /// Field Creation
         /// </summary>
         private void CreateFieldIfNotGenerated()
         {
 
-          
-
             // Create Field if not yet Created
             if (!this.AutoGenerateField || this.isGeneratedForm)
                 return;
             this.isGeneratedForm = true;
 
-            // Create FlowLayout
+            // Execute Befor Init Methode
+            this.FormBeforInit();
+
+            //
+            // Container
+            //
+            // Create FlowLayout : it containe All Filed or GroupBox of Fileds
             this.flowLayoutPanelForm = new FlowLayoutPanel();
+            this.flowLayoutPanelForm.AutoScroll = true;
             this.flowLayoutPanelForm.Dock = DockStyle.Fill;
             this.FlowLayoutContainer.RightToLeft = RightToLeft.Yes;
             this.FlowLayoutContainer.Controls.Add(this.flowLayoutPanelForm);
-            // Conteneurs du formulaire
+            // set flowLayoutPanelForm as Conteneurs du formulaire
             this.ConteneurFormulaire = this.flowLayoutPanelForm;
 
             #region Default Positions and  Size
@@ -133,6 +135,12 @@ namespace App.Gwin
                     baseField.ValidatingField += textBoxString_Validating;
                     GwinApp.Instance.Theme.RequiredField(baseField);
                 }
+
+                // Add Field to List 
+                this.Fields.Add(baseField);
+
+                // Execute After Init methode
+                this.FormAfterInit();
                     
 
             }// Fin de for
@@ -190,6 +198,9 @@ namespace App.Gwin
 
                     groupeBox.Controls.Add(flowLayoutPanel);
                     groupesBoxMainContainers[item] = flowLayoutPanel;
+
+                    // Add Group Box to List 
+                    this.GroupsBoxes.Add(groupeBox);
 
 
                 }

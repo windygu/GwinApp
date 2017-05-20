@@ -117,6 +117,9 @@
       <DependentUpon>StringField.cs</DependentUpon>
     </Compile>
     <Compile Include="Components\Manager\DataGrid\IFormSelectedEntityAction.cs" />
+    <Compile Include="Components\Manager\EntryForms\API_Events.BaseEntryForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Components\Manager\EntryForms\TabEntryForm\GwinEntityForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -471,14 +474,14 @@
       <DependentUpon>BaseEntryForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Components\Fields\Exceptions\FieldNotExistInFormException.cs" />
-    <Compile Include="Components\Manager\EntryForms\Fields_creation.BaseEntryForm.cs">
+    <Compile Include="Components\Manager\EntryForms\CreateFields.BaseEntryForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Components\Manager\EntryForms\IBaseEntryForm.cs" />
-    <Compile Include="Components\Manager\EntryForms\Save.BaseEntyForm.cs">
+    <Compile Include="Components\Manager\EntryForms\Save_Click.BaseEntyForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\Manager\EntryForms\ShowRead.BaseEntryForm.cs">
+    <Compile Include="Components\Manager\EntryForms\ShowEntity_Adn_ReadEntity.BaseEntryForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Components\Manager\Filter\BaseFilterControl.cs">
