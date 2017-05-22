@@ -126,4 +126,7 @@
   <data name="SingularName" xml:space="preserve">
     <value>Stagiaire</value>
   </data>
+  <data name="Assignments" xml:space="preserve">
+    <value>Affectation</value>
+  </data>
 </root>

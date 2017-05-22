@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using App.Gwin.Application.BAL;
+using App.Shared.AttributesManager;
 
 namespace App.Gwin.Fields
 {
@@ -21,152 +22,78 @@ namespace App.Gwin.Fields
     {
         #region InitInterface
         /// <summary>
-        /// Affichage du filtre dans l'interface
-        /// Remplissage de ListeComboBox
+        /// Create filter and Save each filter in ListComboBox and Criteias
         /// </summary>
-        private void InitAndLoadData()
+        private void CreateFilter()
         {
+            
 
 
-            this.DisplayMember = "";
-            this.ValueMember = "Id";
+           
+                int index = 10;
 
-
-            if (this.PropertyInfo != null)
-            {
-
-                // DisplayMember de combobox actuel
-                // Annotation : Affichage de l'objet
-
-                GwinEntityAttribute MetaAffichageClasse = this.ConfigEntity.DisplayEntity;
-
-                this.DisplayMember = MetaAffichageClasse.DisplayMember;
-                this.Text_Label = MetaAffichageClasse.SingularName;
-
-                Attribute getAffichagePropriete = PropertyInfo.GetCustomAttribute(typeof(DisplayPropertyAttribute));
-                DisplayPropertyAttribute AffichagePropriete = (DisplayPropertyAttribute)getAffichagePropriete;
-
-                #region Annotatin
-                // Annotation : Critère de filtre
-                Attribute metaSelectionCriteriaAttribute = this.PropertyInfo.PropertyType
-                    .GetCustomAttribute(typeof(SelectionCriteriaAttribute));
-
-
-                if (metaSelectionCriteriaAttribute != null)
+                // Create ItemFilter as ManyToOneField
+                foreach (Type item in this.ConfigProperty.SelectionCriteria.CriteriasTypes)
                 {
+                    ConfigEntity itemFilterConfigEntity = ConfigEntity.CreateConfigEntity(item);
 
-                    SelectionCriteriaAttribute MetaSelectionCriteria =
-                      (SelectionCriteriaAttribute)metaSelectionCriteriaAttribute;
+                    ManyToOneField ItemFilter = new ManyToOneField(this.Service, item, null, null,
+                        this.orientationField,
+                         this.SizeLabel,
+                        this.SizeControl, 0, ConfigEntity
+                        );
+                    ItemFilter.Name = item.Name;
+                    ItemFilter.TabIndex = ++index;
+                    ItemFilter.Text_Label = ConfigEntity.CreateConfigEntity(item).GwinEntity.SingularName;
+                    ItemFilter.ValueMember = "Id";
+                    ItemFilter.DisplayMember = itemFilterConfigEntity.GwinEntity.DisplayMember;
+                    ItemFilter.ValueChanged += Value_SelectedIndexChanged;
+                    ItemFilter.Visible = true;
 
-                    #endregion
+                    // Add ItemFilter in container
+                    this.MainContainner.Controls.Add(ItemFilter);
 
-
-                    int index = 10;
-
-                    // Si un objet du critère de selection exite dans la classe 
-                    // Nous cherchons sa valeur pour l'utiliser
-                    foreach (Type item in MetaSelectionCriteria.Criteria)
-                    {
-                        // Meta information d'affichage du de Critère
-                        GwinEntityAttribute gwinEntity = (GwinEntityAttribute)item.GetCustomAttribute(typeof(GwinEntityAttribute));
-
-
-                        ManyToOneField manyToOneFilter = new ManyToOneField(this.Service, item, null, null,
-                            this.orientationField,
-                             this.SizeLabel,
-                            this.SizeControl, 0, ConfigEntity
-                            );
-                        manyToOneFilter.Name = item.Name;
-                        //manyToOneFilter.Size = new System.Drawing.Size(this.widthField, this.HeightField);
-
-                        manyToOneFilter.TabIndex = ++index;
-                        manyToOneFilter.Text_Label = ConfigEntity.CreateConfigEntity(item).DisplayEntity.SingularName;
-
-                        manyToOneFilter.ValueMember = "Id";
-                        manyToOneFilter.DisplayMember = gwinEntity.DisplayMember;
-                        // pour le chargement de comboBox Suivant
-                        manyToOneFilter.ValueChanged += Value_SelectedIndexChanged;
-
-                        manyToOneFilter.Visible = true;
-
-                        // [bug] Le contôle ne s'affiche pas dans le formilaire ??
-                        //Form f = new Form();
-                        //f.Controls.Add(manyToOneFilter);
-                        //f.Show();
-
-                        this.MainContainner.Controls.Add(manyToOneFilter);
-
-                        ListeComboBox.Add(item.Name, manyToOneFilter);
-                        LsiteTypeObjetCritere.Add(item.Name, item);
-                    }
-
-
-
-
+                    // Save Item filter in List Criterias and List ComboBoxes
+                    ListeComboBox.Add(item.Name, ItemFilter);
+                    Criterias.Add(item.Name, item);
                 }
-
-                // Insertion du ComBox Actuel pour qu'il sera remplit par les données
-                ListeComboBox.Add(this.PropertyInfo.PropertyType.Name, this);
-                LsiteTypeObjetCritere.Add(this.PropertyInfo.PropertyType.Name, this.PropertyInfo.PropertyType);
-
-            }
-            else
-            {
-                // Cas des sous ComBobox de filtre
-
-                // Insertion du ComBox Actuel pour qu'il sera remplit par les données
-                ListeComboBox.Add(this.TypeOfObject.Name, this);
-                LsiteTypeObjetCritere.Add(this.TypeOfObject.Name, this.TypeOfObject);
-
-            }
-            this.ValueChanged += Value_SelectedIndexChanged;
-
-
-
-
-
-
-
-
-
         }
 
         /// <summary>
-        ///  Calcule des valeurs initiaux
+        ///  Calculete previes value of Filter
         /// </summary>
-        private void CalculeValeursInitiaux(Int64 Value)
+        /// <param name="Value">Id Value of ManyToOne Field</param>
+        private void CalculetePreviesValuesInFilter(Int64 Value)
         {
-
             if (Value == 0) return;
 
+            /// previous itemFilter (ComboBox) value equal the value of the property that have the same name as itemFilter in Object
+            /// if this propertu does not exist an exception is thrown
 
-            /// Le ComboBox précédent prend les valeurs de l'Entite actuel de comboBox 
-            /// car l'entité actuel doit avoir une prorpiété de type type  de l'entityé précédent
-            /// Le nom de cette propiété égale Nom d'entité 
-            /// si cette propiété n'existe pas la méthode lance une exception
-            /// 
-
-            // Initialisation de la liste des valeurs par défaux
-            if (ListeValeursInitiaux.Count() < this.LsiteTypeObjetCritere.Count())
-                for (int i = 0; i < this.LsiteTypeObjetCritere.Count(); i++)
+            // init FilterInitialValues
+            if (FilterPreviesValues.Count() < this.Criterias.Count())
+                for (int i = 0; i < this.Criterias.Count(); i++)
                 {
-                    ListeValeursInitiaux.Add(ListeComboBox.Keys.ElementAt(i), 0);
+                    FilterPreviesValues.Add(ListeComboBox.Keys.ElementAt(i), 0);
                 }
-            // Init la de la vlaeur de comboBox Actuel
-            ListeValeursInitiaux[ListeValeursInitiaux.Last().Key] = Value;
 
-            IGwinBaseBLO curentService = this.Service
-                  .CreateServiceBLOInstanceByTypeEntity(LsiteTypeObjetCritere[ListeValeursInitiaux.Last().Key]);
-            BaseEntity curentEntity = curentService.GetBaseEntityByID(Value);
+            // Use current ManyToOneField as filter Item 
+            FilterPreviesValues[FilterPreviesValues.Last().Key] = Value;
 
-            BaseEntity previousEntity = null;
-            for (int i = this.LsiteTypeObjetCritere.Count() - 1; i >= 1; i--)
+            // Check ManyToOneFieldEntity as current Entity instance
+            IGwinBaseBLO ManyToOneBLOInstance = this.Service
+                  .CreateServiceBLOInstanceByTypeEntity(Criterias[FilterPreviesValues.Last().Key]);
+            BaseEntity currentEntity = ManyToOneBLOInstance.GetBaseEntityByID(Value);
+
+            // Recursive loop to check inital values for each filter
+            BaseEntity FilterItemEntity = null;
+            for (int i = this.Criterias.Count() - 1; i >= 1; i--)
             {
 
-                string curentKey = LsiteTypeObjetCritere.Keys.ElementAt(i);
+                string curentKey = Criterias.Keys.ElementAt(i);
                 string Previouskey = ListeComboBox.Keys.ElementAt(i - 1);
 
-                PropertyInfo PropertyPrevious = curentEntity.GetType()
+                PropertyInfo PropertyPrevious = currentEntity.GetType()
                                                 .GetProperties()
                                                 .Where(p => p.Name == Previouskey)
                                                 .SingleOrDefault();
@@ -174,17 +101,11 @@ namespace App.Gwin.Fields
                     throw new PropertyNotExistInEntityException();
 
                 // Affectation des valeurs au ComboBox précédent
-                previousEntity = PropertyPrevious.GetValue(curentEntity) as BaseEntity;
-                ListeValeursInitiaux[Previouskey] = previousEntity.Id;
+                FilterItemEntity = PropertyPrevious.GetValue(currentEntity) as BaseEntity;
+                FilterPreviesValues[Previouskey] = FilterItemEntity.Id;
 
-                curentEntity = previousEntity;
+                currentEntity = FilterItemEntity;
             }
-
-
-
-
-
-
         }
 
 
@@ -214,7 +135,7 @@ namespace App.Gwin.Fields
             int indexComboBoxChanged = ListeComboBox.Values.ToList<ManyToOneField>().IndexOf(comboBoxChanged);
             string keyComboBoxCanged = ListeComboBox.Keys.ElementAt(indexComboBoxChanged);
             IGwinBaseBLO serviceComboBoxActuel = this.Service
-                .CreateServiceBLOInstanceByTypeEntity(LsiteTypeObjetCritere[keyComboBoxCanged]);
+                .CreateServiceBLOInstanceByTypeEntity(Criterias[keyComboBoxCanged]);
             BaseEntity EntiteActuel = serviceComboBoxActuel.GetBaseEntityByID(Convert.ToInt64(comboBoxChanged.SelectedValue));
 
             /// Actualisation de ComboBox suivant s'il existe
@@ -255,13 +176,13 @@ namespace App.Gwin.Fields
 
 
                     // Initalisation avec la valeur par défaux s'il existe
-                    if (this.ListeValeursInitiaux != null && this.ListeValeursInitiaux.Keys.Contains(keyNexComboBox))
+                    if (this.FilterPreviesValues != null && this.FilterPreviesValues.Keys.Contains(keyNexComboBox))
                     {
                         this.StopEventSelectedIndexChange = true;
                         nextComboBox.DataSource = null;
                         nextComboBox.DataSource = ls_source;
                         this.StopEventSelectedIndexChange = false;
-                        nextComboBox.SelectedValue = this.ListeValeursInitiaux[keyNexComboBox];
+                        nextComboBox.SelectedValue = this.FilterPreviesValues[keyNexComboBox];
                     }
                     else
                     {
@@ -285,51 +206,7 @@ namespace App.Gwin.Fields
         }
         #endregion
 
-        #region Affichage des données dans les comboBox
-        /// <summary>
-        /// Affichage des données dans les ComboBox
-        /// </summary>
-        protected void ViewingData()
-        {
-            // Affichage des données du premiere comboBox
-            // les autres comboBox sont afficher par l'événement ValueChange du ComboBox
-            if (ListeComboBox.Values.Count() <= 0) return;
-            ManyToOneField comboBox = ListeComboBox.Values.ElementAt(0);
-            string key = ListeComboBox.Keys.ElementAt(0);
-            IGwinBaseBLO service = this.Service
-                .CreateServiceBLOInstanceByTypeEntity(LsiteTypeObjetCritere[key]);
-
-
-
-
-            // Initalisation avec la valeur par défaux s'il existe
-            if (this.ListeValeursInitiaux != null && this.ListeValeursInitiaux.Keys.Contains(key))
-            {
-                this.StopEventSelectedIndexChange = true;
-
-                // Add Black Value
-                List<Object> ls = service.GetAll();
-                if (configProperty != null && configProperty.Filter != null)
-                    if (configProperty.Filter.isValeurFiltreVide)
-                        ls.Insert(0, new EmptyEntity());
-                comboBox.DataSource = ls;
-                this.StopEventSelectedIndexChange = false;
-                comboBox.SelectedValue = this.ListeValeursInitiaux[key];
-            }
-            else
-            {
-                // Add Black Value
-                List<Object> ls = service.GetAll();
-
-                if (configProperty?.Filter?.isValeurFiltreVide == true)
-                    ls.Insert(0, new EmptyEntity());
-                comboBox.DataSource = ls;
-
-
-            }
-
-        }
-        #endregion
+        
 
     }
 }

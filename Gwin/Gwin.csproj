@@ -136,10 +136,10 @@
     </Compile>
     <Compile Include="Components\Manager\Fields.Traitements\BoolFieldTraitement.cs" />
     <Compile Include="Components\Manager\Fields.Traitements\Params\Base\BaseFieldTraitementParam.cs" />
-    <Compile Include="DataModel\Attributes\ActionLineAttribute.cs" />
-    <Compile Include="DataModel\Attributes\BusinesRole.cs" />
-    <Compile Include="DataModel\Attributes\GwinFormAttribute.cs" />
-    <Compile Include="DataModel\Attributes\PresentationLogic.cs" />
+    <Compile Include="DataModel\Attributes\EntityAttributes\ActionLineAttribute.cs" />
+    <Compile Include="DataModel\Attributes\PropertiesAttributes\BusinesRole.cs" />
+    <Compile Include="DataModel\Attributes\EntityAttributes\GwinFormAttribute.cs" />
+    <Compile Include="DataModel\Attributes\EntityAttributes\PresentationLogic.cs" />
     <Compile Include="DataModel\Exceptions\Class1.cs" />
     <Compile Include="DataModel\Helpers\GwinIdentifierManager.cs" />
     <Compile Include="DataModel\ModelInfo\GwinAssembliesManager.cs" />
@@ -192,7 +192,7 @@
       <DependentUpon>ResourceEntryForm.resx</DependentUpon>
     </Compile>
     <Compile Include="GwinApplication\Security\Enumeration\UserActionInGwin.cs" />
-    <Compile Include="DataModel\Attributes\DataSourceAttribute.cs" />
+    <Compile Include="DataModel\Attributes\PropertiesAttributes\DataSourceAttribute.cs" />
     <Compile Include="Entities\Secrurity\Autorizations\Resources\Authorization\Authorization.ar.Designer.cs">
       <DependentUpon>Authorization.ar.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -272,7 +272,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MessageToUser_Resource.resx</DependentUpon>
     </Compile>
-    <Compile Include="DataModel\Attributes\ReadConfiguration\ConfigProperty.cs" />
+    <Compile Include="DataModel\ReadConfiguration\ConfigProperty.cs" />
     <Compile Include="Entities\Application\MenuItemApplication.cs" />
     <Compile Include="Entities\Application\Resources\ApplicationName\ApplicationName.Designer.cs">
       <DependentUpon>ApplicationName.resx</DependentUpon>
@@ -343,8 +343,8 @@
     <Compile Include="DataModel\ModelInfo\ModelConfiguration.cs" />
     <Compile Include="DataModel\Exceptions\DisplayMember_NotExist_In_DisplayEntityAttribute_Exception.cs" />
     <Compile Include="DataModel\Attributes\BaseAttribute.cs" />
-    <Compile Include="DataModel\Attributes\ReadConfiguration\ConfigEntity.cs" />
-    <Compile Include="DataModel\Attributes\ButtonAddAttribute.cs" />
+    <Compile Include="DataModel\ReadConfiguration\ConfigEntity.cs" />
+    <Compile Include="DataModel\Attributes\EntityAttributes\ButtonAddAttribute.cs" />
     <Compile Include="GwinApplication\BLL\IGwinBaseBLO.cs" />
     <Compile Include="GwinApplication\Presentation\Authentication\Authentification.cs" />
     <Compile Include="GwinApplication\Presentation\Authentication\LoginControl.cs">
@@ -401,16 +401,16 @@
     <Compile Include="GwinApplication\Presentation\BaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DataModel\Attributes\DisplayPropertyAttribute.cs" />
-    <Compile Include="DataModel\Attributes\DisplayEntityAttribute.cs" />
-    <Compile Include="DataModel\Attributes\ManagementFormAttribute.cs" />
-    <Compile Include="DataModel\Attributes\ApplicationMenuAttribute.cs" />
-    <Compile Include="DataModel\Attributes\SelectionCriteriaAttribute.cs" />
+    <Compile Include="DataModel\Attributes\PropertiesAttributes\DisplayPropertyAttribute.cs" />
+    <Compile Include="DataModel\Attributes\EntityAttributes\GwinEntityAttribute.cs" />
+    <Compile Include="DataModel\Attributes\EntityAttributes\ManagementFormAttribute.cs" />
+    <Compile Include="DataModel\Attributes\EntityAttributes\MenuAttribute.cs" />
+    <Compile Include="DataModel\Attributes\PropertiesAttributes\SelectionCriteriaAttribute.cs" />
     <Compile Include="Entities\Application\ApplicationName.cs" />
-    <Compile Include="DataModel\Attributes\DataGridAttribute.cs" />
-    <Compile Include="DataModel\Attributes\EntryFormAttribute.cs" />
-    <Compile Include="DataModel\Attributes\FilterAttribute.cs" />
-    <Compile Include="DataModel\Attributes\RelationshipAttribute.cs" />
+    <Compile Include="DataModel\Attributes\PropertiesAttributes\DataGridAttribute.cs" />
+    <Compile Include="DataModel\Attributes\PropertiesAttributes\EntryFormAttribute.cs" />
+    <Compile Include="DataModel\Attributes\PropertiesAttributes\FilterAttribute.cs" />
+    <Compile Include="DataModel\Attributes\PropertiesAttributes\RelationshipAttribute.cs" />
     <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\ContactInformations\ContactInformation.cs" />
     <Compile Include="Entities\ContactInformations\Country.cs" />

@@ -5,25 +5,22 @@ namespace App.Gwin.Attributes
 {
     public class FilterAttribute : Attribute
     {
-        #region Filter
-        /// <summary>
-        /// Indique si la proriété fait partie du filtre de recherhe 
-        /// l'attribut doit être dans DataGrid
-        /// </summary>
-        public bool Filtre { get; set; }
-        /// <summary>
-        /// Si la valeur est vide dans le filtre
-        /// </summary>
-        public bool isValeurFiltreVide { get; set; }
 
+        /// <summary>
+        /// Check if the value is empty in filtre
+        /// </summary>
+        public bool isDefaultIsEmpty { get; set; }
 
+        /// <summary>
+        /// Filed order in filter
+        /// </summary>
         public int Ordre { get; set; }
 
-
+        /// <summary>
+        /// Control width in filter
+        /// </summary>
         public int WidthControl { set; get; }
 
-
-        #endregion
 
         public FilterAttribute([CallerMemberName] string propertyName = null)
         {

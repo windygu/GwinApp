@@ -187,7 +187,7 @@ namespace App.Gwin.Fields.Controls
 
             // Si un objet du critère de selection exite dans la classe 
             // Nous cherchons sa valeur pour l'utiliser
-            foreach (Type item in MetaSelectionCriteria.Criteria)
+            foreach (Type item in MetaSelectionCriteria.CriteriasTypes)
             {
                 // Meta information d'affichage du de Critère
                 GwinEntityAttribute DisplayEntityAttributeCritere = (GwinEntityAttribute)item.GetCustomAttribute(typeof(GwinEntityAttribute));

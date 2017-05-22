@@ -123,14 +123,14 @@ namespace GenericWinForm.Demo.Entities.ProjectManager
         /// Type : String Wtih DataSource
         /// </summary>
         [EntryForm(GroupeBox = " DataSourceType", GroupeBoxOrder =5)]
-        [Filter ( isValeurFiltreVide = true)]
+        [Filter ( isDefaultIsEmpty = true)]
         [DataGrid]
         [ReferencesDataSource(TypeObject = typeof(ModelConfiguration),
             MethodeName = nameof(ModelConfiguration.GetAll_Entities_Type),
             DisplayName = "Name")]
         public string EntityToManimulate { set; get; }
 
-        [Filter(WidthControl = 400, isValeurFiltreVide = true)]
+        [Filter(WidthControl = 400, isDefaultIsEmpty = true)]
         [EntryForm(WidthControl = 400, GroupeBox = " DataSourceType", GroupeBoxOrder = 5)]
         [DataGrid(WidthColonne = 400)]
         [ReferencesDataSource(TypeObject = typeof(GwinBusinessEntitiesManager),
@@ -158,7 +158,7 @@ namespace GenericWinForm.Demo.Entities.ProjectManager
         /// Type : ManyToOne
         /// </summary>
         [EntryForm(GroupeBox = "RelationShip",GroupeBoxOrder = 2)]
-        [Filter(isValeurFiltreVide = true)]
+        [Filter(isDefaultIsEmpty = true)]
         [DataGrid]
         [Relationship(Relation = RelationshipAttribute.Relations.ManyToOne)]
         public Project Project { set; get; }

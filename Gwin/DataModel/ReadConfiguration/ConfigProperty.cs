@@ -39,7 +39,8 @@ namespace App.Shared.AttributesManager
         public bool Localizable { get; set; }
         public CultureInfo CultureInfo { get; set; }
         public BusinesRoleAttribute BusinesRole { get; set; }
-       
+        public SelectionCriteriaAttribute SelectionCriteria { set; get; }
+
 
         /// <summary>
         ///  Resource Manager of the Entity and its BaseType
@@ -63,7 +64,7 @@ namespace App.Shared.AttributesManager
 
             // Localizable
             this.TypeOfEntity = propertyInfo.ReflectedType;
-            this.Localizable = this.ConfigEntity.DisplayEntity.Localizable;
+            this.Localizable = this.ConfigEntity.GwinEntity.Localizable;
 
 
            
@@ -132,7 +133,7 @@ namespace App.Shared.AttributesManager
                 {
 
                     if (this.PropertyInfo.PropertyType.IsSubclassOf(typeof(BaseEntity)))
-                        this.DisplayProperty.Title = ConfigEntity.CreateConfigEntity(this.PropertyInfo.PropertyType).DisplayEntity.SingularName;
+                        this.DisplayProperty.Title = ConfigEntity.CreateConfigEntity(this.PropertyInfo.PropertyType).GwinEntity.SingularName;
                     else
                         this.DisplayProperty.Title = GetStringFromRessource(propertyInfo.Name);
                 }
@@ -146,6 +147,8 @@ namespace App.Shared.AttributesManager
             //
             Attribute EntryForm = propertyInfo.GetCustomAttribute(typeof(EntryFormAttribute));
             this.EntryForm = EntryForm as EntryFormAttribute;
+
+
 
             //
             // DataGrid
@@ -168,6 +171,12 @@ namespace App.Shared.AttributesManager
             //
             Attribute dataSource = propertyInfo.GetCustomAttribute(typeof(ReferencesDataSourceAttribute));
             this.DataSource = dataSource as ReferencesDataSourceAttribute;
+
+            //
+            // Criteria
+            //
+            Attribute SelectionCriteria_Attribute = propertyInfo.GetCustomAttribute(typeof(SelectionCriteriaAttribute));
+            this.SelectionCriteria = SelectionCriteria_Attribute as SelectionCriteriaAttribute;
 
             //
             //BusinesRoleAttribute

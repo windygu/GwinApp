@@ -85,15 +85,15 @@ namespace App.Gwin.Entities
             ConfigEntity configEntity = ConfigEntity.CreateConfigEntity(EntityType);
 
             // Test if the object has the memeber AffichageClasse.DisplayMember
-            if (this.GetType().GetProperty(configEntity.DisplayEntity.DisplayMember) == null)
-                throw new GwinException("The Entity " + this.GetType() + "does not have the membe  : " + configEntity.DisplayEntity.DisplayMember);
+            if (this.GetType().GetProperty(configEntity.GwinEntity.DisplayMember) == null)
+                throw new GwinException("The Entity " + this.GetType() + "does not have the membe  : " + configEntity.GwinEntity.DisplayMember);
 
-            object value = this.GetType().GetProperty(configEntity.DisplayEntity.DisplayMember).GetValue(this);
+            object value = this.GetType().GetProperty(configEntity.GwinEntity.DisplayMember).GetValue(this);
             if (value != null) Titre = value.ToString();
             if (Titre == string.Empty)
 
-                if (configEntity.DisplayEntity.SingularName != null)
-                    return configEntity.DisplayEntity.SingularName;
+                if (configEntity.GwinEntity.SingularName != null)
+                    return configEntity.GwinEntity.SingularName;
                 else
                 {
                     string msg = String.Format("Property {0} of the classe {1} must not be null", nameof(GwinEntityAttribute.SingularName), nameof(GwinEntityAttribute));

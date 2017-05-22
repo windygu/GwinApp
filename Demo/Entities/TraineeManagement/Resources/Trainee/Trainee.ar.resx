@@ -126,4 +126,7 @@
   <data name="SingularName" xml:space="preserve">
     <value>متدرب</value>
   </data>
+  <data name="Assignments" xml:space="preserve">
+    <value>تخصيص</value>
+  </data>
 </root>

@@ -237,7 +237,7 @@ namespace App.Gwin
             else
             {
                 GroupBox groupeBox = new GroupBox();
-                groupeBox.Text = this.ConfigEntity.DisplayEntity.SingularName;
+                groupeBox.Text = this.ConfigEntity.GwinEntity.SingularName;
                 groupeBox.AutoSize = true;
                 groupeBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
 

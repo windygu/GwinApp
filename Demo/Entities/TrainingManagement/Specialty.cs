@@ -35,7 +35,7 @@ namespace GenericWinForm.Demo.Entities.TrainingManagement
         public LocalizedString Description { set; get; }
 
          
-        public List<TraineeManagement.Group> Groups { set; get; }
+        public virtual List<TraineeManagement.Group> Groups { set; get; }
         // public  List<Module> Modules { set; get; }
     }
 }

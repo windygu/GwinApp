@@ -25,12 +25,13 @@ namespace App.Gwin.Attributes
     public class ConfigEntity
     {
         #region Public Properties
-        public GwinEntityAttribute DisplayEntity { set; get; }
+        public GwinEntityAttribute GwinEntity { set; get; }
         public ManagementFormAttribute ManagementForm { set; get; }
         public AddButtonAttribute AddButton { set; get; }
         public MenuAttribute Menu { set; get; }
         public List<DataGridSelectedActionAttribute> ListDataGridSelectedAction { set; get; }
         public GwinFormAttribute GwinForm { get; set; }
+        public SelectionCriteriaAttribute SelectionCriteria { set; get; }
 
         public PresentationLogicAttribute PresentationLogic { get; set; }
 
@@ -79,7 +80,7 @@ namespace App.Gwin.Attributes
         /// </summary>
         private void ReadConfiguration()
         {
-           
+
 
             #region Load RessouceManager  
             //Fill RessouceManager
@@ -119,25 +120,25 @@ namespace App.Gwin.Attributes
                 throw new GwinException(msg_excepion);
             }
 
-            this.DisplayEntity = (GwinEntityAttribute)ls_attribut[0];
+            this.GwinEntity = (GwinEntityAttribute)ls_attribut[0];
 
             // Check DisplayMember existance
-            if (this.DisplayEntity.DisplayMember == null)
+            if (this.GwinEntity.DisplayMember == null)
                 throw new DisplayMember_NotExist_In_DisplayEntityAttribute_Exception("DisplayMember not exist in " + typeof(GwinEntityAttribute).ToString() + " : " + this.TypeOfEntity.Name);
-            if (this.DisplayEntity.Localizable)
+            if (this.GwinEntity.Localizable)
             {
                 // set all attribute Localizable
-                this.Localizable = this.DisplayEntity.Localizable;
+                this.Localizable = this.GwinEntity.Localizable;
 
                 // Titre
-                this.DisplayEntity.PluralName = this.GetStringFromRessource("PluralName", true);
-                this.DisplayEntity.SingularName = this.GetStringFromRessource("SingularName", true);
+                this.GwinEntity.PluralName = this.GetStringFromRessource("PluralName", true);
+                this.GwinEntity.SingularName = this.GetStringFromRessource("SingularName", true);
 
                 // Load Title with Name of Entity if PluraleNameKay Not exist
-                if (this.DisplayEntity.PluralName == null)
-                    this.DisplayEntity.PluralName = this.GetStringFromRessource(this.TypeOfEntity + "_PluraleName", false);
-                if (this.DisplayEntity.SingularName == null)
-                    this.DisplayEntity.SingularName = this.GetStringFromRessource(this.TypeOfEntity + "_SingularName", false);
+                if (this.GwinEntity.PluralName == null)
+                    this.GwinEntity.PluralName = this.GetStringFromRessource(this.TypeOfEntity + "_PluraleName", false);
+                if (this.GwinEntity.SingularName == null)
+                    this.GwinEntity.SingularName = this.GetStringFromRessource(this.TypeOfEntity + "_SingularName", false);
 
 
 
@@ -158,7 +159,7 @@ namespace App.Gwin.Attributes
             }
 
             if (this.ManagementForm.FormTitle == null)
-                this.ManagementForm.FormTitle = Glossary.management_of + " " + this.DisplayEntity.PluralName?.ToLower();
+                this.ManagementForm.FormTitle = Glossary.management_of + " " + this.GwinEntity.PluralName?.ToLower();
             if (this.ManagementForm.TitrePageGridView == null)
                 this.ManagementForm.TitrePageGridView = this.ManagementForm.FormTitle;
 
@@ -182,11 +183,11 @@ namespace App.Gwin.Attributes
                 switch (this.CultureInfo.TwoLetterISOLanguageName)
                 {
                     case "fr":
-                        this.AddButton.Title = Glossary.Add + " " + (this.DisplayEntity.isMaleName ? "un" : "une") + " " + this.DisplayEntity.SingularName.ToLower();
+                        this.AddButton.Title = Glossary.Add + " " + (this.GwinEntity.isMaleName ? "un" : "une") + " " + this.GwinEntity.SingularName.ToLower();
                         break;
                     default:
                         this.AddButton.Title = baseEntityResourceManager
-                  .GetString("Add", this.CultureInfo) + " " + this.DisplayEntity.SingularName;
+                  .GetString("Add", this.CultureInfo) + " " + this.GwinEntity.SingularName;
                         break;
 
                 }
@@ -237,6 +238,13 @@ namespace App.Gwin.Attributes
                     item.Title = form.Text;
                 }
             }
+            #endregion
+
+            #region Read SelectionCriteria
+            Object[] ls_attribut_SelectionCriteria = this.TypeOfEntity.GetCustomAttributes(typeof(SelectionCriteriaAttribute), false);
+            if (ls_attribut_SelectionCriteria != null && ls_attribut_SelectionCriteria.Count() > 0)
+                this.SelectionCriteria = (SelectionCriteriaAttribute)ls_attribut_SelectionCriteria[0];
+
             #endregion
         }
 

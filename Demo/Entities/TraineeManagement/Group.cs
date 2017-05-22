@@ -26,9 +26,9 @@ namespace GenericWinForm.Demo.Entities.TraineeManagement
         [DisplayProperty(DisplayMember ="Code")]
         [Relationship(Relation = RelationshipAttribute.Relations.ManyToOne)]
         [EntryForm(Ordre = 3)]
-        [Filter(isValeurFiltreVide =true)]
+        [Filter(isDefaultIsEmpty =true)]
         [DataGrid(WidthColonne = 100)]
-        [SelectionCriteria(typeof(Specialty))]
+
         public virtual Specialty Specialty { set; get; }
 
     }

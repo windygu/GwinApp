@@ -73,6 +73,11 @@ namespace App.Gwin.Attributes
         /// </summary>
         public int GroupeBoxOrder { get; set; }
 
+        /// <summary>
+        /// Check if the comboBox default value is emptu
+        /// </summary>
+        public bool isDefaultIsEmpty { set; get; }
+
        
 
         public EntryFormAttribute()
