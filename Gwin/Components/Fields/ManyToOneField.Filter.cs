@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using App.Gwin.Application.BAL;
 using App.Shared.AttributesManager;
+using App.Gwin.Exceptions.Gwin;
 
 namespace App.Gwin.Fields
 {
@@ -40,7 +41,7 @@ namespace App.Gwin.Fields
                     ManyToOneField ItemFilter = new ManyToOneField(this.Service, item, null, null,
                         this.orientationField,
                          this.SizeLabel,
-                        this.SizeControl, 0, ConfigEntity
+                        this.SizeControl, 0, ConfigEntity,this.EntityInstance
                         );
                     ItemFilter.Name = item.Name;
                     ItemFilter.TabIndex = ++index;
@@ -67,8 +68,10 @@ namespace App.Gwin.Fields
         {
             if (Value == 0) return;
 
-            /// previous itemFilter (ComboBox) value equal the value of the property that have the same name as itemFilter in Object
+            // if we are in ManyToOne RelationShip
+            /// the previous itemFilter (ComboBox) value equal the value of the property that have the same name as itemFilter in Object
             /// if this propertu does not exist an exception is thrown
+            /// if we are in ManyToMany RelationShio the previes itemFilter value is in the object container of the manyToOne field
 
             // init FilterInitialValues
             if (FilterPreviesValues.Count() < this.Criterias.Count())
@@ -84,6 +87,7 @@ namespace App.Gwin.Fields
             IGwinBaseBLO ManyToOneBLOInstance = this.Service
                   .CreateServiceBLOInstanceByTypeEntity(Criterias[FilterPreviesValues.Last().Key]);
             BaseEntity currentEntity = ManyToOneBLOInstance.GetBaseEntityByID(Value);
+            
 
             // Recursive loop to check inital values for each filter
             BaseEntity FilterItemEntity = null;
@@ -98,13 +102,43 @@ namespace App.Gwin.Fields
                                                 .Where(p => p.Name == Previouskey)
                                                 .SingleOrDefault();
                 if (PropertyPrevious == null)
-                    throw new PropertyNotExistInEntityException();
+                {
+                    // if the relationShip betwen Filed Property and Cretia is ManyToMany the value is readed from entityObject
+                    PropertyPrevious = this.PropertyInfo.DeclaringType
+                                                .GetProperties()
+                                                .Where(p => p.Name == Previouskey)
+                                                .SingleOrDefault();
 
-                // Affectation des valeurs au ComboBox précédent
-                FilterItemEntity = PropertyPrevious.GetValue(currentEntity) as BaseEntity;
-                FilterPreviesValues[Previouskey] = FilterItemEntity.Id;
+                    if(PropertyPrevious == null)
+                    {
+                        string msg = string.Format("The property {0} not exisit in the Entity {1}", Previouskey, currentEntity.GetType());
+                        throw new PropertyNotExistInEntityException(msg);
+                    }
+                    else{
 
-                currentEntity = FilterItemEntity;
+                        // Affectation des valeurs au ComboBox précédent
+                        FilterItemEntity = PropertyPrevious.GetValue(this.EntityInstance) as BaseEntity;
+                     
+                        if(FilterItemEntity == null)
+                        {
+
+                            string msg = string.Format("The value of property {0} int the Entity {1} is null", Previouskey, EntityInstance);
+                            throw new GwinException(msg);
+                        }
+                        FilterPreviesValues[Previouskey] = FilterItemEntity.Id;
+                        currentEntity = FilterItemEntity;
+                    }
+                }
+                else
+                {
+                    // Affectation des valeurs au ComboBox précédent
+                    FilterItemEntity = PropertyPrevious.GetValue(currentEntity) as BaseEntity;
+                    FilterPreviesValues[Previouskey] = FilterItemEntity.Id;
+                    currentEntity = FilterItemEntity;
+                }
+                    
+
+               
             }
         }
 

@@ -24,6 +24,11 @@ namespace App.Gwin.Attributes
     /// </summary>
     public class ConfigEntity
     {
+        /// <summary>
+        /// Entity Instance, it used to sabe current Entity Instance 
+        /// </summary>
+        public BaseEntity EntityInstance { set; get; }
+
         #region Public Properties
         public GwinEntityAttribute GwinEntity { set; get; }
         public ManagementFormAttribute ManagementForm { set; get; }

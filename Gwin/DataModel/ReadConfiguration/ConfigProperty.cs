@@ -25,6 +25,11 @@ namespace App.Shared.AttributesManager
     /// </summary>
     public class ConfigProperty
     {
+        /// <summary>
+        /// Current Entity Instance
+        /// </summary>
+        public BaseEntity EntityInstance {set;get;}
+
         #region Public Properties
         public DisplayPropertyAttribute DisplayProperty { set; get; }
         public RelationshipAttribute Relationship { set; get; }

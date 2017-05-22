@@ -196,7 +196,7 @@ namespace App.Gwin.Fields.Controls
                 ManyToOneField manyToOneFilter = new ManyToOneField(this.Service, item, null, null,
                     this.OrientationFiled,
                      this.SizeLabel,
-                    this.SizeControl, 0, this.ConfigEntity
+                    this.SizeControl, 0, this.ConfigEntity,this.ValueEntity
                     );
                 manyToOneFilter.Name = item.Name;
                 //manyToOneFilter.Size = new System.Drawing.Size(this.widthField, this.HeightField);

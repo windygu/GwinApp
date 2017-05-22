@@ -146,6 +146,12 @@ namespace App.Gwin.Fields
         /// </summary>
         Dictionary<string, Int64> FilterPreviesValues { set; get; }
 
+        /// <summary>
+        /// Entity Instance
+        /// </summary>
+        
+        public BaseEntity EntityInstance { get;  set; }
+
         #endregion
 
         #region Events
@@ -176,7 +182,9 @@ namespace App.Gwin.Fields
             Orientation OrientationFiled,
             Size SizeLabel,
             Size SizeControl,
-            Int64 DefaultValue, ConfigEntity ConfigEntity)
+            Int64 DefaultValue, 
+            ConfigEntity ConfigEntity,
+            BaseEntity EntityInstance)
             : base()
         {
             InitializeComponent();
@@ -193,6 +201,7 @@ namespace App.Gwin.Fields
                 this.ConfigEntity = ConfigEntity;
                 this.MainContainner = MainContainner;
                 this.Service = Service;
+                this.EntityInstance = EntityInstance;
 
                 // Type of Object 
                 if (this.TypeOfObject == null && this.PropertyInfo != null)
@@ -247,12 +256,12 @@ namespace App.Gwin.Fields
             Orientation OrientationFiled,
             Size SizeLabel, Size SizeControl,
             Int64 DefaultFiltreValues,
-            ConfigEntity ConfigEntity)
-          : this(Service, null, propertyInfo, MainContainner, OrientationFiled, SizeLabel, SizeControl, DefaultFiltreValues, ConfigEntity)
+            ConfigEntity ConfigEntity,BaseEntity EntityInstance)
+          : this(Service, null, propertyInfo, MainContainner, OrientationFiled, SizeLabel, SizeControl, DefaultFiltreValues, ConfigEntity, EntityInstance)
         { }
 
-        private ManyToOneField(IGwinBaseBLO Service, Type TypeObjet, ConfigEntity ConfigEntity)
-           : this(Service, TypeObjet, null, null, Orientation.Horizontal, new Size(50, 20), new Size(50, 20), 0, ConfigEntity)
+        private ManyToOneField(IGwinBaseBLO Service, Type TypeObjet, ConfigEntity ConfigEntity, BaseEntity EntityInstance)
+           : this(Service, TypeObjet, null, null, Orientation.Horizontal, new Size(50, 20), new Size(50, 20), 0, ConfigEntity, EntityInstance)
         {
 
         }
@@ -291,7 +300,7 @@ namespace App.Gwin.Fields
             List<Object> ls = service.GetAll();
 
             // Add Black Value if requorid
-            if (ConfigProperty?.EntryForm?.isDefaultIsEmpty == true)
+            if (ConfigProperty?.EntryForm?.isDefaultIsEmpty == true || ConfigProperty?.Filter?.isDefaultIsEmpty == true)
                 ls.Insert(0, new EmptyEntity());
 
             // Use default values if exisit
