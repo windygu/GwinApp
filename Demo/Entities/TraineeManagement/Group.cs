@@ -10,7 +10,7 @@ namespace GenericWinForm.Demo.Entities.TraineeManagement
 {
 
     [GwinEntity(Localizable =true,DisplayMember = "Name")]
-    [SelectionCriteria(typeof(Specialty))]
+    
     [Menu(Group= "Trainee")]
     [PresentationLogic(TypePLO = typeof(GroupPLO))]
     public class Group : BaseEntity
@@ -28,6 +28,7 @@ namespace GenericWinForm.Demo.Entities.TraineeManagement
         [EntryForm(Ordre = 3)]
         [Filter(isValeurFiltreVide =true)]
         [DataGrid(WidthColonne = 100)]
+        [SelectionCriteria(typeof(Specialty))]
         public virtual Specialty Specialty { set; get; }
 
     }
