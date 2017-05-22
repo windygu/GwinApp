@@ -48,8 +48,23 @@ namespace App.Gwin
             this.flowLayoutPanelForm = new FlowLayoutPanel();
             this.flowLayoutPanelForm.AutoScroll = true;
             this.flowLayoutPanelForm.Dock = DockStyle.Fill;
-            this.FlowLayoutContainer.RightToLeft = RightToLeft.Yes;
+            
             this.FlowLayoutContainer.Controls.Add(this.flowLayoutPanelForm);
+
+            if (GwinApp.isRightToLeft)
+            {
+                this.flowLayoutPanelForm.FlowDirection = FlowDirection.RightToLeft;
+                this.FlowLayoutContainer.RightToLeft = RightToLeft.Yes;
+            }
+
+            else
+            {
+                this.FlowLayoutContainer.RightToLeft = RightToLeft.No;
+                this.flowLayoutPanelForm.FlowDirection = FlowDirection.LeftToRight;
+            }
+               
+
+
             // set flowLayoutPanelForm as Conteneurs du formulaire
             this.ConteneurFormulaire = this.flowLayoutPanelForm;
 
@@ -114,7 +129,7 @@ namespace App.Gwin
                 param.ConfigProperty = configProperty;
                 param.TabIndex = ++TabIndex;
                 param.EntityBLO = this.EntityBLO; //  used per ManyToOne Field
-              //  param.TabControlForm = this.tabControlForm; //  used per ManyToMany Field
+                                                  //  param.TabControlForm = this.tabControlForm; //  used per ManyToMany Field
                 param.Entity = this.Entity;
                 param.ConteneurFormulaire = FieldContainner;
                 param.errorProvider = errorProvider;
@@ -130,7 +145,7 @@ namespace App.Gwin
                     baseField.ValueChanged += ControlPropriete_ValueChanged;
 
                 // API Event
-                if(this.EntityPLO != null)
+                if (this.EntityPLO != null)
                 {
                     baseField.ValueChanged += Presentation_ValueChanged;
                     baseField.ValidatingField += Presentation_ValidatingField;
@@ -145,11 +160,11 @@ namespace App.Gwin
                 }
 
                 // Add Field to List 
-                this.Fields.Add(baseField.Name,baseField);
+                this.Fields.Add(baseField.Name, baseField);
 
                 // Execute After Init methode
-              
-                    
+
+
 
             }// Fin de for
 
@@ -158,18 +173,20 @@ namespace App.Gwin
             this.btAnnuler.TabIndex = ++TabIndex;
 
             // GroupeBox Style
-            foreach (GroupBox item in this.ConteneurFormulaire.Controls.Cast<Control>().Where(c => c.GetType() == typeof(GroupBox))){
+            foreach (GroupBox item in this.ConteneurFormulaire.Controls.Cast<Control>().Where(c => c.GetType() == typeof(GroupBox)))
+            {
                 // item.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
                 item.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             }
-            foreach (FlowLayoutPanel item in GroupesBoxMainContainers.Values){
+            foreach (FlowLayoutPanel item in GroupesBoxMainContainers.Values)
+            {
                 item.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             }
 
             this.FormAfterInit();
         }
 
-      
+
 
 
         /// <summary>
@@ -303,7 +320,7 @@ namespace App.Gwin
             // déja le combobox propose le premiere élément séléctioné
         }
 
-       
+
 
         protected void TextBoxInt32_Validating(object sender, CancelEventArgs e)
         {

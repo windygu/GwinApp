@@ -16,8 +16,8 @@ namespace App.Gwin.Components.Manager.EntryForms.PLL
 
         void FormAfterInit(BaseEntryForm EntryForm);
 
-        void ValueChanged(BaseEntryForm EntryForm);
+        void ValueChanged(BaseEntryForm EntryForm, object sender);
 
-        void ValidatingFiled(BaseEntryForm EntryForm);
+        void ValidatingFiled(BaseEntryForm EntryForm, object sender);
     }
 }

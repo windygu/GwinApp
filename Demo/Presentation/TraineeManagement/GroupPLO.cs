@@ -21,12 +21,12 @@ namespace GenericWinForm.Demo.Presentation.TraineeManagement
            
         }
 
-        public void ValidatingFiled(BaseEntryForm EntryForm)
+        public void ValidatingFiled(BaseEntryForm EntryForm, object sender)
         {
           
         }
 
-        public void ValueChanged(BaseEntryForm EntryForm)
+        public void ValueChanged(BaseEntryForm EntryForm, object sender)
         {
             if ((string)EntryForm.Fields[nameof(Group.Name)].Value != String.Empty)
                 EntryForm.Fields[nameof(Group.Specialty)].Show();

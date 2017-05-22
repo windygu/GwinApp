@@ -29,7 +29,7 @@ namespace GenericWinForm.Demo
             user = User.CreateAdminUser(new ModelContext());
             // user = User.CreateGuestUser(new ModelContext());
             user = User.CreateRootUser(new ModelContext());
-            user.Language = GwinApp.Languages.ar;
+            user.Language = GwinApp.Languages.fr;
 
             // Start Gwin Application with Authentification
             GwinApp.Start(typeof(ModelContext), typeof(BaseBLO<>), this, user);

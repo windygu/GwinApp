@@ -23,12 +23,12 @@ namespace App.Gwin
 
         public virtual void Presentation_ValidatingField(object sender, CancelEventArgs e)
         {
-            this.EntityPLO.ValidatingFiled(this);
+            this.EntityPLO.ValidatingFiled(this,sender);
         }
 
         public virtual void Presentation_ValueChanged(object sender, EventArgs e)
         {
-            this.EntityPLO.ValueChanged(this);
+            this.EntityPLO.ValueChanged(this, sender);
         }
 
     }
