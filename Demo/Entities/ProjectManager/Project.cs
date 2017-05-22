@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GenericWinForm.Demo.Entities
+namespace GenericWinForm.Demo.Entities.ProjectManager
 {
     /// <summary>
     /// Entity Exemple to be used in ManyToOne RelationShip

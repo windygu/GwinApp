@@ -7,7 +7,7 @@ using App.Gwin.ModelData;
 using GenericWinForm.Demo.Presentation.TaskProjectManager;
 using System.Collections.Generic;
 
-namespace GenericWinForm.Demo.Entities
+namespace GenericWinForm.Demo.Entities.ProjectManager
 {
 
     /// <summary>

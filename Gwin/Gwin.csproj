@@ -120,6 +120,8 @@
     <Compile Include="Components\Manager\EntryForms\API_Events.BaseEntryForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Components\Manager\EntryForms\PLL\GwinPLO.cs" />
+    <Compile Include="Components\Manager\EntryForms\PLL\IGwinPLO.cs" />
     <Compile Include="Components\Manager\EntryForms\TabEntryForm\GwinEntityForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -137,6 +139,7 @@
     <Compile Include="DataModel\Attributes\ActionLineAttribute.cs" />
     <Compile Include="DataModel\Attributes\BusinesRole.cs" />
     <Compile Include="DataModel\Attributes\GwinFormAttribute.cs" />
+    <Compile Include="DataModel\Attributes\PresentationLogic.cs" />
     <Compile Include="DataModel\Exceptions\Class1.cs" />
     <Compile Include="DataModel\Helpers\GwinIdentifierManager.cs" />
     <Compile Include="DataModel\ModelInfo\GwinAssembliesManager.cs" />
@@ -158,6 +161,7 @@
     <Compile Include="GwinApplication\DAL\IGwinBaseDAO.cs" />
     <Compile Include="GwinApplication\IoC\ComponentRegistration.cs" />
     <Compile Include="GwinApplication\IoC\DependencyResolver.cs" />
+    <Compile Include="GwinApplication\PLL\PLOManager.cs" />
     <Compile Include="GwinApplication\Presentation\Authentication\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>

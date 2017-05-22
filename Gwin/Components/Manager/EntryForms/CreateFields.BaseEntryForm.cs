@@ -129,6 +129,14 @@ namespace App.Gwin
                 if (configProperty.BusinesRole != null)
                     baseField.ValueChanged += ControlPropriete_ValueChanged;
 
+                // API Event
+                if(this.EntityPLO != null)
+                {
+                    baseField.ValueChanged += Presentation_ValueChanged;
+                    baseField.ValidatingField += Presentation_ValidatingField;
+                }
+
+
                 // [Bug] Validation per FieldNature
                 if (configProperty.EntryForm?.isRequired == true)
                 {
@@ -137,10 +145,10 @@ namespace App.Gwin
                 }
 
                 // Add Field to List 
-                this.Fields.Add(baseField);
+                this.Fields.Add(baseField.Name,baseField);
 
                 // Execute After Init methode
-                this.FormAfterInit();
+              
                     
 
             }// Fin de for
@@ -157,7 +165,11 @@ namespace App.Gwin
             foreach (FlowLayoutPanel item in GroupesBoxMainContainers.Values){
                 item.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             }
+
+            this.FormAfterInit();
         }
+
+      
 
 
         /// <summary>
@@ -200,7 +212,7 @@ namespace App.Gwin
                     groupesBoxMainContainers[item] = flowLayoutPanel;
 
                     // Add Group Box to List 
-                    this.GroupsBoxes.Add(groupeBox);
+                    this.GroupsBoxes.Add(item, groupeBox);
 
 
                 }

@@ -13,6 +13,7 @@ using App.Gwin.Entities;
 using App;
 using GenericWinForm.Demo.Entities;
 using App.Gwin.Components.Manager.EntryForms.Resources;
+using GenericWinForm.Demo.Entities.ProjectManager;
 
 namespace GenericWinForm.Demo.Presentation.ProjectManager
 {

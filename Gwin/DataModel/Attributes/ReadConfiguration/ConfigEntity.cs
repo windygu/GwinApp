@@ -32,6 +32,8 @@ namespace App.Gwin.Attributes
         public List<DataGridSelectedActionAttribute> ListDataGridSelectedAction { set; get; }
         public GwinFormAttribute GwinForm { get; set; }
 
+        public PresentationLogicAttribute PresentationLogic { get; set; }
+
         public Type TypeOfEntity { set; get; }
         public bool Localizable { get; set; }
         /// <summary>
@@ -77,7 +79,7 @@ namespace App.Gwin.Attributes
         /// </summary>
         private void ReadConfiguration()
         {
-
+           
 
             #region Load RessouceManager  
             //Fill RessouceManager
@@ -94,6 +96,12 @@ namespace App.Gwin.Attributes
             Object[] ls_attribut_GwinForm = this.TypeOfEntity.GetCustomAttributes(typeof(GwinFormAttribute), false);
             if (ls_attribut_GwinForm != null && ls_attribut_GwinForm.Count() > 0)
                 this.GwinForm = (GwinFormAttribute)ls_attribut_GwinForm[0];
+            #endregion
+
+            #region Load PresentationLogic
+            Object[] ls_PresentationLogic = this.TypeOfEntity.GetCustomAttributes(typeof(PresentationLogicAttribute), false);
+            if (ls_PresentationLogic != null && ls_PresentationLogic.Count() > 0)
+                this.PresentationLogic = (PresentationLogicAttribute)ls_PresentationLogic[0];
             #endregion
 
             #region Read DisplayEntityAttribute

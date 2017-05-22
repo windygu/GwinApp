@@ -1,6 +1,7 @@
 ﻿using App.Gwin.Components.Manager.DataGrid;
 using App.Gwin.Entities;
 using GenericWinForm.Demo.Entities;
+using GenericWinForm.Demo.Entities.ProjectManager;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

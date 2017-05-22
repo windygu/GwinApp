@@ -20,6 +20,7 @@ using App.Gwin.Exceptions.Gwin;
 using App.Gwin.Exceptions.Helpers;
 using App.Gwin.Validation;
 using MetroFramework.Controls;
+using App.Gwin.Components.Manager.EntryForms.PLL;
 
 namespace App.Gwin
 {
@@ -54,6 +55,12 @@ namespace App.Gwin
         #endregion
 
         #region Presentation Variables
+
+        /// <summary>
+        /// Presentation Logic Object
+        /// </summary>
+        protected IGwinPLO EntityPLO { set; get; }
+
         /// <summary>
         /// Form Container
         /// </summary>
@@ -67,12 +74,12 @@ namespace App.Gwin
         /// <summary>
         /// List of Field in Form
         /// </summary>
-        public List<BaseField> Fields { set; get; }
+        public  Dictionary<string, BaseField> Fields { set; get; }
 
         /// <summary>
         /// List of Groupes Boexes in Form
         /// </summary>
-        public List<GroupBox> GroupsBoxes { set; get; }
+        public Dictionary<string, GroupBox> GroupsBoxes { set; get; }
 
 
         bool AutoGenerateField { set; get; }
@@ -144,9 +151,16 @@ namespace App.Gwin
                 this.ConteneurFormulaire = FlowLayoutContainer;
                 this.isStepInitializingValues = false;
                 this.MessageValidation = new MessageValidation(errorProvider);
-                this.Fields = new List<BaseField>();
-                this.GroupsBoxes = new List<GroupBox>();
+                this.Fields = new Dictionary<string, BaseField>();
+                this.GroupsBoxes = new Dictionary<string, GroupBox>();
      
+                // Create PLO Instance if PLO exist
+                if(this.EntityPLO == null && this.ConfigEntity.PresentationLogic != null)
+                {
+                    this.EntityPLO = (IGwinPLO) Activator.CreateInstance(this.ConfigEntity.PresentationLogic.TypePLO);
+                }
+                    
+
                 // Create or Config Entity Instance
                 if (this.EntityBLO != null && this.Entity == null)
                     this.Entity = (BaseEntity)EtityBLO.CreateEntityInstance();

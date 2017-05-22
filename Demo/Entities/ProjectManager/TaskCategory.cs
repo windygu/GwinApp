@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GenericWinForm.Demo.Entities
+namespace GenericWinForm.Demo.Entities.ProjectManager
 {
     public enum TaskCategory
     {

@@ -7,6 +7,9 @@
     using App.Gwin.Entities.Secrurity.Authentication;
     using App.Gwin.Entities.Secrurity.Autorizations;
     using App.Gwin.GwinApplication.BLL.Configuration;
+    using Entities.ProjectManager;
+    using Entities.TraineeManagement;
+    using Entities.TrainingManagement;
     using GenericWinForm.Demo.Entities;
     using System;
     using System.Collections.Generic;
@@ -53,7 +56,14 @@
 
         // Demo
         public virtual DbSet<TaskProject> EntityMiniConfigs { get; set; }
-        
+
+        // Trainne
+        public virtual DbSet<Group> Groups { get; set; }
+        public virtual DbSet<Trainee> Trainees { get; set; }
+        public virtual DbSet<Module> Modules { get; set; }
+
+        public virtual DbSet<Specialty> Specialtys { get; set; }
+
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

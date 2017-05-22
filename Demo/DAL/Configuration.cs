@@ -4,6 +4,7 @@
     using App.Gwin.Entities.Secrurity.Authentication;
     using GenericWinForm.Demo.DAL;
     using GenericWinForm.Demo.Entities;
+    using GenericWinForm.Demo.Entities.ProjectManager;
     using Gwin;
     using Gwin.Application.BAL;
     using Gwin.Entities.Application;
