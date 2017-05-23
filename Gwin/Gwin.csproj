@@ -116,6 +116,18 @@
     <Compile Include="Components\Fields\StringField.Designer.cs">
       <DependentUpon>StringField.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\Manager\Actions\ActionsComponent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\Manager\Actions\ActionsComponent.Designer.cs">
+      <DependentUpon>ActionsComponent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Manager\Actions\BaseDataAction.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\Manager\Actions\ExportExcelDataAction.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Components\Manager\DataGrid\IFormSelectedEntityAction.cs" />
     <Compile Include="Components\Manager\EntryForms\API_Events.BaseEntryForm.cs">
       <SubType>UserControl</SubType>
@@ -583,6 +595,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Components\Fields\StringField.resx">
       <DependentUpon>StringField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Manager\Actions\ActionsComponent.resx">
+      <DependentUpon>ActionsComponent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\Manager\EntryForms\TabEntryForm\GwinEntityForm.resx">
       <DependentUpon>GwinEntityForm.cs</DependentUpon>
