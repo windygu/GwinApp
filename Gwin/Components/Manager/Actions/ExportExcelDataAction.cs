@@ -30,7 +30,7 @@ namespace App.Gwin.Components.Manager.Actions
 
         private void ExportExcelDataAction_Click(object sender, EventArgs e)
         {
-            IList ListData = EntityBLO.Recherche(FilterValues);
+            List<BaseEntity> ListData = EntityBLO.Recherche(FilterValues).Cast<BaseEntity>().ToList();
 
             // FileDialog
             Stream myStream;
@@ -51,11 +51,10 @@ namespace App.Gwin.Components.Manager.Actions
             }
         }
 
-        private void CreateFile(StreamWriter wr,IList ListData)
+        private void CreateFile(StreamWriter wr,List<BaseEntity> ListData)
         {
 
-            try
-            {
+           
                 // Titles
                 foreach (var item in this.EntityBLO.TypeEntity.GetProperties())
                 {
@@ -65,14 +64,14 @@ namespace App.Gwin.Components.Manager.Actions
                 wr.WriteLine();
 
                 //write Entites to excel file
-                foreach (var itemEntity in ListData)
+                foreach (BaseEntity itemEntity in ListData)
                 {
-                    var obj = Convert.ChangeType(itemEntity, this.EntityBLO.TypeEntity);
+                   
 
                     foreach (var itemProperty in this.EntityBLO.TypeEntity.GetProperties())
                     {
-                        if (itemProperty.GetValue(obj) != null)
-                            wr.Write(itemProperty.GetValue(obj).ToString().ToUpper() + "\t");
+                        if (itemProperty.GetValue(itemEntity) != null)
+                            wr.Write(itemProperty.GetValue(itemEntity).ToString().ToUpper() + "\t");
                         else
                             wr.Write("\t");
                     }
@@ -82,11 +81,8 @@ namespace App.Gwin.Components.Manager.Actions
                 }
                 //close file
                 wr.Close();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            
+            
         }
     }
 }
