@@ -449,14 +449,11 @@
     <Compile Include="Components\Fields\Controls\InputCollectionControle.Designer.cs">
       <DependentUpon>InputCollectionControle.cs</DependentUpon>
     </Compile>
-    <Compile Include="Components\Fields\ManyToOneField.cs">
+    <Compile Include="Components\Fields\ManyToOne\ManyToOneField.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\Fields\ManyToOneField.Designer.cs">
+    <Compile Include="Components\Fields\ManyToOne\ManyToOneField.Designer.cs">
       <DependentUpon>ManyToOneField.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Components\Fields\ManyToOneField.Filter.cs">
-      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Components\Manager\DataGrid\GwinDataGridComponent.cs">
       <SubType>UserControl</SubType>
@@ -770,7 +767,7 @@
     <EmbeddedResource Include="Components\Fields\ManyToManyField.resx">
       <DependentUpon>ManyToManyField.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Components\Fields\ManyToOneField.resx">
+    <EmbeddedResource Include="Components\Fields\ManyToOne\ManyToOneField.resx">
       <DependentUpon>ManyToOneField.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\Manager\DataGrid\GwinDataGridComponent.resx">

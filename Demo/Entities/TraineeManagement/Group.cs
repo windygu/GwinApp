@@ -1,9 +1,12 @@
 ﻿using App.Gwin.Attributes;
 using App.Gwin.Entities;
+using GenericWinForm.Demo.DAL;
 using GenericWinForm.Demo.Entities.TrainingManagement;
 using GenericWinForm.Demo.Presentation.TraineeManagement;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 namespace GenericWinForm.Demo.Entities.TraineeManagement
@@ -30,6 +33,28 @@ namespace GenericWinForm.Demo.Entities.TraineeManagement
         [DataGrid(WidthColonne = 100)]
 
         public virtual Specialty Specialty { set; get; }
+
+
+        public override void Seed(DbContext context)
+        {
+
+            ModelContext db = context as ModelContext;
+
+            //Specialty speciality = db.Specialtys.Where(s => s.Reference == "TDI").SingleOrDefault();
+
+            //// Test Data
+            //db.Groups.AddOrUpdate(
+            // r => r.Reference
+            //                ,
+            //                 new Group
+            //                 {
+            //                     Name = "Groupe 1",
+            //                     Specialty = speciality,
+            //                     Reference = "G1",
+            //                 }
+
+            //      );
+        }
 
     }
 }

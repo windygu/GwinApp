@@ -1,10 +1,15 @@
 using App.Gwin.Attributes;
 using App.Gwin.Entities;
 using App.Gwin.Entities.MultiLanguage;
+using GenericWinForm.Demo.DAL;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
+using vtts.Entities.TrainingManagement.Resources.Specialty;
+
 namespace GenericWinForm.Demo.Entities.TrainingManagement
 {
 
@@ -37,5 +42,24 @@ namespace GenericWinForm.Demo.Entities.TrainingManagement
          
         public virtual List<TraineeManagement.Group> Groups { set; get; }
         // public  List<Module> Modules { set; get; }
+
+        public override void Seed(DbContext context)
+        {
+
+            ModelContext db = context as ModelContext;
+
+            //// Test Data
+            //db.Specialtys.AddOrUpdate(
+            // r => r.Reference
+            //                ,
+            //                 new Specialty
+            //                 {
+            //                     Code = "TDI",
+            //                     Title = new LocalizedString() {Arab = "",French ="Développement",English ="Developpement" },
+            //                     Reference = "TDI"
+            //                 }
+
+            //      );
+        }
     }
 }

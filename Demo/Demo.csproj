@@ -142,6 +142,10 @@
     <Compile Include="Migrations\201705220834100_Update2.Designer.cs">
       <DependentUpon>201705220834100_Update2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705230853577_Update4.cs" />
+    <Compile Include="Migrations\201705230853577_Update4.Designer.cs">
+      <DependentUpon>201705230853577_Update4.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\ProjectManager\ProjectForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -215,6 +219,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705220834100_Update2.resx">
       <DependentUpon>201705220834100_Update2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705230853577_Update4.resx">
+      <DependentUpon>201705230853577_Update4.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\ProjectManager\ProjectForm.ar.resx">
       <DependentUpon>ProjectForm.cs</DependentUpon>

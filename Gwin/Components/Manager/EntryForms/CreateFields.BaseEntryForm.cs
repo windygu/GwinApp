@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using App.Gwin.Shared.Resources;
 using System.Resources;
-using App.WinForm.Fields;
+using App.Components.Fields;
 using App.Gwin.FieldsTraitements;
 using App.Gwin.Exceptions.Gwin;
 using App.Gwin.Components.Manager.Fields.Traitements.Params;

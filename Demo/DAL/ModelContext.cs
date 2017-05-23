@@ -55,14 +55,16 @@
 
 
         // Demo
-        public virtual DbSet<TaskProject> EntityMiniConfigs { get; set; }
+        public virtual DbSet<TaskProject> TaskProjects { get; set; }
+        public virtual DbSet<Project> Projects { get; set; }
 
         // Trainne
+        public virtual DbSet<Specialty> Specialtys { get; set; }
         public virtual DbSet<Group> Groups { get; set; }
         public virtual DbSet<Trainee> Trainees { get; set; }
         public virtual DbSet<Module> Modules { get; set; }
 
-        public virtual DbSet<Specialty> Specialtys { get; set; }
+        
 
 
 

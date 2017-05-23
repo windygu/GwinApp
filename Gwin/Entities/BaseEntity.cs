@@ -4,6 +4,7 @@ using App.Gwin.Exceptions.Gwin;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
 using System.Linq;
 using System.Reflection;
@@ -34,7 +35,7 @@ namespace App.Gwin.Entities
         /// Unique reference of Entity
         /// </summary>
         /// 
-      
+
         public string Reference { get; set; }
 
         [DisplayProperty(isInGlossary = true)]
@@ -70,7 +71,7 @@ namespace App.Gwin.Entities
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
-           // 
+            // 
         }
 
         /// <summary>
@@ -103,6 +104,13 @@ namespace App.Gwin.Entities
 
 
             else return Titre;
+        }
+        #endregion
+
+        #region seed 
+        public virtual void Seed (DbContext context)
+        {
+
         }
         #endregion
 

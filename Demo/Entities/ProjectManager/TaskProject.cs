@@ -4,8 +4,12 @@ using App.Gwin.Entities;
 using App.Gwin.Entities.MultiLanguage;
 using App.Gwin.GwinApplication.Security.Attributes;
 using App.Gwin.ModelData;
+using GenericWinForm.Demo.DAL;
 using GenericWinForm.Demo.Presentation.TaskProjectManager;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Migrations;
 
 namespace GenericWinForm.Demo.Entities.ProjectManager
 {
@@ -181,5 +185,41 @@ namespace GenericWinForm.Demo.Entities.ProjectManager
         public virtual List<Individual> Peoples { set; get; }
 
         #endregion
+
+
+        public override void Seed(DbContext context)
+        {
+
+            ModelContext db = context as ModelContext;
+
+            // Gwin Test Default Values
+            db.TaskProjects.AddOrUpdate(
+                 o => o.Id
+              ,
+              new TaskProject
+              {
+                  Id = 1,
+                  StartDate = DateTime.Now,
+                  Project = new Project() { Id = 1, Title = "Entity_OneToMany" },
+                  Categoy = TaskCategory.Analysis,
+                  DaysNumber = 3,
+                  Title = new LocalizedString() { French = "Create Uses Cases Diagrame" },
+
+                  Description = new LocalizedString() { Arab = "تحليل وظيفي", French = "Create UML Uses Cases Diagrams for Club Management system" },
+
+                  LocalizedTitle = new LocalizedString() { Arab = "تحليل وظيفي", French = "Analyse fonctionnelle" },
+                  Peoples = new List<Individual>() {
+                      new Individual() { LastName = new LocalizedString() {Current = "Mouad" },FirstName = new LocalizedString() {Current = "Madani"} },
+                      new Individual() { LastName = new LocalizedString() {Current = "Mouad" }  ,FirstName = new LocalizedString() {Current = "Kamal" } }
+                  },
+                  Responsibles = new List<Individual>() {
+                      new Individual() { LastName = new LocalizedString() {Current = "Mouana"} , FirstName =new LocalizedString() {Current = "Chami"}  },
+                      new Individual() { LastName = new LocalizedString() {Current = "Kamal"}, FirstName =new LocalizedString() {Current = "Chami"}  }
+                  },
+              }
+
+            );
+
+        }
     }
 }
