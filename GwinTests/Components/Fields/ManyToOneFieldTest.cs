@@ -33,7 +33,7 @@ namespace GwinTest.Components.Fields
 
 
         [TestMethod()]
-        public void ManyToOneField_CreateInstanceTest()
+        public void ManyToOneField_WithFilter()
         {
             // Model Data : Trainee, Groupe, Speciality
             using (ModelContext db = new ModelContext())
@@ -47,7 +47,7 @@ namespace GwinTest.Components.Fields
                 ConfigEntity configEntity = ConfigEntity.CreateConfigEntity(typeof(Trainee));
                 Trainee trainee = new Trainee();
 
-               
+
 
                 ManyToOneField manyToOneField = new ManyToOneField(
                     TraineeBLO,
@@ -68,9 +68,66 @@ namespace GwinTest.Components.Fields
                     .SelectedIndex = 1;
 
                 // Selected the first Groupe
-                manyToOneField.SelectedIndex = 1;
+                manyToOneField.SelectedIndex = 0;
             }
+        }
+
+        [TestMethod()]
+        public void ManyToOneField_WithOutFilter()
+        {
+            // Model Data : Trainee, Groupe, Speciality
+            using (ModelContext db = new ModelContext())
+            {
+                Panel Container = new Panel();
+                Size SizeLabel = new Size(100, 20);
+                Size SizeControl = new Size(100, 20);
+
+                IGwinBaseBLO GroupeBLO = new GwinBaseBLO<Group>(db);
+                PropertyInfo SpecialtyPropertyInfo = typeof(Group).GetProperty(nameof(Group.Specialty));
+                ConfigEntity configEntity = ConfigEntity.CreateConfigEntity(typeof(Group));
+                Group trainee = new Group();
+
+
+                Specialty Specialty = db.Specialtys.Where(s => s.Reference == "TDI").SingleOrDefault();
+
+                ManyToOneField manyToOneField = new ManyToOneField(
+                    GroupeBLO,
+                    SpecialtyPropertyInfo,
+                    Container,
+                    Orientation.Vertical,
+                    SizeLabel,
+                    SizeControl,
+                    Specialty.Id,
+                    configEntity,
+                    trainee);
+
+
+
+                // Selected the first Groupe
+                manyToOneField.SelectedIndex = 0;
+            }
+        }
+
+
+        [TestMethod()]
+        public void ManyToOneField_Form()
+        {
+
+            using (ModelContext db = new ModelContext())
+            {
+                IGwinBaseBLO GroupeBLO = new GwinBaseBLO<Group>(db);
+                Dictionary<string, object> filter = new Dictionary<string, object>();
+
+                Specialty Specialty = db.Specialtys.Where(s => s.Reference == "TDI").SingleOrDefault();
+                filter.Add(nameof(Specialty),Specialty.Id);
+                BaseEntryForm GroupeEntryForm = new BaseEntryForm(GroupeBLO,null, filter,true);
+                
+            }
+              
 
         }
+
+
     }
 }
+

@@ -5,6 +5,7 @@ using App.Gwin.Entities.MultiLanguage;
 using App.Gwin.GwinApplication.Security.Attributes;
 using App.Gwin.ModelData;
 using GenericWinForm.Demo.DAL;
+using GenericWinForm.Demo.Entities.TraineeManagement;
 using GenericWinForm.Demo.Presentation.TaskProjectManager;
 using System;
 using System.Collections.Generic;
@@ -185,6 +186,10 @@ namespace GenericWinForm.Demo.Entities.ProjectManager
         public virtual List<Individual> Peoples { set; get; }
 
         #endregion
+
+
+
+        public virtual List<Group> Groups { set; get; }
 
 
         public override void Seed(DbContext context)

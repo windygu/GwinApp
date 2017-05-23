@@ -1,6 +1,7 @@
 ﻿using App.Gwin.Attributes;
 using App.Gwin.Entities;
 using GenericWinForm.Demo.DAL;
+using GenericWinForm.Demo.Entities.ProjectManager;
 using GenericWinForm.Demo.Entities.TrainingManagement;
 using GenericWinForm.Demo.Presentation.TraineeManagement;
 using System;
@@ -26,13 +27,15 @@ namespace GenericWinForm.Demo.Entities.TraineeManagement
         public string Name { set; get; }
 
 
-        [DisplayProperty(DisplayMember ="Code")]
         [Relationship(Relation = RelationshipAttribute.Relations.ManyToOne)]
         [EntryForm(Ordre = 3)]
         [Filter(isDefaultIsEmpty =true)]
         [DataGrid(WidthColonne = 100)]
-
         public virtual Specialty Specialty { set; get; }
+
+        [EntryForm(isDefaultIsEmpty = true)]
+        [Relationship(Relation = RelationshipAttribute.Relations.ManyToMany_Selection)]
+        public virtual List<TaskProject> TaskProjects { set; get; }
 
 
         public override void Seed(DbContext context)

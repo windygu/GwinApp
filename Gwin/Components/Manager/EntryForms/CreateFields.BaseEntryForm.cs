@@ -104,8 +104,11 @@ namespace App.Gwin
 
                 // Field Size
                 int width_control_config = width_control;
+                int height_control_config = height_control;
                 if (configProperty.EntryForm?.WidthControl != 0)
                     width_control_config = configProperty.EntryForm.WidthControl;
+                if (configProperty.EntryForm?.HeightControl != 0)
+                    height_control_config = configProperty.EntryForm.WidthControl;
 
                 // Orientation
                 Orientation orientation_config = orientation;
@@ -125,7 +128,7 @@ namespace App.Gwin
                 param.Location = new System.Drawing.Point(x_field, y_field);
                 param.OrientationField = orientation_config;
                 param.SizeLabel = new Size(width_label, height_label);
-                param.SizeControl = new Size(width_control_config, height_control);
+                param.SizeControl = new Size(width_control_config, height_control_config);
                 param.ConfigProperty = configProperty;
                 param.TabIndex = ++TabIndex;
                 param.EntityBLO = this.EntityBLO; //  used per ManyToOne Field

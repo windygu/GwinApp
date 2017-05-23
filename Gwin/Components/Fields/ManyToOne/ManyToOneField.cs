@@ -113,7 +113,7 @@ namespace App.Gwin.Fields
         }
         #endregion
 
-        
+
 
         #region Set and Get Values
         /// <summary>
@@ -127,7 +127,8 @@ namespace App.Gwin.Fields
             }
             set
             {
-                this.SelectionFilterManager.Value = (Int64)value;
+               if (this.SelectionFilterManager != null)
+                    this.SelectionFilterManager.Value = (Int64)value;
                 this.SelectedValue = (Int64)value;
             }
         }
@@ -202,14 +203,14 @@ namespace App.Gwin.Fields
                     this.SelectionFilterManager = new SelectionFilterManager(this.Service,
                     this.ConfigProperty,
                     this.MainContainner,
-                    this.SizeLabel, this.SizeControl, this.OrientationField);
+                    this.SizeLabel, this.SizeControl, this.OrientationField, this.DefaultValue);
 
 
                 // Config Current Field : ManyToOneField 
                 this.DisplayMember = this.ConfigEntity.GwinEntity.DisplayMember;
                 this.ValueMember = "Id";
                 this.Text_Label = this.ConfigEntity.GwinEntity.SingularName;
-               // this.ValueChanged += Value_SelectedIndexChanged;
+                // this.ValueChanged += Value_SelectedIndexChanged;
 
 
                 // Fill Data
@@ -223,17 +224,29 @@ namespace App.Gwin.Fields
                     if (!isFilterItem)
                     {
                         // Fill the ComboBox data if the field not have private filter 
-                        IGwinBaseBLO FieldBLO = this.Service.CreateServiceBLOInstanceByTypeEntity(this.PropertyInfo.PropertyType);
-                        List<Object> ls_data = FieldBLO.GetAll();
-                        this.DataSource = ls_data;
+                        // And DataSource is null
+                        if (this.DataSource == null)
+                        {
+                            IGwinBaseBLO FieldBLO = this.Service.CreateServiceBLOInstanceByTypeEntity(this.PropertyInfo.PropertyType);
+                            List<Object> ls_data = FieldBLO.GetAll();
+
+                            // Add Empty Data
+                            
+                            if (this.ConfigProperty?.EntryForm?.isDefaultIsEmpty == true || this.ConfigProperty?.Filter?.isDefaultIsEmpty == true)
+                                ls_data.Insert(0, new EmptyEntity());
+
+
+                            this.DataSource = ls_data;
+                        }
+                           
                     }
-                   
+
                 }
-  
+
             }
         }
 
-       
+
 
         public ManyToOneField(IGwinBaseBLO Service,
             PropertyInfo propertyInfo,

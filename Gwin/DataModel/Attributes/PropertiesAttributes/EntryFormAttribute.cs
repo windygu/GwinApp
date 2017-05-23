@@ -26,6 +26,8 @@ namespace App.Gwin.Attributes
         /// Width dans le formulaire
         /// </summary>
         public int WidthControl { get; set; }
+
+        public int HeightControl { get; set; }
         /// <summary>
         /// Indique l'ordre d'affichage dans le formulaire et dans le dataGrid 
         /// </summary>

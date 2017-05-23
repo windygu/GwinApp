@@ -75,6 +75,7 @@
     <Compile Include="Components\Fields\Controls\DateTimeControlTests.cs" />
     <Compile Include="Components\Fields\DateTimeFieldTests.cs" />
     <Compile Include="Components\Fields\Int32FiledTests.cs" />
+    <Compile Include="Components\Fields\ManyToManyFieldTest.cs" />
     <Compile Include="Components\Fields\ManyToOneFieldTest.cs" />
     <Compile Include="Components\Fields\StringFiledTests.cs" />
     <Compile Include="Entities\EntitiesTest.cs" />

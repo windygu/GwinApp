@@ -33,7 +33,7 @@ namespace App.Gwin.Fields
         /// Type of The object that use this field
         /// </summary>
         protected Type TypeOfObject { set; get; }
-        private SelectionFilterManager SelectionFilterManager { set; get; }
+        public SelectionFilterManager SelectionFilterManager { set; get; }
         #endregion
 
         #region Gwin variables
@@ -69,6 +69,7 @@ namespace App.Gwin.Fields
                     foreach (var item in ls_values)
                     {
                         listBoxChoices.SelectedItems.Add(item);
+                    
                     }
                 }
             }
@@ -116,11 +117,12 @@ namespace App.Gwin.Fields
                     this.SelectionFilterManager = new SelectionFilterManager(this.EntityBAO,
                     this.configProperty,
                     MainContainer,
-                    SizeLabel, SizeControl, OrientationField);
+                    SizeLabel, SizeControl, OrientationField,0);
 
                 // Config Current Field : ManyToManyField
                 this.Text_Label = this.configProperty.DisplayProperty.Title;
-                this.listBoxChoices.Height = 300;
+
+                 
 
                 // Fill Data
                 if (this.SelectionFilterManager != null)
@@ -131,6 +133,7 @@ namespace App.Gwin.Fields
                 else
                 {
                     // Fill the listBox data if the filed not have private filter 
+                   
                     Type TypeGenericList = this.PropertyInfo.PropertyType.GetGenericArguments()[0];
                     IGwinBaseBLO ServiceTypeGenericList = this.EntityBAO.CreateServiceBLOInstanceByTypeEntity(TypeGenericList);
                     List<Object> ls_possible_value = ServiceTypeGenericList.GetAll();

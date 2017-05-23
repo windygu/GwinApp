@@ -81,8 +81,9 @@ namespace App.Gwin.Fields.Controls
             ConfigProperty ConfigProperty,
             Control MainContainner,
             Size SizeLabel,
-             Size SizeControl,
-              Orientation OrientationFiled
+            Size SizeControl,
+            Orientation OrientationFiled,
+            Int64 DefaultValue
             )
         {
             this.ConfigProperty = ConfigProperty;
@@ -98,6 +99,9 @@ namespace App.Gwin.Fields.Controls
 
             if (this.ConfigProperty.SelectionCriteria != null)
                 InitInterface();
+
+            CalculeValeursInitiaux((Int64)DefaultValue);
+            ViewingData();
         }
         #endregion
 
@@ -167,11 +171,13 @@ namespace App.Gwin.Fields.Controls
                 // Meta information d'affichage du de Critère
                 GwinEntityAttribute DisplayEntityAttributeCritere = (GwinEntityAttribute)item.GetCustomAttribute(typeof(GwinEntityAttribute));
 
+                // Size Filter Item
+                Size SizeControlFilter = new Size(this.SizeControl.Width, 25);
 
                 ManyToOneField manyToOneFilter = new ManyToOneField(this.Service, item, null, null,
                     this.OrientationFiled,
                      this.SizeLabel,
-                    this.SizeControl, 0, this.ConfigProperty.ConfigEntity, this.ValueEntity
+                    SizeControlFilter, 0, this.ConfigProperty.ConfigEntity, this.ValueEntity
                     );
                 manyToOneFilter.Name = item.Name;
                 //manyToOneFilter.Size = new System.Drawing.Size(this.widthField, this.HeightField);
@@ -306,6 +312,7 @@ namespace App.Gwin.Fields.Controls
                 {
                     ls_source = PropertyContenantValeursComboSuivant.GetValue(EntiteActuel) as IList;
 
+                   
 
                     // Initalisation avec la valeur par défaux s'il existe
                     if (this.ListeValeursInitiaux != null && this.ListeValeursInitiaux.Keys.Contains(keyNexComboBox))
@@ -357,17 +364,24 @@ namespace App.Gwin.Fields.Controls
                 .CreateServiceBLOInstanceByTypeEntity(LsiteTypeObjetCritere[key]);
 
 
+            IList ls_source =  service.GetAll();
+
+            // Add Black Value if requorid
+            if (this.ConfigProperty?.EntryForm?.isDefaultIsEmpty == true || this.ConfigProperty?.Filter?.isDefaultIsEmpty == true)
+                ls_source.Insert(0, new EmptyEntity());
+
             // Initalisation avec la valeur par défaux s'il existe
             if (this.ListeValeursInitiaux != null && this.ListeValeursInitiaux.Keys.Contains(key))
             {
                 this.StopEventSelectedIndexChange = true;
-                comboBox.DataSource = service.GetAll();
+                comboBox.DataSource = ls_source;
                 this.StopEventSelectedIndexChange = false;
                 comboBox.SelectedValue = this.ListeValeursInitiaux[key];
             }
             else
             {
-                comboBox.DataSource = service.GetAll();
+
+                comboBox.DataSource = ls_source;
             }
 
         }
