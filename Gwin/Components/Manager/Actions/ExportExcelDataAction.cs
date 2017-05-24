@@ -1,6 +1,8 @@
 ﻿using App.Gwin.Application.BAL;
+using App.Gwin.Attributes;
 using App.Gwin.DataModel.ModelInfo;
 using App.Gwin.Entities;
+using App.Shared.AttributesManager;
 using FastExcel;
 using System;
 using System.Collections;
@@ -51,14 +53,6 @@ namespace App.Gwin.Components.Manager.Actions
                 saveFileDialog1.OpenFile().Close() ;
 
                 this.CreateExcelFile(saveFileDialog1.FileName, ListData);
-
-                // Save CSV File  
-                //saveFileDialog1.FileName += ".xls";
-                //if ((myStream = saveFileDialog1.OpenFile()) != null)
-                //{
-                //    CreateFile(new StreamWriter(myStream), ListData);
-                //    myStream.Close();
-                //}
             }
         }
 
@@ -76,6 +70,8 @@ namespace App.Gwin.Components.Manager.Actions
             // Read Lisr Properties
             List<PropertyInfo> ListProperties = new GwinPropertiesManager()
                 .GetPropertiesShowenInEntryForm(this.EntityBLO.TypeEntity);
+            
+             
 
             if (outputFile.Exists)
             {
@@ -100,7 +96,8 @@ namespace App.Gwin.Components.Manager.Actions
                 List<Cell> cells = new List<Cell>();
                 foreach (var item in ListProperties)
                 {
-                    cells.Add(new Cell(columnNumber, item.Name.ToString().ToUpper()));
+                    ConfigProperty configProperty = new ConfigProperty(item, this.EntityBLO.ConfigEntity);
+                    cells.Add(new Cell(columnNumber, configProperty.DisplayProperty.Title.ToUpper()));
                     columnNumber++;
                 }
                 rows.Add(new Row(RowNumber, cells));
@@ -174,48 +171,5 @@ namespace App.Gwin.Components.Manager.Actions
             }
         }
 
-
-
-      
-
-
-        /// <summary>
-        /// Create CSV File Data
-        /// </summary>
-        /// <param name="wr"></param>
-        /// <param name="ListData"></param>
-        private void CreateCSVFile(StreamWriter wr, List<BaseEntity> ListData)
-        {
-
-
-            // Titles
-            foreach (var item in this.EntityBLO.TypeEntity.GetProperties())
-            {
-                wr.Write(item.Name.ToString().ToUpper() + "\t");
-            }
-
-            wr.WriteLine();
-
-            //write Entites to excel file
-            foreach (BaseEntity itemEntity in ListData)
-            {
-
-
-                foreach (var itemProperty in this.EntityBLO.TypeEntity.GetProperties())
-                {
-                    if (itemProperty.GetValue(itemEntity) != null)
-                        wr.Write(itemProperty.GetValue(itemEntity).ToString().ToUpper() + "\t");
-                    else
-                        wr.Write("\t");
-                }
-                //go to next line
-                wr.WriteLine();
-
-            }
-            //close file
-            wr.Close();
-
-
-        }
     }
 }
