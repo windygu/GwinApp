@@ -1,10 +1,14 @@
 ﻿using App.Gwin.Application.BAL;
+using App.Gwin.DataModel.ModelInfo;
 using App.Gwin.Entities;
+using FastExcel;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -39,50 +43,179 @@ namespace App.Gwin.Components.Manager.Actions
             saveFileDialog1.Filter = "xsl files (*.xls)|*.xls|All files (*.*)|*.*";
             saveFileDialog1.FilterIndex = 2;
             saveFileDialog1.RestoreDirectory = true;
+            saveFileDialog1.FileName = EntityBLO.ConfigEntity.GwinEntity.PluralName;
 
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                saveFileDialog1.FileName += ".xls";
-                if ((myStream = saveFileDialog1.OpenFile()) != null)
-                {
-                    CreateFile(new StreamWriter(myStream), ListData);
-                    myStream.Close();
-                }
+                saveFileDialog1.FileName += ".xlsx";
+                saveFileDialog1.OpenFile().Close() ;
+
+                this.CreateExcelFile(saveFileDialog1.FileName, ListData);
+
+                // Save CSV File  
+                //saveFileDialog1.FileName += ".xls";
+                //if ((myStream = saveFileDialog1.OpenFile()) != null)
+                //{
+                //    CreateFile(new StreamWriter(myStream), ListData);
+                //    myStream.Close();
+                //}
             }
         }
 
-        private void CreateFile(StreamWriter wr,List<BaseEntity> ListData)
+        /// <summary>
+        /// Excel Version
+        /// </summary>
+        /// <param name="wr"></param>
+        /// <param name="ListData"></param>
+        private void CreateExcelFile(string fileName, List<BaseEntity> ListData)
         {
-
            
-                // Titles
-                foreach (var item in this.EntityBLO.TypeEntity.GetProperties())
+            FileInfo outputFile = new FileInfo(fileName);
+            FileInfo templateFile = new FileInfo("Template.xlsx");
+
+            // Read Lisr Properties
+            List<PropertyInfo> ListProperties = new GwinPropertiesManager()
+                .GetPropertiesShowenInEntryForm(this.EntityBLO.TypeEntity);
+
+            if (outputFile.Exists)
+            {
+                outputFile.Delete();
+                outputFile = new FileInfo(fileName);
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("DEMO WRITE 1");
+
+          //  Stopwatch stopwatch = new Stopwatch();
+
+            using (FastExcel.FastExcel fastExcel = new FastExcel.FastExcel(templateFile, outputFile))
+            {
+                Worksheet worksheet = new Worksheet();
+                List<Row> rows = new List<Row>();
+
+                int RowNumber = 1;
+
+                // Write  Titles
+                int columnNumber = 1;
+                List<Cell> cells = new List<Cell>();
+                foreach (var item in ListProperties)
                 {
-                    wr.Write(item.Name.ToString().ToUpper() + "\t");
+                    cells.Add(new Cell(columnNumber, item.Name.ToString().ToUpper()));
+                    columnNumber++;
                 }
+                rows.Add(new Row(RowNumber, cells));
 
-                wr.WriteLine();
 
-                //write Entites to excel file
+                // Write List Data
+                RowNumber++;
                 foreach (BaseEntity itemEntity in ListData)
                 {
-                   
 
-                    foreach (var itemProperty in this.EntityBLO.TypeEntity.GetProperties())
+                    cells = new List<Cell>();
+                    columnNumber = 1;
+                    foreach (var itemProperty in ListProperties)
                     {
-                        if (itemProperty.GetValue(itemEntity) != null)
-                            wr.Write(itemProperty.GetValue(itemEntity).ToString().ToUpper() + "\t");
-                        else
-                            wr.Write("\t");
+                        // if Property is Simple type or ManyToOne type 
+                        if (itemProperty.PropertyType.Name != "List`1")
+                        {
+                            if (itemProperty.GetValue(itemEntity) != null)
+                            {
+                                Cell cell = new Cell(columnNumber, itemProperty.GetValue(itemEntity).ToString());
+                                cells.Add(cell);
+                            }
+
+                            else
+                                cells.Add(new Cell(columnNumber, ""));
+                        }else
+                        {
+                            // Many To Many Cell
+                            if (itemProperty.GetValue(itemEntity) != null)
+                            {
+                                IList liste_ManytoManyValue = (IList) itemProperty.GetValue(itemEntity);
+
+                                if(liste_ManytoManyValue != null)
+                                {
+                                    string ManyToManyDataString = "";
+                                    foreach (var item in liste_ManytoManyValue)
+                                    {
+                                        ManyToManyDataString += item + " - \r\n";
+                                    }
+                                    Cell cell = new Cell(columnNumber, ManyToManyDataString);
+                                    cells.Add(cell);
+
+                                }else
+                                {
+                                    Cell cell = new Cell(columnNumber, "");
+                                    cells.Add(cell);
+                                }
+                               
+
+                                // Save ManyToMany List to anther Sheet
+                            }
+
+                            else
+                                cells.Add(new Cell(columnNumber, ""));
+
+                        }
+                       
+
+                        // if Property id List : ManyToMany
+                        columnNumber++;
                     }
-                    //go to next line
-                    wr.WriteLine();
+
+                    rows.Add(new Row(RowNumber, cells));
+                    RowNumber++;
 
                 }
-                //close file
-                wr.Close();
-            
-            
+
+                worksheet.Rows = rows;
+
+                fastExcel.Write(worksheet, "Data");
+            }
+        }
+
+
+
+      
+
+
+        /// <summary>
+        /// Create CSV File Data
+        /// </summary>
+        /// <param name="wr"></param>
+        /// <param name="ListData"></param>
+        private void CreateCSVFile(StreamWriter wr, List<BaseEntity> ListData)
+        {
+
+
+            // Titles
+            foreach (var item in this.EntityBLO.TypeEntity.GetProperties())
+            {
+                wr.Write(item.Name.ToString().ToUpper() + "\t");
+            }
+
+            wr.WriteLine();
+
+            //write Entites to excel file
+            foreach (BaseEntity itemEntity in ListData)
+            {
+
+
+                foreach (var itemProperty in this.EntityBLO.TypeEntity.GetProperties())
+                {
+                    if (itemProperty.GetValue(itemEntity) != null)
+                        wr.Write(itemProperty.GetValue(itemEntity).ToString().ToUpper() + "\t");
+                    else
+                        wr.Write("\t");
+                }
+                //go to next line
+                wr.WriteLine();
+
+            }
+            //close file
+            wr.Close();
+
+
         }
     }
 }
