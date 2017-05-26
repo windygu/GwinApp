@@ -85,6 +85,57 @@
     <Compile Include="DAL\Configuration.cs" />
     <Compile Include="DAL\LocalDB.cs" />
     <Compile Include="DAL\ModelContext.cs" />
+    <Compile Include="Entities\ContactInformations\City.cs" />
+    <Compile Include="Entities\ContactInformations\Class1.cs" />
+    <Compile Include="Entities\ContactInformations\ContactInformation.cs" />
+    <Compile Include="Entities\ContactInformations\Country.cs" />
+    <Compile Include="Entities\ContactInformations\Resources\City\City.ar.Designer.cs">
+      <DependentUpon>City.ar.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Entities\ContactInformations\Resources\City\City.Designer.cs">
+      <DependentUpon>City.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Entities\ContactInformations\Resources\ContactInformationsMenu.Designer.cs">
+      <DependentUpon>ContactInformationsMenu.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Entities\ContactInformations\Resources\ContactInformation\ContactInformation.Designer.cs">
+      <DependentUpon>ContactInformation.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Entities\ContactInformations\Resources\Country\Country.ar.Designer.cs">
+      <DependentUpon>Country.ar.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Entities\ContactInformations\Resources\Country\Country.Designer.cs">
+      <DependentUpon>Country.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Entities\Persons\Class1.cs" />
+    <Compile Include="Entities\Persons\Person.cs" />
+    <Compile Include="Entities\Persons\Resources\Person\Person.ar.Designer.cs">
+      <DependentUpon>Person.ar.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Entities\Persons\Resources\Person\Person.Designer.cs">
+      <DependentUpon>Person.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Entities\Persons\Resources\Person\Person.fr.Designer.cs">
+      <DependentUpon>Person.fr.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Entities\ProjectManager\Class1.cs" />
     <Compile Include="Entities\ProjectManager\Resources\Project\Project.ar.Designer.cs">
       <DependentUpon>Project.ar.resx</DependentUpon>
@@ -156,6 +207,10 @@
     <Compile Include="Migrations\201705230932440_Update5.Designer.cs">
       <DependentUpon>201705230932440_Update5.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705260909409_Update6.cs" />
+    <Compile Include="Migrations\201705260909409_Update6.Designer.cs">
+      <DependentUpon>201705260909409_Update6.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\ProjectManager\ProjectForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -183,6 +238,48 @@
       <DependentUpon>PrivateApplicationMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Entities\ContactInformations\Resources\City\City.ar.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>City.ar.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Entities\ContactInformations\Resources\City\City.fr.resx" />
+    <EmbeddedResource Include="Entities\ContactInformations\Resources\City\City.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>City.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Entities\ContactInformations\Resources\ContactInformationsMenu.ar.resx" />
+    <EmbeddedResource Include="Entities\ContactInformations\Resources\ContactInformationsMenu.fr.resx" />
+    <EmbeddedResource Include="Entities\ContactInformations\Resources\ContactInformationsMenu.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ContactInformationsMenu.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Entities\ContactInformations\Resources\ContactInformation\ContactInformation.ar.resx" />
+    <EmbeddedResource Include="Entities\ContactInformations\Resources\ContactInformation\ContactInformation.fr.resx" />
+    <EmbeddedResource Include="Entities\ContactInformations\Resources\ContactInformation\ContactInformation.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ContactInformation.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Entities\ContactInformations\Resources\Country\Country.ar.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Country.ar.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Entities\ContactInformations\Resources\Country\Country.fr.resx" />
+    <EmbeddedResource Include="Entities\ContactInformations\Resources\Country\Country.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Country.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Entities\Persons\Resources\Person\Person.ar.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Person.ar.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Entities\Persons\Resources\Person\Person.fr.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Person.fr.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Entities\Persons\Resources\Person\Person.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Person.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Entities\ProjectManager\Resources\Project\Project.ar.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Project.ar.Designer.cs</LastGenOutput>
@@ -235,6 +332,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705230932440_Update5.resx">
       <DependentUpon>201705230932440_Update5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705260909409_Update6.resx">
+      <DependentUpon>201705260909409_Update6.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\ProjectManager\ProjectForm.ar.resx">
       <DependentUpon>ProjectForm.cs</DependentUpon>

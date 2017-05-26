@@ -21,7 +21,6 @@ namespace App.Gwin.Application.BAL.Authentication
         public User CreateGuestUser()
         {
             User user = new User();
-            user.LastName.Current = "Guest";
             return user;
         }
 

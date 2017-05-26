@@ -326,21 +326,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Entities\Persons\Resources\Person\Person.fr.Designer.cs">
-      <DependentUpon>Person.fr.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Entities\Persons\Resources\Person\Person.ar.Designer.cs">
-      <DependentUpon>Person.ar.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Entities\Persons\Resources\Person\Person.Designer.cs">
-      <DependentUpon>Person.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Entities\Secrurity\Autorizations\Authorization.cs" />
     <Compile Include="Entities\Secrurity\Autorizations\Role.cs" />
     <Compile Include="Components\Fields\Controls\SelectionFilter.cs" />
@@ -370,41 +355,6 @@
     <Compile Include="GwinApplication\Presentation\Authentication\LoginControl.Designer.cs">
       <DependentUpon>LoginControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Entities\ContactInformations\Resources\City\City.ar.Designer.cs">
-      <DependentUpon>City.ar.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Entities\ContactInformations\Resources\City\City.fr-FR.Designer.cs">
-      <DependentUpon>City.fr-FR.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Entities\ContactInformations\Resources\City\City.Designer.cs">
-      <DependentUpon>City.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Entities\ContactInformations\Resources\ContactInformationsMenu.Designer.cs">
-      <DependentUpon>ContactInformationsMenu.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Entities\ContactInformations\Resources\ContactInformation\ContactInformation.Designer.cs">
-      <DependentUpon>ContactInformation.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Entities\ContactInformations\Resources\Country\Country.ar.Designer.cs">
-      <DependentUpon>Country.ar.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Entities\ContactInformations\Resources\Country\Country.Designer.cs">
-      <DependentUpon>Country.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Entities\Resources\Glossary\Glossary.ar.Designer.cs">
       <DependentUpon>Glossary.ar.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -429,9 +379,6 @@
     <Compile Include="DataModel\Attributes\PropertiesAttributes\FilterAttribute.cs" />
     <Compile Include="DataModel\Attributes\PropertiesAttributes\RelationshipAttribute.cs" />
     <Compile Include="Entities\BaseEntity.cs" />
-    <Compile Include="Entities\ContactInformations\ContactInformation.cs" />
-    <Compile Include="Entities\ContactInformations\Country.cs" />
-    <Compile Include="Entities\ContactInformations\City.cs" />
     <Compile Include="Entities\IBaseEntity.cs" />
     <Compile Include="Entities\Resources\BaseEntity\BaseEntity.ar.Designer.cs">
       <DependentUpon>BaseEntity.ar.resx</DependentUpon>
@@ -499,7 +446,6 @@
       <DependentUpon>BaseFilterControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Components\Manager\Filter\IBaseFilterControl.cs" />
-    <Compile Include="Entities\Persons\Person.cs" />
     <Compile Include="Entities\Secrurity\Authentication\User.cs" />
     <Compile Include="DataModel\Exceptions\PropertyDoesNotExistException.cs" />
     <Compile Include="Lib\Extensions\Linq\LinqExtension.cs" />
@@ -711,40 +657,6 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>User.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Entities\ContactInformations\Resources\City\City.ar.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>City.ar.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Entities\ContactInformations\Resources\City\City.fr-FR.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>City.fr-FR.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Entities\ContactInformations\Resources\City\City.fr.resx" />
-    <EmbeddedResource Include="Entities\ContactInformations\Resources\City\City.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>City.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Entities\ContactInformations\Resources\ContactInformationsMenu.ar.resx" />
-    <EmbeddedResource Include="Entities\ContactInformations\Resources\ContactInformationsMenu.fr.resx" />
-    <EmbeddedResource Include="Entities\ContactInformations\Resources\ContactInformationsMenu.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>ContactInformationsMenu.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Entities\ContactInformations\Resources\ContactInformation\ContactInformation.ar.resx" />
-    <EmbeddedResource Include="Entities\ContactInformations\Resources\ContactInformation\ContactInformation.fr.resx" />
-    <EmbeddedResource Include="Entities\ContactInformations\Resources\ContactInformation\ContactInformation.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>ContactInformation.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Entities\ContactInformations\Resources\Country\Country.ar.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Country.ar.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Entities\ContactInformations\Resources\Country\Country.fr.resx" />
-    <EmbeddedResource Include="Entities\ContactInformations\Resources\Country\Country.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Country.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Entities\EntityRessouceExemple.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>EntityRessouceExemple.Designer.cs</LastGenOutput>
@@ -758,18 +670,6 @@
     <EmbeddedResource Include="Entities\Resources\Glossary\Glossary.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Glossary.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Entities\Persons\Resources\Person\Person.fr.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Person.fr.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Entities\Persons\Resources\Person\Person.ar.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Person.ar.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Entities\Persons\Resources\Person\Person.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Person.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\Fields\ComboBoxField.resx">
       <DependentUpon>ComboBoxField.cs</DependentUpon>

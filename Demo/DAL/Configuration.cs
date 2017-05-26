@@ -1,12 +1,10 @@
 ﻿namespace App.Migrations
 {
     using App.Gwin.Entities;
-    using App.Gwin.Entities.ContactInformations;
     using App.Gwin.Entities.Secrurity.Authentication;
     using GenericWinForm.Demo.DAL;
-    using GenericWinForm.Demo.Entities;
+    using GenericWinForm.Demo.Entities.ContactInformations;
     using GenericWinForm.Demo.Entities.ProjectManager;
-    using Gwin;
     using Gwin.Application.BAL;
     using Gwin.Entities.Application;
     using Gwin.Entities.MultiLanguage;
@@ -100,9 +98,9 @@
             // Users data
             context.Users.AddOrUpdate(
                 u => u.Reference,
-                new User() { Reference = nameof(User.Users.Root), Login = nameof(User.Users.Root), Password = nameof(User.Users.Root), LastName = new LocalizedString() { Current = nameof(User.Users.Root) }, Roles = new List<Role>() { RoleRoot } },
-                new User() { Reference = nameof(User.Users.Admin), Login = nameof(User.Users.Admin), Password = nameof(User.Users.Admin), LastName = new LocalizedString() { Current = nameof(User.Users.Admin) }, Roles = new List<Role>() { RoleAdmin } },
-                new User() { Reference = nameof(User.Users.Guest), Login = nameof(User.Users.Guest), Password = nameof(User.Users.Guest), LastName = new LocalizedString() { Current = nameof(User.Users.Guest) }, Roles = new List<Role>() { RoleGuest } }
+                new User() { Reference = nameof(User.Users.Root), Login = nameof(User.Users.Root), Password = nameof(User.Users.Root), Roles = new List<Role>() { RoleRoot } },
+                new User() { Reference = nameof(User.Users.Admin), Login = nameof(User.Users.Admin), Password = nameof(User.Users.Admin), Roles = new List<Role>() { RoleAdmin } },
+                new User() { Reference = nameof(User.Users.Guest), Login = nameof(User.Users.Guest), Password = nameof(User.Users.Guest), Roles = new List<Role>() { RoleGuest } }
                 );
 
             // Menu data

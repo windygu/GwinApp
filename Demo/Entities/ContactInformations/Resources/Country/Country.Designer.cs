@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace App.Gwin.Entities.ContactInformations.Resources.ContactInformation {
+namespace GenericWinForm.Demo.Entities.ContactInformations.Resources.Country {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace App.Gwin.Entities.ContactInformations.Resources.ContactInformation {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class ContactInformation {
+    internal class Country {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ContactInformation() {
+        internal Country() {
         }
         
         /// <summary>
@@ -39,8 +39,7 @@ namespace App.Gwin.Entities.ContactInformations.Resources.ContactInformation {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("App.Gwin.Entities.ContactInformations.Resources.ContactInformation.ContactInforma" +
-                            "tion", typeof(ContactInformation).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("GenericWinForm.Demo.Entities.ContactInformations.Resources.Country.Country", typeof(Country).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -62,34 +61,25 @@ namespace App.Gwin.Entities.ContactInformations.Resources.ContactInformation {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Address.
+        ///   Recherche une chaîne localisée semblable à Description.
         /// </summary>
-        internal static string Address {
+        internal static string Description {
             get {
-                return ResourceManager.GetString("Address", resourceCulture);
+                return ResourceManager.GetString("Description", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à E-mail.
+        ///   Recherche une chaîne localisée semblable à Name.
         /// </summary>
-        internal static string Email {
+        internal static string Name {
             get {
-                return ResourceManager.GetString("Email", resourceCulture);
+                return ResourceManager.GetString("Name", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Phone Number.
-        /// </summary>
-        internal static string PhoneNumber {
-            get {
-                return ResourceManager.GetString("PhoneNumber", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Contact Informations.
+        ///   Recherche une chaîne localisée semblable à Countries.
         /// </summary>
         internal static string PluralName {
             get {
@@ -98,7 +88,7 @@ namespace App.Gwin.Entities.ContactInformations.Resources.ContactInformation {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Contact Information.
+        ///   Recherche une chaîne localisée semblable à Country.
         /// </summary>
         internal static string SingularName {
             get {

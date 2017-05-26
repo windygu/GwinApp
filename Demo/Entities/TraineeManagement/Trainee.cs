@@ -1,7 +1,7 @@
 ﻿using App.Gwin.Attributes;
 using App.Gwin.Entities.MultiLanguage;
-using App.Gwin.Entities.Persons;
 using GenericWinForm.Demo.DAL;
+using GenericWinForm.Demo.Entities.Persons;
 using GenericWinForm.Demo.Entities.TrainingManagement;
 using System;
 using System.Collections.Generic;

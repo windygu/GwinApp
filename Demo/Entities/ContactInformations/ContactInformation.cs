@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Gwin.Entities.ContactInformations
+namespace GenericWinForm.Demo.Entities.ContactInformations
 {
     [GwinEntity(Localizable =true,isMaleName =false, DisplayMember = "Email")]
     public class ContactInformation : BaseEntity

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace App.Gwin.Entities.ContactInformations.Resources {
+namespace GenericWinForm.Demo.Entities.ContactInformations.Resources.City {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace App.Gwin.Entities.ContactInformations.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class ContactInformationsMenu {
+    internal class City {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ContactInformationsMenu() {
+        internal City() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace App.Gwin.Entities.ContactInformations.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("App.Gwin.Entities.ContactInformations.Resources.ContactInformationsMenu", typeof(ContactInformationsMenu).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("GenericWinForm.Demo.Entities.ContactInformations.Resources.City.City", typeof(City).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,11 +61,20 @@ namespace App.Gwin.Entities.ContactInformations.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Contact Informations.
+        ///   Recherche une chaîne localisée semblable à Cities.
         /// </summary>
-        internal static string ContactInformations {
+        internal static string PluralName {
             get {
-                return ResourceManager.GetString("ContactInformations", resourceCulture);
+                return ResourceManager.GetString("PluralName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à City.
+        /// </summary>
+        internal static string SingularName {
+            get {
+                return ResourceManager.GetString("SingularName", resourceCulture);
             }
         }
     }

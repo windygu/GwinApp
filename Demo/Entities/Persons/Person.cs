@@ -1,13 +1,14 @@
 ﻿using App.Gwin.Attributes;
-using App.Gwin.Entities.ContactInformations;
+using App.Gwin.Entities;
 using App.Gwin.Entities.MultiLanguage;
+using GenericWinForm.Demo.Entities.ContactInformations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Gwin.Entities.Persons
+namespace GenericWinForm.Demo.Entities.Persons
 {
     
     public class Person : BaseEntity
