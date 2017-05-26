@@ -433,18 +433,8 @@
     <Compile Include="Entities\ContactInformations\Country.cs" />
     <Compile Include="Entities\ContactInformations\City.cs" />
     <Compile Include="Entities\IBaseEntity.cs" />
-    <Compile Include="Entities\Resources\BaseEntity\BaseEntity.en-GB.Designer.cs">
-      <DependentUpon>BaseEntity.en-GB.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Entities\Resources\BaseEntity\BaseEntity.ar.Designer.cs">
       <DependentUpon>BaseEntity.ar.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Entities\Resources\BaseEntity\BaseEntity.fr-FR.Designer.cs">
-      <DependentUpon>BaseEntity.fr-FR.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -818,17 +808,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Entities\Resources\BaseEntity\BaseEntity.en-GB.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>BaseEntity.en-GB.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Entities\Resources\BaseEntity\BaseEntity.ar.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>BaseEntity.ar.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Entities\Resources\BaseEntity\BaseEntity.fr-FR.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>BaseEntity.fr-FR.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Entities\Resources\BaseEntity\BaseEntity.resx">
       <Generator>ResXFileCodeGenerator</Generator>
