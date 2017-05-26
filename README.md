@@ -30,6 +30,10 @@ Exemple to Create Group Manager in GwinApp
         [DataGrid]
         public string Description { set; get; }
     }
+   
+How to Install Gwin App in Visual Studio 2017
+---------------------------------------------
+https://youtu.be/_VqAs2ANfBM
     
 License
 -------
