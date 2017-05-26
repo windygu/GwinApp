@@ -45,9 +45,11 @@ namespace App.Gwin.Shared.Resources
         public static ResourceManager FindEntityRessouceManager(Type EntityType)
         {
 
-            List<string> ls_resources_names = EntityType
+            string[] resoucesnames = EntityType
                 .Assembly
-                .GetManifestResourceNames()
+                .GetManifestResourceNames();
+
+            List<string> ls_resources_names = resoucesnames
                 .Where(n => n.Contains("." + EntityType.Name + ".resources")).ToList<string>();
 
             // Check uniqueness of Ressouce name
