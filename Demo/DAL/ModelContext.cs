@@ -2,7 +2,6 @@
 {
     using App.DAL;
     using App.Gwin.Entities.Application;
-    using App.Gwin.Entities.ContactInformations;
     using App.Gwin.Entities.Logging;
     using App.Gwin.Entities.Secrurity.Authentication;
     using App.Gwin.Entities.Secrurity.Autorizations;
@@ -11,6 +10,7 @@
     using Entities.TraineeManagement;
     using Entities.TrainingManagement;
     using GenericWinForm.Demo.Entities;
+    using GenericWinForm.Demo.Entities.ContactInformations;
     using System;
     using System.Collections.Generic;
     using System.Data.Entity;

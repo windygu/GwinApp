@@ -2,7 +2,6 @@
 using App.Gwin.Application.BAL;
 using App.Gwin.Attributes;
 using App.Gwin.Entities.Application;
-using App.Gwin.Entities.Persons;
 using App.Gwin.Entities.Secrurity.Autorizations;
 using System;
 using System.Collections.Generic;
@@ -17,7 +16,7 @@ namespace App.Gwin.Entities.Secrurity.Authentication
 {
     [GwinEntity(Localizable = true, isMaleName = true, DisplayMember = "Login")]
     [Menu(Group = nameof(MenuItemApplication.ParentsMenuItem.Configuration))]
-    public class User : Person
+    public class User : BaseEntity
     {
 
         /// <summary>

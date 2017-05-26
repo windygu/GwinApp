@@ -1,7 +1,6 @@
 ﻿using App.Gwin.Application.BAL;
 using App.Gwin.DataModel.ModelInfo;
 using App.Gwin.Entities;
-using App.Gwin.Entities.ContactInformations;
 using App.Gwin.Logging;
 using App.Gwin.ModelData;
 using App.Gwin.Security;

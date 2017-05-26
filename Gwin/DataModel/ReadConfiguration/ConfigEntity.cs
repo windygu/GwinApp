@@ -1,20 +1,14 @@
 ﻿
 using App.Gwin.Entities;
+using App.Gwin.Entities.Resources.Glossary;
+using App.Gwin.Exceptions.Gwin;
+using App.Gwin.Shared.Resources;
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Resources;
-using System.Reflection;
-using System.Data.Entity.Infrastructure.Pluralization;
-using System.Data.Entity.Design.PluralizationServices;
 using System.Threading;
-using System.Collections.Generic;
-using App.Gwin.Shared.Resources;
-using App.Gwin.Application.Presentation.Messages;
-using App.Gwin.Entities.Resources.Glossary;
-using App.Gwin.Exceptions.Gwin;
-using App.Gwin.DataModel.Helpers;
-using App.Gwin.Components.Manager.DataGrid;
 using System.Windows.Forms;
 
 namespace App.Gwin.Attributes
@@ -24,12 +18,8 @@ namespace App.Gwin.Attributes
     /// </summary>
     public class ConfigEntity
     {
-        /// <summary>
-        /// Entity Instance, it used to sabe current Entity Instance 
-        /// </summary>
-        public BaseEntity EntityInstance { set; get; }
-
-        #region Public Properties
+ 
+        #region Attributes Instance  
         public GwinEntityAttribute GwinEntity { set; get; }
         public ManagementFormAttribute ManagementForm { set; get; }
         public AddButtonAttribute AddButton { set; get; }
@@ -37,11 +27,11 @@ namespace App.Gwin.Attributes
         public List<DataGridSelectedActionAttribute> ListDataGridSelectedAction { set; get; }
         public GwinFormAttribute GwinForm { get; set; }
         public SelectionCriteriaAttribute SelectionCriteria { set; get; }
-
         public PresentationLogicAttribute PresentationLogic { get; set; }
+        #endregion
 
-        public Type TypeOfEntity { set; get; }
-        public bool Localizable { get; set; }
+
+        #region Presentation Variables
         /// <summary>
         /// Culture Info
         /// </summary>
@@ -49,10 +39,27 @@ namespace App.Gwin.Attributes
         /// <summary>
         /// Entity Ressource manager
         /// </summary>
-        public Dictionary<string, ResourceManager> RessourcesManagers { get; private set; }
+        public Dictionary<string, ResourceManager> RessourcesManagers { get; set; }
 
         ResourceManager baseEntityResourceManager = null;
+        #endregion
 
+        #region Business Variables
+        /// <summary>
+        /// Type of Entity 
+        /// </summary>
+        public Type TypeOfEntity { set; get; }
+        /// <summary>
+        /// Indicate if the entity is localizable
+        /// </summary>
+        public bool Localizable { get; set; }
+   
+        #endregion
+
+        #region Data Variables
+        /// <summary>
+        /// List of Configuration instances, its saves to minim time of traitement
+        /// </summary>
         private static Dictionary<Type, ConfigEntity> ConfigurationOfEntities { get; set; }
         #endregion
 
@@ -61,6 +68,8 @@ namespace App.Gwin.Attributes
         {
             this.TypeOfEntity = type_of_entity;
             this.CultureInfo = Thread.CurrentThread.CurrentCulture;
+
+            // Create Attribute Instances
             this.ReadConfiguration();
         }
 
@@ -81,13 +90,10 @@ namespace App.Gwin.Attributes
         }
 
         /// <summary>
-        /// Read configuration of entity
+        /// 
         /// </summary>
-        private void ReadConfiguration()
+        private void LoadRessouce()
         {
-
-
-            #region Load RessouceManager  
             //Fill RessouceManager
             this.RessourcesManagers = new Dictionary<string, ResourceManager>();
             RessoucesManagerHelper.FillResourcesManager(this.TypeOfEntity, this.RessourcesManagers);
@@ -95,8 +101,17 @@ namespace App.Gwin.Attributes
             // BaseEntity RessouceManager
             string BaseEntityRessouceFullName = typeof(BaseEntity).Namespace + ".Resources." + typeof(BaseEntity).Name + "." + typeof(BaseEntity).Name;
             baseEntityResourceManager = new ResourceManager(BaseEntityRessouceFullName, typeof(BaseEntity).Assembly);
+        }
 
-            #endregion
+        /// <summary>
+        /// Read configuration of entity
+        /// </summary>
+        private void ReadConfiguration()
+        {
+
+            this.LoadRessouce();
+
+            
 
             #region Read GwinForm 
             Object[] ls_attribut_GwinForm = this.TypeOfEntity.GetCustomAttributes(typeof(GwinFormAttribute), false);

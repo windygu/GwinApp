@@ -1,4 +1,6 @@
 ﻿using App.Gwin.Application.Presentation.Messages;
+using App.Gwin.DataModel.ModelInfo;
+using App.Gwin.Exceptions.Gwin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,30 +12,41 @@ using System.Threading.Tasks;
 
 namespace App.Gwin.Shared.Resources
 {
+    /// <summary>
+    /// Loading ressouce manager helper
+    /// </summary>
     public class RessoucesManagerHelper
     {
-        static List<string> resourceNames = new List<string>();
 
         /// <summary>
-        /// Check if resource existe
+        /// Get the ressouce manager by singlular entity name
         /// </summary>
-        /// <param name="resourceName"></param>
-        /// <returns></returns>
-        public Boolean ResourceExists(string resourceName)
+        /// <param name="singlulareEntityName">Singulare Entity Name</param>
+        /// <returns>Ressouce Manager</returns>
+        public static ResourceManager FindEntityRessouceManager(Type EntityType)
         {
 
-            if (resourceNames.Count == 0)
+            string[] resoucesnames = EntityType
+                .Assembly
+                .GetManifestResourceNames();
+
+            List<string> ls_resources_names = resoucesnames
+                .Where(n => n.Contains("." + EntityType.Name + ".resources")).ToList<string>();
+
+            // Check uniqueness of Ressouce name
+            if (ls_resources_names.Count > 1)
+                throw new GwinException(string.Format("There are many ressouce with the name {0} in Asseembly {1}", EntityType.Name, EntityType.Assembly.FullName));
+
+            if(ls_resources_names.Count == 1)
             {
-
-                Assembly.GetExecutingAssembly();
-
-                foreach (Assembly item in new ModelData.ModelConfiguration().GetAll_Assembly_Contains_Entities())
-                {
-                    resourceNames.AddRange(item.GetManifestResourceNames());
-                }
+                string RessouceFullName = ls_resources_names.First();
+                return new ResourceManager(RessouceFullName.Replace(".resources",""), EntityType.Assembly);
             }
-            return resourceNames.Contains(resourceName + ".resources");
+
+
+            return null;
         }
+
 
         /// <summary>
         /// Set Ressouce Manager of the entity and All its BaseEntity
@@ -41,22 +54,25 @@ namespace App.Gwin.Shared.Resources
         public static void FillResourcesManager(Type type_entity, Dictionary<string, ResourceManager> RessoucesManagers)
         {
 
-            string RessouceFullName = type_entity.Namespace + ".Resources." + type_entity.Name + "." + type_entity.Name;
-            if (new RessoucesManagerHelper().ResourceExists(RessouceFullName))
-                RessoucesManagers.Add(type_entity.Name, new ResourceManager(RessouceFullName, type_entity.Assembly));
+            //System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(type_entity);
+
+
+
+            ResourceManager EntityResouceManager = FindEntityRessouceManager(type_entity);
+
+            if (EntityResouceManager != null)
+                RessoucesManagers.Add(type_entity.Name, EntityResouceManager);
             else
             {
                 // [Log]
                 // MessageToUser.AddMessage(MessageToUser.Category.BusinessRule, "The resource file does not exist : " + RessouceFullName);
                 return;
             }
+
             if (type_entity.BaseType != typeof(object))
                 FillResourcesManager(type_entity.BaseType, RessoucesManagers);
-        }
 
-        internal static void FillResourcesManager(Type typeEntity, object ressoucesManagers)
-        {
-            throw new NotImplementedException();
         }
+ 
     }
 }

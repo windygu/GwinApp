@@ -15,6 +15,7 @@ using System.Data.Entity;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace App.Gwin
@@ -85,16 +86,20 @@ namespace App.Gwin
 
  
           
-
-            // Change Culture
+            //
+            // Update Menu
+            //
+            // Change User Culture and Tread to do Update with User Language
             GwinApp.instance.CultureInfo = new CultureInfo(user.Language.ToString());
-            
-            
+            Thread.CurrentThread.CurrentCulture = GwinApp.instance.CultureInfo;
+            Thread.CurrentThread.CurrentUICulture = GwinApp.instance.CultureInfo;
             // Update GwinApplicatio, after  ModelConfiguration changes
             //[Update]
             // Must be befor Language Change, because SetLanguge Use MenuTable
             InstallApplicationGwinBLO installApplication = new InstallApplicationGwinBLO(TypeDbContext);
             installApplication.Update();
+
+
 
             // Change Gwin Language 
             if (AppMenu != null && user != null)
