@@ -3,6 +3,7 @@ using App.Gwin.Application.BAL;
 using App.Gwin.Attributes;
 using App.Gwin.Entities.Application;
 using App.Gwin.Entities.Secrurity.Autorizations;
+using App.Gwin.Exceptions.Gwin;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -102,6 +103,7 @@ namespace App.Gwin.Entities.Secrurity.Authentication
 
 
             User guest = dbContext.Set<User>().Where(u => u.Reference == nameof(User.Users.Guest)).FirstOrDefault();
+            ExceptionUserNull("guest");
             return guest;
 
             //User guest = new User();
@@ -133,6 +135,8 @@ namespace App.Gwin.Entities.Secrurity.Authentication
         public static User CreateRootUser(DbContext dbContext)
         {
             User root = dbContext.Set<User>().Where(u => u.Reference == nameof(User.Users.Root)).FirstOrDefault();
+            if (root == null)
+                ExceptionUserNull("root");
             return root;
         }
 
@@ -143,7 +147,13 @@ namespace App.Gwin.Entities.Secrurity.Authentication
         public static User CreateAdminUser(DbContext dbContext)
         {
             User root = dbContext.Set<User>().Where(u => u.Reference == nameof(User.Users.Admin)).FirstOrDefault();
+            if (root == null)
+                ExceptionUserNull("Admin");
             return root;
+        }
+        public static void  ExceptionUserNull(string user_name)
+        {
+            throw new GwinException(string.Format("The user {0} not exist in Data Base, execute Update-DataBase to Insert Seed in DataBase", user_name));
         }
         #endregion
 
