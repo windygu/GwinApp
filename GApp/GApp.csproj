@@ -40,8 +40,84 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataModel\Attributes\BaseAttribute.cs" />
+    <Compile Include="DataModel\Attributes\EntityAttributes\ActionLineAttribute.cs" />
+    <Compile Include="DataModel\Attributes\EntityAttributes\ButtonAddAttribute.cs" />
+    <Compile Include="DataModel\Attributes\EntityAttributes\GwinEntityAttribute.cs" />
+    <Compile Include="DataModel\Attributes\EntityAttributes\GwinFormAttribute.cs" />
+    <Compile Include="DataModel\Attributes\EntityAttributes\ManagementFormAttribute.cs" />
+    <Compile Include="DataModel\Attributes\EntityAttributes\MenuAttribute.cs" />
+    <Compile Include="DataModel\Attributes\EntityAttributes\PresentationLogic.cs" />
+    <Compile Include="DataModel\Attributes\PropertiesAttributes\BusinesRole.cs" />
+    <Compile Include="DataModel\Attributes\PropertiesAttributes\DataGridAttribute.cs" />
+    <Compile Include="DataModel\Attributes\PropertiesAttributes\DataSourceAttribute.cs" />
+    <Compile Include="DataModel\Attributes\PropertiesAttributes\DisplayPropertyAttribute.cs" />
+    <Compile Include="DataModel\Attributes\PropertiesAttributes\EntryFormAttribute.cs" />
+    <Compile Include="DataModel\Attributes\PropertiesAttributes\FilterAttribute.cs" />
+    <Compile Include="DataModel\Attributes\PropertiesAttributes\RelationshipAttribute.cs" />
+    <Compile Include="DataModel\Attributes\PropertiesAttributes\SelectionCriteriaAttribute.cs" />
+    <Compile Include="DataModel\Exceptions\AffichageClasseAttributeNotExitException.cs" />
+    <Compile Include="DataModel\Exceptions\AnnotationNotExistException.cs" />
+    <Compile Include="DataModel\Exceptions\Class1.cs" />
+    <Compile Include="DataModel\Exceptions\DisplayMember_NotExist_In_DisplayEntityAttribute_Exception.cs" />
+    <Compile Include="DataModel\Exceptions\PropertyDoesNotExistException.cs" />
+    <Compile Include="DataModel\Exceptions\PropertyNotExistInEntityException.cs" />
+    <Compile Include="DataModel\Helpers\GwinIdentifierManager.cs" />
+    <Compile Include="DataModel\ModelInfo\GwinAssembliesManager.cs" />
+    <Compile Include="DataModel\ModelInfo\GwinBusinessEntitiesManager.cs" />
+    <Compile Include="DataModel\ModelInfo\GwinEntitiesManager.cs" />
+    <Compile Include="DataModel\ModelInfo\GwinPropertiesManager.cs" />
+    <Compile Include="DataModel\ModelInfo\ModelConfiguration.cs" />
+    <Compile Include="DataModel\ReadConfiguration\ConfigEntity.cs" />
+    <Compile Include="DataModel\ReadConfiguration\ConfigProperty.cs" />
+    <Compile Include="Entities\BaseEntity.cs" />
+    <Compile Include="Entities\EmptyEntity.cs" />
+    <Compile Include="Entities\Resources\BaseEntity\BaseEntity.ar.Designer.cs">
+      <DependentUpon>BaseEntity.ar.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Entities\Resources\BaseEntity\BaseEntity.Designer.cs">
+      <DependentUpon>BaseEntity.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Entities\Resources\Glossary\Glossary.ar.Designer.cs">
+      <DependentUpon>Glossary.ar.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Entities\Resources\Glossary\Glossary.Designer.cs">
+      <DependentUpon>Glossary.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="GAppInstance.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Entities\Resources\BaseEntity\BaseEntity.ar.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>BaseEntity.ar.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Entities\Resources\BaseEntity\BaseEntity.fr.resx" />
+    <EmbeddedResource Include="Entities\Resources\BaseEntity\BaseEntity.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>BaseEntity.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Entities\Resources\Glossary\Glossary.ar.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Glossary.ar.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Entities\Resources\Glossary\Glossary.fr.resx" />
+    <EmbeddedResource Include="Entities\Resources\Glossary\Glossary.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Glossary.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

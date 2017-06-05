@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GApp.GwinApp.Entities.Resources.BaseEntity {
+namespace GApp.Entities.Resources.BaseEntity {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace GApp.GwinApp.Entities.Resources.BaseEntity {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("App.Gwin.Entities.Resources.BaseEntity.BaseEntity", typeof(BaseEntity).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("GApp.Entities.Resources.BaseEntity.BaseEntity", typeof(BaseEntity).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

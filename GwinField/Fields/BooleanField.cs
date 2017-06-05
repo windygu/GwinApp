@@ -1,5 +1,4 @@
-﻿using GApp.GwinApp.Application.Presentation.Messages;
-using System;
+﻿using System;
 using System.Drawing;
 
 namespace GApp.GwinApp.Fields
