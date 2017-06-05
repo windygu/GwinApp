@@ -54,7 +54,7 @@ namespace App.Gwin.Entities.Secrurity.Authentication
                     if (authorization.BusinessEntity == BusinessEntity)
                         if (authorization.ActionsNames != null && authorization.ActionsNames.Count > 0)
                         {
-                            if(action == "Any") return true;
+                            if (action == "Any") return true;
                             if (authorization.ActionsNames.Contains(action) || authorization.ActionsNames.Contains(""))
                                 return true;
                         }
@@ -77,7 +77,7 @@ namespace App.Gwin.Entities.Secrurity.Authentication
         /// <returns>Persmission </returns>
         public Boolean HasAccess(Type TypeOfEntity)
         {
-           return this.HasAccess(TypeOfEntity.FullName, "Any");
+            return this.HasAccess(TypeOfEntity.FullName, "Any");
         }
 
         /// <summary>
@@ -103,7 +103,8 @@ namespace App.Gwin.Entities.Secrurity.Authentication
 
 
             User guest = dbContext.Set<User>().Where(u => u.Reference == nameof(User.Users.Guest)).FirstOrDefault();
-            ExceptionUserNull("guest");
+            if (guest == null)
+                ExceptionUserNull("guest");
             return guest;
 
             //User guest = new User();
@@ -151,7 +152,7 @@ namespace App.Gwin.Entities.Secrurity.Authentication
                 ExceptionUserNull("Admin");
             return root;
         }
-        public static void  ExceptionUserNull(string user_name)
+        public static void ExceptionUserNull(string user_name)
         {
             throw new GwinException(string.Format("The user {0} not exist in Data Base, execute Update-DataBase to Insert Seed in DataBase", user_name));
         }
@@ -178,7 +179,7 @@ namespace App.Gwin.Entities.Secrurity.Authentication
         [EntryForm(GroupeBox = "authentication", GroupeBoxOrder = 1)]
         public string Password { set; get; }
 
-        
+
 
 
         [EntryForm(GroupeBox = "authentication", GroupeBoxOrder = 1)]
