@@ -6,12 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Gwin
+namespace GApp.GwinApp
 {
     /// <summary>
     /// Loading Form Manager
     /// </summary>
-    public partial class GwinApp
+    public partial class GwinAppInstance
     {
         /// <summary>
         /// Start Loading Interfae

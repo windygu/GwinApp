@@ -1,4 +1,4 @@
-namespace App.Migrations
+namespace GApp.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;

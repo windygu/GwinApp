@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Gwin 
+namespace GApp.GwinApp 
 {
     public partial class BaseEntryForm
     {

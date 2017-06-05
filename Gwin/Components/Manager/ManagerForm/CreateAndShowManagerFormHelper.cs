@@ -1,14 +1,14 @@
-﻿using App;
-using App.Gwin.Application.BAL;
-using App.Gwin.Entities;
-using App.Gwin.GwinApplication.Security.Exception;
+﻿using GApp;
+using GApp.GwinApp.Application.BAL;
+using GApp.GwinApp.Entities;
+using GApp.GwinApp.GwinApplication.Security.Exception;
 using MetroFramework.Forms;
 using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace App.Gwin.Application.Presentation.EntityManagement
+namespace GApp.GwinApp.Application.Presentation.EntityManagement
 {
     /// <summary>
     /// Create an Show ManagerForm
@@ -51,7 +51,7 @@ namespace App.Gwin.Application.Presentation.EntityManagement
         /// <returns></returns>
         public ManagerForm ShowManagerForm(Type EntityType)
         {
-            IGwinBaseBLO baseRepository = GwinBaseBLO<BaseEntity>.CreateBLO_Instance(EntityType, GwinApp.Instance.TypeBaseBLO);
+            IGwinBaseBLO baseRepository = GwinBaseBLO<BaseEntity>.CreateBLO_Instance(EntityType, GwinAppInstance.Instance.TypeBaseBLO);
             ManagerForm form = new ManagerForm(baseRepository, null, null, (Form)this.MdiForm);
             this.ShwoForm(form);
             return form;

@@ -1,4 +1,4 @@
-﻿namespace App.Gwin.Components.Authentication
+﻿namespace GApp.GwinApp.Components.Authentication
 {
     partial class LoginControl
     {

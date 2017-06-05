@@ -6,9 +6,9 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace App.Gwin.Components.Manager.EntryForms.TabEntryForm
+namespace GApp.GwinApp.Components.Manager.EntryForms.TabEntryForm
 {
-    public partial class TabEntryForm : App.Gwin.BaseEntryForm
+    public partial class TabEntryForm : GApp.GwinApp.BaseEntryForm
     {
         public TabEntryForm()
         {

@@ -1,9 +1,9 @@
-﻿using App.Gwin;
-using App.Gwin.Application.BAL;
-using App.Gwin.Application.Presentation.MainForm;
-using App.Gwin.Attributes;
-using App.Gwin.Entities.Secrurity.Authentication;
-using App.Gwin.Fields;
+﻿using GApp.GwinApp;
+using GApp.GwinApp.Application.BAL;
+using GApp.GwinApp.Application.Presentation.MainForm;
+using GApp.GwinApp.Attributes;
+using GApp.GwinApp.Entities.Secrurity.Authentication;
+using GApp.GwinApp.Fields;
 using GenericWinForm.Demo.BAL;
 using GenericWinForm.Demo.DAL;
 using GenericWinForm.Demo.Entities.ProjectManager;
@@ -27,7 +27,7 @@ namespace GwinTest.Components.Fields
         public void GwinAppStart()
         {
             User user = User.CreateRootUser(new ModelContext());
-            GwinApp.Start(typeof(ModelContext), typeof(BaseBLO<>), new FormApplication(), user);
+            GwinAppInstance.Start(typeof(ModelContext), typeof(BaseBLO<>), new FormApplication(), user);
         }
 
         [TestMethod()]

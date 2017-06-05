@@ -1,11 +1,11 @@
-﻿using App.Gwin.Attributes;
+﻿using GApp.GwinApp.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Gwin.Entities
+namespace GApp.GwinApp.Entities
 {
     [GwinEntity(DisplayMember = "Id")]
     public class EmptyEntity : BaseEntity

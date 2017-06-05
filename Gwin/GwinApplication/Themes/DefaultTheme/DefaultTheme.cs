@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using App.Gwin.Fields;
+using GApp.GwinApp.Fields;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace App.Gwin.GwinApplication.Themes
+namespace GApp.GwinApp.GwinApplication.Themes
 {
     public class DefaultTheme : IGwinTheme
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace App.Gwin.Attributes
+namespace GApp.GwinApp.Attributes
 {
     public class EntryFormAttribute : Attribute
     {

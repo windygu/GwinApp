@@ -1,12 +1,12 @@
-﻿using App.Gwin.Application.BAL;
-using App.Gwin.Application.BAL.Authentication;
-using App.Gwin.Application.Presentation;
-using App.Gwin.Application.Presentation.MainForm;
-using App.Gwin.Attributes;
-using App.Gwin.Entities.Application;
-using App.Gwin.Entities.Secrurity.Authentication;
-using App.Gwin.Exceptions.Gwin;
-using App.Gwin.GwinApplication.Themes;
+﻿using GApp.GwinApp.Application.BAL;
+using GApp.GwinApp.Application.BAL.Authentication;
+using GApp.GwinApp.Application.Presentation;
+using GApp.GwinApp.Application.Presentation.MainForm;
+using GApp.GwinApp.Attributes;
+using GApp.GwinApp.Entities.Application;
+using GApp.GwinApp.Entities.Secrurity.Authentication;
+using GApp.GwinApp.Exceptions.Gwin;
+using GApp.GwinApp.GwinApplication.Themes;
 using SplashScreen;
 using System;
 using System.Collections.Generic;
@@ -17,13 +17,13 @@ using System.Runtime.Serialization;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace App.Gwin
+namespace GApp.GwinApp
 {
     /// <summary>
     /// GenericWinFrom Application instance
     /// Sengleton classes
     /// </summary>
-    public partial class GwinApp
+    public partial class GwinAppInstance : GAppInstance
     {
 
         #region Public  Properties
@@ -67,7 +67,7 @@ namespace App.Gwin
         /// is is MdiForm
         /// </param>
         /// <param name="user">Connected user</param>
-        public GwinApp(Type TypeDbContext, Type TypeBaseBLO, FormApplication applicationMenuInstance, User user)
+        public GwinAppInstance(Type TypeDbContext, Type TypeBaseBLO, FormApplication applicationMenuInstance, User user)
         {
             this.Theme = new DefaultTheme();
             this.TypeDBContext = TypeDbContext;

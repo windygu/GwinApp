@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace GenericWinForm.Demo.Presentation.ProjectManager
 {
-    [App.Gwin.Attributes.Menu(EntityType = typeof(Project),Order = 10,Title = "ProjectManager1")]
+    [GApp.GwinApp.Attributes.Menu(EntityType = typeof(Project),Order = 10,Title = "ProjectManager1")]
     public partial class ProjectManagerForm : Form
     {
 

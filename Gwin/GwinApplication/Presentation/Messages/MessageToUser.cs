@@ -1,5 +1,5 @@
-﻿using App.Gwin.Application.Presentation.Messages;
-using App.Gwin.GwinApplication.Presentation.Messages;
+﻿using GApp.GwinApp.Application.Presentation.Messages;
+using GApp.GwinApp.GwinApplication.Presentation.Messages;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace App.Gwin.Application.Presentation.Messages
+namespace GApp.GwinApp.Application.Presentation.Messages
 {
     /// <summary>
     /// Show message in Presentation Layer

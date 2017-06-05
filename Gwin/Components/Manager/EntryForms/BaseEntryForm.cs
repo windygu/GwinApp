@@ -8,21 +8,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Reflection;
-using App.Gwin.Attributes;
+using GApp.GwinApp.Attributes;
 using System.Data.Entity;
-using App.Gwin.Fields;
-using App.Shared.AttributesManager;
-using App.Gwin.Entities;
+using GApp.GwinApp.Fields;
+using GApp.Shared.AttributesManager;
+using GApp.GwinApp.Entities;
 using System.Resources;
-using App.Gwin.Shared.Resources;
-using App.Gwin.Application.BAL;
-using App.Gwin.Exceptions.Gwin;
-using App.Gwin.Exceptions.Helpers;
-using App.Gwin.Validation;
+using GApp.GwinApp.Shared.Resources;
+using GApp.GwinApp.Application.BAL;
+using GApp.GwinApp.Exceptions.Gwin;
+using GApp.GwinApp.Exceptions.Helpers;
+using GApp.GwinApp.Validation;
 using MetroFramework.Controls;
-using App.Gwin.Components.Manager.EntryForms.PLL;
+using GApp.GwinApp.Components.Manager.EntryForms.PLL;
 
-namespace App.Gwin
+namespace GApp.GwinApp
 {
     /// <summary>
     /// Entry Form
@@ -134,7 +134,7 @@ namespace App.Gwin
             bool AutoGenerateField)
         {
             InitializeComponent();
-            errorProvider.RightToLeft = GwinApp.isRightToLeft;
+            errorProvider.RightToLeft = GwinAppInstance.isRightToLeft;
 
             if (System.ComponentModel.LicenseManager.UsageMode != System.ComponentModel.LicenseUsageMode.Designtime)
             {

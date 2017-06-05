@@ -1,16 +1,16 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using App.Gwin.Attributes;
+using GApp.GwinApp.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using App.Gwin.ModelData;
+using GApp.GwinApp.ModelData;
 using GenericWinForm.Demo.BAL;
-using App.Gwin.Entities.Secrurity.Autorizations;
+using GApp.GwinApp.Entities.Secrurity.Autorizations;
 using GenericWinForm.Demo.DAL;
 
-namespace App.Gwin.Attributes.Tests
+namespace GApp.GwinApp.Attributes.Tests
 {
     [TestClass()]
     public class ConfigEntityTests
@@ -19,7 +19,7 @@ namespace App.Gwin.Attributes.Tests
         [TestInitialize]
         public void GwinAppStart()
         {
-            GwinApp.Start(typeof(ModelContext), typeof(BaseBLO<>), new Application.Presentation.MainForm.FormApplication(), null);
+            GwinAppInstance.Start(typeof(ModelContext), typeof(BaseBLO<>), new Application.Presentation.MainForm.FormApplication(), null);
            
 
         }

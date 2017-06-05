@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using App.Gwin.Entities;
+using GApp.GwinApp.Entities;
 
-namespace App.Gwin.Components.Manager.DataGrid
+namespace GApp.GwinApp.Components.Manager.DataGrid
 {
     /// <summary>
     /// Interface of Form : to Implement SelectedEntityAction in DataGrid

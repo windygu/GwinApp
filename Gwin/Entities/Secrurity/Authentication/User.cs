@@ -1,9 +1,9 @@
-﻿using App.Gwin.Application;
-using App.Gwin.Application.BAL;
-using App.Gwin.Attributes;
-using App.Gwin.Entities.Application;
-using App.Gwin.Entities.Secrurity.Autorizations;
-using App.Gwin.Exceptions.Gwin;
+﻿using GApp.GwinApp.Application;
+using GApp.GwinApp.Application.BAL;
+using GApp.GwinApp.Attributes;
+using GApp.GwinApp.Entities.Application;
+using GApp.GwinApp.Entities.Secrurity.Autorizations;
+using GApp.GwinApp.Exceptions.Gwin;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -13,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Gwin.Entities.Secrurity.Authentication
+namespace GApp.GwinApp.Entities.Secrurity.Authentication
 {
     [GwinEntity(Localizable = true, isMaleName = true, DisplayMember = "Login")]
     [Menu(Group = nameof(MenuItemApplication.ParentsMenuItem.Configuration))]
@@ -183,7 +183,7 @@ namespace App.Gwin.Entities.Secrurity.Authentication
 
 
         [EntryForm(GroupeBox = "authentication", GroupeBoxOrder = 1)]
-        public GwinApp.Languages Language { set; get; }
+        public GwinAppInstance.Languages Language { set; get; }
 
         [EntryForm(GroupeBox = "authentication", GroupeBoxOrder = 1)]
         [Relationship(Relation = RelationshipAttribute.Relations.ManyToMany_Selection)]

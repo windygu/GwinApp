@@ -1,5 +1,5 @@
-﻿using App.Gwin.Attributes;
-using App.Shared.AttributesManager;
+﻿using GApp.GwinApp.Attributes;
+using GApp.Shared.AttributesManager;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -8,11 +8,11 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using App.Gwin.Entities;
-using App.Gwin.Application.BAL;
+using GApp.GwinApp.Entities;
+using GApp.GwinApp.Application.BAL;
 using System.ComponentModel;
 
-namespace App.Gwin.Components.Manager.Fields.Traitements.Params
+namespace GApp.GwinApp.Components.Manager.Fields.Traitements.Params
 {
     /// <summary>
     /// Params of CreateField Traitement in EntryForm

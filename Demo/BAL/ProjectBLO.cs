@@ -1,4 +1,4 @@
-﻿using App.Gwin.Entities;
+﻿using GApp.GwinApp.Entities;
 using GenericWinForm.Demo.Entities;
 using GenericWinForm.Demo.Entities.ProjectManager;
 using System;

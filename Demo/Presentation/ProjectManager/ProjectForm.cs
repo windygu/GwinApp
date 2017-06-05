@@ -7,12 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using App.Gwin;
-using App.Gwin.Application.BAL;
-using App.Gwin.Entities;
-using App;
+using GApp.GwinApp;
+using GApp.GwinApp.Application.BAL;
+using GApp.GwinApp.Entities;
+using GApp;
 using GenericWinForm.Demo.Entities;
-using App.Gwin.Components.Manager.EntryForms.Resources;
+using GApp.GwinApp.Components.Manager.EntryForms.Resources;
 using GenericWinForm.Demo.Entities.ProjectManager;
 
 namespace GenericWinForm.Demo.Presentation.ProjectManager

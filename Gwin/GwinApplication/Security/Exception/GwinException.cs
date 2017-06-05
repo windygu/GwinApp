@@ -1,11 +1,11 @@
-﻿using App.Gwin.Exceptions.Gwin;
+﻿using GApp.GwinApp.Exceptions.Gwin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Gwin.GwinApplication.Security.Exception
+namespace GApp.GwinApp.GwinApplication.Security.Exception
 {
     class GwinAccessException : GwinException
     {

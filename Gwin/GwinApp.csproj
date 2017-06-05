@@ -720,6 +720,20 @@
   <ItemGroup>
     <Folder Include="GwinApplication\Notification\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GApp\GApp.csproj">
+      <Project>{3d0256ea-002b-4178-b551-04cf932659f1}</Project>
+      <Name>GApp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GwinField\GwinField.csproj">
+      <Project>{069542d9-0507-451e-8899-912e42b3c1a2}</Project>
+      <Name>GwinField</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GwinForm\GwinForm.csproj">
+      <Project>{2da8aa82-c98c-49cf-b3a7-c88b6540f611}</Project>
+      <Name>GwinForm</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace App.Gwin.Attributes
+namespace GApp.GwinApp.Attributes
 {
     /// <summary>
     /// The display of the entity

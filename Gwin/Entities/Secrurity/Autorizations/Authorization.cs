@@ -1,15 +1,15 @@
-﻿using App.Gwin.Attributes;
-using App.Gwin.DataModel.ModelInfo;
-using App.Gwin.Entities.Application;
-using App.Gwin.GwinApplication.Security.Attributes;
-using App.Gwin.ModelData;
+﻿using GApp.GwinApp.Attributes;
+using GApp.GwinApp.DataModel.ModelInfo;
+using GApp.GwinApp.Entities.Application;
+using GApp.GwinApp.GwinApplication.Security.Attributes;
+using GApp.GwinApp.ModelData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Gwin.Entities.Secrurity.Autorizations
+namespace GApp.GwinApp.Entities.Secrurity.Autorizations
 
 {
     [GwinEntity(DisplayMember = nameof(Authorization.Name), Localizable = true)]

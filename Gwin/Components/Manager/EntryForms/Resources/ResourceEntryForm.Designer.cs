@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace App.Gwin.Components.Manager.EntryForms.Resources {
+namespace GApp.GwinApp.Components.Manager.EntryForms.Resources {
     using System;
     
     

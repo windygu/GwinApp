@@ -1,11 +1,11 @@
-﻿using App.Gwin.Application.BAL;
-using App.Gwin.Exceptions.Gwin;
+﻿using GApp.GwinApp.Application.BAL;
+using GApp.GwinApp.Exceptions.Gwin;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace App.Gwin.Application.Presentation.EntityManagement
+namespace GApp.GwinApp.Application.Presentation.EntityManagement
 {
     /// <summary>
     /// ManageForm, CRUD operation form for Entity Framework 
@@ -47,7 +47,7 @@ namespace App.Gwin.Application.Presentation.EntityManagement
 
             // Confirm RightToLeft
             this.RightToLeft = RightToLeft.Yes;
-            this.RightToLeftLayout = GwinApp.isRightToLeft;
+            this.RightToLeftLayout = GwinAppInstance.isRightToLeft;
 
             // Confib Width and Height
             if (EntityBLO.ConfigEntity.ManagementForm.Width != 0)

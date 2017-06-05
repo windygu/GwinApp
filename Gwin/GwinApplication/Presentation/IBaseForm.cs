@@ -1,4 +1,4 @@
-﻿namespace App.Gwin.Application.Presentation
+﻿namespace GApp.GwinApp.Application.Presentation
 {
     public interface IBaseForm
     {

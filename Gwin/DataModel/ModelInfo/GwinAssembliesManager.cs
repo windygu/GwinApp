@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Gwin.DataModel.ModelInfo
+namespace GApp.GwinApp.DataModel.ModelInfo
 {
     /// <summary>
     /// Gwin Assemnply Manager
@@ -22,8 +22,8 @@ namespace App.Gwin.DataModel.ModelInfo
             return AppDomain.CurrentDomain.GetAssemblies()
                      .Where(a => (!a.FullName.Contains("DynamicProxies")
                      && (a.FullName.Contains("Entities")                                      // Entities Assemply
-                     || a.FullName.Contains(GwinApp.Instance.GetType().Assembly.FullName)        // Gwin Assemply
-                     || a.FullName.Contains(GwinApp.Instance.TypeDBContext.Assembly.FullName)    // DAL Assemply
+                     || a.FullName.Contains(GwinAppInstance.Instance.GetType().Assembly.FullName)        // Gwin Assemply
+                     || a.FullName.Contains(GwinAppInstance.Instance.TypeDBContext.Assembly.FullName)    // DAL Assemply
                      ))
                      ).Cast<Assembly>().ToList<Assembly>();
         }
@@ -38,8 +38,8 @@ namespace App.Gwin.DataModel.ModelInfo
             return AppDomain.CurrentDomain.GetAssemblies()
                      .Where(a => (!a.FullName.Contains("DynamicProxies")
                      && (a.FullName.Contains("BLO")                                      //Business Entities Assemply
-                     || a.FullName.Contains(GwinApp.Instance.GetType().Assembly.FullName)        // Gwin Assemply
-                     || a.FullName.Contains(GwinApp.Instance.TypeDBContext.Assembly.FullName)    // DAL Assemply
+                     || a.FullName.Contains(GwinAppInstance.Instance.GetType().Assembly.FullName)        // Gwin Assemply
+                     || a.FullName.Contains(GwinAppInstance.Instance.TypeDBContext.Assembly.FullName)    // DAL Assemply
                      ))
                      ).Cast<Assembly>().ToList<Assembly>();
         }

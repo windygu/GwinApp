@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using App.Gwin.Attributes;
-using App.Shared.AttributesManager;
-using App.Gwin.Application.BAL;
+using GApp.GwinApp.Attributes;
+using GApp.Shared.AttributesManager;
+using GApp.GwinApp.Application.BAL;
 
-namespace App.Gwin.Components.Manager.Fields.Traitements.Params
+namespace GApp.GwinApp.Components.Manager.Fields.Traitements.Params
 {
     public class CreateField_In_Filter_Params : BaseFieldTraitementParam
     {

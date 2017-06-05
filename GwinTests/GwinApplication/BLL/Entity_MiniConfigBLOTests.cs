@@ -5,13 +5,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using App.Gwin.Application.BAL;
-using App.Gwin.Entities;
+using GApp.GwinApp.Application.BAL;
+using GApp.GwinApp.Entities;
 using GenericWinForm.Demo.Entities;
-using App;
-using App.Gwin;
+using GApp;
+using GApp.GwinApp;
 using static System.Net.Mime.MediaTypeNames;
-using App.Gwin.Application.Presentation.MainForm;
+using GApp.GwinApp.Application.Presentation.MainForm;
 using GenericWinForm.Demo.DAL;
 using GenericWinForm.Demo.Entities.ProjectManager;
 
@@ -23,7 +23,7 @@ namespace GenericWinForm.Demo.BAL.Tests
         [TestInitialize]
         public void GwinAppStart()
         {
-            GwinApp.Start(typeof(ModelContext), typeof(BaseBLO<>), new FormApplication(), null);
+            GwinAppInstance.Start(typeof(ModelContext), typeof(BaseBLO<>), new FormApplication(), null);
            
         }
 

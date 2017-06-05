@@ -1,8 +1,8 @@
-﻿using App.Gwin.Application.BAL;
-using App.Gwin.Attributes;
-using App.Gwin.DataModel.ModelInfo;
-using App.Gwin.Entities;
-using App.Shared.AttributesManager;
+﻿using GApp.GwinApp.Application.BAL;
+using GApp.GwinApp.Attributes;
+using GApp.GwinApp.DataModel.ModelInfo;
+using GApp.GwinApp.Entities;
+using GApp.Shared.AttributesManager;
 using FastExcel;
 using System;
 using System.Collections;
@@ -15,7 +15,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace App.Gwin.Components.Manager.Actions
+namespace GApp.GwinApp.Components.Manager.Actions
 {
     public class ExportExcelDataAction : BaseDataAction
     {

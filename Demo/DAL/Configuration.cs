@@ -1,14 +1,14 @@
-﻿namespace App.Migrations
+﻿namespace GApp.Migrations
 {
-    using App.Gwin.Entities;
-    using App.Gwin.Entities.Secrurity.Authentication;
+    using GApp.GwinApp.Entities;
+    using GApp.GwinApp.Entities.Secrurity.Authentication;
     using GenericWinForm.Demo.DAL;
     using GenericWinForm.Demo.Entities.ContactInformations;
     using GenericWinForm.Demo.Entities.ProjectManager;
-    using Gwin.Application.BAL;
-    using Gwin.Entities.Application;
-    using Gwin.Entities.MultiLanguage;
-    using Gwin.Entities.Secrurity.Autorizations;
+    using GwinApp.Application.BAL;
+    using GwinApp.Entities.Application;
+    using GwinApp.Entities.MultiLanguage;
+    using GwinApp.Entities.Secrurity.Autorizations;
     using System;
     using System.Collections.Generic;
     using System.Data.Entity.Migrations;
@@ -33,10 +33,10 @@
             // Gwin Application Name
             //
             context.ApplicationNames.AddOrUpdate(r => r.Reference,
-                        new App.Gwin.Entities.Application.ApplicationName
+                        new GApp.GwinApp.Entities.Application.ApplicationName
                         {
                             Reference = "Demo",
-                            Name = new Gwin.Entities.MultiLanguage.LocalizedString { Arab = "تجريب برنامج الكوين", English = "Gwin Application Demo", French = "Démonstration de l'application Gwin" }
+                            Name = new GwinApp.Entities.MultiLanguage.LocalizedString { Arab = "تجريب برنامج الكوين", English = "Gwin Application Demo", French = "Démonstration de l'application Gwin" }
                         }
                       );
             //
@@ -48,10 +48,10 @@
             context.Roles.AddOrUpdate(
                  r => r.Reference
                         ,
-              new Role { Reference = nameof(Role.Roles.Guest), Name = new Gwin.Entities.MultiLanguage.LocalizedString() { Current = nameof(Role.Roles.Guest) } },
-              new Role { Reference = nameof(Role.Roles.User), Name = new Gwin.Entities.MultiLanguage.LocalizedString() { Current = nameof(Role.Roles.User) } },
-              new Role { Reference = nameof(Role.Roles.Admin), Name = new Gwin.Entities.MultiLanguage.LocalizedString() { Current = nameof(Role.Roles.Admin) } },
-              new Role { Reference = nameof(Role.Roles.Root), Name = new Gwin.Entities.MultiLanguage.LocalizedString() { Current = nameof(Role.Roles.Root) }, Hidden = true }
+              new Role { Reference = nameof(Role.Roles.Guest), Name = new GwinApp.Entities.MultiLanguage.LocalizedString() { Current = nameof(Role.Roles.Guest) } },
+              new Role { Reference = nameof(Role.Roles.User), Name = new GwinApp.Entities.MultiLanguage.LocalizedString() { Current = nameof(Role.Roles.User) } },
+              new Role { Reference = nameof(Role.Roles.Admin), Name = new GwinApp.Entities.MultiLanguage.LocalizedString() { Current = nameof(Role.Roles.Admin) } },
+              new Role { Reference = nameof(Role.Roles.Root), Name = new GwinApp.Entities.MultiLanguage.LocalizedString() { Current = nameof(Role.Roles.Root) }, Hidden = true }
             );
             // Save Change to Select RoleRoot and RoleGuest
             context.SaveChanges();
@@ -107,9 +107,9 @@
             context.MenuItemApplications.AddOrUpdate(
                             r => r.Code
                          ,
-                         new MenuItemApplication { Id = 1, Code = "Configuration", Title = new Gwin.Entities.MultiLanguage.LocalizedString { Arab = "إعدادات", English = "Configuration", French = "Configuration" } },
-                         new MenuItemApplication { Id = 2, Code = "Admin", Title = new Gwin.Entities.MultiLanguage.LocalizedString { Arab = "تدبير البرنامج", English = "Admin", French = "Administration" } },
-                         new MenuItemApplication { Id = 3, Code = "Root", Title = new Gwin.Entities.MultiLanguage.LocalizedString { Arab = "مصمم اليرنامج", English = "Application Constructor", French = "Rélisateur de l'application" } }
+                         new MenuItemApplication { Id = 1, Code = "Configuration", Title = new GwinApp.Entities.MultiLanguage.LocalizedString { Arab = "إعدادات", English = "Configuration", French = "Configuration" } },
+                         new MenuItemApplication { Id = 2, Code = "Admin", Title = new GwinApp.Entities.MultiLanguage.LocalizedString { Arab = "تدبير البرنامج", English = "Admin", French = "Administration" } },
+                         new MenuItemApplication { Id = 3, Code = "Root", Title = new GwinApp.Entities.MultiLanguage.LocalizedString { Arab = "مصمم اليرنامج", English = "Application Constructor", French = "Rélisateur de l'application" } }
                        );
 
             //---------------------------------------------------------

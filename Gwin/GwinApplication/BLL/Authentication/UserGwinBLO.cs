@@ -1,12 +1,12 @@
 ﻿
-using App.Gwin.Entities.Secrurity.Authentication;
+using GApp.GwinApp.Entities.Secrurity.Authentication;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Gwin.Application.BAL.Authentication
+namespace GApp.GwinApp.Application.BAL.Authentication
 {
     /// <summary>
     /// User Gwin Business Logic

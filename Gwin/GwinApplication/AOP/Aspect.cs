@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Gwin.GwinApplication.AOP
+namespace GApp.GwinApp.GwinApplication.AOP
 {
     /// <summary>
     /// Abstract class to wrap Castle Windsor's IInterceptor to only fire if the method or class is decorated with this attribute.

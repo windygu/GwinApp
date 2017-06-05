@@ -1,9 +1,9 @@
-﻿using App.Gwin.Application.Presentation.Messages;
-using App.Gwin.Attributes;
-using App.Gwin.Entities;
-using App.Gwin.GwinApplication.IoC;
-using App.Gwin.GwinApplication.Security.Attributes;
-using App.Gwin.Security;
+﻿using GApp.GwinApp.Application.Presentation.Messages;
+using GApp.GwinApp.Attributes;
+using GApp.GwinApp.Entities;
+using GApp.GwinApp.GwinApplication.IoC;
+using GApp.GwinApp.GwinApplication.Security.Attributes;
+using GApp.GwinApp.Security;
 using Castle.DynamicProxy;
 using LinqExtension;
 using System;
@@ -19,7 +19,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace App.Gwin.Application.BAL
+namespace GApp.GwinApp.Application.BAL
 {
     /// <summary>
     /// BaseEntityBAO

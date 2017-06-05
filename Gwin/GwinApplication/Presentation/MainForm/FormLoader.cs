@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace App.Gwin.Application.Presentation.MainForm
+namespace GApp.GwinApp.Application.Presentation.MainForm
 {
     public partial class FormLoader : Form
     {

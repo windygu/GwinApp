@@ -1,15 +1,15 @@
-﻿using App.Gwin.Application.BAL;
-using App.Gwin.DataModel.ModelInfo;
-using App.Gwin.Entities;
-using App.Gwin.Logging;
-using App.Gwin.ModelData;
-using App.Gwin.Security;
+﻿using GApp.GwinApp.Application.BAL;
+using GApp.GwinApp.DataModel.ModelInfo;
+using GApp.GwinApp.Entities;
+using GApp.GwinApp.Logging;
+using GApp.GwinApp.ModelData;
+using GApp.GwinApp.Security;
 using Castle.Core;
 using Castle.MicroKernel;
 using Castle.MicroKernel.Registration;
 using System;
 
-namespace App.Gwin.GwinApplication.IoC
+namespace GApp.GwinApp.GwinApplication.IoC
 {
     public class ComponentRegistration : IRegistration
     {
@@ -30,7 +30,7 @@ namespace App.Gwin.GwinApplication.IoC
             foreach (Type EntityType in new GwinEntitiesManager().GetAll_Entities_Type())
             {
 
-                Type BLOEntity_Type = GwinBaseBLO<BaseEntity>.Detemine_Type_EntityBLO(EntityType, GwinApp.Instance.TypeBaseBLO);
+                Type BLOEntity_Type = GwinBaseBLO<BaseEntity>.Detemine_Type_EntityBLO(EntityType, GwinAppInstance.Instance.TypeBaseBLO);
 
 
                 //   kernel.Register(

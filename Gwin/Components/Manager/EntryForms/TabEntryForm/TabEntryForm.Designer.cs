@@ -1,4 +1,4 @@
-﻿namespace App.Gwin.Components.Manager.EntryForms.TabEntryForm
+﻿namespace GApp.GwinApp.Components.Manager.EntryForms.TabEntryForm
 {
     partial class TabEntryForm
     {

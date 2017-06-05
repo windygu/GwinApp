@@ -1,4 +1,4 @@
-﻿using App.Gwin.Entities.Configuration;
+﻿using GApp.GwinApp.Entities.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Core.EntityClient;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Gwin.GwinApplication.BLL.Configuration
+namespace GApp.GwinApp.GwinApplication.BLL.Configuration
 {
     /// <summary>
     /// ConfigDb Business Logique

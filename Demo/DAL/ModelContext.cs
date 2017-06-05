@@ -1,11 +1,11 @@
 ﻿namespace GenericWinForm.Demo.DAL
 {
-    using App.DAL;
-    using App.Gwin.Entities.Application;
-    using App.Gwin.Entities.Logging;
-    using App.Gwin.Entities.Secrurity.Authentication;
-    using App.Gwin.Entities.Secrurity.Autorizations;
-    using App.Gwin.GwinApplication.BLL.Configuration;
+    using GApp.DAL;
+    using GApp.GwinApp.Entities.Application;
+    using GApp.GwinApp.Entities.Logging;
+    using GApp.GwinApp.Entities.Secrurity.Authentication;
+    using GApp.GwinApp.Entities.Secrurity.Autorizations;
+    using GApp.GwinApp.GwinApplication.BLL.Configuration;
     using Entities.ProjectManager;
     using Entities.TraineeManagement;
     using Entities.TrainingManagement;

@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Resources;
 
-namespace App.Gwin.Attributes
+namespace GApp.GwinApp.Attributes
 {
     /// <summary>
     ///  The configuration of the management interface

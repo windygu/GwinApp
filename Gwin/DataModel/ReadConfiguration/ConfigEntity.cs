@@ -1,8 +1,8 @@
 ﻿
-using App.Gwin.Entities;
-using App.Gwin.Entities.Resources.Glossary;
-using App.Gwin.Exceptions.Gwin;
-using App.Gwin.Shared.Resources;
+using GApp.GwinApp.Entities;
+using GApp.GwinApp.Entities.Resources.Glossary;
+using GApp.GwinApp.Exceptions.Gwin;
+using GApp.GwinApp.Shared.Resources;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -11,7 +11,7 @@ using System.Resources;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace App.Gwin.Attributes
+namespace GApp.GwinApp.Attributes
 {
     /// <summary>
     /// Entity schema configuration

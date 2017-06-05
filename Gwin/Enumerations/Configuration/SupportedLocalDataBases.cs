@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Gwin.Enumerations.Configuration
+namespace GApp.GwinApp.Enumerations.Configuration
 {
     /// <summary>
     /// DataBase categories supported by Gwin Application

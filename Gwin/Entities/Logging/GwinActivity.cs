@@ -1,12 +1,12 @@
-﻿using App.Gwin.Attributes;
-using App.Gwin.Entities.Secrurity.Authentication;
+﻿using GApp.GwinApp.Attributes;
+using GApp.GwinApp.Entities.Secrurity.Authentication;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Gwin.Entities.Logging
+namespace GApp.GwinApp.Entities.Logging
 {
     [GwinEntity(DisplayMember =nameof(BusinessName))]
     public class GwinActivity : BaseEntity

@@ -1,17 +1,17 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using App.Gwin.ModelData;
+using GApp.GwinApp.ModelData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
-using App.Gwin.Application.BAL.GwinApplication;
-using App.Gwin.Application.BAL;
-using App.Gwin.Application.Presentation.MainForm;
+using GApp.GwinApp.Application.BAL.GwinApplication;
+using GApp.GwinApp.Application.BAL;
+using GApp.GwinApp.Application.Presentation.MainForm;
 using GenericWinForm.Demo.DAL;
 
-namespace App.Gwin.ModelData.Tests
+namespace GApp.GwinApp.ModelData.Tests
 {
     [TestClass()]
     public class ModelConfigurationTests
@@ -19,7 +19,7 @@ namespace App.Gwin.ModelData.Tests
         [TestMethod()]
         public void GetAll_Assembly_Contains_EntitiesTest()
         {
-            GwinApp.Start(typeof(ModelContext), typeof(GwinBaseBLO<>), new FormApplication(), null);
+            GwinAppInstance.Start(typeof(ModelContext), typeof(GwinBaseBLO<>), new FormApplication(), null);
             List<Assembly> ls_assembly = new ModelConfiguration().GetAll_Assembly_Contains_Entities();
         }
     }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Gwin.Attributes
+namespace GApp.GwinApp.Attributes
 {
     public class PresentationLogicAttribute : Attribute
     {

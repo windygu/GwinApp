@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace App.Gwin.Properties {
+namespace GApp.GwinApp.Properties {
     using System;
     
     

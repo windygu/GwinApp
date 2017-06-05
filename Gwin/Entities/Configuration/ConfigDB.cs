@@ -1,11 +1,11 @@
-﻿using App.Gwin.Enumerations.Configuration;
+﻿using GApp.GwinApp.Enumerations.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Gwin.Entities.Configuration
+namespace GApp.GwinApp.Entities.Configuration
 {
     /// <summary>
     /// DataBase connexion configuration

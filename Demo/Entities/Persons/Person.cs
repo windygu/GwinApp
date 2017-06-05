@@ -1,6 +1,6 @@
-﻿using App.Gwin.Attributes;
-using App.Gwin.Entities;
-using App.Gwin.Entities.MultiLanguage;
+﻿using GApp.GwinApp.Attributes;
+using GApp.GwinApp.Entities;
+using GApp.GwinApp.Entities.MultiLanguage;
 using GenericWinForm.Demo.Entities.ContactInformations;
 using System;
 using System.Collections.Generic;

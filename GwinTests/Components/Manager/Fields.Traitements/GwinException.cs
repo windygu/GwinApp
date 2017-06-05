@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace App.Gwin.FieldsTraitements.Tests
+namespace GApp.GwinApp.FieldsTraitements.Tests
 {
     [Serializable]
     internal class GwinException : Exception

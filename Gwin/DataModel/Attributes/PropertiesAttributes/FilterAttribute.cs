@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 
-namespace App.Gwin.Attributes
+namespace GApp.GwinApp.Attributes
 {
     public class FilterAttribute : Attribute
     {

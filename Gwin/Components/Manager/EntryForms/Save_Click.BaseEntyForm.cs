@@ -1,4 +1,4 @@
-﻿using App.Gwin.Components.Manager.EntryForms.Resources;
+﻿using GApp.GwinApp.Components.Manager.EntryForms.Resources;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace App.Gwin
+namespace GApp.GwinApp
 {
 
     public partial class BaseEntryForm

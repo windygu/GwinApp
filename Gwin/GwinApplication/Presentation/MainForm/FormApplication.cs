@@ -1,11 +1,11 @@
-﻿using App.Gwin.Application.Presentation.EntityManagement;
+﻿using GApp.GwinApp.Application.Presentation.EntityManagement;
 using SplashScreen;
 using System;
 using System.ComponentModel;
 using System.Globalization;
 using System.Windows.Forms;
 
-namespace App.Gwin.Application.Presentation.MainForm
+namespace GApp.GwinApp.Application.Presentation.MainForm
 {
     public partial class FormApplication : BaseForm, IApplicationMenu
     {
@@ -42,7 +42,7 @@ namespace App.Gwin.Application.Presentation.MainForm
             new CreateApplicationMenu(this);
 
             // Change Form Direction  - When  Languauge is changed
-            if (GwinApp.Instance.CultureInfo.TwoLetterISOLanguageName == "fr" || GwinApp.Instance.CultureInfo.TwoLetterISOLanguageName == "en")
+            if (GwinAppInstance.Instance.CultureInfo.TwoLetterISOLanguageName == "fr" || GwinAppInstance.Instance.CultureInfo.TwoLetterISOLanguageName == "en")
             {
                 this.RightToLeftLayout = false;
                 this.RightToLeft = RightToLeft.No;
@@ -80,17 +80,17 @@ namespace App.Gwin.Application.Presentation.MainForm
 
         private void frenchToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            GwinApp.ChangeLanguage(CultureInfo.CreateSpecificCulture("fr"));
+            GwinAppInstance.ChangeLanguage(CultureInfo.CreateSpecificCulture("fr"));
         }
 
         private void englishToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            GwinApp.ChangeLanguage(CultureInfo.CreateSpecificCulture("en"));
+            GwinAppInstance.ChangeLanguage(CultureInfo.CreateSpecificCulture("en"));
         }
 
         private void arabToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            GwinApp.ChangeLanguage(new CultureInfo("ar"));
+            GwinAppInstance.ChangeLanguage(new CultureInfo("ar"));
         }
 
         private void languageToolStripMenuItem1_Click(object sender, EventArgs e)

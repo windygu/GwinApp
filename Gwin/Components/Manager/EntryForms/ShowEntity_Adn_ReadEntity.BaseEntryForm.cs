@@ -1,7 +1,7 @@
-﻿using App.Shared.AttributesManager;
-using App.Gwin.Attributes;
-using App.Gwin.Fields;
-using App.Gwin.Entities;
+﻿using GApp.Shared.AttributesManager;
+using GApp.GwinApp.Attributes;
+using GApp.GwinApp.Fields;
+using GApp.GwinApp.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,12 +10,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Collections;
-using App.Gwin.Entities.MultiLanguage;
-using App.Gwin.Components.Manager.Fields.Traitements.Params;
-using App.Gwin.FieldsTraitements;
-using App.Gwin.Exceptions.Gwin;
+using GApp.GwinApp.Entities.MultiLanguage;
+using GApp.GwinApp.Components.Manager.Fields.Traitements.Params;
+using GApp.GwinApp.FieldsTraitements;
+using GApp.GwinApp.Exceptions.Gwin;
 
-namespace App.Gwin
+namespace GApp.GwinApp
 {
     /// <summary>
     /// Shwo and Read Entity

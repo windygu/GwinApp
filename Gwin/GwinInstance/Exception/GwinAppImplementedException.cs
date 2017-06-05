@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace App.Gwin.Exceptions.Gwin
+namespace GApp.GwinApp.Exceptions.Gwin
 {
     [Serializable]
     internal class GwinNotImplementedException : Exception

@@ -1,14 +1,14 @@
-﻿using App.Gwin.Application.BAL;
-using App.Gwin.Application.BAL.Authentication;
-using App.Gwin.Application.Presentation;
-using App.Gwin.Application.Presentation.MainForm;
-using App.Gwin.Attributes;
-using App.Gwin.Entities.Application;
-using App.Gwin.Entities.Secrurity.Authentication;
-using App.Gwin.Exceptions.Gwin;
-using App.Gwin.Exceptions.Helpers;
-using App.Gwin.GwinApplication.IoC;
-using App.Gwin.GwinApplication.Presentation.Authentication;
+﻿using GApp.GwinApp.Application.BAL;
+using GApp.GwinApp.Application.BAL.Authentication;
+using GApp.GwinApp.Application.Presentation;
+using GApp.GwinApp.Application.Presentation.MainForm;
+using GApp.GwinApp.Attributes;
+using GApp.GwinApp.Entities.Application;
+using GApp.GwinApp.Entities.Secrurity.Authentication;
+using GApp.GwinApp.Exceptions.Gwin;
+using GApp.GwinApp.Exceptions.Helpers;
+using GApp.GwinApp.GwinApplication.IoC;
+using GApp.GwinApp.GwinApplication.Presentation.Authentication;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -18,20 +18,20 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace App.Gwin
+namespace GApp.GwinApp
 {
-    public partial class GwinApp
+    public partial class GwinAppInstance
     {
        
 
         #region GwinApp Instance
-        private static GwinApp instance = null;
+        private static GwinAppInstance instance = null;
        
 
         /// <summary>
         /// Get or Set Gwin Instance
         /// </summary>
-        public static GwinApp Instance
+        public static GwinAppInstance Instance
         {
             get
             {
@@ -72,14 +72,14 @@ namespace App.Gwin
         {
 
             // User must not be null
-            CheckPramIsNull.CheckParam_is_NotNull(user, nameof(GwinApp), nameof(user));
+            CheckPramIsNull.CheckParam_is_NotNull(user, nameof(GwinAppInstance), nameof(user));
 
             // Lunch Loading Interface
-            GwinApp.Loading_Start();
-            GwinApp.Loading_Status("Start Gwin Applicaton ...");
+            GwinAppInstance.Loading_Start();
+            GwinAppInstance.Loading_Status("Start Gwin Applicaton ...");
 
             // Create GwinInstance to Authenticate
-            GwinApp.Instance = new GwinApp(TypeDbContext, TypeBaseBLO, AppMenu, user);
+            GwinAppInstance.Instance = new GwinAppInstance(TypeDbContext, TypeBaseBLO, AppMenu, user);
 
             //Layer configuration : Initialize the dependency resolver
             DependencyResolver.Initialize();
@@ -90,9 +90,9 @@ namespace App.Gwin
             // Update Menu
             //
             // Change User Culture and Tread to do Update with User Language
-            GwinApp.instance.CultureInfo = new CultureInfo(user.Language.ToString());
-            Thread.CurrentThread.CurrentCulture = GwinApp.instance.CultureInfo;
-            Thread.CurrentThread.CurrentUICulture = GwinApp.instance.CultureInfo;
+            GwinAppInstance.instance.CultureInfo = new CultureInfo(user.Language.ToString());
+            Thread.CurrentThread.CurrentCulture = GwinAppInstance.instance.CultureInfo;
+            Thread.CurrentThread.CurrentUICulture = GwinAppInstance.instance.CultureInfo;
             // Update GwinApplicatio, after  ModelConfiguration changes
             //[Update]
             // Must be befor Language Change, because SetLanguge Use MenuTable
@@ -104,7 +104,7 @@ namespace App.Gwin
             // Change Gwin Language 
             if (AppMenu != null && user != null)
             {
-                GwinApp.SetLanguage(GwinApp.Instance.CultureInfo);
+                GwinAppInstance.SetLanguage(GwinAppInstance.Instance.CultureInfo);
             }
 
 
@@ -113,13 +113,13 @@ namespace App.Gwin
             IGwinBaseBLO ApplicationNameBLO = new GwinBaseBLO<ApplicationName>((DbContext)Activator.CreateInstance(instance.TypeDBContext));
             List<object> ls_apps = ApplicationNameBLO.GetAll();
             if (ls_apps != null && ls_apps.Count > 0)
-                GwinApp.instance.ApplicationName = (ApplicationName)ls_apps.First();
+                GwinAppInstance.instance.ApplicationName = (ApplicationName)ls_apps.First();
             else
             {
                 ApplicationName applicationName = new ApplicationName();
                 applicationName.Name = new Entities.MultiLanguage.LocalizedString();
                 applicationName.Name.Current = "Gwin Application";
-                GwinApp.instance.ApplicationName = applicationName;
+                GwinAppInstance.instance.ApplicationName = applicationName;
             }
 
             // Set Name Applicatoin in ApplicationMenu
@@ -129,7 +129,7 @@ namespace App.Gwin
             }
 
             // Close Loading Interface
-            GwinApp.Loading_Close();
+            GwinAppInstance.Loading_Close();
 
             // Authentification
             Login();
@@ -146,7 +146,7 @@ namespace App.Gwin
         {
             // Authentication fo Guest User
             // Change GuestUser by Current User
-            if (GwinApp.Instance.user.Reference == nameof(User.Users.Guest))
+            if (GwinAppInstance.Instance.user.Reference == nameof(User.Users.Guest))
             {
                 do
                 {
@@ -155,8 +155,8 @@ namespace App.Gwin
                  
                     loginForm.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
                     loginForm.ShowDialog();
-                } while (GwinApp.Instance.user.Reference == nameof(User.Users.Guest));
-                GwinApp.Restart();
+                } while (GwinAppInstance.Instance.user.Reference == nameof(User.Users.Guest));
+                GwinAppInstance.Restart();
             }
 
             
@@ -166,7 +166,7 @@ namespace App.Gwin
         /// </summary>
         private static void TestIf_Gwin_isStart()
         {
-            if (GwinApp.instance == null) throw new GwinException("The Gwin Application Must be started befor use Gwin.Instance");
+            if (GwinAppInstance.instance == null) throw new GwinException("The Gwin Application Must be started befor use Gwin.Instance");
         }
         #endregion
 
@@ -177,9 +177,9 @@ namespace App.Gwin
         public static void Restart()
         {
 
-            GwinApp old_instance = GwinApp.instance;
-            GwinApp.End();
-            GwinApp.Start(old_instance.TypeDBContext, old_instance.TypeBaseBLO, old_instance.FormApplication, old_instance.user);
+            GwinAppInstance old_instance = GwinAppInstance.instance;
+            GwinAppInstance.End();
+            GwinAppInstance.Start(old_instance.TypeDBContext, old_instance.TypeBaseBLO, old_instance.FormApplication, old_instance.user);
         }
         #endregion
 
@@ -189,7 +189,7 @@ namespace App.Gwin
         /// </summary>
         public static void End()
         {
-            GwinApp.instance = null;
+            GwinAppInstance.instance = null;
             // Despose All Calculated Configuration
             ConfigEntity.Despose();
         }

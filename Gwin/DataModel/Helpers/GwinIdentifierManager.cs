@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Gwin.DataModel.Helpers
+namespace GApp.GwinApp.DataModel.Helpers
 {
     public class GwinIdentifierManager
     {

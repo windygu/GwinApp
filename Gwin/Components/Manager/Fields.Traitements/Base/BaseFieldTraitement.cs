@@ -1,13 +1,13 @@
-﻿using App.Gwin.Attributes;
-using App.Gwin.Components.Manager.Fields.Traitements.Params;
-using App.Gwin.Exceptions.Gwin;
-using App.Gwin.FieldsTraitements.Enumerations;
-using App.Shared.AttributesManager;
+﻿using GApp.GwinApp.Attributes;
+using GApp.GwinApp.Components.Manager.Fields.Traitements.Params;
+using GApp.GwinApp.Exceptions.Gwin;
+using GApp.GwinApp.FieldsTraitements.Enumerations;
+using GApp.Shared.AttributesManager;
 using System;
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace App.Gwin.FieldsTraitements
+namespace GApp.GwinApp.FieldsTraitements
 {
 
     public class BaseFieldTraitement
@@ -43,7 +43,7 @@ namespace App.Gwin.FieldsTraitements
             // Get TypeFieldTraitement
             string field_nature = configProperty.FieldNature.ToString();
             Assembly assembly = typeof(DefaultFieldTraitement).Assembly;
-            string TypeFieldTraitement_Name = nameof(App) + "." + nameof(App.Gwin) + "." + nameof(App.Gwin.FieldsTraitements) + "." + field_nature + "FieldTraitement";
+            string TypeFieldTraitement_Name = nameof(GApp) + "." + nameof(GApp.GwinApp) + "." + nameof(GApp.GwinApp.FieldsTraitements) + "." + field_nature + "FieldTraitement";
             Type TypeFieldTraitement = assembly.GetType(TypeFieldTraitement_Name);
             if (TypeFieldTraitement == null) throw new GwinException("The class " + TypeFieldTraitement_Name + " not exist ");
 

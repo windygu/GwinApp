@@ -1,14 +1,14 @@
-﻿using App.Gwin.Attributes;
-using App.Gwin.Entities;
-using App.Gwin.Entities.MultiLanguage;
-using App.Gwin.GwinApplication.Security.Attributes;
+﻿using GApp.GwinApp.Attributes;
+using GApp.GwinApp.Entities;
+using GApp.GwinApp.Entities.MultiLanguage;
+using GApp.GwinApp.GwinApplication.Security.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Gwin.Entities.Application
+namespace GApp.GwinApp.Entities.Application
 {
     [GwinEntity(Localizable =true,isMaleName =false,DisplayMember ="Name",PluralName ="Applications",SingularName = "Application")]
     [Menu(Group =nameof(MenuItemApplication.ParentsMenuItem.Root))]

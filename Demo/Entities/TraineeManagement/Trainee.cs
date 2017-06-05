@@ -1,5 +1,5 @@
-﻿using App.Gwin.Attributes;
-using App.Gwin.Entities.MultiLanguage;
+﻿using GApp.GwinApp.Attributes;
+using GApp.GwinApp.Entities.MultiLanguage;
 using GenericWinForm.Demo.DAL;
 using GenericWinForm.Demo.Entities.Persons;
 using GenericWinForm.Demo.Entities.TrainingManagement;

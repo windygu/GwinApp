@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using App.Gwin.Entities;
+using GApp.GwinApp.Entities;
 using System.Windows.Forms;
 using GenericWinForm.Demo.BAL;
-using App.Gwin.Entities.Secrurity.Autorizations;
+using GApp.GwinApp.Entities.Secrurity.Autorizations;
 
-namespace App.Gwin.Application.BAL.Security
+namespace GApp.GwinApp.Application.BAL.Security
 {
     /// <summary>
     /// [Bug] this class use TestModelContext and Not ModelContext of Application

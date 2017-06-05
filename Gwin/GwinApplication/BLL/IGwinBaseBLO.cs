@@ -1,10 +1,10 @@
-﻿using App.Gwin.Attributes;
-using App.Gwin.Entities;
+﻿using GApp.GwinApp.Attributes;
+using GApp.GwinApp.Entities;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 
-namespace App.Gwin.Application.BAL
+namespace GApp.GwinApp.Application.BAL
 {
     /// <summary>
     ///  Business Object Interface

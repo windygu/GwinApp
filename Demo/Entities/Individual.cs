@@ -1,5 +1,5 @@
-﻿using App.Gwin.Attributes;
-using App.Gwin.GwinApplication.Security.Attributes;
+﻿using GApp.GwinApp.Attributes;
+using GApp.GwinApp.GwinApplication.Security.Attributes;
 using GenericWinForm.Demo.Entities.Persons;
 using GenericWinForm.Demo.Entities.ProjectManager;
 using System.Collections.Generic;

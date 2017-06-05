@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using App.Gwin.GwinApplication.BLL.Authentication;
+using GApp.GwinApp.GwinApplication.BLL.Authentication;
 
-namespace App.Gwin.Components.Authentication
+namespace GApp.GwinApp.Components.Authentication
 {
     public partial class LoginControl : UserControl
     {
@@ -53,7 +53,7 @@ namespace App.Gwin.Components.Authentication
 
         private void bt_cancel_Click(object sender, EventArgs e)
         {
-            GwinApp.CloseApplication();
+            GwinAppInstance.CloseApplication();
             return;
             
         }

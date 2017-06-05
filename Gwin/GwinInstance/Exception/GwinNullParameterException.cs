@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace App.Gwin.Exceptions.Gwin
+namespace GApp.GwinApp.Exceptions.Gwin
 {
     [Serializable]
     public  class GwinNullParameterException : Exception

@@ -7,14 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using App.Gwin.Attributes;
-using App.Gwin.EntityManagement;
+using GApp.GwinApp.Attributes;
+using GApp.GwinApp.EntityManagement;
 using System.Reflection;
-using App.Gwin.Application.BAL;
-using App.Gwin.Entities.Resources.Glossary;
-using App.Gwin.Components.Manager.Actions;
+using GApp.GwinApp.Application.BAL;
+using GApp.GwinApp.Entities.Resources.Glossary;
+using GApp.GwinApp.Components.Manager.Actions;
 
-namespace App.Gwin
+namespace GApp.GwinApp
 {
     /// <summary>
     /// Manager Form : CRUD Operation of GwinApplication with entity frameWork 
@@ -166,7 +166,7 @@ namespace App.Gwin
             // Move Code to Constructor
             // Change Direction of TabControlMainManager
             // Change Form Direction  - When  Languauge is changed
-            if (GwinApp.isRightToLeft)
+            if (GwinAppInstance.isRightToLeft)
             {
                 tabControl_MainManager.RightToLeftLayout = true;
                 tabControl_MainManager.RightToLeft = RightToLeft.Yes;

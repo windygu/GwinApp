@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace App.Gwin.Entities.Application.Resources.MenuItemApplication {
+namespace GApp.GwinApp.Entities.Application.Resources.MenuItemApplication {
     using System;
     
     

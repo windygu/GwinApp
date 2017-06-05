@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace App.Gwin.Attributes { 
+namespace GApp.GwinApp.Attributes { 
     public class DataGridAttribute : Attribute
     {
         #region DataGrid

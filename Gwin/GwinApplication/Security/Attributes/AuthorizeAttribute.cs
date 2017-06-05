@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace App.Gwin.GwinApplication.Security.Attributes
+namespace GApp.GwinApp.GwinApplication.Security.Attributes
 {
     /// <summary>
     /// Indicate that the EntityManager must be Autorised to be executed

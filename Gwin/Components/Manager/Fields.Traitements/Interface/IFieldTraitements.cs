@@ -1,11 +1,11 @@
-﻿using App.Gwin.Fields;
-using App.Gwin.Components.Manager.Fields.Traitements.Params;
-using App.Shared.AttributesManager;
+﻿using GApp.GwinApp.Fields;
+using GApp.GwinApp.Components.Manager.Fields.Traitements.Params;
+using GApp.Shared.AttributesManager;
 using System;
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace App.Gwin.FieldsTraitements
+namespace GApp.GwinApp.FieldsTraitements
 {
     public interface IFieldTraitements
     {

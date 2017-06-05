@@ -1,5 +1,5 @@
-﻿using App.Gwin.Components.Manager.DataGrid;
-using App.Gwin.Entities;
+﻿using GApp.GwinApp.Components.Manager.DataGrid;
+using GApp.GwinApp.Entities;
 using GenericWinForm.Demo.Entities;
 using GenericWinForm.Demo.Entities.ProjectManager;
 using System;

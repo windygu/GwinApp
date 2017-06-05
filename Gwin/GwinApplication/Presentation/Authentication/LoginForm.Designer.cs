@@ -1,4 +1,4 @@
-﻿namespace App.Gwin.GwinApplication.Presentation.Authentication
+﻿namespace GApp.GwinApp.GwinApplication.Presentation.Authentication
 {
     partial class LoginForm
     {
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
-            this.loginControl1 = new App.Gwin.Components.Authentication.LoginControl();
+            this.loginControl1 = new GApp.GwinApp.Components.Authentication.LoginControl();
             this.SuspendLayout();
             // 
             // loginControl1

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Gwin.Components.Manager.Actions
+namespace GApp.GwinApp.Components.Manager.Actions
 {
     public class BaseDataAction : MetroTile
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace App.Gwin.Attributes
+namespace GApp.GwinApp.Attributes
 {
     /// <summary>
     /// Displaying the object in the application menu

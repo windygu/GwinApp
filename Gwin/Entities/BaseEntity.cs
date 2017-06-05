@@ -1,6 +1,6 @@
-﻿using App.Gwin.Attributes;
-using App.Gwin.Entities.Secrurity.Authentication;
-using App.Gwin.Exceptions.Gwin;
+﻿using GApp.GwinApp.Attributes;
+using GApp.GwinApp.Entities.Secrurity.Authentication;
+using GApp.GwinApp.Exceptions.Gwin;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -10,7 +10,7 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
 
-namespace App.Gwin.Entities
+namespace GApp.GwinApp.Entities
 {
     /// <summary>
     /// La classe de Base de toutes les entity

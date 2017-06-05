@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace App.Gwin.Entities.MultiLanguage
+namespace GApp.GwinApp.Entities.MultiLanguage
 {
     [ComplexType]
     public class LocalizedString

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace App.Gwin.GwinApplication.Presentation.Messages {
+namespace GApp.GwinApp.GwinApplication.Presentation.Messages {
     using System;
     
     

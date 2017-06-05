@@ -1,4 +1,4 @@
-﻿namespace App.Gwin.Application.Presentation.MainForm
+﻿namespace GApp.GwinApp.Application.Presentation.MainForm
 {
     partial class FormLoader
     {

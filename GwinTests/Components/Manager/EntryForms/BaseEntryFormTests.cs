@@ -1,24 +1,24 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using App.Gwin;
+using GApp.GwinApp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using App.Gwin.Attributes;
+using GApp.GwinApp.Attributes;
 using GenericWinForm.Demo.Entities;
-using App.Gwin.Application.BAL;
+using GApp.GwinApp.Application.BAL;
 using GenericWinForm.Demo.BAL;
-using App.Gwin.Application.Presentation.MainForm;
-using App.Gwin.Entities;
-using App.Gwin.Exceptions.Gwin;
-using App.Gwin.DataModel.ModelInfo;
-using App.Shared.AttributesManager;
-using App.Gwin.FieldsTraitements;
+using GApp.GwinApp.Application.Presentation.MainForm;
+using GApp.GwinApp.Entities;
+using GApp.GwinApp.Exceptions.Gwin;
+using GApp.GwinApp.DataModel.ModelInfo;
+using GApp.Shared.AttributesManager;
+using GApp.GwinApp.FieldsTraitements;
 using GenericWinForm.Demo.DAL;
 using GenericWinForm.Demo.Entities.ProjectManager;
 
-namespace App.Gwin.Tests
+namespace GApp.GwinApp.Tests
 {
     [TestClass()]
     public class BaseEntryFormTests
@@ -29,7 +29,7 @@ namespace App.Gwin.Tests
         [TestInitialize]
         public void GwinAppStart()
         {
-            GwinApp.Start(typeof(ModelContext), typeof(BaseBLO<>), new FormApplication(), null);
+            GwinAppInstance.Start(typeof(ModelContext), typeof(BaseBLO<>), new FormApplication(), null);
             configEntity = ConfigEntity.CreateConfigEntity(typeof(TaskProject));
             Entity = new TaskProject();
             TaskProjectBLO = GwinBaseBLO<BaseEntity>.CreateBLO_Instance(typeof(TaskProject), typeof(BaseBLO<>));
@@ -77,7 +77,7 @@ namespace App.Gwin.Tests
             {
                 foreach (var item in new GwinEntitiesManager().GetAll_Entities_Type())
                 {
-                    IGwinBaseBLO EntityBLO = GwinBaseBLO<BaseEntity>.CreateBLO_Instance(item, GwinApp.Instance.TypeBaseBLO);
+                    IGwinBaseBLO EntityBLO = GwinBaseBLO<BaseEntity>.CreateBLO_Instance(item, GwinAppInstance.Instance.TypeBaseBLO);
                     BaseEntryForm baseEntryForm = new BaseEntryForm(EntityBLO);
                 }
             }

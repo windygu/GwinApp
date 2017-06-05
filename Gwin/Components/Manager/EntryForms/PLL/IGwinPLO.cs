@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Gwin.Components.Manager.EntryForms.PLL
+namespace GApp.GwinApp.Components.Manager.EntryForms.PLL
 {
 
     /// <summary>

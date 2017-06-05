@@ -382,9 +382,9 @@
     <Folder Include="Entities\Resources\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Gwin\Gwin.csproj">
+    <ProjectReference Include="..\Gwin\GwinApp.csproj">
       <Project>{7b89bd41-7117-4c2d-845f-45eeb252cc35}</Project>
-      <Name>Gwin</Name>
+      <Name>GwinApp</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

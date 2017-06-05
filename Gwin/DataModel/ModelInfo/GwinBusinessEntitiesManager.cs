@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Gwin.DataModel.ModelInfo
+namespace GApp.GwinApp.DataModel.ModelInfo
 {
     public class GwinBusinessEntitiesManager
     {
@@ -44,7 +44,7 @@ namespace App.Gwin.DataModel.ModelInfo
                 foreach (var item in ListeEntitiesTypes)
                 {
 
-                    Type TypeBLO = GwinApp.Instance.TypeBaseBLO.MakeGenericType(item);
+                    Type TypeBLO = GwinAppInstance.Instance.TypeBaseBLO.MakeGenericType(item);
                     Liste_All_BLO_types.Add(TypeBLO);
                 }
             }

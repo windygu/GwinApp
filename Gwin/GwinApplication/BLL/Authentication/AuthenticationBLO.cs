@@ -1,12 +1,12 @@
-﻿using App.Gwin.Application.BAL;
-using App.Gwin.Entities.Secrurity.Authentication;
+﻿using GApp.GwinApp.Application.BAL;
+using GApp.GwinApp.Entities.Secrurity.Authentication;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Gwin.GwinApplication.BLL.Authentication
+namespace GApp.GwinApp.GwinApplication.BLL.Authentication
 {
     public class AuthenticationBLO
     {
@@ -19,7 +19,7 @@ namespace App.Gwin.GwinApplication.BLL.Authentication
             if (user == null) return false;
             else
             {
-                GwinApp.Instance.user = user;
+                GwinAppInstance.Instance.user = user;
                 return true;
             }
         }
@@ -33,7 +33,7 @@ namespace App.Gwin.GwinApplication.BLL.Authentication
         private User CheckUser(string login, string password)
         {
             // Create UserBLO Instance
-            IGwinBaseBLO userBLO = GwinBaseBLO<User>.CreateBLO_Instance(typeof(User), GwinApp.Instance.TypeBaseBLO);
+            IGwinBaseBLO userBLO = GwinBaseBLO<User>.CreateBLO_Instance(typeof(User), GwinAppInstance.Instance.TypeBaseBLO);
 
             Dictionary<string, object> rechercheInfos = new Dictionary<string, object>();
             rechercheInfos.Add(nameof(User.Login), "="+login);

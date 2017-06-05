@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Gwin.GwinApplication.Security.Enumeration
+namespace GApp.GwinApp.GwinApplication.Security.Enumeration
 {
     public enum ActionGroup
     {

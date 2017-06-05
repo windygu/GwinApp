@@ -8,21 +8,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Reflection;
-using App.Gwin.Attributes;
-using App.Shared.AttributesManager;
-using App.Gwin.Entities;
+using GApp.GwinApp.Attributes;
+using GApp.Shared.AttributesManager;
+using GApp.GwinApp.Entities;
 using System.Resources;
-using App.Gwin.Entities.MultiLanguage;
-using App.Gwin.Application.BAL;
-using App.Gwin.Components.Manager.Fields.Traitements.Params;
-using App.Gwin.FieldsTraitements;
-using App.Gwin.Exceptions.Gwin;
-using App.Gwin.Exceptions.Helpers;
-using App.Gwin.Components.Manager.DataGrid;
-using App.Gwin.Application.Presentation.EntityManagement;
+using GApp.GwinApp.Entities.MultiLanguage;
+using GApp.GwinApp.Application.BAL;
+using GApp.GwinApp.Components.Manager.Fields.Traitements.Params;
+using GApp.GwinApp.FieldsTraitements;
+using GApp.GwinApp.Exceptions.Gwin;
+using GApp.GwinApp.Exceptions.Helpers;
+using GApp.GwinApp.Components.Manager.DataGrid;
+using GApp.GwinApp.Application.Presentation.EntityManagement;
 using MetroFramework;
 
-namespace App.Gwin
+namespace GApp.GwinApp
 {
     /// <summary>
     /// Gwin DataGrid Component
@@ -225,7 +225,7 @@ namespace App.Gwin
                         Form.SetEntity(obj);
 
                         // Show Form In MDI Application
-                        CreateAndShowManagerFormHelper ShowManagerFormHelper = new CreateAndShowManagerFormHelper(GwinApp.Instance.TypeDBContext,GwinApp.Instance.FormApplication);
+                        CreateAndShowManagerFormHelper ShowManagerFormHelper = new CreateAndShowManagerFormHelper(GwinAppInstance.Instance.TypeDBContext,GwinAppInstance.Instance.FormApplication);
                         ShowManagerFormHelper.ShwoForm(Form as Form);
 
                     }

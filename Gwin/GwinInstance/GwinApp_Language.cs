@@ -1,5 +1,5 @@
 ﻿
-using App.Gwin.Attributes;
+using GApp.GwinApp.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -9,9 +9,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace App.Gwin
+namespace GApp.GwinApp
 {
-    public partial class GwinApp
+    public partial class GwinAppInstance
     {
         /// <summary>
         /// Application Culutre Info 
@@ -34,12 +34,12 @@ namespace App.Gwin
         /// <param name="cultureInfo">CultureInfo Instance</param>
         public static void ChangeLanguage(CultureInfo cultureInfo)
         {
-            GwinApp.instance.user.Language = Convert_CultureInfo_Language(cultureInfo);
+            GwinAppInstance.instance.user.Language = Convert_CultureInfo_Language(cultureInfo);
             SetLanguage(cultureInfo);
 
             //[Role] Restart must be after Language change, for Set Application Name Title after 
             // Initialize Form
-            GwinApp.Restart();
+            GwinAppInstance.Restart();
         }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace App.Gwin
         {
 
 
-            GwinApp.TestIf_Gwin_isStart();
+            GwinAppInstance.TestIf_Gwin_isStart();
 
 
 
@@ -63,7 +63,7 @@ namespace App.Gwin
             cultureInfo.DateTimeFormat.Calendar = new System.Globalization.GregorianCalendar();
 
             // Change Gwin CultureInfo Instance
-            GwinApp.Instance.CultureInfo = cultureInfo;
+            GwinAppInstance.Instance.CultureInfo = cultureInfo;
 
             // Change Thread CultureInfo Instance
             Thread.CurrentThread.CurrentCulture = cultureInfo;
@@ -98,7 +98,7 @@ namespace App.Gwin
             get
             {
 
-                if (GwinApp.instance.user.Language == Languages.ar)
+                if (GwinAppInstance.instance.user.Language == Languages.ar)
                     return true;
                 else
                     return false;

@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using App.Gwin.Application.Presentation.MainForm;
+using GApp.GwinApp.Application.Presentation.MainForm;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using GenericWinForm.Demo.BAL;
 using GenericWinForm.Demo.DAL;
 
-namespace App.Gwin.Application.Presentation.MainForm.Tests
+namespace GApp.GwinApp.Application.Presentation.MainForm.Tests
 {
     [TestClass()]
     public class CreateApplicationMenuTests
@@ -16,14 +16,14 @@ namespace App.Gwin.Application.Presentation.MainForm.Tests
         [TestInitialize]
         public void GwinAppStart()
         {
-            GwinApp.Start(typeof(ModelContext), typeof(BaseBLO<>), new FormApplication(), null);
+            GwinAppInstance.Start(typeof(ModelContext), typeof(BaseBLO<>), new FormApplication(), null);
             
         }
 
         [TestMethod()]
         public void CreateApplicationMenuTest()
         {
-            CreateApplicationMenu CreateApplicationMenu = new CreateApplicationMenu(GwinApp.Instance.FormApplication);
+            CreateApplicationMenu CreateApplicationMenu = new CreateApplicationMenu(GwinAppInstance.Instance.FormApplication);
         }
     }
 }

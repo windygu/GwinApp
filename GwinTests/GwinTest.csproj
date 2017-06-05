@@ -104,9 +104,9 @@
       <Project>{79de0f1b-a471-46e4-91e5-145dbeffdf23}</Project>
       <Name>Demo</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Gwin\Gwin.csproj">
+    <ProjectReference Include="..\Gwin\GwinApp.csproj">
       <Project>{7b89bd41-7117-4c2d-845f-45eeb252cc35}</Project>
-      <Name>Gwin</Name>
+      <Name>GwinApp</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

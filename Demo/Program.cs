@@ -1,5 +1,5 @@
-﻿using App;
-using App.Gwin.GwinApplication.Presentation.Authentication;
+﻿using GApp;
+using GApp.GwinApp.GwinApplication.Presentation.Authentication;
 using GenericWinForm.Demo;
 using System;
 using System.Collections.Generic;

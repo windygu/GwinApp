@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using App.Gwin.FieldsTraitements;
+using GApp.GwinApp.FieldsTraitements;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,18 +8,18 @@ using System.Threading.Tasks;
 using GenericWinForm.Demo.Entities;
 using System.Reflection;
 using System.Drawing;
-using App.Shared.AttributesManager;
-using App.Gwin.Attributes;
+using GApp.Shared.AttributesManager;
+using GApp.GwinApp.Attributes;
 using System.Windows.Forms;
-using App.Gwin.Application.BAL;
-using App.Gwin.Entities;
-using App.Gwin.Fields;
+using GApp.GwinApp.Application.BAL;
+using GApp.GwinApp.Entities;
+using GApp.GwinApp.Fields;
 using GenericWinForm.Demo.BAL;
-using App.Gwin.EntityManagement;
+using GApp.GwinApp.EntityManagement;
 using GenericWinForm.Demo.DAL;
 using GenericWinForm.Demo.Entities.ProjectManager;
 
-namespace App.Gwin.FieldsTraitements.Tests
+namespace GApp.GwinApp.FieldsTraitements.Tests
 {
     [TestClass()]
     public class FieldTraitementTests
@@ -30,7 +30,7 @@ namespace App.Gwin.FieldsTraitements.Tests
         [TestInitialize]
         public void GwinAppStart()
         {
-            GwinApp.Start(typeof(ModelContext), typeof(BaseBLO<>), new Application.Presentation.MainForm.FormApplication(), null);
+            GwinAppInstance.Start(typeof(ModelContext), typeof(BaseBLO<>), new Application.Presentation.MainForm.FormApplication(), null);
             configEntity = ConfigEntity.CreateConfigEntity(typeof(TaskProject));
             Entity = new TaskProject();
             entityMiniConfigBLO = GwinBaseBLO<BaseEntity>.CreateBLO_Instance(typeof(TaskProject), typeof(BaseBLO<>));

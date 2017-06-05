@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace App.Gwin.Entities.Application.Resources.ApplicationName {
+namespace GApp.GwinApp.Entities.Application.Resources.ApplicationName {
     using System;
     
     

@@ -8,20 +8,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Reflection;
-using App.Gwin.Attributes;
-using App.Gwin.Fields;
-using App.Shared.AttributesManager;
-using App.Gwin.Entities;
+using GApp.GwinApp.Attributes;
+using GApp.GwinApp.Fields;
+using GApp.Shared.AttributesManager;
+using GApp.GwinApp.Entities;
 using System.Resources;
-using App.Gwin.Shared.Resources;
-using App.Components.Fields;
+using GApp.GwinApp.Shared.Resources;
+using GApp.Components.Fields;
 using System.Collections;
-using App.Gwin.Components.Manager.Fields.Traitements.Params;
-using App.Gwin.FieldsTraitements;
-using App.Gwin.Exceptions.Gwin;
-using App.Gwin.Application.BAL;
+using GApp.GwinApp.Components.Manager.Fields.Traitements.Params;
+using GApp.GwinApp.FieldsTraitements;
+using GApp.GwinApp.Exceptions.Gwin;
+using GApp.GwinApp.Application.BAL;
 
-namespace App.Gwin.EntityManagement
+namespace GApp.GwinApp.EntityManagement
 {
     /// <summary>
     /// Filter control, it is used in 
@@ -87,7 +87,7 @@ namespace App.Gwin.EntityManagement
 
 
            
-            if (GwinApp.isRightToLeft)
+            if (GwinAppInstance.isRightToLeft)
             {
                 this.flowLayoutPanel1.FlowDirection = FlowDirection.RightToLeft;
                 this.groupBoxFiltrage.RightToLeft = RightToLeft.Yes;

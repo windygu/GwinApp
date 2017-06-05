@@ -1,6 +1,6 @@
-﻿using App.Gwin.Application.Presentation.Messages;
-using App.Gwin.DataModel.ModelInfo;
-using App.Gwin.Exceptions.Gwin;
+﻿using GApp.GwinApp.Application.Presentation.Messages;
+using GApp.GwinApp.DataModel.ModelInfo;
+using GApp.GwinApp.Exceptions.Gwin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace App.Gwin.Shared.Resources
+namespace GApp.GwinApp.Shared.Resources
 {
     /// <summary>
     /// Loading ressouce manager helper

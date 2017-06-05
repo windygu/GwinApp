@@ -1,7 +1,7 @@
-﻿using App.Gwin.Entities;
-using App.Gwin.Exceptions.Gwin;
-using App.Gwin.Fields;
-using App.Gwin.Components.Manager.Fields.Traitements.Params;
+﻿using GApp.GwinApp.Entities;
+using GApp.GwinApp.Exceptions.Gwin;
+using GApp.GwinApp.Fields;
+using GApp.GwinApp.Components.Manager.Fields.Traitements.Params;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,11 +9,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using App.Shared.AttributesManager;
+using GApp.Shared.AttributesManager;
 using System.Reflection;
-using App.Gwin.Entities.Resources.Glossary;
+using GApp.GwinApp.Entities.Resources.Glossary;
 
-namespace App.Gwin.FieldsTraitements
+namespace GApp.GwinApp.FieldsTraitements
 {
     public class ManyToMany_CreationFieldTraitement : BaseFieldTraitement, IFieldTraitements
     {

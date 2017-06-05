@@ -1,6 +1,6 @@
-﻿using App.Gwin.Attributes;
-using App.Gwin.Entities.Application;
-using App.Gwin.ModelData;
+﻿using GApp.GwinApp.Attributes;
+using GApp.GwinApp.Entities.Application;
+using GApp.GwinApp.ModelData;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Gwin.Application.BAL
+namespace GApp.GwinApp.Application.BAL
 {
     /// <summary>
     /// Configuration After Update or first installation

@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{069542D9-0507-451E-8899-912E42B3C1A2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GwinField</RootNamespace>
+    <AssemblyName>GwinField</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class1.cs" />
+    <Compile Include="Fields\BaseField.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fields\BaseField.Designer.cs">
+      <DependentUpon>BaseField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fields\BooleanField.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fields\BooleanField.Designer.cs">
+      <DependentUpon>BooleanField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fields\ComboBoxField.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fields\ComboBoxField.Designer.cs">
+      <DependentUpon>ComboBoxField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fields\Controls\DateTimeControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fields\Controls\DateTimeControl.Designer.cs">
+      <DependentUpon>DateTimeControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fields\Controls\IInputCollectionControle.cs" />
+    <Compile Include="Fields\Controls\InputCollectionControle.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fields\Controls\InputCollectionControle.Designer.cs">
+      <DependentUpon>InputCollectionControle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fields\Controls\SelectionFilter.cs" />
+    <Compile Include="Fields\DateTimeField.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fields\DateTimeField.Designer.cs">
+      <DependentUpon>DateTimeField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fields\DefaultField.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fields\DefaultField.Designer.cs">
+      <DependentUpon>DefaultField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fields\Exceptions\FieldNotExistInFormException.cs" />
+    <Compile Include="Fields\IBaseField.cs" />
+    <Compile Include="Fields\Int32Filed.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fields\Int32Filed.Designer.cs">
+      <DependentUpon>Int32Filed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fields\ManyToManyField.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fields\ManyToManyField.Designer.cs">
+      <DependentUpon>ManyToManyField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fields\ManyToOne\ManyToOneField.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fields\ManyToOne\ManyToOneField.Designer.cs">
+      <DependentUpon>ManyToOneField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fields\StringField.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fields\StringField.Designer.cs">
+      <DependentUpon>StringField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fields\TestFields\FormTestDateTimeField.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fields\TestFields\FormTestDateTimeField.Designer.cs">
+      <DependentUpon>FormTestDateTimeField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fields\Validation\MessageValidation.cs" />
+    <Compile Include="Fields\Validation\ValidationManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Fields\BaseField.resx">
+      <DependentUpon>BaseField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fields\BooleanField.resx">
+      <DependentUpon>BooleanField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fields\ComboBoxField.resx">
+      <DependentUpon>ComboBoxField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fields\Controls\DateTimeControl.resx">
+      <DependentUpon>DateTimeControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fields\Controls\InputCollectionControle.resx">
+      <DependentUpon>InputCollectionControle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fields\DateTimeField.resx">
+      <DependentUpon>DateTimeField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fields\DefaultField.resx">
+      <DependentUpon>DefaultField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fields\Int32Filed.resx">
+      <DependentUpon>Int32Filed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fields\ManyToManyField.resx">
+      <DependentUpon>ManyToManyField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fields\ManyToOne\ManyToOneField.resx">
+      <DependentUpon>ManyToOneField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fields\StringField.resx">
+      <DependentUpon>StringField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fields\TestFields\FormTestDateTimeField.resx">
+      <DependentUpon>FormTestDateTimeField.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

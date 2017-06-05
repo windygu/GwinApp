@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Gwin.FieldsTraitements.Enumerations
+namespace GApp.GwinApp.FieldsTraitements.Enumerations
 {
     /// <summary>
     /// Field Type suported by Gwin Application

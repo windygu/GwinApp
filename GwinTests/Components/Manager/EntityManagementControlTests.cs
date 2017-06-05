@@ -1,19 +1,19 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using App.Gwin;
+using GApp.GwinApp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GenericWinForm.Demo.BAL;
-using App.Gwin.Application.Presentation.MainForm;
-using App.Gwin.Application.Presentation;
-using App.Gwin.Application.Presentation.EntityManagement;
+using GApp.GwinApp.Application.Presentation.MainForm;
+using GApp.GwinApp.Application.Presentation;
+using GApp.GwinApp.Application.Presentation.EntityManagement;
 using System.Windows.Forms;
-using App.Gwin.DataModel.ModelInfo;
+using GApp.GwinApp.DataModel.ModelInfo;
 using GenericWinForm.Demo.DAL;
 
-namespace App.Gwin.Tests
+namespace GApp.GwinApp.Tests
 {
     [TestClass()]
     public class EntityManagementControlTests
@@ -23,7 +23,7 @@ namespace App.Gwin.Tests
         [TestInitialize]
         public void initBaseEntityBAOTests()
         {
-            GwinApp.Start(typeof(ModelContext), typeof(BaseBLO<>), new FormApplication(), null);
+            GwinAppInstance.Start(typeof(ModelContext), typeof(BaseBLO<>), new FormApplication(), null);
         }
 
         /// <summary>

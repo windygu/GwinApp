@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace App.Gwin.GwinApplication.Presentation.Authentication
+namespace GApp.GwinApp.GwinApplication.Presentation.Authentication
 {
     public partial class LoginForm : Form
     {
@@ -18,7 +18,7 @@ namespace App.Gwin.GwinApplication.Presentation.Authentication
 
             this.AcceptButton = loginControl1.GetConnexionButton();
             // Change Form Direction  - When  Languauge is changed
-            if (GwinApp.Instance.CultureInfo.TwoLetterISOLanguageName == "fr" || GwinApp.Instance.CultureInfo.TwoLetterISOLanguageName == "en")
+            if (GwinAppInstance.Instance.CultureInfo.TwoLetterISOLanguageName == "fr" || GwinAppInstance.Instance.CultureInfo.TwoLetterISOLanguageName == "en")
             {
                 this.RightToLeftLayout = false;
                 this.RightToLeft = RightToLeft.No;
@@ -33,7 +33,7 @@ namespace App.Gwin.GwinApplication.Presentation.Authentication
         private void LoginForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (!loginControl1.LoginValide)
-                GwinApp.CloseApplication();
+                GwinAppInstance.CloseApplication();
         }
     }
 }

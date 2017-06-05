@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Gwin.EntityManagement
+namespace GApp.GwinApp.EntityManagement
 {
     public interface IBaseFilterControl
     {

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace App.Gwin.Entities.Secrurity.Authentication.Resources.User {
+namespace GApp.GwinApp.Entities.Secrurity.Authentication.Resources.User {
     using System;
     
     

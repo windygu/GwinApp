@@ -1,4 +1,4 @@
-﻿using App.Migrations;
+﻿using GApp.Migrations;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
@@ -9,7 +9,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.DAL
+namespace GApp.DAL
 {
     public static class LocalDB
     {

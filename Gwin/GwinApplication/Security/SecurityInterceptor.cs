@@ -1,10 +1,10 @@
-﻿using App.Gwin.Application.BAL;
-using App.Gwin.Application.Presentation.Messages;
-using App.Gwin.Entities.Secrurity.Authentication;
-using App.Gwin.Exceptions.Gwin;
-using App.Gwin.GwinApplication.AOP;
-using App.Gwin.GwinApplication.Security.Attributes;
-using App.Gwin.GwinApplication.Security.Exception;
+﻿using GApp.GwinApp.Application.BAL;
+using GApp.GwinApp.Application.Presentation.Messages;
+using GApp.GwinApp.Entities.Secrurity.Authentication;
+using GApp.GwinApp.Exceptions.Gwin;
+using GApp.GwinApp.GwinApplication.AOP;
+using GApp.GwinApp.GwinApplication.Security.Attributes;
+using GApp.GwinApp.GwinApplication.Security.Exception;
 using Castle.DynamicProxy;
 using System;
 using System.Collections.Generic;
@@ -12,7 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Gwin.Security
+namespace GApp.GwinApp.Security
 {
     /// <summary>
     /// Security Implementation
@@ -24,7 +24,7 @@ namespace App.Gwin.Security
         {
 
             // Create Business Instance 
-            IGwinBaseBLO blo = (IGwinBaseBLO)Activator.CreateInstance(invocation.Method.DeclaringType, GwinApp.Instance.TypeDBContext);
+            IGwinBaseBLO blo = (IGwinBaseBLO)Activator.CreateInstance(invocation.Method.DeclaringType, GwinAppInstance.Instance.TypeDBContext);
             String EntityReference = blo.ConfigEntity.TypeOfEntity.FullName;
 
 
@@ -37,7 +37,7 @@ namespace App.Gwin.Security
             }
 
             // Check autorization
-            if (GwinApp.Instance.user.Reference == nameof(User.Users.Root) || GwinApp.Instance.user.HasAccess(EntityReference, invocation.Method.Name))
+            if (GwinAppInstance.Instance.user.Reference == nameof(User.Users.Root) || GwinAppInstance.Instance.user.HasAccess(EntityReference, invocation.Method.Name))
                 invocation.Proceed();
             else
             {

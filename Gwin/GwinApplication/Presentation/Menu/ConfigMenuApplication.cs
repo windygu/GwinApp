@@ -1,18 +1,18 @@
-﻿using App.Gwin.Application.BAL;
-using App.Gwin.Application.Presentation.EntityManagement;
-using App.Gwin.Attributes;
-using App.Gwin.DataModel.ModelInfo;
-using App.Gwin.Entities;
-using App.Gwin.Entities.Application;
-using App.Gwin.Exceptions.Gwin;
-using App.Gwin.ModelData;
-using App.Gwin.Structures;
+﻿using GApp.GwinApp.Application.BAL;
+using GApp.GwinApp.Application.Presentation.EntityManagement;
+using GApp.GwinApp.Attributes;
+using GApp.GwinApp.DataModel.ModelInfo;
+using GApp.GwinApp.Entities;
+using GApp.GwinApp.Entities.Application;
+using GApp.GwinApp.Exceptions.Gwin;
+using GApp.GwinApp.ModelData;
+using GApp.GwinApp.Structures;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace App.Gwin.Application.Presentation.MainForm
+namespace GApp.GwinApp.Application.Presentation.MainForm
 {
     /// <summary>
     /// Create Menu of Application
@@ -56,9 +56,9 @@ namespace App.Gwin.Application.Presentation.MainForm
             MenuItems = new Dictionary<string, Type>();
             MenuStruct = new MenuStruct();
             // Properties
-            this.ShowManagementForm = new CreateAndShowManagerFormHelper(GwinApp.Instance.TypeDBContext, FormMenu);
+            this.ShowManagementForm = new CreateAndShowManagerFormHelper(GwinAppInstance.Instance.TypeDBContext, FormMenu);
             this.MenuItemApplicationService = GwinBaseBLO<BaseEntity>
-                .CreateBLO_Instance(typeof(MenuItemApplication), GwinApp.Instance.TypeBaseBLO);
+                .CreateBLO_Instance(typeof(MenuItemApplication), GwinAppInstance.Instance.TypeBaseBLO);
             // Create Menu
             this.CalculateMenuItems();
             this.ShowMenuItems();
@@ -75,7 +75,7 @@ namespace App.Gwin.Application.Presentation.MainForm
             {
                 //Continue if user don't have a role required by menuItemApplication roles
                 if (menuItemApplication.Roles != null && menuItemApplication.Roles.Count > 0)
-                    if (!GwinApp.Instance.user.HasOneOfRoles(menuItemApplication.Roles))
+                    if (!GwinAppInstance.Instance.user.HasOneOfRoles(menuItemApplication.Roles))
                         continue;
 
                 // Create Parent Menu Item
@@ -131,7 +131,7 @@ namespace App.Gwin.Application.Presentation.MainForm
 
 
                 // Security : Continue if User dont have persmission
-                if (!GwinApp.Instance.user.HasAccess(EntityType)) continue;
+                if (!GwinAppInstance.Instance.user.HasAccess(EntityType)) continue;
 
 
 

@@ -1,6 +1,6 @@
-﻿using App.Gwin;
-using App.Gwin.Entities.Secrurity.Authentication;
-using App.Gwin.Entities.Secrurity.Autorizations;
+﻿using GApp.GwinApp;
+using GApp.GwinApp.Entities.Secrurity.Authentication;
+using GApp.GwinApp.Entities.Secrurity.Autorizations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -36,7 +36,7 @@ namespace GenericWinForm.Demo.BAL
             Role guestRole = (Role)RoleBLO.GetBaseEntityByReference(nameof(Role.Roles.Guest));
 
             // Check if User has Root access
-            if (GwinApp.Instance.user.HasOneOfRoles(new List<Role> { rootRole, guestRole }))
+            if (GwinAppInstance.Instance.user.HasOneOfRoles(new List<Role> { rootRole, guestRole }))
             {
                 return base.Recherche(rechercheInfos, startPage, itemsPerPage);
             }

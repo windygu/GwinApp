@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using MetroFramework.Controls;
 using System.IO;
 
-namespace App.Gwin.Components.Manager.Actions
+namespace GApp.GwinApp.Components.Manager.Actions
 {
     public partial class ActionsComponent : MetroUserControl
     {
@@ -31,7 +31,7 @@ namespace App.Gwin.Components.Manager.Actions
             InitializeComponent();
 
             // Direction
-            if (GwinApp.isRightToLeft)
+            if (GwinAppInstance.isRightToLeft)
                 flowLayoutPanel1.FlowDirection = FlowDirection.RightToLeft;
             else
                 flowLayoutPanel1.FlowDirection = FlowDirection.LeftToRight;

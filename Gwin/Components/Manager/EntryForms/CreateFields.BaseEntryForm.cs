@@ -1,7 +1,7 @@
-﻿using App.Shared.AttributesManager;
-using App.Gwin.Attributes;
-using App.Gwin.Fields;
-using App.Gwin.Entities;
+﻿using GApp.Shared.AttributesManager;
+using GApp.GwinApp.Attributes;
+using GApp.GwinApp.Fields;
+using GApp.GwinApp.Entities;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,14 +12,14 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using App.Gwin.Shared.Resources;
+using GApp.GwinApp.Shared.Resources;
 using System.Resources;
-using App.Components.Fields;
-using App.Gwin.FieldsTraitements;
-using App.Gwin.Exceptions.Gwin;
-using App.Gwin.Components.Manager.Fields.Traitements.Params;
+using GApp.Components.Fields;
+using GApp.GwinApp.FieldsTraitements;
+using GApp.GwinApp.Exceptions.Gwin;
+using GApp.GwinApp.Components.Manager.Fields.Traitements.Params;
 
-namespace App.Gwin
+namespace GApp.GwinApp
 {
     /// <summary>
     /// Field Creation
@@ -51,7 +51,7 @@ namespace App.Gwin
             
             this.FlowLayoutContainer.Controls.Add(this.flowLayoutPanelForm);
 
-            if (GwinApp.isRightToLeft)
+            if (GwinAppInstance.isRightToLeft)
             {
                 this.flowLayoutPanelForm.FlowDirection = FlowDirection.RightToLeft;
                 this.FlowLayoutContainer.RightToLeft = RightToLeft.Yes;
@@ -159,7 +159,7 @@ namespace App.Gwin
                 if (configProperty.EntryForm?.isRequired == true)
                 {
                     baseField.ValidatingField += textBoxString_Validating;
-                    GwinApp.Instance.Theme.RequiredField(baseField);
+                    GwinAppInstance.Instance.Theme.RequiredField(baseField);
                 }
 
                 // Add Field to List 

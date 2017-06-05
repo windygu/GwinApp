@@ -1,10 +1,10 @@
-﻿using App.Gwin;
-using App.Gwin.Application;
-using App.Gwin.Application.Presentation.Messages;
-using App.Gwin.Attributes;
-using App.Gwin.Entities;
-using App.Gwin.Shared.Resources;
-using App.Gwin.Entities.Resources.Glossary;
+﻿using GApp.GwinApp;
+using GApp.GwinApp.Application;
+using GApp.GwinApp.Application.Presentation.Messages;
+using GApp.GwinApp.Attributes;
+using GApp.GwinApp.Entities;
+using GApp.GwinApp.Shared.Resources;
+using GApp.GwinApp.Entities.Resources.Glossary;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -13,12 +13,12 @@ using System.Reflection;
 using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
-using App.Gwin.FieldsTraitements.Enumerations;
-using App.Gwin.Exceptions.Gwin;
-using App.Gwin.DataModel.Exceptions;
-using App.Gwin.FieldsTraitements;
+using GApp.GwinApp.FieldsTraitements.Enumerations;
+using GApp.GwinApp.Exceptions.Gwin;
+using GApp.GwinApp.DataModel.Exceptions;
+using GApp.GwinApp.FieldsTraitements;
 
-namespace App.Shared.AttributesManager
+namespace GApp.Shared.AttributesManager
 {
     /// <summary>
     /// Read Property Configuration
@@ -65,7 +65,7 @@ namespace App.Shared.AttributesManager
 
 
             // Culture Info
-            this.CultureInfo = GwinApp.Instance.CultureInfo;
+            this.CultureInfo = GwinAppInstance.Instance.CultureInfo;
 
             // Localizable
             this.TypeOfEntity = propertyInfo.ReflectedType;

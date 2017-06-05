@@ -1,11 +1,11 @@
-﻿using App.Gwin.Entities;
+﻿using GApp.GwinApp.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Gwin
+namespace GApp.GwinApp
 {
     /// <summary>
     /// Interface of Composant : EntityDataGrid to show and edit list of entities

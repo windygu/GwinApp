@@ -1,8 +1,8 @@
-﻿using App.Gwin.Exceptions.Gwin;
-using App.Gwin.Fields;
-using App.Gwin.Components.Manager.Fields.Traitements.Params;
-using App.Shared.AttributesManager;
-using App.Components.Fields;
+﻿using GApp.GwinApp.Exceptions.Gwin;
+using GApp.GwinApp.Fields;
+using GApp.GwinApp.Components.Manager.Fields.Traitements.Params;
+using GApp.Shared.AttributesManager;
+using GApp.Components.Fields;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.ComponentModel;
 
-namespace App.Gwin.FieldsTraitements
+namespace GApp.GwinApp.FieldsTraitements
 {
     public class DateTimeFieldTraitement : BaseFieldTraitement, IFieldTraitements
     {

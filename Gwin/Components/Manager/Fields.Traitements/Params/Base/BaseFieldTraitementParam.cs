@@ -1,15 +1,15 @@
-﻿using App.Gwin.Application.BAL;
-using App.Gwin.Attributes;
-using App.Gwin.Entities;
-using App.Shared.AttributesManager;
+﻿using GApp.GwinApp.Application.BAL;
+using GApp.GwinApp.Attributes;
+using GApp.GwinApp.Entities;
+using GApp.Shared.AttributesManager;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using App.Gwin.Fields;
+using GApp.GwinApp.Fields;
 
-namespace App.Gwin.Components.Manager.Fields.Traitements.Params
+namespace GApp.GwinApp.Components.Manager.Fields.Traitements.Params
 {
     public class BaseFieldTraitementParam
     {

@@ -1,4 +1,4 @@
-﻿using App.Gwin.GwinApplication.AOP;
+﻿using GApp.GwinApp.GwinApplication.AOP;
 using Castle.DynamicProxy;
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Gwin.Logging
+namespace GApp.GwinApp.Logging
 {
     /// <summary>
     /// Loggin Exemple Usign Castel.WinSor Library

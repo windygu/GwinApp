@@ -1,15 +1,15 @@
-﻿using App;
+﻿using GApp;
 using GenericWinForm.Demo.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using App.Gwin.Entities;
-using App.Gwin.GwinApplication.Security.Attributes;
-using App.Gwin.FieldsTraitements;
-using App.Shared.AttributesManager;
-using App.Gwin.Logging;
+using GApp.GwinApp.Entities;
+using GApp.GwinApp.GwinApplication.Security.Attributes;
+using GApp.GwinApp.FieldsTraitements;
+using GApp.Shared.AttributesManager;
+using GApp.GwinApp.Logging;
 using GenericWinForm.Demo.Entities.ProjectManager;
 
 namespace GenericWinForm.Demo.BAL

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Gwin.DataModel.Exceptions
+namespace GApp.GwinApp.DataModel.Exceptions
 {
     class Class1
     {

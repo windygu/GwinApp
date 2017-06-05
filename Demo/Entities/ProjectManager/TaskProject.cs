@@ -1,9 +1,9 @@
-﻿using App.Gwin.Attributes;
-using App.Gwin.DataModel.ModelInfo;
-using App.Gwin.Entities;
-using App.Gwin.Entities.MultiLanguage;
-using App.Gwin.GwinApplication.Security.Attributes;
-using App.Gwin.ModelData;
+﻿using GApp.GwinApp.Attributes;
+using GApp.GwinApp.DataModel.ModelInfo;
+using GApp.GwinApp.Entities;
+using GApp.GwinApp.Entities.MultiLanguage;
+using GApp.GwinApp.GwinApplication.Security.Attributes;
+using GApp.GwinApp.ModelData;
 using GenericWinForm.Demo.DAL;
 using GenericWinForm.Demo.Entities.TraineeManagement;
 using GenericWinForm.Demo.Presentation.TaskProjectManager;

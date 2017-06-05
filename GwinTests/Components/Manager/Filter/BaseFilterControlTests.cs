@@ -1,12 +1,12 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using App.Gwin.EntityManagement;
+using GApp.GwinApp.EntityManagement;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Gwin.EntityManagement.Tests
+namespace GApp.GwinApp.EntityManagement.Tests
 {
     [TestClass()]
     public class BaseFilterControlTests

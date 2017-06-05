@@ -1,4 +1,4 @@
-﻿namespace App.Gwin.EntityManagement
+﻿namespace GApp.GwinApp.EntityManagement
 {
     partial class BaseFilterControl
     {

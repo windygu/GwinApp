@@ -1,4 +1,4 @@
-﻿namespace App.Gwin.Components.Manager.Actions
+﻿namespace GApp.GwinApp.Components.Manager.Actions
 {
     partial class ActionsComponent
     {

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace App.Gwin.Entities.Resources.BaseEntity {
+namespace GApp.GwinApp.Entities.Resources.BaseEntity {
     using System;
     
     

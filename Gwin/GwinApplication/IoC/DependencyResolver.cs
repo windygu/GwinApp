@@ -1,8 +1,8 @@
-﻿using App.Gwin.Application.BAL;
+﻿using GApp.GwinApp.Application.BAL;
 using Castle.Windsor;
 using System;
 
-namespace App.Gwin.GwinApplication.IoC
+namespace GApp.GwinApp.GwinApplication.IoC
 {
     /// <summary>
     /// WindsorContainer

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace App.Gwin.DataModel.Exceptions
+namespace GApp.GwinApp.DataModel.Exceptions
 {
     [Serializable]
     public class AnnotationNotExistException : Exception

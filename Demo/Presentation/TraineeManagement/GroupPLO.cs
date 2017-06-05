@@ -1,10 +1,10 @@
-﻿using App.Gwin.Components.Manager.EntryForms.PLL;
+﻿using GApp.GwinApp.Components.Manager.EntryForms.PLL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using App.Gwin;
+using GApp.GwinApp;
 using GenericWinForm.Demo.Entities.TraineeManagement;
 
 namespace GenericWinForm.Demo.Presentation.TraineeManagement

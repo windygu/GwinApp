@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace App.Gwin.Application.Presentation
+namespace GApp.GwinApp.Application.Presentation
 {
     public class BaseForm :MetroFramework.Forms.MetroForm, IBaseForm
     {

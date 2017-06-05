@@ -1,14 +1,14 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using App;
-using App.Gwin.DataModel.ModelInfo;
-using App.Gwin.Entities;
-using App.Shared.AttributesManager;
-using App.Gwin.Attributes;
-using App.Gwin.FieldsTraitements;
-using App.Gwin;
+using GApp;
+using GApp.GwinApp.DataModel.ModelInfo;
+using GApp.GwinApp.Entities;
+using GApp.Shared.AttributesManager;
+using GApp.GwinApp.Attributes;
+using GApp.GwinApp.FieldsTraitements;
+using GApp.GwinApp;
 using GenericWinForm.Demo.BAL;
-using App.Gwin.Application.Presentation.MainForm;
+using GApp.GwinApp.Application.Presentation.MainForm;
 using System.Collections.Generic;
 using GenericWinForm.Demo.DAL;
 
@@ -20,7 +20,7 @@ namespace GenericWinFormTests.Entities
         [TestInitialize]
         public void GwinAppStart()
         {
-            GwinApp.Start(typeof(ModelContext), typeof(BaseBLO<>), new FormApplication(), null);
+            GwinAppInstance.Start(typeof(ModelContext), typeof(BaseBLO<>), new FormApplication(), null);
 
         }
 

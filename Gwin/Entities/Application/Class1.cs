@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Gwin.Entities.Application
+namespace GApp.GwinApp.Entities.Application
 {
     class Class1
     {

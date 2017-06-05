@@ -1,4 +1,4 @@
-﻿namespace App.Gwin
+﻿namespace GApp.GwinApp
 {
     partial class ManagerFormControl
     {

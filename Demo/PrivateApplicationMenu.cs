@@ -1,8 +1,8 @@
-﻿using App;
-using App.Gwin;
-using App.Gwin.Application.Presentation;
-using App.Gwin.Application.Presentation.EntityManagement;
-using App.Gwin.Entities.Secrurity.Authentication;
+﻿using GApp;
+using GApp.GwinApp;
+using GApp.GwinApp.Application.Presentation;
+using GApp.GwinApp.Application.Presentation.EntityManagement;
+using GApp.GwinApp.Entities.Secrurity.Authentication;
 using GenericWinForm.Demo.BAL;
 using GenericWinForm.Demo.DAL;
 using GenericWinForm.Demo.Entities;
@@ -39,10 +39,10 @@ namespace GenericWinForm.Demo
         {
             // Application User
             User user = new User();
-            user.Language = GwinApp.Languages.ar;
+            user.Language = GwinAppInstance.Languages.ar;
 
             // Start Gwin Application
-            GwinApp.Start(typeof(ModelContext), typeof(BaseBLO<>),null, user);
+            GwinAppInstance.Start(typeof(ModelContext), typeof(BaseBLO<>),null, user);
         }
 
         public void Reload()

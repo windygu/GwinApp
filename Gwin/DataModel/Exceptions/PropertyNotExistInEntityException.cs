@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace App.Gwin.Fields
+namespace GApp.GwinApp.Fields
 {
     [Serializable]
     public class PropertyNotExistInEntityException : Exception

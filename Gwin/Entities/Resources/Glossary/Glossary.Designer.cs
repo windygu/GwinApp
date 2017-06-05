@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace App.Gwin.Entities.Resources.Glossary {
+namespace GApp.GwinApp.Entities.Resources.Glossary {
     using System;
     
     

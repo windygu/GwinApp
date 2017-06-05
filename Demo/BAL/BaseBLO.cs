@@ -6,17 +6,17 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
-using App.Gwin.Attributes;
+using GApp.GwinApp.Attributes;
 using LinqExtension;
 using System.Reflection;
 using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
-using App.Gwin;
+using GApp.GwinApp;
 using System.Data.Entity.Validation;
-using App.Gwin.Entities;
-using App.Gwin.Application.Presentation.Messages;
-using App.Gwin.Application.BAL;
-using App;
+using GApp.GwinApp.Entities;
+using GApp.GwinApp.Application.Presentation.Messages;
+using GApp.GwinApp.Application.BAL;
+using GApp;
 using GenericWinForm.Demo.DAL;
 
 namespace GenericWinForm.Demo.BAL

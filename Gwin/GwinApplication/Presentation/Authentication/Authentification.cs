@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Authentification
+namespace GApp.Authentification
 {
     public class Authentification
     {

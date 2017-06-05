@@ -1,21 +1,21 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using App.Shared.AttributesManager;
+using GApp.Shared.AttributesManager;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using App.Gwin.Attributes;
+using GApp.GwinApp.Attributes;
 using GenericWinForm.Demo.Entities;
 using System.Reflection;
-using App.Gwin.Application.BAL.GwinApplication;
-using App.Gwin.Application.Presentation.MainForm;
-using App.Gwin;
+using GApp.GwinApp.Application.BAL.GwinApplication;
+using GApp.GwinApp.Application.Presentation.MainForm;
+using GApp.GwinApp;
 using GenericWinForm.Demo.BAL;
 using GenericWinForm.Demo.DAL;
 using GenericWinForm.Demo.Entities.ProjectManager;
 
-namespace App.Shared.AttributesManager.Tests
+namespace GApp.Shared.AttributesManager.Tests
 {
     [TestClass()]
     public class ConfigPropertyTests
@@ -27,7 +27,7 @@ namespace App.Shared.AttributesManager.Tests
         [TestInitialize]
         public void initBaseEntityBAOTests()
         {
-            GwinApp.Start(typeof(ModelContext), typeof(BaseBLO<>), new FormApplication(), null);
+            GwinAppInstance.Start(typeof(ModelContext), typeof(BaseBLO<>), new FormApplication(), null);
         }
 
         /// <summary>

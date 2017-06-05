@@ -1,11 +1,11 @@
-﻿using App;
-using App.Gwin;
-using App.Gwin.Application.BAL;
-using App.Gwin.Application.Presentation.EntityManagement;
-using App.Gwin.Application.Presentation.MainForm;
-using App.Gwin.Entities;
-using App.Gwin.Entities.Application;
-using App.Gwin.Entities.Secrurity.Authentication;
+﻿using GApp;
+using GApp.GwinApp;
+using GApp.GwinApp.Application.BAL;
+using GApp.GwinApp.Application.Presentation.EntityManagement;
+using GApp.GwinApp.Application.Presentation.MainForm;
+using GApp.GwinApp.Entities;
+using GApp.GwinApp.Entities.Application;
+using GApp.GwinApp.Entities.Secrurity.Authentication;
 using GenericWinForm.Demo.BAL;
 using GenericWinForm.Demo.DAL;
 using GenericWinForm.Demo.Entities;
@@ -29,10 +29,10 @@ namespace GenericWinForm.Demo
         //    user = User.CreateAdminUser(new ModelContext());
             user = User.CreateGuestUser(new ModelContext());
           //  user = User.CreateRootUser(new ModelContext());
-            user.Language = GwinApp.Languages.fr;
+            user.Language = GwinAppInstance.Languages.fr;
 
             // Start Gwin Application with Authentification
-            GwinApp.Start(typeof(ModelContext), typeof(BaseBLO<>), this, user);
+            GwinAppInstance.Start(typeof(ModelContext), typeof(BaseBLO<>), this, user);
 
 
         }
@@ -48,13 +48,13 @@ namespace GenericWinForm.Demo
 
         private void btProjectManager_Click(object sender, EventArgs e)
         {
-            CreateAndShowManagerFormHelper ShowManagementFormHelper = new CreateAndShowManagerFormHelper(GwinApp.Instance.TypeDBContext, this);
+            CreateAndShowManagerFormHelper ShowManagementFormHelper = new CreateAndShowManagerFormHelper(GwinAppInstance.Instance.TypeDBContext, this);
             ShowManagementFormHelper.ShowManagerForm(typeof(Project));
         }
 
         private void btTaskManager_Click(object sender, EventArgs e)
         {
-            CreateAndShowManagerFormHelper ShowManagementFormHelper = new CreateAndShowManagerFormHelper(GwinApp.Instance.TypeDBContext, this);
+            CreateAndShowManagerFormHelper ShowManagementFormHelper = new CreateAndShowManagerFormHelper(GwinAppInstance.Instance.TypeDBContext, this);
             ShowManagementFormHelper.ShowManagerForm(typeof(TaskProject));
         }
     }

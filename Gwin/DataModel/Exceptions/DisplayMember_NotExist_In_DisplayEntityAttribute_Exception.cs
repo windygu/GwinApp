@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace App.Gwin.Attributes
+namespace GApp.GwinApp.Attributes
 {
     [Serializable]
     internal class DisplayMember_NotExist_In_DisplayEntityAttribute_Exception : Exception

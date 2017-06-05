@@ -1,7 +1,7 @@
-﻿using App.Gwin.Attributes;
-using App.Gwin.Entities.Application;
-using App.Gwin.Entities.MultiLanguage;
-using App.Gwin.Entities.Secrurity.Authentication;
+﻿using GApp.GwinApp.Attributes;
+using GApp.GwinApp.Entities.Application;
+using GApp.GwinApp.Entities.MultiLanguage;
+using GApp.GwinApp.Entities.Secrurity.Authentication;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Gwin.Entities.Secrurity.Autorizations
+namespace GApp.GwinApp.Entities.Secrurity.Autorizations
 {
     /// <summary>
     /// This Eity is Used by Test Project to Teste : 

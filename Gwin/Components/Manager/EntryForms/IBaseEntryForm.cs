@@ -1,8 +1,8 @@
 ﻿
-using App.Gwin.Application.BAL;
-using App.Gwin.Entities;
+using GApp.GwinApp.Application.BAL;
+using GApp.GwinApp.Entities;
 
-namespace App.Gwin
+namespace GApp.GwinApp
 {
     public interface IBaseEntryForm
     {

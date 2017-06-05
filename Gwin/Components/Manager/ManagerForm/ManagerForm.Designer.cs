@@ -1,4 +1,4 @@
-﻿namespace App.Gwin.Application.Presentation.EntityManagement
+﻿namespace GApp.GwinApp.Application.Presentation.EntityManagement
 {
     partial class ManagerForm
     {

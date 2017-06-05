@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
-using App.Gwin.Attributes;
+using GApp.GwinApp.Attributes;
 using System.Reflection;
-using App.Gwin.Entities;
-using App.Gwin.Application.Presentation.EntityManagement;
-using App.Gwin.Application.Presentation;
-using App.Gwin.Application.BAL;
+using GApp.GwinApp.Entities;
+using GApp.GwinApp.Application.Presentation.EntityManagement;
+using GApp.GwinApp.Application.Presentation;
+using GApp.GwinApp.Application.BAL;
 
-namespace App.Gwin.EntityManagement
+namespace GApp.GwinApp.EntityManagement
 {
     public partial class BaseEntityTabControl : UserControl
     {

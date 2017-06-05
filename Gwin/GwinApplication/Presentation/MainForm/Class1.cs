@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Gwin.Application.Presentation.MainForm
+namespace GApp.GwinApp.Application.Presentation.MainForm
 {
     class Class1
     {
