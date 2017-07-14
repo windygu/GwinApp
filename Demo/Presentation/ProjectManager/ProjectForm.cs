@@ -12,8 +12,8 @@ using App.Gwin.Application.BAL;
 using App.Gwin.Entities;
 using App;
 using GenericWinForm.Demo.Entities;
-using App.Gwin.Components.Manager.EntryForms.Resources;
 using GenericWinForm.Demo.Entities.ProjectManager;
+using App.Gwin.GForm.EntryForms.Resources;
 
 namespace GenericWinForm.Demo.Presentation.ProjectManager
 {
@@ -46,7 +46,7 @@ namespace GenericWinForm.Demo.Presentation.ProjectManager
         public override void ShowEntity(Dictionary<string, object> CriteriaFilter, EntityActions EntityAction)
         {
             Project project = this.Entity as Project;
-            txtText.Text = project.Title;
+            txtText.Text = project.Title.Current;
             txtDescription.Text = project.Description.Current;
         }
 
@@ -57,7 +57,7 @@ namespace GenericWinForm.Demo.Presentation.ProjectManager
         {
             // Read Entity
             Project project = this.Entity as Project;
-            project.Title = txtText.Text;
+            project.Title.Current = txtText.Text;
             project.Description.Current = txtDescription.Text;
         }
 

@@ -1,4 +1,5 @@
-﻿using SplashScreen;
+﻿using Gwin.Presentation.GwinLoader;
+using SplashScreen;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -21,6 +22,12 @@ namespace App.Gwin
             // Run Loadind Interface if the programme is not en debug Mode
             if (!Debugger.IsAttached)
                 Splasher.Show(typeof(GwinLoader));
+        }
+        public static void Loading_Start(Type TypeOfFormLoader)
+        {
+            // Run Loadind Interface if the programme is not en debug Mode
+            if (!Debugger.IsAttached)
+                Splasher.Show(TypeOfFormLoader);
         }
 
         /// <summary>

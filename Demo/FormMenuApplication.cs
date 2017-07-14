@@ -25,8 +25,15 @@ namespace GenericWinForm.Demo
 
         private void FormMenuApplication_Load(object sender, EventArgs e)
         {
+            // Lunch Loading Interface
+            GwinApp.Loading_Start();
+            GwinApp.Loading_Status("Start TaskView Applicaton ...");
+
+
             User user = null;
-        //    user = User.CreateAdminUser(new ModelContext());
+
+            // First Database use : there are time for loading
+            GwinApp.Loading_Status("Load DataBase ...");
             user = User.CreateGuestUser(new ModelContext());
             user = User.CreateRootUser(new ModelContext());
             user.Language = GwinApp.Languages.fr;

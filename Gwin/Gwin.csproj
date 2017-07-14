@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\GwinPackage\</OutputPath>
+    <OutputPath>..\..\win-taskview\TaskView\packages\GwinApp.0.1.5\lib\net452\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -77,139 +77,138 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Components\Fields\BaseField.cs">
+    <Compile Include="GField\BaseField.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\Fields\BaseField.Designer.cs">
+    <Compile Include="GField\BaseField.Designer.cs">
       <DependentUpon>BaseField.cs</DependentUpon>
     </Compile>
-    <Compile Include="Components\Fields\Controls\DateTimeControl.cs">
+    <Compile Include="GField\Controls\DateTimeControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\Fields\Controls\DateTimeControl.Designer.cs">
+    <Compile Include="GField\Controls\DateTimeControl.Designer.cs">
       <DependentUpon>DateTimeControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Components\Fields\DateTimeField.cs">
+    <Compile Include="GField\DateTimeField.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\Fields\DateTimeField.Designer.cs">
+    <Compile Include="GField\DateTimeField.Designer.cs">
       <DependentUpon>DateTimeField.cs</DependentUpon>
     </Compile>
-    <Compile Include="Components\Fields\BooleanField.cs">
+    <Compile Include="GField\BooleanField.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\Fields\BooleanField.Designer.cs">
+    <Compile Include="GField\BooleanField.Designer.cs">
       <DependentUpon>BooleanField.cs</DependentUpon>
     </Compile>
-    <Compile Include="Components\Fields\IBaseField.cs" />
-    <Compile Include="Components\Fields\Int32Filed.cs">
+    <Compile Include="GField\IBaseField.cs" />
+    <Compile Include="GField\Int32Filed.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\Fields\Int32Filed.Designer.cs">
+    <Compile Include="GField\Int32Filed.Designer.cs">
       <DependentUpon>Int32Filed.cs</DependentUpon>
     </Compile>
-    <Compile Include="Components\Fields\DefaultField.cs">
+    <Compile Include="GField\DefaultField.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\Fields\DefaultField.Designer.cs">
+    <Compile Include="GField\DefaultField.Designer.cs">
       <DependentUpon>DefaultField.cs</DependentUpon>
     </Compile>
-    <Compile Include="Components\Fields\StringField.cs">
+    <Compile Include="GField\StringField.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\Fields\StringField.Designer.cs">
+    <Compile Include="GField\StringField.Designer.cs">
       <DependentUpon>StringField.cs</DependentUpon>
     </Compile>
-    <Compile Include="Components\Manager\Actions\ActionsComponent.cs">
+    <Compile Include="GForm\Actions\ActionsComponent.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\Manager\Actions\ActionsComponent.Designer.cs">
+    <Compile Include="GForm\Actions\ActionsComponent.Designer.cs">
       <DependentUpon>ActionsComponent.cs</DependentUpon>
     </Compile>
-    <Compile Include="Components\Manager\Actions\BaseDataAction.cs">
+    <Compile Include="GForm\Actions\BaseDataAction.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Components\Manager\Actions\ExportExcelDataAction.cs">
+    <Compile Include="GForm\Actions\ExportExcelDataAction.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Components\Manager\DataGrid\IFormSelectedEntityAction.cs" />
-    <Compile Include="Components\Manager\EntryForms\API_Events.BaseEntryForm.cs">
+    <Compile Include="GForm\DataGrid\IFormSelectedEntityAction.cs" />
+    <Compile Include="GForm\EntryForms\API_Events.BaseEntryForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\Manager\EntryForms\PLL\GwinPLO.cs" />
-    <Compile Include="Components\Manager\EntryForms\PLL\IGwinPLO.cs" />
-    <Compile Include="Components\Manager\EntryForms\TabEntryForm\GwinEntityForm.cs">
+    <Compile Include="GForm\EntryForms\PLL\GwinPLO.cs" />
+    <Compile Include="GForm\EntryForms\PLL\IGwinPLO.cs" />
+    <Compile Include="GForm\EntryForms\TabEntryForm\GwinEntityForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\Manager\EntryForms\TabEntryForm\GwinEntityForm.Designer.cs">
+    <Compile Include="GForm\EntryForms\TabEntryForm\GwinEntityForm.Designer.cs">
       <DependentUpon>GwinEntityForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Components\Manager\EntryForms\TabEntryForm\TabEntryForm.cs">
+    <Compile Include="GForm\EntryForms\TabEntryForm\TabEntryForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\Manager\EntryForms\TabEntryForm\TabEntryForm.Designer.cs">
+    <Compile Include="GForm\EntryForms\TabEntryForm\TabEntryForm.Designer.cs">
       <DependentUpon>TabEntryForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Components\Manager\Fields.Traitements\BoolFieldTraitement.cs" />
-    <Compile Include="Components\Manager\Fields.Traitements\Params\Base\BaseFieldTraitementParam.cs" />
-    <Compile Include="DataModel\Attributes\EntityAttributes\ActionLineAttribute.cs" />
-    <Compile Include="DataModel\Attributes\PropertiesAttributes\BusinesRole.cs" />
-    <Compile Include="DataModel\Attributes\EntityAttributes\GwinFormAttribute.cs" />
-    <Compile Include="DataModel\Attributes\EntityAttributes\PresentationLogic.cs" />
-    <Compile Include="DataModel\Exceptions\Class1.cs" />
-    <Compile Include="DataModel\Helpers\GwinIdentifierManager.cs" />
-    <Compile Include="DataModel\ModelInfo\GwinAssembliesManager.cs" />
-    <Compile Include="DataModel\ModelInfo\GwinBusinessEntitiesManager.cs" />
-    <Compile Include="DataModel\ModelInfo\GwinEntitiesManager.cs" />
-    <Compile Include="DataModel\ModelInfo\GwinPropertiesManager.cs" />
+    <Compile Include="GField\Fields.Traitements\BoolFieldTraitement.cs" />
+    <Compile Include="GField\Fields.Traitements\Params\Base\BaseFieldTraitementParam.cs" />
+    <Compile Include="GInterface\Attributes\EntityAttributes\ActionLineAttribute.cs" />
+    <Compile Include="GInterface\Attributes\PropertiesAttributes\BusinesRole.cs" />
+    <Compile Include="GInterface\Attributes\EntityAttributes\GwinFormAttribute.cs" />
+    <Compile Include="GInterface\Attributes\EntityAttributes\PresentationLogic.cs" />
+    <Compile Include="GInterface\Exceptions\Class1.cs" />
+    <Compile Include="GInterface\Helpers\GwinIdentifierManager.cs" />
+    <Compile Include="GInterface\ModelInfo\GwinAssembliesManager.cs" />
+    <Compile Include="GInterface\ModelInfo\GwinBusinessEntitiesManager.cs" />
+    <Compile Include="GInterface\ModelInfo\GwinEntitiesManager.cs" />
+    <Compile Include="GInterface\ModelInfo\GwinPropertiesManager.cs" />
     <Compile Include="Entities\Configuration\ConfigDB.cs" />
     <Compile Include="Entities\EmptyEntity.cs" />
     <Compile Include="Entities\Logging\GwinActivity.cs" />
     <Compile Include="Enumerations\Configuration\SupportedDataBaseCategories.cs" />
     <Compile Include="Enumerations\Configuration\SupportedServerDataBases.cs" />
     <Compile Include="Enumerations\Configuration\SupportedLocalDataBases.cs" />
-    <Compile Include="GwinApplication\AOP\Aspect.cs" />
-    <Compile Include="GwinApplication\BLL\Application\ApplicationNameBLO.cs" />
-    <Compile Include="GwinApplication\BLL\Authentication\AuthenticationBLO.cs" />
-    <Compile Include="GwinApplication\BLL\Authentication\UserGwinBLO.cs" />
-    <Compile Include="GwinApplication\BLL\Configuration\ConfigDbBLO.cs" />
-    <Compile Include="GwinApplication\BLL\GwinBaseBLO.cs" />
-    <Compile Include="GwinApplication\DAL\GwinBaseDAO.cs" />
-    <Compile Include="GwinApplication\DAL\IGwinBaseDAO.cs" />
-    <Compile Include="GwinApplication\IoC\ComponentRegistration.cs" />
-    <Compile Include="GwinApplication\IoC\DependencyResolver.cs" />
-    <Compile Include="GwinApplication\PLL\PLOManager.cs" />
-    <Compile Include="GwinApplication\Presentation\Authentication\LoginForm.cs">
+    <Compile Include="AOP\Aspect.cs" />
+    <Compile Include="BLL\Application\ApplicationNameBLO.cs" />
+    <Compile Include="BLL\Authentication\AuthenticationBLO.cs" />
+    <Compile Include="BLL\Authentication\UserGwinBLO.cs" />
+    <Compile Include="BLL\Configuration\ConfigDbBLO.cs" />
+    <Compile Include="BLL\GwinBaseBLO.cs" />
+    <Compile Include="DAL\GwinBaseDAO.cs" />
+    <Compile Include="DAL\IGwinBaseDAO.cs" />
+    <Compile Include="AOP\IoC\ComponentRegistration.cs" />
+    <Compile Include="AOP\IoC\DependencyResolver.cs" />
+    <Compile Include="PLL\PLOManager.cs" />
+    <Compile Include="Presentation\Authentication\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GwinApplication\Presentation\Authentication\LoginForm.Designer.cs">
+    <Compile Include="Presentation\Authentication\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="GwinApplication\Security\Attributes\AuthorizeAttribute.cs" />
-    <Compile Include="GwinApplication\Security\Attributes\DoNotPerformPermissionCheck.cs" />
-    <Compile Include="GwinApplication\Security\Exception\GwinException.cs" />
-    <Compile Include="GwinApplication\Security\SecurityInterceptor.cs" />
-    <Compile Include="GwinApplication\Themes\GwinTheme.cs" />
-    <Compile Include="GwinApplication\Themes\DefaultTheme\DefaultTheme.cs" />
-    <Compile Include="GwinInstance\BaseBLO.cs" />
+    <Compile Include="Security\Attributes\AuthorizeAttribute.cs" />
+    <Compile Include="Security\Attributes\DoNotPerformPermissionCheck.cs" />
+    <Compile Include="Security\Exception\GwinException.cs" />
+    <Compile Include="Security\SecurityInterceptor.cs" />
+    <Compile Include="Themes\GwinTheme.cs" />
+    <Compile Include="Themes\DefaultTheme\DefaultTheme.cs" />
     <Compile Include="GwinInstance\Exception\GwinUsageModeException.cs" />
-    <Compile Include="Components\Manager\EntryForms\Resources\ResourceEntryForm.ar.Designer.cs">
+    <Compile Include="GForm\EntryForms\Resources\ResourceEntryForm.ar.Designer.cs">
       <DependentUpon>ResourceEntryForm.ar.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Components\Manager\EntryForms\Resources\ResourceEntryForm.fr.Designer.cs">
+    <Compile Include="GForm\EntryForms\Resources\ResourceEntryForm.fr.Designer.cs">
       <DependentUpon>ResourceEntryForm.fr.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Components\Manager\EntryForms\Resources\ResourceEntryForm.Designer.cs">
+    <Compile Include="GForm\EntryForms\Resources\ResourceEntryForm.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ResourceEntryForm.resx</DependentUpon>
     </Compile>
-    <Compile Include="GwinApplication\Security\Enumeration\UserActionInGwin.cs" />
-    <Compile Include="DataModel\Attributes\PropertiesAttributes\DataSourceAttribute.cs" />
+    <Compile Include="Security\Enumeration\UserActionInGwin.cs" />
+    <Compile Include="GInterface\Attributes\PropertiesAttributes\DataSourceAttribute.cs" />
     <Compile Include="Entities\Secrurity\Autorizations\Resources\Authorization\Authorization.ar.Designer.cs">
       <DependentUpon>Authorization.ar.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -228,68 +227,68 @@
     <Compile Include="GwinInstance\Exception\GwinAppImplementedException.cs" />
     <Compile Include="GwinInstance\Exception\GwinNullParameterException.cs" />
     <Compile Include="GwinInstance\Helpers\ParamsValidationg.cs" />
-    <Compile Include="Components\Manager\Fields.Traitements\ManyToMany_CreationFieldTraitement.cs" />
-    <Compile Include="Components\Manager\Fields.Traitements\Params\CreateFieldColumns_In_EntityDataGrid.cs" />
-    <Compile Include="Components\Manager\Fields.Traitements\Params\CreateField_In_Filter_Params.cs" />
-    <Compile Include="Components\Manager\Fields.Traitements\Params\WriteEntity_To_EntryForm_Param.cs" />
-    <Compile Include="Components\Manager\Fields.Traitements\DefaultFieldTraitement.cs" />
-    <Compile Include="Components\Fields\ComboBoxField.cs">
+    <Compile Include="GField\Fields.Traitements\ManyToMany_CreationFieldTraitement.cs" />
+    <Compile Include="GField\Fields.Traitements\Params\CreateFieldColumns_In_EntityDataGrid.cs" />
+    <Compile Include="GField\Fields.Traitements\Params\CreateField_In_Filter_Params.cs" />
+    <Compile Include="GField\Fields.Traitements\Params\WriteEntity_To_EntryForm_Param.cs" />
+    <Compile Include="GField\Fields.Traitements\DefaultFieldTraitement.cs" />
+    <Compile Include="GField\ComboBoxField.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\Fields\ComboBoxField.Designer.cs">
+    <Compile Include="GField\ComboBoxField.Designer.cs">
       <DependentUpon>ComboBoxField.cs</DependentUpon>
     </Compile>
-    <Compile Include="Components\Manager\Fields.Traitements\DateTimeFieldTraitement.cs" />
-    <Compile Include="Components\Manager\Fields.Traitements\FieldNature\FieldsNatures.cs" />
-    <Compile Include="Components\Manager\Fields.Traitements\EnumerationFieldTraitement.cs" />
-    <Compile Include="Components\Manager\Fields.Traitements\Base\BaseFieldTraitement.cs" />
-    <Compile Include="Components\Manager\Fields.Traitements\Interface\IFieldTraitements.cs" />
-    <Compile Include="Components\Manager\Fields.Traitements\ManyToMany_SelectionFieldTraitement.cs" />
-    <Compile Include="Components\Manager\Fields.Traitements\ManyToOneFieldTraitement.cs" />
-    <Compile Include="Components\Manager\Fields.Traitements\Params\CreateFieldParams.cs" />
-    <Compile Include="Components\Manager\Fields.Traitements\LocalizedStringFieldTraitement.cs" />
-    <Compile Include="Components\Manager\Fields.Traitements\StringWithDataSourceFieldTraitement.cs" />
+    <Compile Include="GField\Fields.Traitements\DateTimeFieldTraitement.cs" />
+    <Compile Include="GField\Fields.Traitements\FieldNature\FieldsNatures.cs" />
+    <Compile Include="GField\Fields.Traitements\EnumerationFieldTraitement.cs" />
+    <Compile Include="GField\Fields.Traitements\Base\BaseFieldTraitement.cs" />
+    <Compile Include="GField\Fields.Traitements\Interface\IFieldTraitements.cs" />
+    <Compile Include="GField\Fields.Traitements\ManyToMany_SelectionFieldTraitement.cs" />
+    <Compile Include="GField\Fields.Traitements\ManyToOneFieldTraitement.cs" />
+    <Compile Include="GField\Fields.Traitements\Params\CreateFieldParams.cs" />
+    <Compile Include="GField\Fields.Traitements\LocalizedStringFieldTraitement.cs" />
+    <Compile Include="GField\Fields.Traitements\StringWithDataSourceFieldTraitement.cs" />
     <Compile Include="GwinInstance\GwinApp_Install_Update.cs" />
     <Compile Include="GwinInstance\GwinApp_Language.cs" />
     <Compile Include="GwinInstance\GwinApp_Start.cs" />
     <Compile Include="GwinInstance\GwinApp_Loading.cs" />
-    <Compile Include="GwinApplication\Presentation\MainForm\FormLoader.cs">
+    <Compile Include="Presentation\MainForm\FormLoader.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GwinApplication\Presentation\MainForm\FormLoader.Designer.cs">
+    <Compile Include="Presentation\MainForm\FormLoader.Designer.cs">
       <DependentUpon>FormLoader.cs</DependentUpon>
     </Compile>
-    <Compile Include="GwinApplication\Presentation\GwinLoader\GwinLoader.cs">
+    <Compile Include="Presentation\GwinLoader\GwinLoader.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GwinApplication\Presentation\GwinLoader\GwinLoader.Designer.cs">
+    <Compile Include="Presentation\GwinLoader\GwinLoader.Designer.cs">
       <DependentUpon>GwinLoader.cs</DependentUpon>
     </Compile>
-    <Compile Include="GwinApplication\Presentation\GwinLoader\ISplashForm.cs" />
-    <Compile Include="GwinApplication\Presentation\GwinLoader\Splasher.cs" />
+    <Compile Include="Presentation\GwinLoader\ISplashForm.cs" />
+    <Compile Include="Presentation\GwinLoader\Splasher.cs" />
     <Compile Include="Entities\Application\Class1.cs" />
     <Compile Include="Entities\MultiLanguage\LocalizedString.cs" />
     <Compile Include="GwinInstance\Exception\GwinException.cs" />
     <Compile Include="GwinInstance\Install\InstallApplicationGwinBLO.cs" />
-    <Compile Include="GwinApplication\Presentation\Class1.cs" />
-    <Compile Include="GwinApplication\Presentation\MainForm\Class1.cs" />
-    <Compile Include="GwinApplication\Presentation\MainForm\FormApplication.cs">
+    <Compile Include="Presentation\Class1.cs" />
+    <Compile Include="Presentation\MainForm\Class1.cs" />
+    <Compile Include="Presentation\MainForm\FormApplication.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GwinApplication\Presentation\MainForm\FormApplication.Designer.cs">
+    <Compile Include="Presentation\MainForm\FormApplication.Designer.cs">
       <DependentUpon>FormApplication.cs</DependentUpon>
     </Compile>
-    <Compile Include="GwinApplication\Presentation\Messages\MessageToUser_Resource.fr-FR.Designer.cs">
+    <Compile Include="Presentation\Messages\MessageToUser_Resource.fr-FR.Designer.cs">
       <DependentUpon>MessageToUser_Resource.fr-FR.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="GwinApplication\Presentation\Messages\MessageToUser_Resource.Designer.cs">
+    <Compile Include="Presentation\Messages\MessageToUser_Resource.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MessageToUser_Resource.resx</DependentUpon>
     </Compile>
-    <Compile Include="DataModel\ReadConfiguration\ConfigProperty.cs" />
+    <Compile Include="GInterface\ReadConfiguration\ConfigProperty.cs" />
     <Compile Include="Entities\Application\MenuItemApplication.cs" />
     <Compile Include="Entities\Application\Resources\ApplicationName\ApplicationName.Designer.cs">
       <DependentUpon>ApplicationName.resx</DependentUpon>
@@ -328,31 +327,31 @@
     </Compile>
     <Compile Include="Entities\Secrurity\Autorizations\Authorization.cs" />
     <Compile Include="Entities\Secrurity\Autorizations\Role.cs" />
-    <Compile Include="Components\Fields\Controls\SelectionFilter.cs" />
-    <Compile Include="Components\Fields\TestFields\FormTestDateTimeField.cs">
+    <Compile Include="GField\Controls\SelectionFilter.cs" />
+    <Compile Include="GField\TestFields\FormTestDateTimeField.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Components\Fields\TestFields\FormTestDateTimeField.Designer.cs">
+    <Compile Include="GField\TestFields\FormTestDateTimeField.Designer.cs">
       <DependentUpon>FormTestDateTimeField.cs</DependentUpon>
     </Compile>
-    <Compile Include="Components\Fields\ManyToManyField.cs">
+    <Compile Include="GField\ManyToManyField.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\Fields\ManyToManyField.Designer.cs">
+    <Compile Include="GField\ManyToManyField.Designer.cs">
       <DependentUpon>ManyToManyField.cs</DependentUpon>
     </Compile>
-    <Compile Include="GwinApplication\Logging\LoggingInterceptor.cs" />
-    <Compile Include="DataModel\ModelInfo\ModelConfiguration.cs" />
-    <Compile Include="DataModel\Exceptions\DisplayMember_NotExist_In_DisplayEntityAttribute_Exception.cs" />
-    <Compile Include="DataModel\Attributes\BaseAttribute.cs" />
-    <Compile Include="DataModel\ReadConfiguration\ConfigEntity.cs" />
-    <Compile Include="DataModel\Attributes\EntityAttributes\ButtonAddAttribute.cs" />
-    <Compile Include="GwinApplication\BLL\IGwinBaseBLO.cs" />
-    <Compile Include="GwinApplication\Presentation\Authentication\Authentification.cs" />
-    <Compile Include="GwinApplication\Presentation\Authentication\LoginControl.cs">
+    <Compile Include="Logging\LoggingInterceptor.cs" />
+    <Compile Include="GInterface\ModelInfo\ModelConfiguration.cs" />
+    <Compile Include="GInterface\Exceptions\DisplayMember_NotExist_In_DisplayEntityAttribute_Exception.cs" />
+    <Compile Include="GInterface\Attributes\BaseAttribute.cs" />
+    <Compile Include="GInterface\ReadConfiguration\ConfigEntity.cs" />
+    <Compile Include="GInterface\Attributes\EntityAttributes\ButtonAddAttribute.cs" />
+    <Compile Include="BLL\IGwinBaseBLO.cs" />
+    <Compile Include="Presentation\Authentication\Authentification.cs" />
+    <Compile Include="Presentation\Authentication\LoginControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GwinApplication\Presentation\Authentication\LoginControl.Designer.cs">
+    <Compile Include="Presentation\Authentication\LoginControl.Designer.cs">
       <DependentUpon>LoginControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Entities\Resources\Glossary\Glossary.ar.Designer.cs">
@@ -365,19 +364,19 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Glossary.resx</DependentUpon>
     </Compile>
-    <Compile Include="GwinApplication\Presentation\BaseForm.cs">
+    <Compile Include="Presentation\BaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DataModel\Attributes\PropertiesAttributes\DisplayPropertyAttribute.cs" />
-    <Compile Include="DataModel\Attributes\EntityAttributes\GwinEntityAttribute.cs" />
-    <Compile Include="DataModel\Attributes\EntityAttributes\ManagementFormAttribute.cs" />
-    <Compile Include="DataModel\Attributes\EntityAttributes\MenuAttribute.cs" />
-    <Compile Include="DataModel\Attributes\PropertiesAttributes\SelectionCriteriaAttribute.cs" />
+    <Compile Include="GInterface\Attributes\PropertiesAttributes\DisplayPropertyAttribute.cs" />
+    <Compile Include="GInterface\Attributes\EntityAttributes\GwinEntityAttribute.cs" />
+    <Compile Include="GInterface\Attributes\EntityAttributes\ManagementFormAttribute.cs" />
+    <Compile Include="GInterface\Attributes\EntityAttributes\MenuAttribute.cs" />
+    <Compile Include="GInterface\Attributes\PropertiesAttributes\SelectionCriteriaAttribute.cs" />
     <Compile Include="Entities\Application\ApplicationName.cs" />
-    <Compile Include="DataModel\Attributes\PropertiesAttributes\DataGridAttribute.cs" />
-    <Compile Include="DataModel\Attributes\PropertiesAttributes\EntryFormAttribute.cs" />
-    <Compile Include="DataModel\Attributes\PropertiesAttributes\FilterAttribute.cs" />
-    <Compile Include="DataModel\Attributes\PropertiesAttributes\RelationshipAttribute.cs" />
+    <Compile Include="GInterface\Attributes\PropertiesAttributes\DataGridAttribute.cs" />
+    <Compile Include="GInterface\Attributes\PropertiesAttributes\EntryFormAttribute.cs" />
+    <Compile Include="GInterface\Attributes\PropertiesAttributes\FilterAttribute.cs" />
+    <Compile Include="GInterface\Attributes\PropertiesAttributes\RelationshipAttribute.cs" />
     <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\IBaseEntity.cs" />
     <Compile Include="Entities\Resources\BaseEntity\BaseEntity.ar.Designer.cs">
@@ -390,94 +389,94 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BaseEntity.resx</DependentUpon>
     </Compile>
-    <Compile Include="GwinApplication\Presentation\Menu\ConfigMenuApplication.cs" />
-    <Compile Include="GwinApplication\Presentation\MainForm\IApplicationMenu.cs" />
-    <Compile Include="GwinApplication\Presentation\IBaseForm.cs" />
-    <Compile Include="DataModel\Exceptions\AffichageClasseAttributeNotExitException.cs" />
-    <Compile Include="DataModel\Exceptions\AnnotationNotExistException.cs" />
-    <Compile Include="DataModel\Exceptions\PropertyNotExistInEntityException.cs" />
-    <Compile Include="Components\Fields\Controls\IInputCollectionControle.cs" />
-    <Compile Include="Components\Fields\Controls\InputCollectionControle.cs">
+    <Compile Include="Presentation\Menu\ConfigMenuApplication.cs" />
+    <Compile Include="Presentation\MainForm\IApplicationMenu.cs" />
+    <Compile Include="Presentation\IBaseForm.cs" />
+    <Compile Include="GInterface\Exceptions\AffichageClasseAttributeNotExitException.cs" />
+    <Compile Include="GInterface\Exceptions\AnnotationNotExistException.cs" />
+    <Compile Include="GInterface\Exceptions\PropertyNotExistInEntityException.cs" />
+    <Compile Include="GField\Controls\IInputCollectionControle.cs" />
+    <Compile Include="GField\Controls\InputCollectionControle.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\Fields\Controls\InputCollectionControle.Designer.cs">
+    <Compile Include="GField\Controls\InputCollectionControle.Designer.cs">
       <DependentUpon>InputCollectionControle.cs</DependentUpon>
     </Compile>
-    <Compile Include="Components\Fields\ManyToOne\ManyToOneField.cs">
+    <Compile Include="GField\ManyToOne\ManyToOneField.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\Fields\ManyToOne\ManyToOneField.Designer.cs">
+    <Compile Include="GField\ManyToOne\ManyToOneField.Designer.cs">
       <DependentUpon>ManyToOneField.cs</DependentUpon>
     </Compile>
-    <Compile Include="Components\Manager\DataGrid\GwinDataGridComponent.cs">
+    <Compile Include="GForm\DataGrid\GwinDataGridComponent.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\Manager\DataGrid\GwinDataGridComponent.Designer.cs">
+    <Compile Include="GForm\DataGrid\GwinDataGridComponent.Designer.cs">
       <DependentUpon>GwinDataGridComponent.cs</DependentUpon>
     </Compile>
-    <Compile Include="Components\Manager\DataGrid\IEntityDataGrideControl.cs" />
-    <Compile Include="Components\Manager\ManagerForm\ManagerForm.cs">
+    <Compile Include="GForm\DataGrid\IEntityDataGrideControl.cs" />
+    <Compile Include="GForm\ManagerForm\ManagerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Components\Manager\ManagerForm\ManagerForm.Designer.cs">
+    <Compile Include="GForm\ManagerForm\ManagerForm.Designer.cs">
       <DependentUpon>ManagerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Components\Manager\EntryForms\BaseEntryForm.cs">
+    <Compile Include="GForm\EntryForms\BaseEntryForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\Manager\EntryForms\BaseEntryForm.Designer.cs">
+    <Compile Include="GForm\EntryForms\BaseEntryForm.Designer.cs">
       <DependentUpon>BaseEntryForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Components\Fields\Exceptions\FieldNotExistInFormException.cs" />
-    <Compile Include="Components\Manager\EntryForms\CreateFields.BaseEntryForm.cs">
+    <Compile Include="GField\Exceptions\FieldNotExistInFormException.cs" />
+    <Compile Include="GForm\EntryForms\CreateFields.BaseEntryForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\Manager\EntryForms\IBaseEntryForm.cs" />
-    <Compile Include="Components\Manager\EntryForms\Save_Click.BaseEntyForm.cs">
+    <Compile Include="GForm\EntryForms\IBaseEntryForm.cs" />
+    <Compile Include="GForm\EntryForms\Save_Click.BaseEntyForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\Manager\EntryForms\ShowEntity_Adn_ReadEntity.BaseEntryForm.cs">
+    <Compile Include="GForm\EntryForms\ShowEntity_Adn_ReadEntity.BaseEntryForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\Manager\Filter\BaseFilterControl.cs">
+    <Compile Include="GForm\Filter\BaseFilterControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\Manager\Filter\BaseFilterControl.Designer.cs">
+    <Compile Include="GForm\Filter\BaseFilterControl.Designer.cs">
       <DependentUpon>BaseFilterControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Components\Manager\Filter\IBaseFilterControl.cs" />
+    <Compile Include="GForm\Filter\IBaseFilterControl.cs" />
     <Compile Include="Entities\Secrurity\Authentication\User.cs" />
-    <Compile Include="DataModel\Exceptions\PropertyDoesNotExistException.cs" />
+    <Compile Include="GInterface\Exceptions\PropertyDoesNotExistException.cs" />
     <Compile Include="Lib\Extensions\Linq\LinqExtension.cs" />
-    <Compile Include="Components\Manager\Manager\AddEntity_Event.ManagerFormControl.cs">
+    <Compile Include="GForm\Manager\AddEntity_Event.ManagerFormControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\Manager\Manager\DataGrid_Events.ManagerFormControl.cs">
+    <Compile Include="GForm\Manager\DataGrid_Events.ManagerFormControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\Manager\Manager\ManagerFormControl.cs">
+    <Compile Include="GForm\Manager\ManagerFormControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\Manager\Manager\ManagerFormControl.Designer.cs">
+    <Compile Include="GForm\Manager\ManagerFormControl.Designer.cs">
       <DependentUpon>ManagerFormControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Components\Manager\Manager\Filter.EntityManagementControl.cs">
+    <Compile Include="GForm\Manager\Filter.EntityManagementControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\Manager\Manager\EntryForm_Events.ManagerFormControl.cs">
+    <Compile Include="GForm\Manager\EntryForm_Events.ManagerFormControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\Manager\ManagerForm\CreateAndShowManagerFormHelper.cs" />
-    <Compile Include="Components\Manager\TabPanel\BaseEntityTabControl.cs">
+    <Compile Include="GForm\ManagerForm\CreateAndShowManagerFormHelper.cs" />
+    <Compile Include="GForm\TabPanel\BaseEntityTabControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\Manager\TabPanel\BaseEntityTabControl.Designer.cs">
+    <Compile Include="GForm\TabPanel\BaseEntityTabControl.Designer.cs">
       <DependentUpon>BaseEntityTabControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="GwinApplication\Presentation\Messages\MessageToUser.cs" />
+    <Compile Include="Presentation\Messages\MessageToUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Components\Fields\Validation\MessageValidation.cs" />
-    <Compile Include="Components\Fields\Validation\ValidationManager.cs" />
+    <Compile Include="GField\Validation\MessageValidation.cs" />
+    <Compile Include="GField\Validation\ValidationManager.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -489,8 +488,7 @@
     <Compile Include="Structures\MenuItem.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Entities\ClassDiagramGenericWinForm.cd" />
-    <None Include="GwinApplication\Presentation\ExportDataToExcel\ListDataTemplate.xlsx">
+    <None Include="Presentation\ExportDataToExcel\ListDataTemplate.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Resources\save1.png" />
@@ -522,96 +520,96 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Components\Fields\BaseField.resx">
+    <EmbeddedResource Include="GField\BaseField.resx">
       <DependentUpon>BaseField.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Components\Fields\Controls\DateTimeControl.resx">
+    <EmbeddedResource Include="GField\Controls\DateTimeControl.resx">
       <DependentUpon>DateTimeControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Components\Fields\DateTimeField.resx">
+    <EmbeddedResource Include="GField\DateTimeField.resx">
       <DependentUpon>DateTimeField.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Components\Fields\BooleanField.resx">
+    <EmbeddedResource Include="GField\BooleanField.resx">
       <DependentUpon>BooleanField.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Components\Fields\Int32Filed.resx">
+    <EmbeddedResource Include="GField\Int32Filed.resx">
       <DependentUpon>Int32Filed.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Components\Fields\DefaultField.resx">
+    <EmbeddedResource Include="GField\DefaultField.resx">
       <DependentUpon>DefaultField.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Components\Fields\StringField.resx">
+    <EmbeddedResource Include="GField\StringField.resx">
       <DependentUpon>StringField.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Components\Manager\Actions\ActionsComponent.resx">
+    <EmbeddedResource Include="GForm\Actions\ActionsComponent.resx">
       <DependentUpon>ActionsComponent.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Components\Manager\EntryForms\TabEntryForm\GwinEntityForm.resx">
+    <EmbeddedResource Include="GForm\EntryForms\TabEntryForm\GwinEntityForm.resx">
       <DependentUpon>GwinEntityForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Components\Manager\EntryForms\TabEntryForm\TabEntryForm.resx">
+    <EmbeddedResource Include="GForm\EntryForms\TabEntryForm\TabEntryForm.resx">
       <DependentUpon>TabEntryForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Components\Manager\Filter\BaseFilterControl.ar.resx">
+    <EmbeddedResource Include="GForm\Filter\BaseFilterControl.ar.resx">
       <DependentUpon>BaseFilterControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Components\Manager\Filter\BaseFilterControl.fr.resx">
+    <EmbeddedResource Include="GForm\Filter\BaseFilterControl.fr.resx">
       <DependentUpon>BaseFilterControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GwinApplication\Presentation\Authentication\LoginControl.ar.resx">
+    <EmbeddedResource Include="Presentation\Authentication\LoginControl.ar.resx">
       <DependentUpon>LoginControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GwinApplication\Presentation\Authentication\LoginForm.ar.resx">
+    <EmbeddedResource Include="Presentation\Authentication\LoginForm.ar.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GwinApplication\Presentation\Authentication\LoginForm.fr.resx">
+    <EmbeddedResource Include="Presentation\Authentication\LoginForm.fr.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GwinApplication\Presentation\Authentication\LoginForm.resx">
+    <EmbeddedResource Include="Presentation\Authentication\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GwinApplication\Presentation\MainForm\FormApplication.ar.resx">
+    <EmbeddedResource Include="Presentation\MainForm\FormApplication.ar.resx">
       <DependentUpon>FormApplication.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GwinApplication\Presentation\MainForm\FormApplication.fr.resx">
+    <EmbeddedResource Include="Presentation\MainForm\FormApplication.fr.resx">
       <DependentUpon>FormApplication.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GwinApplication\Presentation\MainForm\FormApplication.resx">
+    <EmbeddedResource Include="Presentation\MainForm\FormApplication.resx">
       <DependentUpon>FormApplication.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GwinApplication\Presentation\MainForm\FormLoader.resx">
+    <EmbeddedResource Include="Presentation\MainForm\FormLoader.resx">
       <DependentUpon>FormLoader.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GwinApplication\Presentation\Messages\MessageToUser_Resource.ar.resx" />
-    <EmbeddedResource Include="GwinApplication\Presentation\Messages\MessageToUser_Resource.fr-FR.resx">
+    <EmbeddedResource Include="Presentation\Messages\MessageToUser_Resource.ar.resx" />
+    <EmbeddedResource Include="Presentation\Messages\MessageToUser_Resource.fr-FR.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>MessageToUser_Resource.fr-FR.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="GwinApplication\Presentation\Messages\MessageToUser_Resource.resx">
+    <EmbeddedResource Include="Presentation\Messages\MessageToUser_Resource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>MessageToUser_Resource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="GwinApplication\Presentation\GwinLoader\GwinLoader.resx">
+    <EmbeddedResource Include="Presentation\GwinLoader\GwinLoader.resx">
       <DependentUpon>GwinLoader.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GwinApplication\Presentation\Authentication\LoginControl.resx">
+    <EmbeddedResource Include="Presentation\Authentication\LoginControl.resx">
       <DependentUpon>LoginControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Components\Manager\EntryForms\BaseEntryForm.ar.resx">
+    <EmbeddedResource Include="GForm\EntryForms\BaseEntryForm.ar.resx">
       <DependentUpon>BaseEntryForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Components\Manager\EntryForms\BaseEntryForm.en.resx">
+    <EmbeddedResource Include="GForm\EntryForms\BaseEntryForm.en.resx">
       <DependentUpon>BaseEntryForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Components\Manager\EntryForms\Resources\ResourceEntryForm.ar.resx">
+    <EmbeddedResource Include="GForm\EntryForms\Resources\ResourceEntryForm.ar.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ResourceEntryForm.ar.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Components\Manager\EntryForms\Resources\ResourceEntryForm.fr.resx">
+    <EmbeddedResource Include="GForm\EntryForms\Resources\ResourceEntryForm.fr.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ResourceEntryForm.fr.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Components\Manager\EntryForms\Resources\ResourceEntryForm.resx">
+    <EmbeddedResource Include="GForm\EntryForms\Resources\ResourceEntryForm.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ResourceEntryForm.Designer.cs</LastGenOutput>
     </EmbeddedResource>
@@ -671,37 +669,37 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Glossary.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Components\Fields\ComboBoxField.resx">
+    <EmbeddedResource Include="GField\ComboBoxField.resx">
       <DependentUpon>ComboBoxField.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Components\Fields\Controls\InputCollectionControle.resx">
+    <EmbeddedResource Include="GField\Controls\InputCollectionControle.resx">
       <DependentUpon>InputCollectionControle.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Components\Fields\TestFields\FormTestDateTimeField.resx">
+    <EmbeddedResource Include="GField\TestFields\FormTestDateTimeField.resx">
       <DependentUpon>FormTestDateTimeField.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Components\Fields\ManyToManyField.resx">
+    <EmbeddedResource Include="GField\ManyToManyField.resx">
       <DependentUpon>ManyToManyField.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Components\Fields\ManyToOne\ManyToOneField.resx">
+    <EmbeddedResource Include="GField\ManyToOne\ManyToOneField.resx">
       <DependentUpon>ManyToOneField.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Components\Manager\DataGrid\GwinDataGridComponent.resx">
+    <EmbeddedResource Include="GForm\DataGrid\GwinDataGridComponent.resx">
       <DependentUpon>GwinDataGridComponent.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Components\Manager\ManagerForm\ManagerForm.resx">
+    <EmbeddedResource Include="GForm\ManagerForm\ManagerForm.resx">
       <DependentUpon>ManagerForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Components\Manager\EntryForms\BaseEntryForm.resx">
+    <EmbeddedResource Include="GForm\EntryForms\BaseEntryForm.resx">
       <DependentUpon>BaseEntryForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Components\Manager\Filter\BaseFilterControl.resx">
+    <EmbeddedResource Include="GForm\Filter\BaseFilterControl.resx">
       <DependentUpon>BaseFilterControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Components\Manager\Manager\ManagerFormControl.resx">
+    <EmbeddedResource Include="GForm\Manager\ManagerFormControl.resx">
       <DependentUpon>ManagerFormControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Components\Manager\TabPanel\BaseEntityTabControl.resx">
+    <EmbeddedResource Include="GForm\TabPanel\BaseEntityTabControl.resx">
       <DependentUpon>BaseEntityTabControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -717,9 +715,7 @@
       <LastGenOutput>BaseEntity.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="GwinApplication\Notification\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

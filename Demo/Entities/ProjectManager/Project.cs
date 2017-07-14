@@ -22,20 +22,21 @@ namespace GenericWinForm.Demo.Entities.ProjectManager
     [Authorize]
     [Menu]
     [DataGridSelectedAction(Title = "Print", Description = "Print_Task", TypeOfForm = typeof(FormPrintTaskProject))]
-    [GwinForm(FormType = typeof(ProjectForm))]
+  //  [GwinForm(FormType = typeof(ProjectForm))]
     public class Project:BaseEntity
     {
 
         public Project()
         {
             this.Description = new LocalizedString();
+            this.Title = new LocalizedString();
         }
 
         [EntryForm(isRequired = true)]
         [Filter]
         [DataGrid]
         [BusinesRole]
-        public string Title { set; get; }
+        public LocalizedString Title { set; get; }
 
 
         [EntryForm(MultiLine = true,WidthControl =300, isRequired = true)]

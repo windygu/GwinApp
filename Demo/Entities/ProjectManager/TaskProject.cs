@@ -22,7 +22,7 @@ namespace GenericWinForm.Demo.Entities.ProjectManager
     /// </summary>
     [GwinEntity(Localizable =true,DisplayMember = nameof(TaskProject.Title))]
     [Menu]
-    [ManagementForm(Localizable = true, FormTitle = "form_title", Width = 900, Height = 600)]
+    [ManagementForm(Localizable = true, FormTitle = "form_title", Width = 900, Height = 600,Window_State = ManagementFormAttribute.WindowState.Maximized)]
    
     public class TaskProject : BaseEntity
     {
@@ -205,9 +205,11 @@ namespace GenericWinForm.Demo.Entities.ProjectManager
               {
                   Id = 1,
                   StartDate = DateTime.Now,
-                  Project = new Project() { Id = 1, Title = "Entity_OneToMany" },
                   Categoy = TaskCategory.Analysis,
                   DaysNumber = 3,
+                  Project = new Project() { Id = 1, Title = new LocalizedString() { English = "Entity_OneToMany" } },
+                  
+                 
                   Title = new LocalizedString() { French = "Create Uses Cases Diagrame" },
 
                   Description = new LocalizedString() { Arab = "تحليل وظيفي", French = "Create UML Uses Cases Diagrams for Club Management system" },

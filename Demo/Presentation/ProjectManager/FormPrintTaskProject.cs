@@ -30,7 +30,7 @@ namespace GenericWinForm.Demo.Presentation.TaskProjectManager
         private void FormPrintTaskProject_Load(object sender, EventArgs e)
         {
             if (project != null)
-                MessageBox.Show(project.Title);
+                MessageBox.Show(project.Title.Current);
         }
     }
 }
