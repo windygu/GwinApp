@@ -16,7 +16,7 @@ using App.Shared.AttributesManager;
 namespace App.Gwin.Fields.Controls
 {
     /// <summary>
-    /// Manage the the selection filter of Field
+    /// Manage the the selection filter of field
     /// </summary>
     public class SelectionFilterManager
     {
@@ -229,19 +229,17 @@ namespace App.Gwin.Fields.Controls
                     ListeValeursInitiaux.Add(ListeComboBox.Keys.ElementAt(i), 0);
                 }
             // Init la de la vlaeur de comboBox Actuel
-            if (ListeValeursInitiaux.Count > 0)
-                ListeValeursInitiaux[ListeValeursInitiaux.Last().Key] = Value;
+            //if (ListeValeursInitiaux.Count > 0)
+            //    ListeValeursInitiaux[ListeValeursInitiaux.Last().Key] = Value;
 
             IGwinBaseBLO curentService = this.Service
-                  .CreateServiceBLOInstanceByTypeEntity(LsiteTypeObjetCritere[ListeValeursInitiaux.Last().Key]);
+                  .CreateServiceBLOInstanceByTypeEntity(this.ConfigProperty.PropertyInfo.PropertyType);
             BaseEntity curentEntity = curentService.GetBaseEntityByID(Value);
 
             BaseEntity previousEntity = null;
-            for (int i = this.LsiteTypeObjetCritere.Count() - 1; i >= 1; i--)
+            for (int i = this.LsiteTypeObjetCritere.Count() - 1; i >= 0; i--)
             {
-
-                string curentKey = LsiteTypeObjetCritere.Keys.ElementAt(i);
-                string Previouskey = ListeComboBox.Keys.ElementAt(i - 1);
+                string Previouskey = ListeComboBox.Keys.ElementAt(i);
 
                 PropertyInfo PropertyPrevious = curentEntity.GetType()
                                                 .GetProperties()

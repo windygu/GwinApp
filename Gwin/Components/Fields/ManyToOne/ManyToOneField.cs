@@ -290,6 +290,13 @@ namespace App.Gwin.Fields
                     { Type_ValueEntity.Name, ValueEntity.Id }
                    });
             this.DataSource = ls_data;
+
+          
+
+            // if Data not exisit , we empty the field
+            if (ls_data.Count == 0)
+                this.TextCombobox = "";
+           // onValueChanged(this, null);
         }
 
     }

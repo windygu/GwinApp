@@ -19,20 +19,21 @@
     public class ModelContext : DbContext
     {
 
+        public ModelContext() : base(@"data source =(LocalDb)\MSSQLLocalDB; initial catalog = Gwin.Demo; integrated security=True; MultipleActiveResultSets = True; App = EntityFramework")
         //public ModelContext() : base(@"data source =.\SQLEXPRESS; initial catalog = gwin-demo2; user = sa; password = admintp4; MultipleActiveResultSets = True; App = EntityFramework")
-        //{
+        {
 
-        //}
+        }
 
         //public ModelContext()
         //  : base("name=GwinDB")
         //{
         //}
 
-        public ModelContext() : base(new ConfigDbBLO().getConnectionString())
-        {
+        //public ModelContext() : base(new ConfigDbBLO().getConnectionString())
+        //{
 
-        }
+        //}
 
         //public ModelContext() : base(LocalDB.GetLocalDBConnectionString("GwinDemo"))
         //{
