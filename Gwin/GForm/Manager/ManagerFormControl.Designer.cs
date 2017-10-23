@@ -58,7 +58,7 @@
             this.panelDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelDataGrid.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panelDataGrid.BackColor = System.Drawing.Color.Transparent;
             this.panelDataGrid.Controls.Add(this.splitContainerDataGridAction);
             this.panelDataGrid.Location = new System.Drawing.Point(3, 3);
             this.panelDataGrid.Name = "panelDataGrid";
@@ -69,6 +69,7 @@
             // 
             // splitContainerDataGridAction
             // 
+            this.splitContainerDataGridAction.BackColor = System.Drawing.Color.Transparent;
             this.splitContainerDataGridAction.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainerDataGridAction.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
             this.splitContainerDataGridAction.Location = new System.Drawing.Point(0, 0);
@@ -77,6 +78,7 @@
             // 
             // splitContainerDataGridAction.Panel1
             // 
+            this.splitContainerDataGridAction.Panel1.BackColor = System.Drawing.Color.Transparent;
             this.splitContainerDataGridAction.Panel1.Controls.Add(this.groupBoxDataGrid);
             // 
             // splitContainerDataGridAction.Panel2
@@ -85,7 +87,7 @@
             this.splitContainerDataGridAction.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.splitContainerDataGridAction.Panel2MinSize = 70;
             this.splitContainerDataGridAction.Size = new System.Drawing.Size(767, 355);
-            this.splitContainerDataGridAction.SplitterDistance = 281;
+            this.splitContainerDataGridAction.SplitterDistance = 284;
             this.splitContainerDataGridAction.SplitterWidth = 1;
             this.splitContainerDataGridAction.TabIndex = 0;
             // 
@@ -94,7 +96,7 @@
             this.groupBoxDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxDataGrid.Location = new System.Drawing.Point(0, 0);
             this.groupBoxDataGrid.Name = "groupBoxDataGrid";
-            this.groupBoxDataGrid.Size = new System.Drawing.Size(767, 281);
+            this.groupBoxDataGrid.Size = new System.Drawing.Size(767, 284);
             this.groupBoxDataGrid.TabIndex = 0;
             this.groupBoxDataGrid.TabStop = false;
             this.groupBoxDataGrid.Text = "Data";
@@ -105,7 +107,7 @@
             this.groupBoxActions.Location = new System.Drawing.Point(0, 0);
             this.groupBoxActions.MinimumSize = new System.Drawing.Size(0, 50);
             this.groupBoxActions.Name = "groupBoxActions";
-            this.groupBoxActions.Size = new System.Drawing.Size(767, 73);
+            this.groupBoxActions.Size = new System.Drawing.Size(767, 70);
             this.groupBoxActions.TabIndex = 0;
             this.groupBoxActions.TabStop = false;
             this.groupBoxActions.Text = "Actions";
@@ -132,6 +134,7 @@
             // 
             // TabGrid
             // 
+            this.TabGrid.BackColor = System.Drawing.Color.Transparent;
             this.TabGrid.CausesValidation = false;
             this.TabGrid.Controls.Add(this.splitContainer1);
             this.TabGrid.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -144,7 +147,6 @@
             this.TabGrid.Size = new System.Drawing.Size(779, 451);
             this.TabGrid.TabIndex = 0;
             this.TabGrid.Text = "Informations";
-            this.TabGrid.UseVisualStyleBackColor = true;
             this.TabGrid.VerticalScrollbarBarColor = true;
             this.TabGrid.VerticalScrollbarHighlightOnWheel = false;
             this.TabGrid.VerticalScrollbarSize = 10;
@@ -194,7 +196,7 @@
             this.tabPageAdd.ImageKey = "(aucun)";
             this.tabPageAdd.Location = new System.Drawing.Point(4, 32);
             this.tabPageAdd.Name = "tabPageAdd";
-            this.tabPageAdd.Size = new System.Drawing.Size(564, 315);
+            this.tabPageAdd.Size = new System.Drawing.Size(779, 451);
             this.tabPageAdd.TabIndex = 1;
             this.tabPageAdd.ToolTipText = "Ajouter";
             this.tabPageAdd.VerticalScrollbarBarColor = false;
